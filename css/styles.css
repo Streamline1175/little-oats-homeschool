@@ -1006,6 +1006,7 @@ ul, ol {
 .card-science::before { background: linear-gradient(90deg, #10B981, #34D399); }
 .card-english::before { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
 .card-history::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+.card-citizenship::before { background: linear-gradient(90deg, #EC4899, #F472B6); }
 
 .subject-icon {
     font-size: var(--text-3xl);
