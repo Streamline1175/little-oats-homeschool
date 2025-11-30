@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="cap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5A2B"/>
+      <stop offset="100%" stop-color="#5D3A1A"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DEB887"/>
+      <stop offset="50%" stop-color="#D2691E"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </linearGradient>
+  </defs>
+  <!-- Acorn cap -->
+  <ellipse cx="16" cy="11" rx="9" ry="4" fill="url(#cap)"/>
+  <ellipse cx="16" cy="9" rx="1.5" ry="3" fill="#6B4423"/>
+  <!-- Acorn body -->
+  <path d="M7 12C7 12 6 22 16 27C26 22 25 12 25 12" fill="url(#body)"/>
+  <!-- Leaf detail -->
+  <circle cx="16" cy="5" r="1" fill="#2D5A27"/>
+  <path d="M16 5C16 5 18 3 20 4" stroke="#2D5A27" stroke-width="1" fill="none"/>
+</svg>
