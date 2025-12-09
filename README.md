@@ -131,6 +131,7 @@ All content is in `index.html`. Edit text, testimonials, pricing, and FAQs direc
 
 ## License
 
+
 © 2025 Little Oats Homeschool. All rights reserved.
 
 ---
