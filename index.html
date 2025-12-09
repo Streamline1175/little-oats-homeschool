@@ -3,1171 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Little Oats Homeschool - A privacy-first elementary homeschool desktop app for Texas families. 100% offline, local AI-powered. Covers Math, Reading, Writing, Grammar, and Good Citizenship aligned with Texas TEKS standards.">
-    <meta name="keywords" content="homeschool, Texas homeschool, elementary education, K-5 curriculum, homeschool desktop app, Texas TEKS, Math, Reading, Writing, Grammar, Good Citizenship">
-    <meta name="author" content="Little Oats Homeschool">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Little Oats Homeschool | Texas Homeschool Excellence">
-    <meta property="og:description" content="Elementary homeschool desktop app for Texas families. K-5 curriculum covering Math, Reading, Writing, Grammar & Good Citizenship.">
-    <meta property="og:image" content="assets/og-image.png">
-    
-    <title>Little Oats Homeschool | Texas Homeschool Excellence</title>
-    
-    <!-- Fonts -->
+    <meta name="description" content="Little Oat™ Homeschool – curriculum, homeschool tracking SaaS, and gentle guidance from a fellow homeschool parent.">
+    <meta name="keywords" content="homeschool curriculum, homeschool tracking, homeschool SaaS, little oat, home education">
+    <meta name="author" content="Little Oat">
+    <title>Little Oat™ Homeschool</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/little-oat-logo.svg">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
-                    <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="currentColor"/>
-                    <circle cx="20" cy="20" r="4" fill="white"/>
-                </svg>
-                <span class="logo-text">Little Oats</span>
+    <header class="site-header" id="top">
+        <div class="container nav-bar">
+            <a class="brand" href="#top">
+                <img src="assets/little-oat-logo.svg" alt="Little Oat logo" class="brand-mark">
+                <div class="brand-text">
+                    <span class="brand-title">Little Oat<span class="tm">™</span></span>
+                    <span class="brand-tagline">Gentle homeschool guidance</span>
+                </div>
             </a>
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#features" class="nav-link">Subjects</a></li>
-                <li><a href="#privacy" class="nav-link">Privacy</a></li>
-                <li><a href="#ai" class="nav-link">Local AI</a></li>
-                <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                <li><a href="#faq" class="nav-link">FAQ</a></li>
-            </ul>
-            
-            <div class="nav-actions">
-                <a href="#" class="btn btn-ghost">Sign In</a>
-                <a href="#waitlist" class="btn btn-primary">Free Trial</a>
-            </div>
-            
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-background">
-            <div class="hero-gradient"></div>
-            <div class="hero-pattern"></div>
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
-            </div>
-        </div>
-        
-        <div class="hero-content container">
-            <div class="hero-badge animate-fade-in">
-                <span class="badge-icon">🔒</span>
-                <span>100% Private & Offline • Texas TEKS Aligned</span>
-            </div>
-            
-            <h1 class="hero-title animate-fade-in-up">
-                Elementary Education<br>
-                <span class="text-gradient">Made Simple</span>
-            </h1>
-            
-            <p class="hero-subtitle animate-fade-in-up delay-1">
-                Little Oats is a <strong>privacy-first</strong> desktop app designed for Texas homeschool families 
-                with elementary students (K-5). Powered by local AI, your data never leaves your computer. 
-                Master Math, Reading, Writing, Grammar, and Good Citizenship—all offline.
-            </p>
-            
-            <div class="hero-cta animate-fade-in-up delay-2">
-                <a href="#waitlist" class="btn btn-large btn-primary">
-                    <span>Start Free Trial</span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                <a href="#features" class="btn btn-large btn-outline">
-                    <span>See What's Inside</span>
-                </a>
-            </div>
-            
-            <div class="hero-stats animate-fade-in-up delay-3">
-                <div class="stat">
-                    <span class="stat-number" data-count="5">0</span>
-                    <span class="stat-label">Core Subjects</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">K-5</span>
-                    <span class="stat-label">Grade Levels</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
-                    <span class="stat-label">Texas TEKS Aligned</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-image-wrapper animate-fade-in-up delay-2">
-            <div class="hero-image-container">
-                <div class="hero-image-frame">
-                    <div class="hero-mockup">
-                        <div class="mockup-header">
-                            <div class="mockup-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                            <div class="mockup-title">Little Oats Desktop App</div>
-                        </div>
-                        <div class="mockup-content">
-                            <div class="mockup-sidebar">
-                                <div class="sidebar-item active"></div>
-                                <div class="sidebar-item"></div>
-                                <div class="sidebar-item"></div>
-                                <div class="sidebar-item"></div>
-                            </div>
-                            <div class="mockup-main">
-                                <div class="mockup-card large"></div>
-                                <div class="mockup-grid">
-                                    <div class="mockup-card"></div>
-                                    <div class="mockup-card"></div>
-                                    <div class="mockup-card"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image-glow"></div>
-            </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>Scroll to explore</span>
-        </div>
-    </section>
-
-    <!-- Trusted By Section -->
-    <section class="trusted-section">
-        <div class="container">
-            <p class="trusted-label">Built for Privacy-Conscious Texas Families</p>
-            <div class="trusted-logos">
-                <div class="texas-cities">
-                    <span>🔒 100% Offline</span>
-                    <span>•</span>
-                    <span>🏠 Data Stays Local</span>
-                    <span>•</span>
-                    <span>🤖 Local AI Powered</span>
-                    <span>•</span>
-                    <span>📡 No Cloud Upload</span>
-                    <span>•</span>
-                    <span>🛡️ Privacy First</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Features</span>
-                <h2 class="section-title">Everything Your Elementary<br><span class="text-gradient">Student Needs</span></h2>
-                <p class="section-subtitle">
-                    A powerful desktop app designed by homeschool parents, for homeschool parents. 
-                    Engaging lessons in all five core subjects that make learning fun.
-                </p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <rect x="6" y="10" width="36" height="28" rx="3" stroke="currentColor" stroke-width="2"/>
-                            <path d="M6 18H42" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="12" cy="14" r="2" fill="currentColor"/>
-                            <circle cx="18" cy="14" r="2" fill="currentColor"/>
-                            <text x="24" y="32" text-anchor="middle" fill="currentColor" font-size="12" font-weight="bold">123</text>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">📐 Math Mastery</h3>
-                    <p class="feature-description">
-                        From counting to fractions, our interactive math lessons build strong 
-                        foundations with visual learning and hands-on practice problems.
-                    </p>
-                    <a href="#" class="feature-link">
-                        Learn more
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon icon-green">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <rect x="8" y="6" width="32" height="36" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M14 14H34M14 22H34M14 30H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">📖 Reading Adventures</h3>
-                    <p class="feature-description">
-                        Engaging stories and comprehension activities that develop fluency, 
-                        vocabulary, and a lifelong love of reading.
-                    </p>
-                    <a href="#" class="feature-link">
-                        Learn more
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-icon icon-purple">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <path d="M12 40L12 16L20 8L28 16L28 40" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 16L28 16" stroke="currentColor" stroke-width="2"/>
-                            <path d="M16 24H24M16 30H22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">✏️ Creative Writing</h3>
-                    <p class="feature-description">
-                        Guided writing prompts and exercises that spark creativity while 
-                        teaching structure, organization, and self-expression.
-                    </p>
-                    <a href="#" class="feature-link">
-                        Learn more
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-icon icon-orange">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
-                            <path d="M16 20H32M16 28H32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="24" cy="24" r="4" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">📝 Grammar Foundations</h3>
-                    <p class="feature-description">
-                        Master parts of speech, punctuation, and sentence structure through 
-                        interactive lessons and fun practice activities.
-                    </p>
-                    <a href="#" class="feature-link">
-                        Learn more
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-icon icon-pink">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <circle cx="16" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="32" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
-                            <path d="M10 36C10 32 12 28 16 28C20 28 22 30 24 30C26 30 28 28 32 28C36 28 38 32 38 36" stroke="currentColor" stroke-width="2"/>
-                            <path d="M22 20H26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">🤝 Good Citizenship</h3>
-                    <p class="feature-description">
-                        Learn about community, responsibility, respect, and what it means to be 
-                        a good citizen through stories and real-world examples.
-                    </p>
-                    <a href="#" class="feature-link">
-                        Learn more
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="feature-icon icon-teal">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4L6 12V24C6 35 24 44 24 44C24 44 42 35 42 24V12L24 4Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M16 24L22 30L32 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">✓ Texas TEKS Aligned</h3>
-                    <p class="feature-description">
-                        Every lesson aligns with Texas Essential Knowledge and Skills standards. 
-                        Rest easy knowing your curriculum meets state requirements.
-                    </p>
-                    <a href="#" class="feature-link">
-                        Learn more
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Privacy & AI Section -->
-    <section class="privacy-section" id="privacy">
-        <div class="container">
-            <div class="privacy-content">
-                <div class="privacy-text">
-                    <span class="section-tag">Privacy First</span>
-                    <h2 class="section-title">Your Family's Data<br><span class="text-gradient">Stays With You</span></h2>
-                    <p class="section-description">
-                        In a world where apps constantly collect and upload your children's data, 
-                        Little Oats takes a different approach. <strong>Everything runs locally on your computer.</strong> 
-                        No cloud servers. No data collection. No tracking. Period.
-                    </p>
-                    
-                    <div class="privacy-features">
-                        <div class="privacy-feature">
-                            <div class="pf-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 2L3 7V12C3 17.5 7.5 22.5 12 24C16.5 22.5 21 17.5 21 12V7L12 2Z" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div class="pf-text">
-                                <strong>100% Offline Operation</strong>
-                                <span>The app works completely offline. No internet required after initial download.</span>
-                            </div>
-                        </div>
-                        <div class="privacy-feature">
-                            <div class="pf-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="12" cy="16" r="2" fill="currentColor"/>
-                                    <path d="M7 11V7C7 4.2 9.2 2 12 2C14.8 2 17 4.2 17 7V11" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </div>
-                            <div class="pf-text">
-                                <strong>Data Never Leaves Your Computer</strong>
-                                <span>All student progress, reports, and learning data is stored locally on your machine.</span>
-                            </div>
-                        </div>
-                        <div class="privacy-feature">
-                            <div class="pf-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
-                                    <path d="M12 1V3M12 21V23M23 12H21M3 12H1M20.5 3.5L19 5M5 19L3.5 20.5M20.5 20.5L19 19M5 5L3.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
-                            </div>
-                            <div class="pf-text">
-                                <strong>No Tracking or Analytics</strong>
-                                <span>We don't track usage, collect behavioral data, or build profiles on your children.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="privacy-visual">
-                    <div class="privacy-card-visual">
-                        <div class="privacy-card-header">
-                            <div class="shield-icon">
-                                <svg viewBox="0 0 48 48" fill="none">
-                                    <path d="M24 4L6 12V24C6 35 24 44 24 44C24 44 42 35 42 24V12L24 4Z" stroke="currentColor" stroke-width="2" fill="rgba(45, 90, 39, 0.1)"/>
-                                    <path d="M16 24L22 30L32 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <h4>Your Data Stays Here</h4>
-                        </div>
-                        <div class="privacy-diagram">
-                            <div class="diagram-local">
-                                <div class="diagram-icon">💻</div>
-                                <span>Your Computer</span>
-                                <div class="diagram-items">
-                                    <div class="diagram-item">✓ Student Profiles</div>
-                                    <div class="diagram-item">✓ Progress Data</div>
-                                    <div class="diagram-item">✓ Lesson Content</div>
-                                    <div class="diagram-item">✓ AI Processing</div>
-                                </div>
-                            </div>
-                            <div class="diagram-blocked">
-                                <div class="blocked-line"></div>
-                                <span class="blocked-x">✕</span>
-                                <div class="blocked-line"></div>
-                            </div>
-                            <div class="diagram-cloud">
-                                <div class="diagram-icon faded">☁️</div>
-                                <span class="faded">Cloud Servers</span>
-                                <div class="no-upload">No Upload</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Local AI Section -->
-    <section class="ai-section" id="ai">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Local AI</span>
-                <h2 class="section-title">Intelligent Learning<br><span class="text-gradient">Without the Cloud</span></h2>
-                <p class="section-subtitle">
-                    Little Oats uses Ollama to run AI locally on your computer. 
-                    Personalized content generation without sending a single byte to external servers.
-                </p>
-            </div>
-            
-            <div class="ai-features">
-                <div class="ai-card">
-                    <div class="ai-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <rect x="6" y="14" width="36" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M6 20H42" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="12" cy="17" r="1.5" fill="currentColor"/>
-                            <circle cx="17" cy="17" r="1.5" fill="currentColor"/>
-                            <circle cx="22" cy="17" r="1.5" fill="currentColor"/>
-                            <path d="M12 28H24M12 32H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="34" cy="30" r="6" stroke="currentColor" stroke-width="2"/>
-                            <path d="M34 27V30L36 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>Runs on Your Machine</h3>
-                    <p>Powered by Ollama, all AI processing happens locally. No API calls, no cloud computing, no data transmission.</p>
-                </div>
-                
-                <div class="ai-card">
-                    <div class="ai-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <path d="M24 6L6 14V26C6 35 24 42 24 42C24 42 42 35 42 26V14L24 6Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M18 24L22 28L30 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Complete Privacy</h3>
-                    <p>Your children's responses and learning patterns are never seen by anyone else. The AI learns and adapts locally.</p>
-                </div>
-                
-                <div class="ai-card">
-                    <div class="ai-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/>
-                            <path d="M24 14V24L30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M16 8L14 4M32 8L34 4M8 16L4 14M8 32L4 34M40 16L44 14M40 32L44 34M16 40L14 44M32 40L34 44" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>Works Offline</h3>
-                    <p>Once installed, generate personalized worksheets, practice problems, and content anywhere—no internet needed.</p>
-                </div>
-                
-                <div class="ai-card">
-                    <div class="ai-card-icon">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <path d="M24 4C13 4 4 13 4 24C4 35 13 44 24 44C35 44 44 35 44 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M24 4C29 4 34 13 34 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M24 4C19 4 14 13 14 24C14 35 19 44 24 44" stroke="currentColor" stroke-width="2"/>
-                            <path d="M6 18H42M6 30H34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="40" cy="10" r="6" stroke="currentColor" stroke-width="2"/>
-                            <path d="M38 10L40 12L44 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Adaptive Content</h3>
-                    <p>AI generates age-appropriate practice problems, creative writing prompts, and reading comprehension questions tailored to each child.</p>
-                </div>
-            </div>
-            
-            <div class="ai-note">
-                <div class="ai-note-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 7V13M12 16V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <p><strong>How it works:</strong> Little Oats includes Ollama, an open-source local AI runtime. When you generate content, the AI model runs entirely on your computer's processor—nothing is sent to OpenAI, Google, or any other service. Your family's privacy is guaranteed.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Curriculum Section -->
-    <section class="curriculum-section" id="curriculum">
-        <div class="container">
-            <div class="curriculum-content">
-                <div class="curriculum-text">
-                    <span class="section-tag">Curriculum</span>
-                    <h2 class="section-title">Elementary K-5<br><span class="text-gradient">Curriculum Coverage</span></h2>
-                    <p class="section-description">
-                        Our desktop app covers all five essential subjects for Texas elementary homeschoolers. 
-                        Developed by experienced educators and fully aligned with Texas TEKS standards, each 
-                        lesson is designed to engage young learners and build strong foundations.
-                    </p>
-                    
-                    <div class="curriculum-features">
-                        <div class="curriculum-feature">
-                            <div class="cf-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div class="cf-text">
-                                <strong>Core Academics</strong>
-                                <span>Math, Reading, Writing, Grammar</span>
-                            </div>
-                        </div>
-                        <div class="curriculum-feature">
-                            <div class="cf-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div class="cf-text">
-                                <strong>Character Building</strong>
-                                <span>Good Citizenship & Social Skills</span>
-                            </div>
-                        </div>
-                        <div class="curriculum-feature">
-                            <div class="cf-icon">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <div class="cf-text">
-                                <strong>Progress Tracking</strong>
-                                <span>Reports, Certificates, Parent Dashboard</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#waitlist" class="btn btn-primary btn-large">
-                        <span>Try Free for 14 Days</span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="curriculum-visual">
-                    <div class="subject-cards">
-                        <div class="subject-card card-math">
-                            <div class="subject-icon">📐</div>
-                            <h4>Math</h4>
-                            <p>Numbers, operations & problem solving</p>
-                            <div class="subject-tag">K-5</div>
-                        </div>
-                        <div class="subject-card card-science">
-                            <div class="subject-icon">📖</div>
-                            <h4>Reading</h4>
-                            <p>Comprehension & fluency</p>
-                            <div class="subject-tag">K-5</div>
-                        </div>
-                        <div class="subject-card card-english">
-                            <div class="subject-icon">✏️</div>
-                            <h4>Writing</h4>
-                            <p>Creative & structured writing</p>
-                            <div class="subject-tag">K-5</div>
-                        </div>
-                        <div class="subject-card card-history">
-                            <div class="subject-icon">📝</div>
-                            <h4>Grammar</h4>
-                            <p>Language mechanics</p>
-                            <div class="subject-tag">K-5</div>
-                        </div>
-                    </div>
-                    <div class="subject-cards" style="margin-top: var(--space-4); justify-content: center;">
-                        <div class="subject-card card-citizenship" style="grid-column: span 2;">
-                            <div class="subject-icon">🤝</div>
-                            <h4>Good Citizenship</h4>
-                            <p>Community, responsibility & respect</p>
-                            <div class="subject-tag">K-5</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works-section" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">How It Works</span>
-                <h2 class="section-title">Start Your Homeschool Journey<br><span class="text-gradient">In Three Simple Steps</span></h2>
-            </div>
-            
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <h3>Download the App</h3>
-                        <p>Download Little Oats for Windows or Mac and start your 14-day free trial instantly.</p>
-                    </div>
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <svg viewBox="0 0 64 64" fill="none">
-                                <circle cx="32" cy="22" r="12" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 54C12 42 21 34 32 34C43 34 52 42 52 54" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step-connector">
-                    <svg viewBox="0 0 100 20" fill="none">
-                        <path d="M0 10H90M90 10L80 5M90 10L80 15" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/>
-                    </svg>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <h3>Set Up Your Students</h3>
-                        <p>Add your elementary students (K-5), set their grade levels, and customize their learning paths.</p>
-                    </div>
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <svg viewBox="0 0 64 64" fill="none">
-                                <path d="M8 32H28M36 18H56M36 32H56M36 46H56" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                <rect x="8" y="14" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-                                <rect x="8" y="38" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 22L15 25L22 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step-connector">
-                    <svg viewBox="0 0 100 20" fill="none">
-                        <path d="M0 10H90M90 10L80 5M90 10L80 15" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/>
-                    </svg>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <h3>Start Learning</h3>
-                        <p>Dive into engaging lessons across all 5 subjects. Track progress and watch your children thrive!</p>
-                    </div>
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <svg viewBox="0 0 64 64" fill="none">
-                                <path d="M32 8L8 20V44L32 56L56 44V20L32 8Z" stroke="currentColor" stroke-width="2"/>
-                                <path d="M32 28V44M24 32L32 38L40 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Testimonials</span>
-                <h2 class="section-title">Loved by Texas<br><span class="text-gradient">Homeschool Parents</span></h2>
-                <p class="section-subtitle">
-                    Join families who have transformed their elementary homeschool experience with Little Oats.
-                </p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card featured">
-                    <div class="testimonial-rating">
-                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                    </div>
-                    <blockquote>
-                        "As a privacy-conscious parent, Little Oats is a dream come true. The fact that 
-                        everything runs locally and my kids' data never leaves our computer gives me 
-                        complete peace of mind. The local AI features are incredible!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <span>SM</span>
-                        </div>
-                        <div class="author-info">
-                            <strong>Sarah M.</strong>
-                            <span>Mom of 2 (1st & 3rd Grade) • Houston, TX</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                    </div>
-                    <blockquote>
-                        "No internet required means my kids can learn during road trips and at grandma's 
-                        cabin. Plus I love that no big tech company is collecting data on my children."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <span>JR</span>
-                        </div>
-                        <div class="author-info">
-                            <strong>Jennifer R.</strong>
-                            <span>Mom of 1 (Kindergarten) • Austin, TX</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                    </div>
-                    <blockquote>
-                        "Finally, an app focused on elementary! The Math and Reading modules are 
-                        age-appropriate and my 2nd grader is thriving."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <span>DT</span>
-                        </div>
-                        <div class="author-info">
-                            <strong>David T.</strong>
-                            <span>Dad of 1 (2nd Grade) • Dallas, TX</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
-                    </div>
-                    <blockquote>
-                        "As a former elementary teacher, I'm impressed by the quality. The Grammar 
-                        and Writing lessons are exactly what young learners need."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <span>LK</span>
-                        </div>
-                        <div class="author-info">
-                            <strong>Lisa K.</strong>
-                            <span>Mom of 3 (K, 2nd, 4th) • San Antonio, TX</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Pricing</span>
-                <h2 class="section-title">Simple, Affordable<br><span class="text-gradient">Pricing</span></h2>
-                <p class="section-subtitle">
-                    Start with a 14-day free trial. One subscription, unlimited students, all premium features.
-                </p>
-            </div>
-            
-            <div class="pricing-card">
-                <div class="pricing-badge">14-Day Free Trial</div>
-                <div class="pricing-header">
-                    <h3>Family Subscription</h3>
-                    <div class="pricing-amount">
-                        <span class="price-currency">$</span>
-                        <span class="price-number">19</span>
-                        <span class="price-period">/month</span>
-                    </div>
-                    <p class="pricing-note">Cancel anytime. No commitment required.</p>
-                </div>
-                
-                <ul class="pricing-features">
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span><strong>14-day free trial</strong> - no credit card required</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Unlimited students per family</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>All 5 subjects: Math, Reading, Writing, Grammar, Citizenship</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>K-5 grade levels</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Progress tracking & parent dashboard</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Printable worksheets & certificates</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Texas TEKS aligned content</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Desktop app for Windows & Mac</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span><strong>100% offline</strong> - data never leaves your computer</span>
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 20 20" fill="none">
-                            <path d="M5 10L9 14L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Local AI content generation (Ollama)</span>
-                    </li>
-                </ul>
-                
-                <a href="#waitlist" class="btn btn-primary btn-large btn-full">
-                    <span>Start Free Trial</span>
-                </a>
-                
-                <p class="pricing-guarantee">
-                    <svg viewBox="0 0 20 20" fill="none">
-                        <path d="M10 2L2 6V10C2 15 10 18 10 18C10 18 18 15 18 10V6L10 2Z" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    No credit card required to start
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Waitlist CTA Section -->
-    <section class="waitlist-section" id="waitlist">
-        <div class="container">
-            <div class="waitlist-content">
-                <div class="waitlist-text">
-                    <h2>Ready to Transform Your<br><span class="text-gradient">Elementary Homeschool?</span></h2>
-                    <p>
-                        Download the Little Oats desktop app and start your 14-day free trial today. 
-                        No credit card required. Full access to all subjects and premium features.
-                    </p>
-                    
-                    <form class="waitlist-form" id="waitlist-form">
-                        <div class="form-group">
-                            <input type="email" placeholder="Enter your email for download link" required>
-                            <button type="submit" class="btn btn-primary">
-                                <span>Get Free Trial</span>
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <p class="form-note">
-                            <svg viewBox="0 0 16 16" fill="none">
-                                <path d="M8 1L1 4V8C1 12 8 15 8 15C8 15 15 12 15 8V4L8 1Z" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                            Available for Windows & Mac. No spam, ever.
-                        </p>
-                    </form>
-                    
-                    <div class="waitlist-stats">
-                        <div class="ws-stat">
-                            <span class="ws-number">14 Days</span>
-                            <span class="ws-label">Free Trial</span>
-                        </div>
-                        <div class="ws-stat">
-                            <span class="ws-number">$19/mo</span>
-                            <span class="ws-label">After Trial</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="waitlist-visual">
-                    <div class="acorn-illustration">
-                        <svg viewBox="0 0 200 200" fill="none">
-                            <!-- Acorn cap -->
-                            <ellipse cx="100" cy="70" rx="55" ry="25" fill="url(#cap-gradient)"/>
-                            <path d="M45 70C45 70 50 50 100 50C150 50 155 70 155 70" stroke="#6B4423" stroke-width="3"/>
-                            <ellipse cx="100" cy="55" rx="8" ry="15" fill="#8B5A2B"/>
-                            
-                            <!-- Cap pattern -->
-                            <path d="M55 65C55 65 70 60 100 60C130 60 145 65 145 65" stroke="#5D3A1A" stroke-width="1" opacity="0.5"/>
-                            <path d="M50 72C50 72 70 68 100 68C130 68 150 72 150 72" stroke="#5D3A1A" stroke-width="1" opacity="0.5"/>
-                            
-                            <!-- Acorn body -->
-                            <path d="M50 75C50 75 45 130 100 160C155 130 150 75 150 75" fill="url(#body-gradient)"/>
-                            
-                            <!-- Body shine -->
-                            <path d="M65 90C65 90 70 120 95 140" stroke="rgba(255,255,255,0.3)" stroke-width="8" stroke-linecap="round"/>
-                            
-                            <!-- Sparkles -->
-                            <circle cx="160" cy="50" r="3" fill="#FFD700" class="sparkle"/>
-                            <circle cx="40" cy="100" r="2" fill="#FFD700" class="sparkle"/>
-                            <circle cx="170" cy="120" r="2.5" fill="#FFD700" class="sparkle"/>
-                            <circle cx="30" cy="60" r="2" fill="#FFD700" class="sparkle"/>
-                            
-                            <defs>
-                                <linearGradient id="cap-gradient" x1="45" y1="45" x2="155" y2="95">
-                                    <stop offset="0%" stop-color="#8B5A2B"/>
-                                    <stop offset="100%" stop-color="#5D3A1A"/>
-                                </linearGradient>
-                                <linearGradient id="body-gradient" x1="50" y1="75" x2="150" y2="160">
-                                    <stop offset="0%" stop-color="#DEB887"/>
-                                    <stop offset="50%" stop-color="#D2691E"/>
-                                    <stop offset="100%" stop-color="#8B4513"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">FAQ</span>
-                <h2 class="section-title">Frequently Asked<br><span class="text-gradient">Questions</span></h2>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What grade levels does Little Oats support?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Little Oats is designed specifically for elementary students in grades K-5. Each of our five subjects (Math, Reading, Writing, Grammar, and Good Citizenship) has age-appropriate content for every grade level in this range.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What subjects are included?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Little Oats covers the five core subjects required for Texas elementary homeschooling: Math, Reading, Writing, Grammar, and Good Citizenship. All content is aligned with Texas TEKS standards.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How does the free trial work?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Download the app and enjoy 14 days of full access to all features and subjects—no credit card required. After your trial, you can subscribe for $19/month to keep access to all premium features. Cancel anytime.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Does the app work offline?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! Little Oats works 100% offline once installed. All lessons, exercises, AI features, and progress tracking happen locally on your computer—no internet required. This is part of our privacy-first design: your data stays on your device, always.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I add multiple children?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolutely! Your subscription includes unlimited students. Each child gets their own profile with individualized progress tracking, grade-level content, and achievement certificates.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What platforms is the app available on?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Little Oats is available as a desktop application for both Windows (10 and 11) and Mac (macOS 11+). A tablet version is planned for future release.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Where is my child's data stored?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p><strong>100% on your computer.</strong> All student data, progress reports, and learning content stays locally on your device. We never upload your child's information to any cloud server. Your family's educational journey remains completely private.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How does the AI work without internet?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Little Oats uses <strong>Ollama</strong>, an open-source local AI that runs entirely on your computer. This means AI-powered features like personalized content generation, adaptive learning suggestions, and writing feedback work without any internet connection—and your data never leaves your device.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Do you sell or share my data?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p><strong>Absolutely not.</strong> We have zero access to your child's learning data because it never leaves your computer. There's nothing to sell, share, or monetize. Our business model is simple: you pay for the software, not with your family's privacy.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Does the app require internet to function?</span>
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Only for the initial download, updates, and subscription verification. Once installed, <strong>all core features work completely offline</strong>—including lessons, exercises, progress tracking, and AI-powered features. Perfect for learning on the go!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" class="footer-logo">
-                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
-                            <path d="M20 8C20 8 12 14 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 14 20 8 20 8Z" fill="currentColor"/>
-                            <circle cx="20" cy="20" r="4" fill="var(--color-bg)"/>
-                        </svg>
-                        <span>Little Oats</span>
-                    </a>
-                    <p class="footer-tagline">
-                        A desktop app for Texas families homeschooling elementary students. 
-                        Math, Reading, Writing, Grammar & Good Citizenship—all TEKS aligned.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="18" cy="6" r="1" fill="currentColor"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M22 4C22 4 21.3 6.1 20 7.4C21.6 17.4 10.6 24.7 2 19C4.2 19.1 6.4 18.4 8 17C3 15.5 0.5 9.6 3 5C5.2 7.6 8.6 9.1 12 9C11.1 4.8 16 2.4 19 5.2C20.1 5.2 22 4 22 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="none">
-                                <path d="M22.54 6.42C22.4212 5.94541 22.1793 5.51057 21.8387 5.15941C21.498 4.80824 21.0708 4.55318 20.6 4.42C18.88 4 12 4 12 4C12 4 5.12 4 3.4 4.46C2.92925 4.59318 2.50198 4.84824 2.16135 5.19941C1.82072 5.55057 1.57879 5.98541 1.46 6.46C1.14521 8.20556 0.991235 9.97631 1 11.75C0.988687 13.537 1.14266 15.3213 1.46 17.08C1.59096 17.5398 1.8385 17.9581 2.17774 18.2945C2.51698 18.6308 2.93714 18.8738 3.4 19C5.12 19.46 12 19.46 12 19.46C12 19.46 18.88 19.46 20.6 19C21.0708 18.8668 21.498 18.6118 21.8387 18.2606C22.1793 17.9094 22.4212 17.4746 22.54 17C22.8524 15.2676 23.0063 13.5103 23 11.75C23.0113 9.96295 22.8573 8.1787 22.54 6.42Z" stroke="currentColor" stroke-width="2"/>
-                                <path d="M9.75 15.02L15.5 11.75L9.75 8.48V15.02Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <ul>
-                            <li><a href="#features">Features</a></li>
+            <nav class="main-nav" aria-label="Primary navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+                <ul id="nav-links" class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li class="has-dropdown">
+                        <button class="dropdown-toggle" aria-expanded="false">Shop</button>
+                        <ul class="dropdown-menu" aria-label="Shop menu">
                             <li><a href="#curriculum">Curriculum</a></li>
-                            <li><a href="#pricing">Pricing</a></li>
-                            <li><a href="#">Roadmap</a></li>
+                            <li><a href="#saas">Homeschool SaaS</a></li>
                         </ul>
+                    </li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-copy">
+                <p class="eyebrow">Made by a homeschool parent who is teaching right now</p>
+                <h1>Little Oat™ Homeschool</h1>
+                <p class="lead">A cozy blend of curriculum and tools. I built Little Oat while teaching my own kids; they are thriving, and I want to share the same gentle structure, delightful lessons, and practical trackers with you.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#curriculum">Explore Curriculum</a>
+                    <a class="btn outline" href="#saas">See Tracking SaaS</a>
+                </div>
+                <div class="hero-meta">
+                    <span>Texas &amp; national standards aware</span>
+                    <span>•</span>
+                    <span>Offline-first mindset</span>
+                    <span>•</span>
+                    <span>Friendly to new homeschoolers</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="card">
+                    <p class="card-label">Inside Little Oat</p>
+                    <ul class="pill-list">
+                        <li class="pill">Story-rich literacy</li>
+                        <li class="pill">Hands-on math</li>
+                        <li class="pill">Habit trackers</li>
+                        <li class="pill">Portfolio-ready reports</li>
+                        <li class="pill">Family rhythms</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section pastel">
+            <div class="container grid two">
+                <div>
+                    <p class="eyebrow">About me</p>
+                    <h2>A homeschool parent who built what my kids needed</h2>
+                    <p>I am a homeschool parent actively teaching my kids every day. The curriculum and routines I put together have helped them grow confident, curious, and joyful learners. Seeing how well they are doing, I wanted to share the same resources with other families who want gentle structure and clear progress.</p>
+                    <p>Little Oat is equal parts heart and practicality: stories, projects, and reflections blended with organized tracking so you can see growth without endless paperwork.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>What you can expect</h3>
+                    <ul class="checklist">
+                        <li>Friendly tone that honors kids’ imagination</li>
+                        <li>Clear lesson guides and printable activities</li>
+                        <li>Standards-aware planning without rigid scripts</li>
+                        <li>Progress tracking and report making you can export anytime</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <p class="eyebrow">What we offer</p>
+                <h2>Curriculum and SaaS offered separately today—designed to integrate soon</h2>
+                <div class="grid two">
+                    <article class="service-card" id="curriculum">
+                        <div class="pill soft">Curriculum Shop</div>
+                        <h3>Little Oat Curriculum</h3>
+                        <p>Story-based literacy, playful math, nature-friendly science, social studies, art, and habit-building prompts. Each unit includes pacing suggestions, printables, and reflection prompts for parents.</p>
+                        <ul class="checklist">
+                            <li>Modular units you can mix and match</li>
+                            <li>Guided questions &amp; conversation starters</li>
+                            <li>Built for multi-age learning at home</li>
+                        </ul>
+                        <div class="card-actions">
+                            <a class="btn primary" href="#pricing">Shop Curriculum</a>
+                        </div>
+                    </article>
+                    <article class="service-card" id="saas">
+                        <div class="pill soft">Homeschool SaaS</div>
+                        <h3>Little Oat Homeschool Hub</h3>
+                        <p>A web app for tracking progress, attendance, and projects—plus instant report making. Keep records tidy, share milestones with family, and export PDFs whenever you need to document learning.</p>
+                        <ul class="checklist">
+                            <li>Dashboard for daily plans and wins</li>
+                            <li>Portfolio uploads, attendance, and grades (optional)</li>
+                            <li>Beautiful reports generated in seconds</li>
+                        </ul>
+                        <div class="card-actions">
+                            <a class="btn outline" href="#pricing">View SaaS Plans</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="integration-note">
+                    <strong>Coming together soon:</strong> we are actively integrating the SaaS and curriculum so your lesson plans, trackers, and reports stay in sync.
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section pastel">
+            <div class="container">
+                <p class="eyebrow">Pricing</p>
+                <h2>Choose what you need now</h2>
+                <div class="grid three">
+                    <div class="pricing-card">
+                        <h3>Curriculum Bundles</h3>
+                        <p class="price">From $49 per unit</p>
+                        <ul class="checklist">
+                            <li>Downloadable printables</li>
+                            <li>Lesson plans with pacing</li>
+                            <li>Conversation prompts</li>
+                        </ul>
+                        <a class="btn primary" href="#contact">Ask about bundles</a>
                     </div>
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">Texas Homeschool Guide</a></li>
-                            <li><a href="#">Download App</a></li>
+                    <div class="pricing-card featured">
+                        <h3>Homeschool Hub SaaS</h3>
+                        <p class="price">$19/mo</p>
+                        <ul class="checklist">
+                            <li>Track attendance &amp; goals</li>
+                            <li>Create reports instantly</li>
+                            <li>Secure family sharing</li>
                         </ul>
+                        <a class="btn primary" href="#contact">Start a free trial</a>
                     </div>
-                    <div class="footer-column">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Press</a></li>
+                    <div class="pricing-card">
+                        <h3>Complete Journey</h3>
+                        <p class="price">Coming soon</p>
+                        <ul class="checklist">
+                            <li>Curriculum + SaaS in one place</li>
+                            <li>Sync lesson plans to trackers</li>
+                            <li>Family onboarding support</li>
                         </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
-                        </ul>
+                        <a class="btn outline" href="#contact">Join the waitlist</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Little Oats Homeschool. All rights reserved.</p>
-                <p class="footer-texas">Made with ❤️ in Texas</p>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container grid two">
+                <div>
+                    <p class="eyebrow">Let's talk</p>
+                    <h2>Have questions about fit, age range, or pacing?</h2>
+                    <p>Send a note and I'll happily share what has worked for my family and how Little Oat can flex to yours. Whether you need curriculum samples or a walkthrough of the Homeschool Hub, I'm here to help.</p>
+                </div>
+                <div class="card contact-card">
+                    <form class="contact-form">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" placeholder="Your name">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell me how I can support your homeschool"></textarea>
+                        <button type="submit" class="btn primary full">Send message</button>
+                        <p class="note">I reply personally and respect your inbox.</p>
+                    </form>
+                </div>
             </div>
+        </section>
+
+        <section id="terms" class="section pastel">
+            <div class="container legal">
+                <div>
+                    <p class="eyebrow">Legal</p>
+                    <h2>Terms of Service</h2>
+                    <p>Welcome to Little Oat™. By purchasing curriculum or using the Homeschool Hub SaaS, you agree to these Terms. We designed them to be readable and fair.</p>
+                    <h3>Use of materials</h3>
+                    <p>Curriculum files are licensed for use within your household or classroom. Please do not resell, repost, or repackage them. You may print and modify them for your learners.</p>
+                    <h3>Accounts &amp; access</h3>
+                    <p>You are responsible for keeping your login details secure. If you believe your account is compromised, contact us so we can help secure it.</p>
+                    <h3>Payments &amp; renewals</h3>
+                    <p>Curriculum purchases are one-time. SaaS plans renew monthly unless you cancel. Cancellations stop future charges immediately.</p>
+                    <h3>Data &amp; content</h3>
+                    <p>You retain ownership of all content you upload. We do not sell or share your data. Service improvements may involve aggregated, anonymized insights.</p>
+                    <h3>Liability</h3>
+                    <p>We provide Little Oat "as is" and aim to keep it available and helpful. To the fullest extent permitted by law, we disclaim warranties and limit liability for indirect or incidental damages.</p>
+                </div>
+                <div id="privacy" class="legal-card">
+                    <h2>Privacy Policy</h2>
+                    <p>We respect families’ privacy. This policy explains what we collect, why, and how you can control it.</p>
+                    <h3>What we collect</h3>
+                    <ul>
+                        <li>Account details such as name, email, and password (securely hashed)</li>
+                        <li>Optional learner information you choose to track (progress notes, uploads, attendance)</li>
+                        <li>Basic app analytics to improve features (no ad trackers)</li>
+                    </ul>
+                    <h3>How we use data</h3>
+                    <ul>
+                        <li>To provide the curriculum downloads you purchase</li>
+                        <li>To operate the Homeschool Hub and generate reports</li>
+                        <li>To send important service updates or billing notices</li>
+                    </ul>
+                    <h3>Your controls</h3>
+                    <ul>
+                        <li>Export or delete your SaaS data by emailing support</li>
+                        <li>Update contact preferences at any time</li>
+                        <li>Request full account deletion; we honor requests promptly</li>
+                    </ul>
+                    <h3>Security</h3>
+                    <p>Data is encrypted in transit and stored using industry-standard security practices. We regularly review access and keep third-party services minimal.</p>
+                    <h3>Contact</h3>
+                    <p>Email privacy questions to hello@littleoat.com and we will respond quickly.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="brand-inline">
+                    <img src="assets/little-oat-logo.svg" alt="Little Oat logo" class="brand-mark small">
+                    <div>
+                        <span class="brand-title">Little Oat<span class="tm">™</span></span>
+                        <p class="brand-tagline">Curriculum, SaaS, and heart for homeschool.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#saas">Homeschool Hub</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Stay connected</h4>
+                <p class="footer-note">Join the waitlist for new units and the integrated experience.</p>
+                <a class="btn outline" href="#contact">Say hello</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>Little Oat™ Homeschool. Crafted with care for families.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 </html>
