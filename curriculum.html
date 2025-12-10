@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Little Oat™ curriculum built for nurturing, mastery-based homeschool days.">
+    <title>Little Oat™ Curriculum Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="assets/little-oat-logo.svg">
+</head>
+<body>
+    <header class="site-header" id="top">
+        <div class="container nav-bar">
+            <a class="brand" href="index.html#top">
+                <img src="assets/little-oat-logo.svg" alt="Little Oat logo" class="brand-mark">
+                <div class="brand-text">
+                    <span class="brand-title">Little Oat<span class="tm">™</span></span>
+                    <span class="brand-tagline">Bright, safe homeschooling built with heart</span>
+                </div>
+            </a>
+            <nav class="main-nav" aria-label="Primary navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+                <ul id="nav-links" class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li class="has-dropdown">
+                        <button class="dropdown-toggle" aria-expanded="false">Shop</button>
+                        <ul class="dropdown-menu" aria-label="Shop menu">
+                            <li><a href="curriculum.html">Curriculum</a></li>
+                            <li><a href="saas.html">Homeschool SaaS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#services">Highlights</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a class="cart-link" href="#cart">Cart <span class="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero container">
+            <p class="eyebrow">Curriculum shop</p>
+            <h1>Building bright, mastery-based lessons one week at a time</h1>
+            <p class="lead">I’m actively creating Kindergarten and First Grade curriculum for my own kids. Each unit blends story-rich lessons, repetition-until-mastery worksheets, and joyful praise so kids feel safe, seen, and proud.</p>
+            <div class="badge" aria-label="Work in progress badge">New units posted as they are created</div>
+        </section>
+
+        <section class="section pastel">
+            <div class="container">
+                <div class="product-grid">
+                    <article class="product-card">
+                        <div class="pill soft">Kindergarten</div>
+                        <h2>Kindergarten Foundations</h2>
+                        <p class="grade">Phonics, early numeracy, routines</p>
+                        <p>Weekly plans with printable worksheets for repetition, playful movement breaks, and warm praise prompts for caregivers.</p>
+                        <p class="price">$39</p>
+                        <button class="btn primary" data-add-to-cart data-product="Kindergarten Foundations" data-price="$39">Add to cart</button>
+                    </article>
+                    <article class="product-card">
+                        <div class="pill soft">First Grade</div>
+                        <h2>First Grade Builder</h2>
+                        <p class="grade">Reading fluency, number sense, projects</p>
+                        <p>Layered practice, independent work choices, and mastery trackers to make sure confidence grows step by step.</p>
+                        <p class="price">$45</p>
+                        <button class="btn primary" data-add-to-cart data-product="First Grade Builder" data-price="$45">Add to cart</button>
+                    </article>
+                    <article class="product-card">
+                        <div class="pill soft">Add-ons</div>
+                        <h2>Family Routines &amp; Habits</h2>
+                        <p class="grade">Morning time, chores, and reflection</p>
+                        <p>Printable rhythm cards, checklists, and reflection prompts to keep the day calm and predictable.</p>
+                        <p class="price">$18</p>
+                        <button class="btn primary" data-add-to-cart data-product="Family Routines & Habits" data-price="$18">Add to cart</button>
+                    </article>
+                </div>
+                <p class="note-text" style="margin-top:1rem;">More grades and units will appear here as I write and test them with my kids. If there’s something specific you need, send me a note and I’ll prioritize it.</p>
+
+                <div id="cart" class="cart-panel">
+                    <h2>Your cart</h2>
+                    <p class="note-text">Add curriculum above to collect everything you want. Checkout is coming later—right now you can review and share your selections.</p>
+                    <div class="cart-list" aria-live="polite"></div>
+                    <button class="btn outline" id="clear-cart">Clear cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="brand-inline">
+                    <img src="assets/little-oat-logo.svg" alt="Little Oat logo" class="brand-mark small">
+                    <div>
+                        <span class="brand-title">Little Oat<span class="tm">™</span></span>
+                        <p class="brand-tagline">Curriculum, SaaS, and heart for homeschool.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="curriculum.html">Curriculum</a></li>
+                    <li><a href="saas.html">Homeschool Hub</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Policies</h4>
+                <ul class="footer-links">
+                    <li><a href="policies.html#terms">Terms of Service</a></li>
+                    <li><a href="policies.html#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Stay connected</h4>
+                <p class="footer-note">Join the waitlist for new units and the integrated experience.</p>
+                <a class="btn outline" href="index.html#contact">Say hello</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>Little Oat™ Homeschool. Crafted with care for families.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
