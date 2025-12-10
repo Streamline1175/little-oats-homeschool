@@ -47,4 +47,76 @@
     e.preventDefault();
     alert('Thanks for reaching out! We will reply soon.');
   });
+
+  // Simple client-side cart handling for shop pages
+  const cartStorageKey = 'little-oat-cart';
+  const cartList = document.querySelector('.cart-list');
+  const clearCartBtn = document.getElementById('clear-cart');
+  const cartCountEls = document.querySelectorAll('.cart-count');
+
+  function getCart() {
+    try {
+      return JSON.parse(localStorage.getItem(cartStorageKey)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveCart(items) {
+    localStorage.setItem(cartStorageKey, JSON.stringify(items));
+    renderCart();
+  }
+
+  function renderCart() {
+    const items = getCart();
+    cartCountEls.forEach((el) => (el.textContent = items.length));
+
+    if (!cartList) return;
+
+    cartList.innerHTML = '';
+    if (!items.length) {
+      cartList.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+      return;
+    }
+
+    items.forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = 'cart-row';
+      row.innerHTML = `
+        <div>
+          <strong>${item.name}</strong>
+          <span class="price">${item.price}</span>
+        </div>
+        <button class="remove-btn" data-remove-index="${index}">Remove</button>
+      `;
+      cartList.appendChild(row);
+    });
+  }
+
+  document.querySelectorAll('[data-add-to-cart]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const name = button.getAttribute('data-product');
+      const price = button.getAttribute('data-price');
+      const cart = getCart();
+      cart.push({ name, price });
+      saveCart(cart);
+      button.textContent = 'Added!';
+      setTimeout(() => (button.textContent = 'Add to cart'), 1200);
+    });
+  });
+
+  cartList?.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target instanceof HTMLElement && target.dataset.removeIndex) {
+      const cart = getCart();
+      cart.splice(Number(target.dataset.removeIndex), 1);
+      saveCart(cart);
+    }
+  });
+
+  clearCartBtn?.addEventListener('click', () => {
+    saveCart([]);
+  });
+
+  renderCart();
 })();
