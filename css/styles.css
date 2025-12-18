@@ -164,11 +164,11 @@ p {
 }
 
 .brand-mark {
-  width: 52px;
-  height: 52px;
+  width: 68px;
+  height: 68px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--sage-light), var(--sage));
-  padding: 6px;
+  background: #f7f4ff;
+  padding: 4px;
   box-shadow: var(--shadow-md);
 }
 
@@ -634,8 +634,8 @@ p {
 }
 
 .brand-inline .brand-mark {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
 }
 
 /* ==================== Responsive ==================== */
