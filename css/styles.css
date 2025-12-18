@@ -298,6 +298,54 @@ p {
   justify-content: center;
 }
 
+/* ==================== SaaS Page Hero ==================== */
+.page-hero {
+  padding: 9rem 0 4rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-xl);
+  background: rgba(122, 139, 111, 0.12);
+  color: var(--sage-deep);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.badge.soft {
+  background: rgba(182, 139, 210, 0.14);
+  color: #73529c;
+}
+
+.hero-panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-panel .checklist {
+  margin-top: 1rem;
+}
+
 /* ==================== Buttons ==================== */
 .btn {
   display: inline-flex;
@@ -434,6 +482,95 @@ p {
 .section-header p {
   font-size: 1.125rem;
   margin-top: 1rem;
+}
+
+.feature-grid {
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.plan-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.plan-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 1rem;
+}
+
+.plan-card .price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.plan-summary {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.plan-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.plan-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.plan-card.free {
+  border-color: rgba(115, 82, 156, 0.2);
+  box-shadow: 0 12px 34px rgba(115, 82, 156, 0.12);
+}
+
+.plan-card.premium {
+  border-color: rgba(122, 139, 111, 0.25);
+}
+
+.plan-card.curriculum {
+  border-color: rgba(201, 184, 150, 0.35);
+}
+
+.plan-footer {
+  background: var(--oat-light);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(201, 184, 150, 0.4);
+  color: var(--ink-light);
+}
+
+.report-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.report-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 0.5rem;
 }
 
 /* ==================== Checklist ==================== */
@@ -665,6 +802,14 @@ p {
 @media (max-width: 768px) {
   :root {
     --section-gap: 5rem;
+  }
+
+  .page-hero {
+    padding-top: 7rem;
+  }
+
+  .plan-card {
+    padding: 1.5rem;
   }
 
   .nav-links {

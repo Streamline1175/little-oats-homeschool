@@ -1,27 +1,42 @@
-<svg width="420" height="200" viewBox="0 0 420 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="420" height="200" rx="32" fill="#F8F4FF"/>
-  <g transform="translate(70 30)">
-    <path d="M140 16c-8 12.5-9 21-9 21s-22 7-34 31c-9 18-12 48 6 68 11 12 26 20 42 20s31-8 42-20c18-20 15-50 6-68-12-24-34-31-34-31s-1-8.5-9-21z" fill="#FFE6B3" stroke="#C2915E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M142 36s-10 24-3 41" stroke="#C2915E" stroke-width="4" stroke-linecap="round"/>
-    <path d="M138 36s-14 13-19 35" stroke="#C2915E" stroke-width="4" stroke-linecap="round"/>
-    <path d="M142 36s14 13 19 35" stroke="#C2915E" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="119" cy="96" r="8" fill="#54314A"/>
-    <circle cx="161" cy="96" r="8" fill="#54314A"/>
-    <path d="M132 118c3 7 14 10 20 0" stroke="#C76D7A" stroke-width="4" stroke-linecap="round"/>
-    <path d="M143 12c6 4 10 11 12 20" stroke="#7EB685" stroke-width="5" stroke-linecap="round"/>
-    <path d="M143 12c-6 4-10 11-12 20" stroke="#7EB685" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="178" cy="64" r="8" fill="#9BC5C4"/>
-    <circle cx="88" cy="64" r="8" fill="#D8C6FF"/>
-    <circle cx="102" cy="54" r="6" fill="#D8C6FF"/>
-    <circle cx="190" cy="52" r="6" fill="#9BC5C4"/>
-    <path d="M77 122c-16 9-22 29-12 45 5 8 14 14 23 15" stroke="#9BC5C4" stroke-width="6" stroke-linecap="round"/>
-    <path d="M79 122c-3 15 4 30 16 38" stroke="#D8C6FF" stroke-width="6" stroke-linecap="round"/>
-    <path d="M217 122c16 9 22 29 12 45-5 8-14 14-23 15" stroke="#9BC5C4" stroke-width="6" stroke-linecap="round"/>
-    <path d="M215 122c3 15-4 30-16 38" stroke="#D8C6FF" stroke-width="6" stroke-linecap="round"/>
+<svg width="560" height="260" viewBox="0 0 560 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="560" height="260" rx="32" fill="#F7F4FF"/>
+  <g transform="translate(46 30)">
+    <ellipse cx="132" cy="174" rx="86" ry="22" fill="#E4D9FF" opacity="0.45"/>
+    <path d="M132 6c-8.5 10.5-12 23-13 34-16 5-38 19.5-49 46.5-10 25.5-6.5 58 13.5 76.5 12.5 11.5 30 20 48.5 20s36-8.5 48.5-20c20-18.5 23.5-51 13.5-76.5C182 59.5 160 45 144 40c-1-11-4.5-23.5-12-34z" fill="#FFE6BD" stroke="#D19C61" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M134 26s-12 22-5 46" stroke="#D19C61" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M130 26s-16 13-22 40" stroke="#D19C61" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M134 26s16 13 22 40" stroke="#D19C61" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="109.5" cy="98.5" r="8.5" fill="#4F2C45"/>
+    <circle cx="152.5" cy="98.5" r="8.5" fill="#4F2C45"/>
+    <path d="M122.5 121c3 7.5 15 11 22 0" stroke="#C86D7D" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M131 2c6.5 4.5 10.5 12.5 12.5 23" stroke="#7EB685" stroke-width="6" stroke-linecap="round"/>
+    <path d="M131 2c-6.5 4.5-10.5 12.5-12.5 23" stroke="#7EB685" stroke-width="6" stroke-linecap="round"/>
+    <path d="M76 146c-18 10-25 32.5-13.5 50 4.5 7 12.5 12.5 21 14" stroke="#9BC5C4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M78 146c-3 16.5 4.5 33 18 42" stroke="#D8C6FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M190 146c18 10 25 32.5 13.5 50-4.5 7-12.5 12.5-21 14" stroke="#9BC5C4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M188 146c3 16.5-4.5 33-18 42" stroke="#D8C6FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M35 140c-14-3-26 6.5-27.5 16.5C6 169 17 180 33 179.5" stroke="#7EB685" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37 145c-8.5 4.5-11 12.5-8.5 18.5 2 5 9.5 7.5 15 4" stroke="#B68BD2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="148" r="5" fill="#B68BD2"/>
+    <circle cx="40" cy="155" r="4" fill="#7EB685"/>
+    <circle cx="45" cy="161" r="3.5" fill="#9BC5C4"/>
+    <path d="M218 140c14-3 26 6.5 27.5 16.5C247 169 236 180 220 179.5" stroke="#7EB685" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M216 145c8.5 4.5 11 12.5 8.5 18.5-2 5-9.5 7.5-15 4" stroke="#B68BD2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="209" cy="148" r="5" fill="#B68BD2"/>
+    <circle cx="213" cy="155" r="4" fill="#7EB685"/>
+    <circle cx="208" cy="161" r="3.5" fill="#9BC5C4"/>
+    <g transform="translate(12 18)">
+      <path d="M176 30c-7-9-17-16-29-19" stroke="#F4C7E6" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+      <path d="M26 64c6.5-7.5 14-13.5 23-17.5" stroke="#F4C7E6" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+      <circle cx="14" cy="74" r="6" fill="#9BC5C4"/>
+      <circle cx="210" cy="74" r="6" fill="#D8C6FF"/>
+      <circle cx="220" cy="64" r="5" fill="#F4C7E6"/>
+      <circle cx="24" cy="64" r="5" fill="#BCE3B6"/>
+    </g>
   </g>
-  <g transform="translate(240 54)">
-    <text x="0" y="60" fill="#6E5BA3" font-family="'Baloo 2', 'Nunito', sans-serif" font-weight="700" font-size="48">Little Oat</text>
-    <text x="170" y="36" fill="#6E5BA3" font-family="'Inter', sans-serif" font-size="14" font-weight="700">TM</text>
-    <text x="0" y="96" fill="#6E5BA3" font-family="'Inter', sans-serif" font-size="18" font-weight="500">Homeschool</text>
+  <g transform="translate(270 78)">
+    <text x="0" y="54" fill="#8B76C0" font-family="'Baloo 2','Nunito','Inter',sans-serif" font-weight="800" font-size="46">Little Oat</text>
+    <text x="0" y="88" fill="#8B76C0" font-family="'Inter',sans-serif" font-weight="700" font-size="18" letter-spacing="0.16em">LEARNERS</text>
+    <text x="0" y="118" fill="#7A8B6F" font-family="'Inter',sans-serif" font-weight="500" font-size="14">Homeschool hub with gentle progress tracking</text>
   </g>
 </svg>
