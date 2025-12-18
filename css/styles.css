@@ -468,6 +468,92 @@ p {
   border-radius: var(--radius-xl);
 }
 
+/* ==================== Story Slider ==================== */
+.story-slider {
+  margin-top: 2rem;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  position: relative;
+  min-height: 420px;
+}
+
+.slide {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: center;
+  padding: 2rem 2.5rem;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.slide-media {
+  background: var(--oat-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.slide-media img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.slide-media.collage {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  background: linear-gradient(180deg, #fff, var(--oat-light));
+}
+
+.slide-copy h3 {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.slide-copy p {
+  margin-bottom: 0.5rem;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem 0 1.25rem;
+}
+
+.slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--oat);
+  transition: all 0.2s ease;
+}
+
+.slider-dots button.is-active {
+  background: var(--sage);
+  width: 28px;
+  border-radius: 999px;
+}
+
 /* ==================== Section Styling ==================== */
 .section-header {
   text-align: center;

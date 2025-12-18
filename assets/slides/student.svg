@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" rx="24" fill="#FDFBF7"/>
+  <text x="32" y="46" fill="#4A4035" font-family="Inter, sans-serif" font-size="20" font-weight="700">Student Profiles</text>
+  <text x="32" y="74" fill="#6B5F4F" font-family="Inter, sans-serif" font-size="15">Create warm, personal profiles for each learner.</text>
+  <g transform="translate(32 100)">
+    <rect width="576" height="220" rx="18" fill="#fff" stroke="#E3D5C5"/>
+    <text x="24" y="44" fill="#8B7355" font-family="Inter, sans-serif" font-size="13">Avatar</text>
+    <rect x="24" y="56" width="64" height="64" rx="14" fill="#FFF3DA" stroke="#E3D5C5"/>
+    <circle cx="56" cy="88" r="18" fill="#F2C879"/>
+    <text x="104" y="48" fill="#8B7355" font-family="Inter, sans-serif" font-size="13">Student Name</text>
+    <rect x="104" y="60" width="280" height="42" rx="10" fill="#F5F0E8" stroke="#E3D5C5"/>
+    <text x="112" y="86" fill="#4A4035" font-family="Inter, sans-serif" font-size="16" font-weight="700">Your Student's Name Here!</text>
+    <text x="104" y="118" fill="#8B7355" font-family="Inter, sans-serif" font-size="13">Grade Level</text>
+    <rect x="104" y="130" width="160" height="38" rx="10" fill="#F5F0E8" stroke="#E3D5C5"/>
+    <text x="112" y="155" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Kindergarten</text>
+    <text x="104" y="188" fill="#8B7355" font-family="Inter, sans-serif" font-size="13">Date of Birth (Optional)</text>
+    <rect x="104" y="200" width="180" height="38" rx="10" fill="#F5F0E8" stroke="#E3D5C5"/>
+    <text x="112" y="225" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">mm/dd/yyyy</text>
+  </g>
+</svg>

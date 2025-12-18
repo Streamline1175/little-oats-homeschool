@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" rx="24" fill="#F5F0E8"/>
+  <text x="32" y="46" fill="#4A4035" font-family="Inter, sans-serif" font-size="20" font-weight="700">Appearance</text>
+  <text x="32" y="74" fill="#6B5F4F" font-family="Inter, sans-serif" font-size="15">Pick a color palette that fits your family</text>
+  <g transform="translate(32 100)">
+    <rect width="176" height="100" rx="14" fill="#fff" stroke="#E3D5C5"/>
+    <text x="16" y="24" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Clearview</text>
+    <circle cx="24" cy="52" r="12" fill="#5C6FC1"/>
+    <circle cx="52" cy="52" r="12" fill="#7FA5FF"/>
+    <circle cx="80" cy="52" r="12" fill="#A2C2FF"/>
+  </g>
+  <g transform="translate(228 100)">
+    <rect width="176" height="100" rx="14" fill="#fff" stroke="#E3D5C5"/>
+    <text x="16" y="24" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Rooted</text>
+    <circle cx="24" cy="52" r="12" fill="#9E5F33"/>
+    <circle cx="52" cy="52" r="12" fill="#D79A4B"/>
+    <circle cx="80" cy="52" r="12" fill="#F2C879"/>
+  </g>
+  <g transform="translate(424 100)">
+    <rect width="176" height="100" rx="14" fill="#fff" stroke="#E3D5C5"/>
+    <text x="16" y="24" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Bloom Soft</text>
+    <circle cx="24" cy="52" r="12" fill="#E5A4C2"/>
+    <circle cx="52" cy="52" r="12" fill="#D58BF2"/>
+    <circle cx="80" cy="52" r="12" fill="#B59CFF"/>
+  </g>
+  <g transform="translate(32 216)">
+    <rect width="176" height="100" rx="14" fill="#fff" stroke="#E3D5C5"/>
+    <text x="16" y="24" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Little Oat Classic</text>
+    <circle cx="24" cy="52" r="12" fill="#C2B69D"/>
+    <circle cx="52" cy="52" r="12" fill="#8B7355"/>
+    <circle cx="80" cy="52" r="12" fill="#5A4A39"/>
+  </g>
+  <g transform="translate(228 216)">
+    <rect width="176" height="100" rx="14" fill="#fff" stroke="#E3D5C5"/>
+    <text x="16" y="24" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Ocean Breeze</text>
+    <circle cx="24" cy="52" r="12" fill="#3EA8C0"/>
+    <circle cx="52" cy="52" r="12" fill="#4FC4DE"/>
+    <circle cx="80" cy="52" r="12" fill="#83D6EE"/>
+  </g>
+  <g transform="translate(424 216)">
+    <rect width="176" height="100" rx="14" fill="#fff" stroke="#E3D5C5"/>
+    <text x="16" y="24" fill="#4A4035" font-family="Inter, sans-serif" font-size="14" font-weight="700">Forest Haven</text>
+    <circle cx="24" cy="52" r="12" fill="#365F3D"/>
+    <circle cx="52" cy="52" r="12" fill="#4E8C58"/>
+    <circle cx="80" cy="52" r="12" fill="#7BAE84"/>
+  </g>
+</svg>
