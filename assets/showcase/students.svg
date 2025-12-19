@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF6E3"/>
+      <stop offset="1" stop-color="#F5EFE4"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F9F3EA" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg)"/>
+  <text x="60" y="90" fill="#2C2416" font-size="36" font-family="'Inter', sans-serif" font-weight="700">Unlimited student profiles</text>
+  <text x="60" y="130" fill="#6B5F4F" font-size="20" font-family="'Inter', sans-serif">Keep every learner organized with quick switching and warm avatars.</text>
+
+  <g transform="translate(60, 170)" stroke="#E7D8C2" stroke-width="2">
+    <rect width="320" height="220" rx="20" fill="url(#card)"/>
+    <rect x="340" width="320" height="220" rx="20" fill="url(#card)"/>
+    <rect x="680" width="320" height="220" rx="20" fill="url(#card)"/>
+  </g>
+
+  <g transform="translate(90, 200)">
+    <circle cx="40" cy="40" r="40" fill="#FCE4BD" stroke="#F3C98B" stroke-width="3"/>
+    <path d="M35 35 Q40 15 45 35" stroke="#A46B2C" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="30" cy="45" r="6" fill="#2C2416"/>
+    <circle cx="50" cy="45" r="6" fill="#2C2416"/>
+    <path d="M30 60 Q40 70 50 60" stroke="#A46B2C" stroke-width="5" stroke-linecap="round"/>
+    <text x="95" y="35" font-family="'Inter', sans-serif" font-size="20" fill="#2C2416" font-weight="700">Little Oat</text>
+    <text x="95" y="62" font-family="'Inter', sans-serif" font-size="16" fill="#6B5F4F">Kindergarten</text>
+    <rect x="0" y="100" width="260" height="46" rx="12" fill="#ECE2D0"/>
+    <text x="20" y="129" font-family="'Inter', sans-serif" font-size="16" fill="#2C2416">Edit profile</text>
+  </g>
+
+  <g transform="translate(430, 200)">
+    <circle cx="40" cy="40" r="40" fill="#E7F5D9" stroke="#B3D58F" stroke-width="3"/>
+    <path d="M40 15 Q45 28 48 35" stroke="#7EA04A" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="30" cy="45" r="6" fill="#2C2416"/>
+    <circle cx="50" cy="45" r="6" fill="#2C2416"/>
+    <path d="M30 60 Q40 68 50 60" stroke="#A46B2C" stroke-width="5" stroke-linecap="round"/>
+    <text x="95" y="35" font-family="'Inter', sans-serif" font-size="20" fill="#2C2416" font-weight="700">Little Oat Friend</text>
+    <text x="95" y="62" font-family="'Inter', sans-serif" font-size="16" fill="#6B5F4F">Kindergarten</text>
+    <rect x="0" y="100" width="260" height="46" rx="12" fill="#ECE2D0"/>
+    <text x="20" y="129" font-family="'Inter', sans-serif" font-size="16" fill="#2C2416">Edit profile</text>
+  </g>
+
+  <g transform="translate(770, 200)">
+    <circle cx="40" cy="40" r="40" fill="#FCE4BD" stroke="#F3C98B" stroke-width="3"/>
+    <path d="M45 15 Q40 25 35 35" stroke="#7EA04A" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="30" cy="45" r="6" fill="#2C2416"/>
+    <circle cx="50" cy="45" r="6" fill="#2C2416"/>
+    <path d="M30 60 Q40 70 50 60" stroke="#A46B2C" stroke-width="5" stroke-linecap="round"/>
+    <text x="95" y="35" font-family="'Inter', sans-serif" font-size="20" fill="#2C2416" font-weight="700">Little Oat Friend 2</text>
+    <text x="95" y="62" font-family="'Inter', sans-serif" font-size="16" fill="#6B5F4F">Kindergarten</text>
+    <rect x="0" y="100" width="260" height="46" rx="12" fill="#ECE2D0"/>
+    <text x="20" y="129" font-family="'Inter', sans-serif" font-size="16" fill="#2C2416">Edit profile</text>
+  </g>
+
+  <g transform="translate(60, 430)">
+    <rect width="360" height="150" rx="20" fill="#402312" opacity="0.08"/>
+    <text x="30" y="60" fill="#2C2416" font-size="22" font-family="'Inter', sans-serif" font-weight="700">Quick student switcher</text>
+    <text x="30" y="96" fill="#6B5F4F" font-size="18" font-family="'Inter', sans-serif">Move between learners without losing context.</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF7EC"/>
+      <stop offset="1" stop-color="#FFF2E2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg3)"/>
+  <text x="60" y="90" fill="#2C2416" font-size="36" font-family="'Inter', sans-serif" font-weight="700">Daily dashboard</text>
+  <text x="60" y="130" fill="#6B5F4F" font-size="20" font-family="'Inter', sans-serif">Plan the day, award stars, and spot ready-to-grade items at a glance.</text>
+
+  <g transform="translate(60,170)">
+    <rect width="1080" height="420" rx="26" fill="#FFFFFF" stroke="#F1D8B8" stroke-width="2"/>
+    <text x="40" y="70" fill="#C47A00" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Today</text>
+    <text x="40" y="100" fill="#6B5F4F" font-size="14" font-family="'Inter', sans-serif">School day • Field trip • No school • Sick day</text>
+
+    <rect x="40" y="130" width="320" height="140" rx="16" fill="#F7F2EB" stroke="#E7D6C1"/>
+    <text x="60" y="170" fill="#2C2416" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Assignments</text>
+    <text x="60" y="198" fill="#6B5F4F" font-size="15" font-family="'Inter', sans-serif">Edition • Reading • Writing</text>
+    <circle cx="320" cy="180" r="10" fill="#7EA04A"/>
+
+    <rect x="400" y="130" width="320" height="140" rx="16" fill="#FFF7E7" stroke="#F2DEBE"/>
+    <text x="420" y="170" fill="#C47A00" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Star Chart</text>
+    <text x="420" y="198" fill="#6B5F4F" font-size="15" font-family="'Inter', sans-serif">25 stars available • 2 rewards ready</text>
+    <rect x="420" y="210" width="140" height="12" rx="6" fill="#F0D1A0"/>
+
+    <rect x="760" y="130" width="260" height="140" rx="16" fill="#EEF7FF" stroke="#D5E8FF"/>
+    <text x="780" y="170" fill="#1F4F7A" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Grade summary</text>
+    <text x="780" y="198" fill="#4F6580" font-size="15" font-family="'Inter', sans-serif">8 assignments • Avg A</text>
+
+    <rect x="40" y="300" width="520" height="90" rx="16" fill="#F1E8DC" stroke="#E2D5C7"/>
+    <text x="60" y="340" fill="#2C2416" font-size="17" font-family="'Inter', sans-serif" font-weight="700">School day summary</text>
+    <text x="60" y="368" fill="#6B5F4F" font-size="14" font-family="'Inter', sans-serif">Track hours, day types, and quick notes.</text>
+
+    <rect x="600" y="300" width="480" height="90" rx="16" fill="#EAF4FF" stroke="#D5E8FF"/>
+    <text x="620" y="340" fill="#1F4F7A" font-size="17" font-family="'Inter', sans-serif" font-weight="700">Completed by subject</text>
+    <text x="620" y="368" fill="#4F6580" font-size="14" font-family="'Inter', sans-serif">Math • Reading • Writing • Grammar</text>
+
+    <rect x="40" y="410" width="1040" height="60" rx="14" fill="#FFF8EE" stroke="#F1D8B8"/>
+    <text x="60" y="450" fill="#C47A00" font-size="17" font-family="'Inter', sans-serif" font-weight="700">Ready-to-grade alerts keep you moving</text>
+  </g>
+</svg>
