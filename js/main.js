@@ -142,6 +142,7 @@
     function nextSlide() {
       const nextIndex = (activeIndex + 1) % slides.length;
       setActiveSlide(nextIndex);
+      startAutoplay(); // Restart with potentially different duration
     }
 
     function stopAutoplay() {
@@ -153,7 +154,11 @@
 
     function startAutoplay() {
       stopAutoplay();
-      autoplayId = setInterval(nextSlide, interval);
+      // Check if current slide has custom duration
+      const currentSlide = slides[activeIndex];
+      const customDuration = currentSlide?.getAttribute('data-duration');
+      const duration = customDuration ? parseInt(customDuration, 10) : interval;
+      autoplayId = setInterval(nextSlide, duration);
     }
 
     slides.forEach((_, index) => {
