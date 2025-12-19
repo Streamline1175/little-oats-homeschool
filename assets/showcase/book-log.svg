@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6FAFF"/>
+      <stop offset="1" stop-color="#F0F4FB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg2)"/>
+  <text x="60" y="90" fill="#1F2D3D" font-size="36" font-family="'Inter', sans-serif" font-weight="700">Book log with rich details</text>
+  <text x="60" y="130" fill="#445" font-size="20" font-family="'Inter', sans-serif">Rate, review, and time-track every story you read together.</text>
+
+  <g transform="translate(60,170)">
+    <rect width="1080" height="420" rx="26" fill="#FFFFFF" stroke="#D9E3F0" stroke-width="2"/>
+    <rect x="30" y="30" width="200" height="30" rx="10" fill="#E4EDFB"/>
+    <rect x="250" y="30" width="200" height="30" rx="10" fill="#E4EDFB"/>
+    <rect x="470" y="30" width="200" height="30" rx="10" fill="#E4EDFB"/>
+    <rect x="690" y="30" width="200" height="30" rx="10" fill="#E4EDFB"/>
+
+    <text x="60" y="90" fill="#1F2D3D" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Little Oat's Book Log</text>
+    <text x="60" y="120" fill="#62758A" font-size="14" font-family="'Inter', sans-serif">Search, sort, and export your reading history.</text>
+
+    <rect x="40" y="150" width="1000" height="70" rx="14" fill="#F5F8FD" stroke="#E6EEF9"/>
+    <text x="60" y="190" fill="#1F2D3D" font-size="17" font-family="'Inter', sans-serif" font-weight="700">Little Oat Friends</text>
+    <text x="60" y="216" fill="#62758A" font-size="13" font-family="'Inter', sans-serif">Author · 12/17/2025 · 5h 0m</text>
+    <text x="560" y="188" fill="#E6A400" font-size="22" font-family="'Inter', sans-serif">★★★★☆</text>
+    <rect x="820" y="174" width="80" height="30" rx="8" fill="#D1F3DA"/>
+    <text x="830" y="194" fill="#1C7C39" font-size="14" font-family="'Inter', sans-serif" font-weight="700">Reading</text>
+    <rect x="910" y="174" width="110" height="30" rx="8" fill="#E8ECF3"/>
+    <text x="920" y="194" fill="#1F2D3D" font-size="14" font-family="'Inter', sans-serif">Notes + Time</text>
+
+    <g transform="translate(40,250)">
+      <rect width="160" height="120" rx="14" fill="#E8F5E9" stroke="#D0EAD2"/>
+      <text x="20" y="50" fill="#2D3A2E" font-size="48" font-family="'Inter', sans-serif" font-weight="700">50</text>
+      <text x="20" y="78" fill="#4A5" font-size="16" font-family="'Inter', sans-serif">Pages read</text>
+    </g>
+    <g transform="translate(240,250)">
+      <rect width="160" height="120" rx="14" fill="#FFF4E5" stroke="#F6DFB9"/>
+      <text x="20" y="50" fill="#A66A00" font-size="48" font-family="'Inter', sans-serif" font-weight="700">3.0</text>
+      <text x="20" y="78" fill="#B17A2D" font-size="16" font-family="'Inter', sans-serif">Avg rating</text>
+    </g>
+    <g transform="translate(440,250)">
+      <rect width="160" height="120" rx="14" fill="#EDEBFF" stroke="#DCD7FB"/>
+      <text x="20" y="50" fill="#5145CD" font-size="48" font-family="'Inter', sans-serif" font-weight="700">5h</text>
+      <text x="20" y="78" fill="#6255D1" font-size="16" font-family="'Inter', sans-serif">Time spent</text>
+    </g>
+    <g transform="translate(640,250)">
+      <rect width="160" height="120" rx="14" fill="#FDECEF" stroke="#F6D5DC"/>
+      <text x="20" y="50" fill="#9D2C54" font-size="48" font-family="'Inter', sans-serif" font-weight="700">A+</text>
+      <text x="20" y="78" fill="#AE3B62" font-size="16" font-family="'Inter', sans-serif">Comprehension</text>
+    </g>
+    <g transform="translate(840,250)">
+      <rect width="200" height="120" rx="14" fill="#E5F1FF" stroke="#D1E4FF"/>
+      <text x="20" y="50" fill="#1F2D3D" font-size="28" font-family="'Inter', sans-serif" font-weight="700">Export ready</text>
+      <text x="20" y="78" fill="#4C6076" font-size="16" font-family="'Inter', sans-serif">Share clean book reports</text>
+    </g>
+  </g>
+</svg>

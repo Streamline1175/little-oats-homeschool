@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3E8"/>
+      <stop offset="1" stop-color="#FFEBD9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg5)"/>
+  <text x="60" y="90" fill="#7A4A00" font-size="36" font-family="'Inter', sans-serif" font-weight="700">Star Chart & rewards</text>
+  <text x="60" y="130" fill="#8F5F1F" font-size="20" font-family="'Inter', sans-serif">Auto-track achievements, hand out stars, and celebrate progress.</text>
+
+  <g transform="translate(60,170)">
+    <rect width="1080" height="420" rx="26" fill="#FFFFFF" stroke="#F2D2AF" stroke-width="2"/>
+    <text x="40" y="70" fill="#7A4A00" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Star Chart</text>
+    <text x="40" y="100" fill="#8F5F1F" font-size="14" font-family="'Inter', sans-serif">Track achievements and earn rewards with kids.</text>
+
+    <g transform="translate(40,130)">
+      <rect width="220" height="160" rx="18" fill="#FFF2DC" stroke="#F2D2AF"/>
+      <text x="30" y="80" fill="#7A4A00" font-size="20" font-family="'Inter', sans-serif" font-weight="700">Complete homework</text>
+      <circle cx="190" cy="40" r="18" fill="#F2D2AF"/>
+      <text x="185" y="46" fill="#7A4A00" font-size="16" font-family="'Inter', sans-serif" font-weight="700">14</text>
+    </g>
+    <g transform="translate(280,130)">
+      <rect width="220" height="160" rx="18" fill="#E2F4DE" stroke="#C4E2C0"/>
+      <text x="30" y="80" fill="#2F6B3A" font-size="20" font-family="'Inter', sans-serif" font-weight="700">Help with dishes</text>
+      <circle cx="190" cy="40" r="18" fill="#C4E2C0"/>
+      <text x="185" y="46" fill="#2F6B3A" font-size="16" font-family="'Inter', sans-serif" font-weight="700">10</text>
+    </g>
+    <g transform="translate(520,130)">
+      <rect width="220" height="160" rx="18" fill="#E7F1FF" stroke="#C9DDFD"/>
+      <text x="30" y="80" fill="#1F4F7A" font-size="20" font-family="'Inter', sans-serif" font-weight="700">Good behavior</text>
+      <circle cx="190" cy="40" r="18" fill="#C9DDFD"/>
+      <text x="185" y="46" fill="#1F4F7A" font-size="16" font-family="'Inter', sans-serif" font-weight="700">21</text>
+    </g>
+
+    <rect x="40" y="320" width="760" height="80" rx="18" fill="#FFF6EA" stroke="#F2D2AF"/>
+    <text x="60" y="360" fill="#7A4A00" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Available stars: 25</text>
+    <text x="60" y="386" fill="#8F5F1F" font-size="14" font-family="'Inter', sans-serif">Auto tracking keeps rewards synced across the dashboard.</text>
+
+    <rect x="820" y="320" width="280" height="80" rx="18" fill="#7A4A00" opacity="0.1"/>
+    <text x="860" y="367" fill="#7A4A00" font-size="16" font-family="'Inter', sans-serif" font-weight="700">Rewards ready: 2</text>
+  </g>
+</svg>

@@ -120,11 +120,14 @@
 
   renderCart();
 
-  // Simple autoplay slider for about section
-  const storySlider = document.querySelector('.story-slider');
-  if (storySlider) {
-    const slides = Array.from(storySlider.querySelectorAll('.slide'));
-    const dotsContainer = storySlider.querySelector('.slider-dots');
+  function initSlider({ rootSelector, slideSelector = '.slide', dotsSelector = '.slider-dots', interval = 2000 }) {
+    const root = document.querySelector(rootSelector);
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll(slideSelector));
+    const dotsContainer = root.parentElement?.querySelector(dotsSelector) || root.querySelector(dotsSelector);
+    if (!slides.length) return;
+
     let activeIndex = 0;
     let autoplayId;
 
@@ -150,7 +153,7 @@
 
     function startAutoplay() {
       stopAutoplay();
-      autoplayId = setInterval(nextSlide, 2000);
+      autoplayId = setInterval(nextSlide, interval);
     }
 
     slides.forEach((_, index) => {
@@ -164,9 +167,12 @@
       dotsContainer?.appendChild(dot);
     });
 
-    storySlider.addEventListener('pointerenter', stopAutoplay);
-    storySlider.addEventListener('pointerleave', startAutoplay);
+    root.addEventListener('pointerenter', stopAutoplay);
+    root.addEventListener('pointerleave', startAutoplay);
 
     startAutoplay();
   }
+
+  initSlider({ rootSelector: '.story-slider .slides', interval: 2000 });
+  initSlider({ rootSelector: '.hero-slider', dotsSelector: '.hero-slider-dots', interval: 2600 });
 })();

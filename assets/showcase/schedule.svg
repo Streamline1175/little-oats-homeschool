@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4FBF7"/>
+      <stop offset="1" stop-color="#ECF7F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg6)"/>
+  <text x="60" y="90" fill="#1E3A2F" font-size="36" font-family="'Inter', sans-serif" font-weight="700">Calendar, assignments, and tests</text>
+  <text x="60" y="130" fill="#3A5348" font-size="20" font-family="'Inter', sans-serif">Schedule days, attach uploads, and keep grades in one clean place.</text>
+
+  <g transform="translate(60,170)">
+    <rect width="1080" height="420" rx="26" fill="#FFFFFF" stroke="#CDE6D8" stroke-width="2"/>
+
+    <rect x="40" y="40" width="520" height="280" rx="18" fill="#F2F9F4" stroke="#D6EDE0"/>
+    <text x="60" y="80" fill="#1E3A2F" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Calendar</text>
+    <text x="60" y="108" fill="#3A5348" font-size="14" font-family="'Inter', sans-serif">Mark school days, co-op days, sick days, and trips.</text>
+    <g transform="translate(60,130)" stroke="#D6EDE0" stroke-width="1.5">
+      <rect width="420" height="180" rx="12" fill="#FFFFFF"/>
+      <circle cx="60" cy="40" r="10" fill="#7EA04A"/>
+      <circle cx="120" cy="80" r="10" fill="#E8A33E"/>
+      <circle cx="240" cy="120" r="10" fill="#F26B5D"/>
+      <circle cx="340" cy="60" r="10" fill="#5C9BD5"/>
+    </g>
+
+    <rect x="600" y="40" width="440" height="160" rx="18" fill="#FFF7EC" stroke="#F2D7B5"/>
+    <text x="620" y="80" fill="#7A4A00" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Assignments</text>
+    <text x="620" y="108" fill="#8F5F1F" font-size="14" font-family="'Inter', sans-serif">Upload files, log time, group by subject, and filter status.</text>
+    <rect x="620" y="120" width="380" height="12" rx="6" fill="#F2D7B5"/>
+
+    <rect x="600" y="220" width="440" height="160" rx="18" fill="#EAF2FF" stroke="#CFDBF5"/>
+    <text x="620" y="260" fill="#1F4F7A" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Tests & quizzes</text>
+    <text x="620" y="288" fill="#4F6580" font-size="14" font-family="'Inter', sans-serif">Weighted averages, quick grading, and exportable records.</text>
+    <rect x="620" y="300" width="200" height="12" rx="6" fill="#CFDBF5"/>
+    <rect x="830" y="300" width="170" height="12" rx="6" fill="#CFDBF5" opacity="0.7"/>
+  </g>
+</svg>

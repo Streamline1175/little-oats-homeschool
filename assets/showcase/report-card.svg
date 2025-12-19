@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" fill="none">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EEF2FF"/>
+      <stop offset="1" stop-color="#F7F8FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="650" rx="28" fill="url(#bg4)"/>
+  <text x="60" y="90" fill="#1F2D55" font-size="36" font-family="'Inter', sans-serif" font-weight="700">Custom reports for each student</text>
+  <text x="60" y="130" fill="#4D5D7A" font-size="20" font-family="'Inter', sans-serif">Print-ready report cards with grades, time-on-task, and clear summaries.</text>
+
+  <g transform="translate(340,170)">
+    <rect width="520" height="420" rx="22" fill="#FFFFFF" stroke="#D7DFF5" stroke-width="2"/>
+    <text x="60" y="70" fill="#1F2D55" font-size="22" font-family="'Inter', sans-serif" font-weight="700">Report Card</text>
+    <text x="60" y="105" fill="#4D5D7A" font-size="14" font-family="'Inter', sans-serif">Student: Little Oat • Grade: Kindergarten • Semester: Fall 2025</text>
+
+    <rect x="40" y="140" width="440" height="190" rx="14" fill="#F5F7FF" stroke="#E1E6FF"/>
+    <text x="60" y="175" fill="#1F2D55" font-size="18" font-family="'Inter', sans-serif" font-weight="700">Subject grades</text>
+    <text x="60" y="205" fill="#4D5D7A" font-size="14" font-family="'Inter', sans-serif">Math • Reading • Writing • Social Studies • Art • Grammar</text>
+    <rect x="60" y="220" width="380" height="10" rx="5" fill="#C7D2FE"/>
+    <rect x="60" y="240" width="340" height="10" rx="5" fill="#C7D2FE" opacity="0.7"/>
+    <rect x="60" y="260" width="320" height="10" rx="5" fill="#C7D2FE" opacity="0.55"/>
+    <text x="60" y="285" fill="#1F2D55" font-size="14" font-family="'Inter', sans-serif" font-weight="700">Overall average: A (95%)</text>
+
+    <rect x="40" y="350" width="440" height="80" rx="14" fill="#EBF3FF" stroke="#D7E6FF"/>
+    <text x="60" y="390" fill="#1F2D55" font-size="17" font-family="'Inter', sans-serif" font-weight="700">Summary</text>
+    <text x="60" y="414" fill="#4D5D7A" font-size="14" font-family="'Inter', sans-serif">Total assignments: 8 • Active subjects: 6 • Learning time: 40.9m</text>
+  </g>
+</svg>
