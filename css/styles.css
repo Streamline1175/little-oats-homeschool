@@ -163,11 +163,17 @@ p {
   gap: 1rem;
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .brand-mark {
   width: 68px;
   height: 68px;
   border-radius: var(--radius-md);
-  background: #f7f4ff;
+  background: transparent;
   padding: 4px;
   box-shadow: var(--shadow-md);
 }
