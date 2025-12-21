@@ -132,7 +132,22 @@ p {
 }
 
 .grid.three {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* A tighter grid variant for side-card layouts */
+.grid.tight {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+@media (min-width: 1200px) {
+  .grid.tight {
+    grid-template-columns: 1fr 240px;
+  }
+  .grid.tight .highlight-card {
+    max-width: 240px;
+    justify-self: end;
+  }
 }
 
 /* ==================== Header ==================== */
@@ -153,7 +168,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 130px;
   gap: 2rem;
 }
 
@@ -170,12 +185,26 @@ p {
 }
 
 .brand-mark {
-  width: 68px;
-  height: 68px;
+  width: 96px;
+  height: 96px;
   border-radius: var(--radius-md);
   background: transparent;
   padding: 4px;
   box-shadow: var(--shadow-md);
+}
+
+/* Index-only larger logo variant */
+.brand-mark--large {
+  width: 250px;
+  height: 250px;
+}
+
+/* Make the large logo scale down on small screens */
+@media (max-width: 640px) {
+  .brand-mark--large {
+    width: 96px;
+    height: 96px;
+  }
 }
 
 .brand-title {
@@ -314,6 +343,82 @@ p {
   position: relative;
   overflow: hidden;
   width: 100%;
+}
+
+/* Index-only compact hero variant */
+.hero-showcase--compact {
+  padding: 0.75rem 0.75rem 0.5rem;
+}
+
+/* Compact variant adjusts inner slider and slides to reduce whitespace */
+.hero-showcase--compact .hero-slider {
+  min-height: 480px;
+}
+
+.hero-showcase--compact .hero-slider .slide {
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .hero-showcase--compact {
+    padding: 0.5rem;
+  }
+  .hero-showcase--compact .hero-slider {
+    min-height: 380px;
+  }
+  .hero-showcase--compact .hero-slider .slide {
+    padding: 0.75rem;
+  }
+}
+
+/* Page-level compact helper (index-only) to reduce unused whitespace */
+.compact-page .section {
+  padding: 3rem 0;
+}
+
+@media (max-width: 640px) {
+  .compact-page .section {
+    padding: 2rem 0;
+  }
+}
+
+/* Tighter highlight card for index page */
+.compact-page .highlight-card {
+  padding: 0.5rem;
+}
+.compact-page .highlight-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* Tighten checklist spacing */
+.compact-page .checklist {
+  gap: 0.5rem;
+}
+
+.compact-page .checklist li {
+  gap: 0.5rem;
+  font-size: 0.925rem;
+}
+
+.compact-page .checklist li::before {
+  width: 14px;
+  height: 14px;
+  background-size: 10px;
+  margin-top: 3px;
+}
+
+.compact-page .service-card {
+  padding: 0.75rem;
+}
+
+.compact-page .grid {
+  gap: 1rem;
+}
+
+.compact-page .hero {
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
 
 .hero-slider {
@@ -535,13 +640,13 @@ p {
 .highlight-card {
   background: white;
   border-radius: var(--radius-lg);
-  padding: 2.5rem;
+  padding: 0rem;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
 }
 
 .highlight-card h3 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0rem;
   color: var(--ink);
 }
 
