@@ -144,22 +144,22 @@
     // Add badge if product has category or is featured
     let badgeHTML = '';
     if (product.category) {
-      badgeHTML = `< div class="product-badge" > ${product.category}</div > `;
+      badgeHTML = `<div class="product-badge">${product.category}</div>`;
     }
 
     // Build features list (if your API adds this later, otherwise skip)
     const featuresHTML = product.features
-      ? product.features.map(feature => `< li > ${feature}</li > `).join('')
+      ? product.features.map(feature => `<li>${feature}</li>`).join('')
       : '';
 
     // Build pricing section using the price field from API
     const pricingHTML = `
-    < div class="product-pricing" >
-      <div class="price-option featured">
-        <span class="price">${product.price}</span>
-        <span class="period">one-time</span>
+      <div class="product-pricing">
+        <div class="price-option featured">
+          <span class="price">${product.price}</span>
+          <span class="period">one-time</span>
+        </div>
       </div>
-      </div >
     `;
 
     article.innerHTML = `
@@ -196,9 +196,9 @@
 
     // Show loading state
     productGrid.innerHTML = `
-    < div style = "grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;" >
-      <p style="font-size: 1.125rem; color: var(--muted);">Loading products...</p>
-      </div >
+      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+        <p style="font-size: 1.125rem; color: var(--muted);">Loading products...</p>
+      </div>
     `;
 
     // Fetch products from FastAPI
@@ -207,11 +207,11 @@
     if (!products || products.length === 0) {
       // Show error or fallback message
       productGrid.innerHTML = `
-    < div style = "grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;" >
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
       <p style="font-size: 1.125rem; color: var(--muted);">
         Unable to load products at this time. Please try again later.
       </p>
-        </div >
+        </div>
     `;
       return;
     }
