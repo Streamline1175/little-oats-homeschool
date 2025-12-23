@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for your purchase from Little Oat Learners!">
+    <title>Thank You | Little Oat Learners</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.png">
+    <style>
+        .thank-you-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(122, 139, 111, 0.08), transparent),
+                radial-gradient(ellipse 60% 40% at 100% 50%, rgba(184, 204, 216, 0.12), transparent),
+                var(--cream);
+        }
+
+        .thank-you-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-icon svg {
+            width: 48px;
+            height: 48px;
+            color: white;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .thank-you-card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .thank-you-card .lead {
+            font-size: 1.125rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .order-summary {
+            background: var(--oat-light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .order-summary h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .order-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .order-detail:last-child {
+            border-bottom: none;
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+            border-top: 2px solid var(--border);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .order-detail-label {
+            color: var(--muted);
+        }
+
+        .order-detail-value {
+            color: var(--ink-light);
+            font-weight: 600;
+        }
+
+        .next-steps {
+            background: linear-gradient(135deg, rgba(122, 139, 111, 0.05), rgba(122, 139, 111, 0.1));
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--sage-light);
+        }
+
+        .next-steps h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--sage-deep);
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .next-steps li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--ink-light);
+        }
+
+        .next-steps li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--sage-light), var(--sage));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 640px) {
+            .thank-you-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .thank-you-card h1 {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="thank-you-hero">
+        <div class="thank-you-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <h1>Thank You!</h1>
+            <p class="lead">Your order has been successfully placed.</p>
+
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="order-detail">
+                    <span class="order-detail-label">Items Purchased</span>
+                    <span class="order-detail-value" id="item-count">-</span>
+                </div>
+                <div class="order-detail">
+                    <span class="order-detail-label">Order Total</span>
+                    <span class="order-detail-value" id="order-total">-</span>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li>Check your email for order confirmation</li>
+                    <li>You'll receive download links for your products</li>
+                    <li>Access your purchases anytime from your account</li>
+                    <li>Need help? Contact us anytime</li>
+                </ul>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    Back to Home
+                </a>
+                <a href="curriculum.html" class="btn outline">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Continue Shopping
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const itemCount = urlParams.get('items');
+        const total = urlParams.get('total');
+
+        // Display order details
+        if (itemCount) {
+            document.getElementById('item-count').textContent = itemCount + (itemCount === '1' ? ' item' : ' items');
+        }
+
+        if (total) {
+            document.getElementById('order-total').textContent = '$' + parseFloat(total).toFixed(2);
+        }
+
+        // If no parameters, show generic message
+        if (!itemCount && !total) {
+            document.getElementById('item-count').textContent = 'Your items';
+            document.getElementById('order-total').textContent = 'Processing...';
+        }
+    </script>
+</body>
+
+</html>

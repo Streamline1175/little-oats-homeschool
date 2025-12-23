@@ -1,88 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shop Little Oat™ curriculum built for nurturing, mastery-based homeschool days.">
-    <title>Little Oat™ Curriculum Shop</title>
+    <meta name="description"
+        content="Shop Little Oat Learners curriculum and premium features. One-time purchases with lifetime access.">
+    <title>Shop | Little Oat Learners</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/svg+xml" href="assets/little-oat-learners-logo.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.png">
 </head>
+
 <body>
     <header class="site-header" id="top">
         <div class="container nav-bar">
             <a class="brand" href="index.html#top">
-                <img src="assets/little-oat-logo.svg" alt="Little Oat Learners logo" class="brand-mark">
+                <img src="assets/logo.png" alt="Little Oat Learners logo" class="brand-mark">
                 <div class="brand-text">
-                    <span class="brand-title">Little Oat<span class="tm">™</span></span>
-                    <span class="brand-tagline">Bright, safe homeschooling built with heart</span>
+                    <span class="brand-title">Little Oat Learners</span>
+                    <small class="brand-tagline">Your complete homeschool companion</small>
                 </div>
             </a>
             <nav class="main-nav" aria-label="Primary navigation">
                 <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
                 <ul id="nav-links" class="nav-links">
                     <li><a href="index.html#about">About</a></li>
-                    <li class="has-dropdown">
-                        <button class="dropdown-toggle" aria-expanded="false">Shop</button>
-                        <ul class="dropdown-menu" aria-label="Shop menu">
-                            <li><a href="curriculum.html">Curriculum</a></li>
-                            <li><a href="saas.html">Homeschool SaaS</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#services">Highlights</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a class="cart-link" href="#cart">Cart <span class="cart-count">0</span></a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#premium">Premium</a></li>
+                    <li><a href="curriculum.html">Shop</a></li>
+                    <li><a href="index.html#download">Download</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main style="padding-top: 140px;">
+        <!-- Cart Overlay -->
+        <div class="cart-overlay" id="cart-overlay"></div>
+
+        <!-- Cart Sidebar -->
+        <aside class="cart-sidebar" id="cart-sidebar">
+            <div class="cart-header">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    Your Cart
+                </h2>
+                <button class="cart-close" id="cart-close" aria-label="Close cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="cart-body" id="cart-body">
+                <!-- Cart items will be rendered here by JavaScript -->
+            </div>
+
+            <div class="cart-footer" id="cart-footer" style="display: none;">
+                <div class="cart-summary">
+                    <div class="cart-summary-row">
+                        <span class="cart-summary-label">Items</span>
+                        <span class="cart-summary-value" id="cart-items-count">0</span>
+                    </div>
+                    <div class="cart-summary-row total">
+                        <span class="cart-summary-label">Total</span>
+                        <span class="cart-summary-value" id="cart-total">$0.00</span>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <button class="cart-checkout-btn" id="cart-checkout-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Proceed to Checkout
+                    </button>
+                    <button class="cart-clear-btn" id="cart-clear-btn">Clear Cart</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Floating Cart Button -->
+        <button class="cart-button" id="cart-button" aria-label="Open cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+
         <section class="page-hero container">
-            <p class="eyebrow">Curriculum shop</p>
-            <h1>Building bright, mastery-based lessons one week at a time</h1>
-            <p class="lead">I’m actively creating Kindergarten and First Grade curriculum for my own kids. Each unit blends story-rich lessons, repetition-until-mastery worksheets, and joyful praise so kids feel safe, seen, and proud.</p>
-            <div class="badge" aria-label="Work in progress badge">New units posted as they are created</div>
+            <p class="eyebrow">Curriculum Shop</p>
+            <h1>Premium features and curriculum for your homeschool</h1>
+            <p class="lead">Browse our collection of interactive learning tools and curriculum bundles. One-time
+                purchases with lifetime access. Secure checkout powered by Lemon Squeezy.</p>
         </section>
 
-        <section class="section pastel">
+        <section class="section">
             <div class="container">
-                <div class="product-grid">
-                    <article class="product-card">
-                        <div class="pill soft">Kindergarten</div>
-                        <h2>Kindergarten Foundations</h2>
-                        <p class="grade">Phonics, early numeracy, routines</p>
-                        <p>Weekly plans with printable worksheets for repetition, playful movement breaks, and warm praise prompts for caregivers.</p>
-                        <p class="price">$39</p>
-                        <button class="btn primary" data-add-to-cart data-product="Kindergarten Foundations" data-price="$39">Add to cart</button>
-                    </article>
-                    <article class="product-card">
-                        <div class="pill soft">First Grade</div>
-                        <h2>First Grade Builder</h2>
-                        <p class="grade">Reading fluency, number sense, projects</p>
-                        <p>Layered practice, independent work choices, and mastery trackers to make sure confidence grows step by step.</p>
-                        <p class="price">$45</p>
-                        <button class="btn primary" data-add-to-cart data-product="First Grade Builder" data-price="$45">Add to cart</button>
-                    </article>
-                    <article class="product-card">
-                        <div class="pill soft">Add-ons</div>
-                        <h2>Family Routines &amp; Habits</h2>
-                        <p class="grade">Morning time, chores, and reflection</p>
-                        <p>Printable rhythm cards, checklists, and reflection prompts to keep the day calm and predictable.</p>
-                        <p class="price">$18</p>
-                        <button class="btn primary" data-add-to-cart data-product="Family Routines & Habits" data-price="$18">Add to cart</button>
-                    </article>
-                </div>
-                <p class="note-text" style="margin-top:1rem;">More grades and units will appear here as I write and test them with my kids. If there’s something specific you need, send me a note and I’ll prioritize it.</p>
+                <h2 style="text-align: center; margin-bottom: 3rem;">Featured Products</h2>
 
-                <div id="cart" class="cart-panel">
-                    <h2>Your cart</h2>
-                    <p class="note-text">Add curriculum above to collect everything you want. Checkout is coming later—right now you can review and share your selections.</p>
-                    <div class="cart-list" aria-live="polite"></div>
-                    <button class="btn outline" id="clear-cart">Clear cart</button>
+                <!-- Product Grid - Will be populated dynamically by JavaScript -->
+                <div class="product-grid">
+                    <!-- Loading state - will be replaced by actual products -->
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                        <p style="font-size: 1.125rem; color: var(--muted);">Loading products...</p>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="trust-section">
+                    <div class="trust-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                        <div>
+                            <strong>Secure Checkout</strong>
+                            <p>Powered by Lemon Squeezy</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2v20M2 12h20" />
+                        </svg>
+                        <div>
+                            <strong>Instant Access</strong>
+                            <p>Download immediately after purchase</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        <div>
+                            <strong>Lifetime Access</strong>
+                            <p>One-time payment, yours forever</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="integration-note" style="text-align: center; margin-top: 3rem;">
+                    <strong>Trusted & Secure.</strong> All payments are processed by Lemon Squeezy, which is owned by
+                    <strong>Stripe</strong>—one of the world's most trusted payment platforms. No subscription required
+                    for curriculum bundles.
                 </div>
             </div>
         </section>
@@ -92,40 +163,38 @@
         <div class="container footer-grid">
             <div>
                 <div class="brand-inline">
-                    <img src="assets/little-oat-logo.svg" alt="Little Oat Learners logo" class="brand-mark small">
-                    <div>
-                        <span class="brand-title">Little Oat<span class="tm">™</span></span>
-                        <p class="brand-tagline">Curriculum, SaaS, and heart for homeschool.</p>
-                    </div>
+                    <img src="assets/logo.png" alt="Little Oat Learners logo" class="brand-mark--large">
                 </div>
             </div>
             <div>
                 <h4>Explore</h4>
                 <ul class="footer-links">
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="curriculum.html">Curriculum</a></li>
-                    <li><a href="saas.html">Homeschool Hub</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#premium">Premium</a></li>
+                    <li><a href="curriculum.html">Shop</a></li>
+                    <li><a href="index.html#download">Download</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Policies</h4>
+                <h4>Legal</h4>
                 <ul class="footer-links">
                     <li><a href="policies.html#terms">Terms of Service</a></li>
                     <li><a href="policies.html#privacy">Privacy Policy</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Stay connected</h4>
-                <p class="footer-note">Join the waitlist for new units and the integrated experience.</p>
-                <a class="btn outline" href="index.html#contact">Say hello</a>
+                <h4>Get in touch</h4>
+                <p class="footer-note">Questions about Little Oat Learners? I'm here to help.</p>
+                <a class="btn outline" href="index.html#contact">Contact</a>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>Little Oat™ Homeschool. Crafted with care for families.</p>
+            <p>© 2025 Little Oat. Crafted with care for homeschool families.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
