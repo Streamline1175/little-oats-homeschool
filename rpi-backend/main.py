@@ -17,6 +17,43 @@ from email_sender import send_order_confirmation_email
 # Load environment variables from .env file
 load_dotenv()
 
+# JSON file for storing pending orders (persists across restarts)
+PENDING_ORDERS_FILE = "pending_orders.json"
+
+def load_pending_orders() -> Dict[str, List[Dict]]:
+    """Load pending orders from JSON file"""
+    try:
+        if os.path.exists(PENDING_ORDERS_FILE):
+            with open(PENDING_ORDERS_FILE, 'r') as f:
+                return json.load(f)
+    except Exception as e:
+        print(f"⚠️ Error loading pending orders: {e}")
+    return {}
+
+def save_pending_orders(orders: Dict[str, List[Dict]]):
+    """Save pending orders to JSON file"""
+    try:
+        with open(PENDING_ORDERS_FILE, 'w') as f:
+            json.dump(orders, f, indent=2)
+    except Exception as e:
+        print(f"⚠️ Error saving pending orders: {e}")
+
+def store_order(order_identifier: str, items: List[Dict]):
+    """Store order items for later retrieval"""
+    orders = load_pending_orders()
+    orders[order_identifier] = items
+    save_pending_orders(orders)
+    print(f"💾 Stored {len(items)} items for order #{order_identifier}")
+
+def retrieve_order(order_identifier: str) -> List[Dict]:
+    """Retrieve and remove order items"""
+    orders = load_pending_orders()
+    items = orders.pop(order_identifier, [])
+    if items:
+        save_pending_orders(orders)
+        print(f"✅ Retrieved {len(items)} stored items for order #{order_identifier}")
+    return items
+
 # Optional ngrok auto-start support via pyngrok. When running under uvicorn/systemd,
 # the __main__ block is not executed, so we start ngrok in FastAPI startup event.
 try:
@@ -291,7 +328,7 @@ async def create_checkout(request: CheckoutRequest):
                     "product_options": {
                         "name": f"Your Order ({len(request.items)} items)",
                         "description": description,
-                        "redirect_url": f"https://littleoatlearners.com/thank-you.html?items={len(request.items)}&total={total:.2f}",
+                        "redirect_url": f"https://littleoatlearners.com/thank-you.html?checkout_id={checkout_id}&items={len(request.items)}&total={total:.2f}",
                     },
                     "checkout_data": {
                         "custom": {
@@ -341,6 +378,21 @@ async def create_checkout(request: CheckoutRequest):
             
             result = response.json()
             checkout_url = result["data"]["attributes"]["url"]
+            checkout_id = result["data"]["id"]
+            
+            # Prepare items for storage
+            items_to_store = [
+                {
+                    "id": item.id,
+                    "title": item.title,
+                    "price": item.price
+                }
+                for item in request.items
+            ]
+            
+            # Store items using checkout_id
+            # We'll also need to match this in the webhook somehow
+            store_order(checkout_id, items_to_store)
             
             print(f"✅ Created checkout for ${total:.2f} ({len(request.items)} items)")
             print(f"🔗 Checkout URL: {checkout_url}")
@@ -357,6 +409,28 @@ async def create_checkout(request: CheckoutRequest):
     except Exception as e:
         print(f"❌ Unexpected error creating checkout: {e}")
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
+@app.get("/api/order/{checkout_id}")
+async def get_order_details(checkout_id: str):
+    """
+    Get order details for thank-you page
+    Returns the stored items for a checkout
+    """
+    orders = load_pending_orders()
+    items = orders.get(checkout_id, [])
+    
+    if items:
+        return {
+            "success": True,
+            "items": items,
+            "item_count": len(items)
+        }
+    else:
+        return {
+            "success": False,
+            "items": [],
+            "item_count": 0
+        }
 
 @app.post("/webhooks/lemon-squeezy")
 async def lemon_squeezy_webhook(request: Request):
@@ -410,6 +484,9 @@ async def lemon_squeezy_webhook(request: Request):
         order_data = data.get("data", {})
         attributes = order_data.get("attributes", {})
         
+        # Debug: Log all available keys to find checkout reference
+        print(f"🔍 Debug - attributes keys: {list(attributes.keys())}")
+        
         # Extract order details
         order_id = order_data.get("id")
         customer_email = attributes.get("user_email")
@@ -439,38 +516,39 @@ async def lemon_squeezy_webhook(request: Request):
         count_match = re.search(r'\((\d+) items?\)', product_name)
         item_count = int(count_match.group(1)) if count_match else 0
         
-        # Parse items from description (fallback if custom_data is empty)
-        items = []
-        if not custom_data.get("items"):
-            # Try to get description from order
-            order_description = first_order_item.get("variant_name", "") or ""
-            
-            # Parse lines like "• Product Name - $9.99"
-            if order_description:
-                for line in order_description.split('\n'):
-                    line = line.strip()
-                    if line.startswith('•'):
-                        # Remove bullet and split on last dash
-                        parts = line[1:].strip().rsplit(' - ', 1)
-                        if len(parts) == 2:
-                            items.append({
-                                "title": parts[0].strip(),
-                                "price": parts[1].strip()
-                            })
-        else:
-            # Parse from custom_data if available
-            items_str = custom_data.get("items", "[]")
-            try:
-                items = json.loads(items_str) if isinstance(items_str, str) else items_str
-            except json.JSONDecodeError:
-                items = []
+        # Try to find stored items using various identifiers
+        # The webhook doesn't give us the checkout_id directly, so we need to try different approaches
+        order_identifier = attributes.get("identifier")  # Order identifier
+        order_id_str = str(order_id)  # Order ID
         
-        # If still no items, create a simple one from the order
-        if not items and total:
+        print(f"🔍 Debug - order_identifier: {order_identifier}")
+        print(f"🔍 Debug - order_id: {order_id_str}")
+        
+        # Load all pending orders to see what we have
+        all_orders = load_pending_orders()
+        print(f"🔍 Debug - available order keys: {list(all_orders.keys())}")
+        
+        # Try to retrieve items using different identifiers
+        items = retrieve_order(order_identifier) or retrieve_order(order_id_str)
+        
+        # If still no items, try matching by checking all stored orders
+        if not items and all_orders:
+            # Just use the first/oldest stored order as fallback
+            # This works if there's only one pending order
+            first_key = list(all_orders.keys())[0]
+            print(f"⚠️ Using fallback: retrieving order #{first_key}")
+            items = retrieve_order(first_key)
+        
+        item_count = len(items) if items else 0
+        
+        if not items:
+            # Final fallback: create a simple item from the order
+            print(f"⚠️ No stored items found")
             items = [{
                 "title": product_name or "Your Order",
                 "price": total
             }]
+            item_count = 1
         
         # Extract download URLs from order
         urls = attributes.get("urls", {})
