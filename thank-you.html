@@ -248,16 +248,51 @@
     <script>
         // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
+        const checkoutId = urlParams.get('checkout_id');
         const itemCount = urlParams.get('items');
         const total = urlParams.get('total');
 
-        // Display order details
+        // Display basic order details immediately
         if (itemCount) {
             document.getElementById('item-count').textContent = itemCount + (itemCount === '1' ? ' item' : ' items');
         }
 
         if (total) {
             document.getElementById('order-total').textContent = '$' + parseFloat(total).toFixed(2);
+        }
+
+        // Fetch detailed items if we have a checkout_id
+        if (checkoutId) {
+            fetch(`https://api.littleoatlearners.com/api/order/${checkoutId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.items && data.items.length > 0) {
+                        // Create itemized list
+                        const orderSummary = document.querySelector('.order-summary');
+                        const totalElement = orderSummary.querySelector('.order-detail:last-child');
+
+                        // Add items before the total
+                        data.items.forEach(item => {
+                            const itemDiv = document.createElement('div');
+                            itemDiv.className = 'order-detail';
+                            itemDiv.innerHTML = `
+                                <span class="order-detail-label">${item.title}</span>
+                                <span class="order-detail-value">${item.price}</span>
+                            `;
+                            orderSummary.insertBefore(itemDiv, totalElement);
+                        });
+
+                        // Remove the generic "Items Purchased" line
+                        const itemCountLine = orderSummary.querySelector('.order-detail:first-child');
+                        if (itemCountLine) {
+                            itemCountLine.remove();
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching order details:', error);
+                    // Fallback: keep showing the count
+                });
         }
 
         // If no parameters, show generic message
