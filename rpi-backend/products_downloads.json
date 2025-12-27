@@ -1,0 +1,32 @@
+{
+    "742535": {
+        "id": "742535",
+        "title": "Math Product",
+        "downloadLinks": [
+            {
+                "name": "Math Product Files",
+                "url": "https://drive.google.com/file/d/1fflBfZRYWrblQwaVcIzK2Kgu9ak_QHWg/view?usp=drive_link"
+            }
+        ]
+    },
+    "733305": {
+        "id": "733305",
+        "title": "Test Product",
+        "downloadLinks": [
+            {
+                "name": "Test Product Files",
+                "url": "https://drive.google.com/file/d/1Y31iQrNyw5QMGftFBzUY2fTZEggBfYez/view?usp=drive_link"
+            }
+        ]
+    },
+    "742536": {
+        "id": "742536",
+        "title": "Science Product",
+        "downloadLinks": [
+            {
+                "name": "Science Product Files",
+                "url": "https://drive.google.com/file/d/1YDl-leZLRXQNGZru_6SY1umj4vkKZ5GD/view?usp=drive_link"
+            }
+        ]
+    }
+}
