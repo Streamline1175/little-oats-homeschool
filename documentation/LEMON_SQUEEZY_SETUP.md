@@ -1,167 +1,248 @@
-# Lemon Squeezy Integration Guide
-
-## 🎯 What We've Built
-
-You now have a beautiful, dedicated shop page (`curriculum.html`) with:
-- 6 product cards ready for your Lemon Squeezy products
-- Professional pricing displays
-- Trust badges for security
-- Responsive design that looks great on all devices
-- Automatic Lemon Squeezy checkout integration
-
-## 🔧 How to Connect Your Products
-
-### Step 1: Get Your Lemon Squeezy Product IDs
-
-1. Log into your Lemon Squeezy dashboard
-2. Go to **Products** → Select a product
-3. Click on **Variants** 
-4. Copy the **Variant ID** (it looks like: `123456`)
-
-### Step 2: Update the Product Cards
-
-Open `curriculum.html` and find each product card. Replace `YOUR_PRODUCT_ID` with your actual variant ID:
-
-```html
-<!-- BEFORE -->
-<a href="#" class="btn primary full lemonsqueezy-button" data-product-id="YOUR_PRODUCT_ID">
-    Buy Now
-</a>
-
-<!-- AFTER (example with variant ID 123456) -->
-<a href="#" class="btn primary full lemonsqueezy-button" data-product-id="123456">
-    Buy Now
-</a>
-```
-
-### Step 3: Update Your Store Name in JavaScript
-
-Open `js/main.js` and find this line (around line 206):
-
-```javascript
-const checkoutUrl = `https://YOUR_STORE.lemonsqueezy.com/checkout/buy/${productId}`;
-```
-
-Replace `YOUR_STORE` with your actual Lemon Squeezy store name:
-
-```javascript
-const checkoutUrl = `https://littleoat.lemonsqueezy.com/checkout/buy/${productId}`;
-```
-
-### Step 4: Customize Product Information
-
-For each product card in `curriculum.html`, update:
-- **Product name** (`<h3>` tag)
-- **Description** (`.product-description` paragraph)
-- **Features** (list items in `.product-features`)
-- **Price** (`.price` span)
-- **Images** (update `src` attribute to your product images)
-
-## 📝 Product Card Template
-
-Here's a template for adding new products:
-
-```html
-<article class="product-card">
-    <!-- Optional badge -->
-    <div class="product-badge">Most Popular</div>
-    
-    <div class="product-image">
-        <img src="assets/your-image.png" alt="Product Name" loading="lazy">
-    </div>
-    
-    <div class="product-content">
-        <h3>Your Product Name</h3>
-        <p class="product-description">Your product description goes here.</p>
-        
-        <ul class="product-features">
-            <li>Feature 1</li>
-            <li>Feature 2</li>
-            <li>Feature 3</li>
-            <li>Feature 4</li>
-        </ul>
-        
-        <div class="product-pricing">
-            <div class="price-option featured">
-                <span class="price">$XX.XX</span>
-                <span class="period">one-time</span>
-            </div>
-        </div>
-        
-        <a href="#" class="btn primary full lemonsqueezy-button" data-product-id="YOUR_VARIANT_ID">
-            Buy Now
-        </a>
-    </div>
-</article>
-```
-
-## 🎨 Pricing Options
-
-### Single Price
-```html
-<div class="product-pricing">
-    <div class="price-option featured">
-        <span class="price">$49.99</span>
-        <span class="period">one-time</span>
-    </div>
-</div>
-```
-
-### Multiple Price Options (Monthly vs Lifetime)
-```html
-<div class="product-pricing">
-    <div class="price-options">
-        <div class="price-option">
-            <span class="price">$9.99</span>
-            <span class="period">/month</span>
-        </div>
-        <div class="price-option featured">
-            <span class="price">$79.99</span>
-            <span class="period">lifetime</span>
-            <span class="savings">Save 33%</span>
-        </div>
-    </div>
-</div>
-```
-
-## 🚀 Testing
-
-1. Open `curriculum.html` in your browser
-2. Click a "Buy Now" button
-3. You should see the Lemon Squeezy checkout overlay open
-4. If it opens in a new tab instead, the Lemon Squeezy script is still loading (this is normal on first load)
-
-## 📱 What's Already Working
-
-- ✅ Responsive design (looks great on mobile, tablet, desktop)
-- ✅ Hover effects and animations
-- ✅ Trust badges for security
-- ✅ Navigation between pages
-- ✅ Lemon Squeezy checkout integration
-- ✅ Professional product cards
-
-## 🎯 Next Steps
-
-1. Replace all `YOUR_PRODUCT_ID` placeholders with real variant IDs
-2. Update product names, descriptions, and prices
-3. Add your own product images
-4. Update the store name in `main.js`
-5. Test the checkout flow
-6. Go live! 🎉
-
-## 💡 Tips
-
-- The "Most Popular" and "Best Value" badges are optional - remove the `<div class="product-badge">` if you don't want them
-- You can add as many products as you want - just copy the product card template
-- The trust section at the bottom builds confidence with customers
-- All styling is in `css/styles.css` if you want to customize colors or spacing
-
-## 🔗 Useful Links
-
-- [Lemon Squeezy Documentation](https://docs.lemonsqueezy.com/)
-- [Lemon Squeezy Checkout Overlay](https://docs.lemonsqueezy.com/help/checkout/checkout-overlay)
-- [Getting Variant IDs](https://docs.lemonsqueezy.com/api/variants)
+# Lemon Squeezy Setup Guide
+## Complete Configuration for Order Confirmations & Download Links
 
 ---
 
-Need help? Check the comments in the code or reach out!
+## 📋 **Step 1: Upload Files to Products**
+
+### **For Each Product (Math, Science, Test):**
+
+1. **Go to Lemon Squeezy Dashboard**
+   - Navigate to: https://app.lemonsqueezy.com
+   - Click on your store
+
+2. **Edit Each Product**
+   - Go to "Products" in the sidebar
+   - Click on "Math Product" (or Science/Test)
+   - Click "Edit Product"
+
+3. **Add Files**
+   - Click the "Files" tab
+   - Click "Add File"
+   - Upload your file (PDF, ZIP, etc.)
+   - **Important:** Do NOT add files to "Cart Bundle" product!
+
+4. **Configure File Settings**
+   - **Download limit:** Set to `10` (or unlimited)
+   - **Link expiration:** Set to `Never` or `30 days`
+   - Click "Save"
+
+5. **Repeat for All Products**
+   - Math Product → Upload files
+   - Science Product → Upload files
+   - Test Product → Upload files
+
+---
+
+## 📧 **Step 2: Enable Order Confirmation Emails**
+
+### **Configure Email Settings:**
+
+1. **Go to Settings → Emails**
+   - In dashboard, click "Settings" (gear icon)
+   - Click "Emails" in the left sidebar
+
+2. **Enable Order Confirmation**
+   - Find "Order confirmation" section
+   - Toggle **ON**: "Send order confirmation emails"
+   - Toggle **ON**: "Include download links in email"
+
+3. **Customize Email Template (Optional)**
+   - Click "Customize template"
+   - Add your logo
+   - Change colors to match your brand
+   - Edit text if needed
+   - Click "Save"
+
+4. **Test Email Settings**
+   - Send a test email to yourself
+   - Verify it looks good
+
+---
+
+## 🔒 **Step 3: Configure Download Security**
+
+### **Set Download Restrictions:**
+
+1. **Go to Settings → Store**
+   - Click "Settings" → "Store"
+
+2. **Download Settings**
+   - **Require email verification:** Toggle **ON** (recommended)
+   - **Download limit per purchase:** Set to `10` downloads
+   - **Link expiration:** Set to `Never` or `30 days`
+   - **IP restriction:** Leave **OFF** (unless you want to restrict)
+
+3. **Save Changes**
+
+---
+
+## 🎨 **Step 4: Customize "My Orders" Page**
+
+### **Brand Your Customer Portal:**
+
+1. **Go to Settings → Customer Portal**
+   - Click "Settings" → "Customer Portal"
+
+2. **Customize Appearance**
+   - Upload your logo
+   - Set brand colors
+   - Add custom text/instructions
+   - Click "Save"
+
+3. **Enable Features**
+   - Toggle **ON**: "Allow customers to view orders"
+   - Toggle **ON**: "Allow customers to download files"
+   - Toggle **ON**: "Show order history"
+
+---
+
+## ⚙️ **Step 5: Configure Cart Bundle Product**
+
+### **Important: Cart Bundle Setup**
+
+1. **Edit Cart Bundle Product**
+   - Go to "Products" → "Cart Bundle"
+   - Click "Edit"
+
+2. **DO NOT Add Files**
+   - Leave the "Files" tab empty
+   - Files should only be on individual products
+
+3. **Set Product as Hidden (Optional)**
+   - Under "Visibility"
+   - Toggle **ON**: "Hide from store"
+   - This prevents customers from buying it directly
+
+4. **Save Changes**
+
+---
+
+## 🧪 **Step 6: Test the Complete Flow**
+
+### **Make a Test Purchase:**
+
+1. **Go to Your Website**
+   - Visit: https://littleoatlearners.com/curriculum.html
+
+2. **Add Products to Cart**
+   - Add Math Product
+   - Add Science Product
+   - Add Test Product
+
+3. **Complete Checkout**
+   - Click "Proceed to Checkout"
+   - Complete purchase (use test mode)
+
+4. **Check Email**
+   - Look for order confirmation from Lemon Squeezy
+   - Verify it includes download links
+   - Click download links to test
+
+5. **Verify Downloads**
+   - Files should download correctly
+   - Check file integrity
+
+6. **Check "My Orders" Page**
+   - Click link in email to "My Orders"
+   - Verify all products are listed
+   - Verify download buttons work
+
+---
+
+## 📊 **Step 7: Monitor & Adjust**
+
+### **After Going Live:**
+
+1. **Check Analytics**
+   - Go to "Analytics" in dashboard
+   - Monitor download rates
+   - Check for any issues
+
+2. **Customer Feedback**
+   - Ask customers if downloads work
+   - Adjust settings if needed
+
+3. **Security Monitoring**
+   - Check for unusual download patterns
+   - Adjust limits if needed
+
+---
+
+## ⚠️ **Important Notes**
+
+### **Download Link Security:**
+
+✅ **What Lemon Squeezy Provides:**
+- Email-specific download links
+- Download count tracking
+- Optional expiration dates
+- IP tracking (optional)
+
+⚠️ **Limitations:**
+- Links can be shared (like any download link)
+- Once file is downloaded, it can be redistributed
+- No DRM protection on files
+
+### **Best Practices:**
+
+1. **Set reasonable download limits** (e.g., 10 downloads)
+2. **Use expiration dates** for time-sensitive content
+3. **Watermark PDFs** with customer email (optional)
+4. **Monitor download patterns** for abuse
+5. **Terms of Service** - clearly state no redistribution
+
+---
+
+## 🎯 **Quick Checklist**
+
+Before going live, verify:
+
+- [ ] Files uploaded to Math, Science, Test products
+- [ ] NO files on Cart Bundle product
+- [ ] Order confirmation emails enabled
+- [ ] Download links included in emails
+- [ ] Email template customized with your branding
+- [ ] Download limits set (e.g., 10 downloads)
+- [ ] Link expiration configured (or set to never)
+- [ ] Customer portal customized
+- [ ] Test purchase completed successfully
+- [ ] Email received with download links
+- [ ] Downloads work correctly
+- [ ] "My Orders" page accessible
+
+---
+
+## 🆘 **Troubleshooting**
+
+### **Problem: No email received**
+- Check spam folder
+- Verify email settings are enabled
+- Check Lemon Squeezy email logs
+
+### **Problem: No download links in email**
+- Verify "Include download links" is toggled ON
+- Check that files are uploaded to products
+- Verify you're not using Cart Bundle for files
+
+### **Problem: Download links don't work**
+- Check file upload was successful
+- Verify product has files attached
+- Check download limits haven't been exceeded
+
+### **Problem: Customer can't access "My Orders"**
+- Verify customer portal is enabled
+- Check customer used correct email
+- Send password reset link if needed
+
+---
+
+## 📞 **Need Help?**
+
+- **Lemon Squeezy Support:** https://docs.lemonsqueezy.com
+- **Email:** support@lemonsqueezy.com
+- **Discord:** Join Lemon Squeezy community
+
+---
+
+**You're all set! Your customers will now receive secure download links automatically! 🎉**

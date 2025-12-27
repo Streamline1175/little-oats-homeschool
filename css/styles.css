@@ -1951,3 +1951,27 @@ p {
     padding: 1rem;
   }
 }
+
+/* ==================== Download Badges ==================== */
+.download-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.download-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--sage-deep);
+  background: rgba(122, 139, 111, 0.12);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-xl);
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.download-badge:empty {
+  display: none;
+}

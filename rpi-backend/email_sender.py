@@ -119,8 +119,8 @@ def get_inline_template() -> str:
                                     <td>
                                         <h3 style="margin: 0 0 15px; font-size: 18px; color: #5A6B4F; font-weight: 600;">What happens next?</h3>
                                         <ul style="margin: 0; padding: 0 0 0 20px; color: #4A4035; font-size: 14px; line-height: 1.8;">
-                                            <li style="margin-bottom: 8px;">Your download links are being prepared</li>
-                                            <li style="margin-bottom: 8px;">You'll receive a separate email with access details</li>
+                                            <li style="margin-bottom: 8px;">Click the download button above to access all your products</li>
+                                            <li style="margin-bottom: 8px;">All files for your purchased items will be available</li>
                                             <li style="margin-bottom: 8px;">Save this email for your records</li>
                                             <li>Need help? We're here for you!</li>
                                         </ul>
@@ -162,17 +162,31 @@ def get_inline_template() -> str:
 </html>"""
 
 def build_items_html(items: List[Dict]) -> str:
-    """Build HTML for itemized product list"""
+    """Build HTML for itemized product list with download buttons"""
     items_html = ""
     for item in items:
+        # Build download buttons if available
+        download_buttons = ""
+        download_links = item.get('downloadLinks', [])
+        if download_links:
+            for link in download_links:
+                download_buttons += f'''
+                    <div style="margin-top: 8px;">
+                        <a href="{link['url']}" style="display: inline-block; padding: 8px 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #FFFFFF; text-decoration: none; border-radius: 20px; font-weight: 600; font-size: 13px;">
+                            📥 Download {link['name']}
+                        </a>
+                    </div>
+                '''
+        
         items_html += f"""
         <tr>
             <td style="padding: 12px 0; border-bottom: 1px solid #E8DFD0;">
                 <div style="font-size: 15px; color: #2C2416; font-weight: 600; margin-bottom: 4px;">
                     {item.get('title', 'Product')}
                 </div>
+                {download_buttons}
             </td>
-            <td style="padding: 12px 0; border-bottom: 1px solid #E8DFD0; text-align: right;">
+            <td style="padding: 12px 0; border-bottom: 1px solid #E8DFD0; text-align: right; vertical-align: top;">
                 <div style="font-size: 15px; color: #5A6B4F; font-weight: 600;">
                     {item.get('price', '$0.00')}
                 </div>

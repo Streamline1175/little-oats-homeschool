@@ -205,14 +205,18 @@
     const products = await fetchProducts();
 
     if (!products || products.length === 0) {
-      // Show error or fallback message
+      // Show maintenance state
       productGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
-      <p style="font-size: 1.125rem; color: var(--muted);">
-        Unable to load products at this time. Please try again later.
-      </p>
+        <div style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 4rem 2rem; background: rgba(122, 139, 111, 0.05); border-radius: 24px; border: 1px solid rgba(139, 115, 85, 0.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--sage-deep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          <h3 style="color: var(--sage-deep); margin-bottom: 0.75rem;">Shop Maintenance</h3>
+          <p style="font-size: 1.125rem; color: var(--muted); max-width: 400px; margin: 0 auto;">
+            The shop is currently undergoing scheduled maintenance. Please check back shortly.
+          </p>
         </div>
-    `;
+      `;
       return;
     }
 
@@ -278,4 +282,64 @@
   } else {
     initLemonSqueezy();
   }
+
+  // ==================== Download Count Logic ====================
+  async function fetchGitHubDownloads() {
+    const winBadge = document.getElementById('download-win');
+    const macBadge = document.getElementById('download-mac');
+    const linuxBadge = document.getElementById('download-linux');
+
+    // Only proceed if elements exist
+    if (!winBadge && !macBadge && !linuxBadge) return;
+
+    try {
+      const response = await fetch('https://api.github.com/repos/Streamline1175/homeschool-releases/releases');
+      if (!response.ok) throw new Error('Failed to fetch releases');
+
+      const releases = await response.json();
+
+      let counts = {
+        windows: 0,
+        mac: 0,
+        linux: 0
+      };
+
+      releases.forEach(release => {
+        release.assets.forEach(asset => {
+          const name = asset.name.toLowerCase();
+          const count = asset.download_count;
+
+          if (name.endsWith('.exe')) {
+            counts.windows += count;
+          } else if (name.endsWith('.dmg')) {
+            counts.mac += count;
+          } else if (name.endsWith('.appimage') || name.endsWith('.deb') || name.endsWith('.rpm')) {
+            counts.linux += count;
+          }
+        });
+      });
+
+      // Format numbers (e.g., 1.2k)
+      const formatCount = (num) => {
+        if (num >= 1000) {
+          return (num / 1000).toFixed(1) + 'k downloads';
+        }
+        return num + ' downloads';
+      };
+
+      if (winBadge) winBadge.textContent = formatCount(counts.windows);
+      if (macBadge) macBadge.textContent = formatCount(counts.mac);
+      if (linuxBadge) linuxBadge.textContent = formatCount(counts.linux);
+
+    } catch (error) {
+      console.error('Error fetching download counts:', error);
+      // Fallback or hide
+      if (winBadge) winBadge.style.display = 'none';
+      if (macBadge) macBadge.style.display = 'none';
+      if (linuxBadge) linuxBadge.style.display = 'none';
+    }
+  }
+
+  // Init download counts
+  fetchGitHubDownloads();
 })();
