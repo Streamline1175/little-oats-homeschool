@@ -152,15 +152,27 @@
       ? product.features.map(feature => `<li>${feature}</li>`).join('')
       : '';
 
-    // Build pricing section using the price field from API
+    // Build pricing section - handle subscriptions vs one-time purchases
+    let periodText = 'one-time';
+    if (product.is_subscription && product.interval) {
+      // Format interval (e.g., "month" -> "/month", "year" -> "/year")
+      const intervalLabel = product.interval_count > 1
+        ? `every ${product.interval_count} ${product.interval}s`
+        : `/${product.interval}`;
+      periodText = intervalLabel;
+    }
+
     const pricingHTML = `
       <div class="product-pricing">
         <div class="price-option featured">
           <span class="price">${product.price}</span>
-          <span class="period">one-time</span>
+          <span class="period">${periodText}</span>
         </div>
       </div>
     `;
+
+    // Generate unique ID for the description toggle
+    const descriptionId = `desc-${product.id}`;
 
     article.innerHTML = `
       ${badgeHTML}
@@ -169,7 +181,16 @@
       </div>
       <div class="product-content">
         <h3>${product.title}</h3>
-        <p class="product-description">${product.description}</p>
+        <div class="product-description-wrapper collapsed">
+          <div class="product-description" id="${descriptionId}">${product.description}</div>
+          <button type="button" class="description-toggle" aria-expanded="false" aria-controls="${descriptionId}">
+            <span class="show-more">Show more</span>
+            <span class="show-less">Show less</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
         ${featuresHTML ? `<ul class="product-features">${featuresHTML}</ul>` : ''}
         ${pricingHTML}
         <a href="${product.buyUrl || '#'}" 
@@ -183,6 +204,16 @@
         </a>
       </div>
   `;
+
+    // Add click handler for description toggle
+    const toggleBtn = article.querySelector('.description-toggle');
+    const wrapper = article.querySelector('.product-description-wrapper');
+    if (toggleBtn && wrapper) {
+      toggleBtn.addEventListener('click', () => {
+        const isCollapsed = wrapper.classList.toggle('collapsed');
+        toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
+      });
+    }
 
     return article;
   }
@@ -342,4 +373,42 @@
 
   // Init download counts
   fetchGitHubDownloads();
+
+  // ==================== Privacy-First Analytics ====================
+  async function trackVisit() {
+    // 1. Get or create anonymous visitor ID
+    let visitorId = localStorage.getItem('lol_visitor_id');
+    if (!visitorId) {
+      visitorId = crypto.randomUUID();
+      localStorage.setItem('lol_visitor_id', visitorId);
+    }
+
+    // 2. Prepare payload
+    const payload = {
+      visitor_id: visitorId,
+      page: window.location.pathname
+    };
+
+    // 3. Send to backend
+    // Note: Use a separate base URL if needed, but here we assume same domain or previously defined FASTAPI_URL (base)
+    // The previous FASTAPI_URL variable might be scoped inside the IIFE or block, so let's re-declare a base or use relative if proxied.
+    // For safety, let's use the hardcoded base for now matching existing code.
+    const API_BASE = 'https://api.littleoatlearners.com';
+
+    try {
+      await fetch(`${API_BASE}/api/analytics/track`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {
+      // Fail silently for analytics
+      console.debug('Analytics skipped', e);
+    }
+  }
+
+  // Run tracking once per page load
+  trackVisit();
 })();
