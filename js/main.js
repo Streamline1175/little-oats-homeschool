@@ -314,16 +314,56 @@
     initLemonSqueezy();
   }
 
-  // ==================== Download Count Logic ====================
+  // ==================== Download Links & Count Logic ====================
   async function fetchGitHubDownloads() {
     const winBadge = document.getElementById('download-win');
     const macBadge = document.getElementById('download-mac');
     const linuxBadge = document.getElementById('download-linux');
+    const winLink = document.getElementById('download-win-link');
+    const macLink = document.getElementById('download-mac-link');
+    const linuxLink = document.getElementById('download-linux-link');
 
     // Only proceed if elements exist
     if (!winBadge && !macBadge && !linuxBadge) return;
 
     try {
+      // Fetch the latest release to get correct download URLs
+      const latestResponse = await fetch('https://api.github.com/repos/Streamline1175/homeschool-releases/releases/latest');
+      if (!latestResponse.ok) throw new Error('Failed to fetch latest release');
+
+      const latestRelease = await latestResponse.json();
+
+      // Find download URLs from latest release assets
+      let downloadUrls = {
+        windows: null,
+        mac: null,
+        linux: null
+      };
+
+      latestRelease.assets.forEach(asset => {
+        const name = asset.name.toLowerCase();
+        // Prefer setup exe for Windows (installer)
+        if (name.includes('setup') && name.endsWith('.exe')) {
+          downloadUrls.windows = asset.browser_download_url;
+        } else if (name.endsWith('.dmg')) {
+          downloadUrls.mac = asset.browser_download_url;
+        } else if (name.endsWith('.appimage')) {
+          downloadUrls.linux = asset.browser_download_url;
+        }
+      });
+
+      // Fallback: if no setup exe found, use any exe
+      if (!downloadUrls.windows) {
+        const exeAsset = latestRelease.assets.find(a => a.name.toLowerCase().endsWith('.exe'));
+        if (exeAsset) downloadUrls.windows = exeAsset.browser_download_url;
+      }
+
+      // Update download links
+      if (winLink && downloadUrls.windows) winLink.href = downloadUrls.windows;
+      if (macLink && downloadUrls.mac) macLink.href = downloadUrls.mac;
+      if (linuxLink && downloadUrls.linux) linuxLink.href = downloadUrls.linux;
+
+      // Fetch all releases for download counts
       const response = await fetch('https://api.github.com/repos/Streamline1175/homeschool-releases/releases');
       if (!response.ok) throw new Error('Failed to fetch releases');
 
@@ -363,15 +403,20 @@
       if (linuxBadge) linuxBadge.textContent = formatCount(counts.linux);
 
     } catch (error) {
-      console.error('Error fetching download counts:', error);
-      // Fallback or hide
+      console.error('Error fetching download info:', error);
+      // Fallback to releases page
+      const fallbackUrl = 'https://github.com/Streamline1175/homeschool-releases/releases/latest';
+      if (winLink) winLink.href = fallbackUrl;
+      if (macLink) macLink.href = fallbackUrl;
+      if (linuxLink) linuxLink.href = fallbackUrl;
+      // Hide badges on error
       if (winBadge) winBadge.style.display = 'none';
       if (macBadge) macBadge.style.display = 'none';
       if (linuxBadge) linuxBadge.style.display = 'none';
     }
   }
 
-  // Init download counts
+  // Init download links and counts
   fetchGitHubDownloads();
 
   // ==================== Privacy-First Analytics ====================
