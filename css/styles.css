@@ -2042,3 +2042,88 @@ p {
 .download-badge:empty {
   display: none;
 }
+
+/* ==================== Mobile Refinements (Legal & Header) ==================== */
+@media (max-width: 640px) {
+
+  /* Fix header congestion */
+  .nav-bar {
+    gap: 1rem;
+    height: 80px;
+    padding: 0 1rem;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-links {
+    top: 80px;
+    /* Match new header height */
+  }
+
+  /* Improve typography scaling */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Improve legal page readability */
+  .container.legal {
+    padding: 0 1.5rem;
+  }
+
+  .legal-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .legal h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* ==================== Legal Page Spacing Fixes ==================== */
+/* Tighten spacing on policies/legal pages */
+.page-hero+.section.pastel {
+  padding-top: 3rem;
+}
+
+.container.legal {
+  max-width: 800px;
+}
+
+.container.legal h2 {
+  margin-bottom: 1.5rem;
+}
+
+.container.legal p {
+  margin-bottom: 1rem;
+}
+
+.container.legal #privacy {
+  margin-top: 3rem;
+}
+
+.section+.section {
+  padding-top: 3rem;
+}
+
+/* Reduce footer top margin on legal pages */
+body:has(.container.legal) .site-footer {
+  margin-top: 4rem;
+}
