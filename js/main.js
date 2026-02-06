@@ -416,6 +416,144 @@
     }
   }
 
+  // ==================== Age Verification Modal ====================
+  const ageModalOverlay = document.getElementById('age-modal-overlay');
+  const dobMonthSelect = document.getElementById('dob-month');
+  const dobDaySelect = document.getElementById('dob-day');
+  const dobYearSelect = document.getElementById('dob-year');
+  const ageVerifyBtn = document.getElementById('age-verify-btn');
+  const ageCancelBtn = document.getElementById('age-cancel-btn');
+  const ageError = document.getElementById('age-error');
+
+  let pendingDownloadUrl = null;
+
+  // Populate day dropdown (1-31)
+  function populateDays() {
+    if (!dobDaySelect) return;
+    for (let i = 1; i <= 31; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = i;
+      dobDaySelect.appendChild(opt);
+    }
+  }
+
+  // Populate year dropdown (current year - 100 to current year)
+  function populateYears() {
+    if (!dobYearSelect) return;
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= currentYear - 100; year--) {
+      const opt = document.createElement('option');
+      opt.value = year;
+      opt.textContent = year;
+      dobYearSelect.appendChild(opt);
+    }
+  }
+
+  // Calculate age from date of birth
+  function calculateAge(birthDate) {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const dayDiff = today.getDate() - birthDate.getDate();
+
+    // Adjust age if birthday hasn't occurred yet this year
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+      age--;
+    }
+    return age;
+  }
+
+  // Show the age verification modal
+  function showAgeModal(downloadUrl) {
+    if (!ageModalOverlay) return false;
+    pendingDownloadUrl = downloadUrl;
+    // Reset form
+    if (dobMonthSelect) dobMonthSelect.value = '';
+    if (dobDaySelect) dobDaySelect.value = '';
+    if (dobYearSelect) dobYearSelect.value = '';
+    if (ageError) ageError.textContent = '';
+    ageModalOverlay.setAttribute('aria-hidden', 'false');
+    return true;
+  }
+
+  // Hide the age verification modal
+  function hideAgeModal() {
+    if (!ageModalOverlay) return;
+    ageModalOverlay.setAttribute('aria-hidden', 'true');
+    pendingDownloadUrl = null;
+  }
+
+  // Verify age and proceed with download if valid
+  function verifyAge() {
+    const month = dobMonthSelect?.value;
+    const day = dobDaySelect?.value;
+    const year = dobYearSelect?.value;
+
+    // Validate all fields are filled
+    if (month === '' || day === '' || year === '') {
+      if (ageError) ageError.textContent = 'Please select your complete date of birth.';
+      return;
+    }
+
+    const birthDate = new Date(parseInt(year), parseInt(month), parseInt(day));
+    const age = calculateAge(birthDate);
+
+    if (age >= 18) {
+      // Age verified - proceed with download
+      hideAgeModal();
+      if (pendingDownloadUrl) {
+        window.location.href = pendingDownloadUrl;
+      }
+    } else {
+      // Under 18 - block download
+      if (ageError) {
+        ageError.textContent = 'Sorry, you must be 18 years or older to download this application.';
+      }
+    }
+  }
+
+  // Initialize age verification system
+  function initAgeVerification() {
+    if (!ageModalOverlay) return; // Elements don't exist on this page
+
+    populateDays();
+    populateYears();
+
+    // Verify button click
+    ageVerifyBtn?.addEventListener('click', verifyAge);
+
+    // Cancel button click
+    ageCancelBtn?.addEventListener('click', hideAgeModal);
+
+    // Click outside modal to close
+    ageModalOverlay.addEventListener('click', (e) => {
+      if (e.target === ageModalOverlay) {
+        hideAgeModal();
+      }
+    });
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && ageModalOverlay.getAttribute('aria-hidden') === 'false') {
+        hideAgeModal();
+      }
+    });
+
+    // Intercept download link clicks
+    const downloadLinks = document.querySelectorAll('#download-win-link, #download-mac-link, #download-linux-link');
+    downloadLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const downloadUrl = link.href;
+        showAgeModal(downloadUrl);
+      });
+    });
+  }
+
+  // Init age verification
+  initAgeVerification();
+
   // Init download links and counts
   fetchGitHubDownloads();
 
