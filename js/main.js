@@ -540,15 +540,17 @@
       }
     });
 
-    // Intercept download link clicks
-    const downloadLinks = document.querySelectorAll('#download-win-link, #download-mac-link, #download-linux-link');
-    downloadLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+    // Intercept download link clicks using event delegation
+    // This captures clicks even on nested elements inside the links
+    document.addEventListener('click', (e) => {
+      const downloadLink = e.target.closest('#download-win-link, #download-mac-link, #download-linux-link');
+      if (downloadLink) {
         e.preventDefault();
-        const downloadUrl = link.href;
+        e.stopPropagation();
+        const downloadUrl = downloadLink.href;
         showAgeModal(downloadUrl);
-      });
-    });
+      }
+    }, true); // Use capture phase to intercept before default behavior
   }
 
   // Init age verification
