@@ -501,9 +501,10 @@
 
     if (age >= 18) {
       // Age verified - proceed with download
+      const downloadUrl = pendingDownloadUrl;
       hideAgeModal();
-      if (pendingDownloadUrl) {
-        window.location.href = pendingDownloadUrl;
+      if (downloadUrl) {
+        window.location.href = downloadUrl;
       }
     } else {
       // Under 18 - block download
