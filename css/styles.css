@@ -1,33 +1,33 @@
 /* ==================== Little Oat Learners - Premium Design ==================== */
 
 :root {
-  /* Premium OKLCH color palette - dark forest theme */
-  --sage: oklch(0.72 0.12 140);
-  --sage-light: oklch(0.82 0.09 140);
-  --sage-deep: oklch(0.55 0.14 140);
-  --oat: oklch(0.28 0.04 140);
-  --oat-light: oklch(0.18 0.03 140);
-  --wheat: oklch(0.85 0.08 85);
-  --warm-brown: oklch(0.45 0.06 70);
-  --sky: oklch(0.85 0.05 200);
-  --cream: oklch(0.12 0.018 140);      /* Deep charcoal-green canvas */
-  --cream-dark: oklch(0.09 0.015 140); /* Even darker accent background */
-  --ink: oklch(0.96 0.02 85);          /* Bright soft oat cream for high contrast */
-  --ink-light: oklch(0.88 0.015 85);   /* Cozy light grey body text */
-  --muted: oklch(0.72 0.01 85);        /* Accessible secondary text */
-  --border: rgba(255, 255, 255, 0.08); /* High contrast thin borders */
+  /* Premium OKLCH color palette - light flowy calm forest-and-cream theme */
+  --sage: oklch(0.78 0.09 140);        /* Soft calming sage green */
+  --sage-light: oklch(0.90 0.05 140);  /* Very delicate light sage background tint */
+  --sage-deep: oklch(0.42 0.09 140);   /* Calm deep slate forest-green for buttons/headers */
+  --oat: oklch(0.85 0.03 80);          /* Soothing soft oat warm grey */
+  --oat-light: oklch(0.93 0.02 80);    /* Very light oat-cream accents */
+  --wheat: oklch(0.90 0.06 85);        /* Soft golden wheat accent */
+  --warm-brown: oklch(0.50 0.06 70);   /* Calm clay brown details */
+  --sky: oklch(0.90 0.04 200);         /* Calm airy sky blue */
+  --cream: oklch(0.98 0.01 85);        /* Soothing, light warm off-white cream canvas */
+  --cream-dark: oklch(0.95 0.015 85);  /* Slightly deeper cozy cream background */
+  --ink: oklch(0.20 0.02 140);         /* DeepSlate forest-green for high contrast typography */
+  --ink-light: oklch(0.32 0.015 140);  /* Highly legible Slate body text */
+  --muted: oklch(0.55 0.01 140);       /* Soothing secondary slate grey */
+  --border: rgba(90, 107, 79, 0.12);   /* Soft subtle sage border separator */
 
   /* Glassmorphism Design Tokens */
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-border: rgba(255, 255, 255, 0.06);
+  --card-bg: rgba(255, 255, 255, 0.55);
+  --card-border: rgba(255, 255, 255, 0.7);
   --card-blur: blur(20px);
-  --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --card-shadow: 0 12px 40px rgba(44, 36, 22, 0.05);
 
-  /* Shadows - deep modern elevations */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.35);
-  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.45);
+  /* Shadows - gentle soft elevations */
+  --shadow-sm: 0 2px 8px rgba(44, 36, 22, 0.04);
+  --shadow-md: 0 8px 24px rgba(44, 36, 22, 0.06);
+  --shadow-lg: 0 16px 48px rgba(44, 36, 22, 0.08);
+  --shadow-xl: 0 24px 64px rgba(44, 36, 22, 0.12);
 
   /* Typography */
   --font-display: 'Outfit', 'Playfair Display', Georgia, serif;
@@ -164,7 +164,7 @@ p {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(18, 24, 18, 0.75);
+  background: rgba(248, 246, 240, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
