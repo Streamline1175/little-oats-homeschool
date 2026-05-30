@@ -193,15 +193,12 @@
         </div>
         ${featuresHTML ? `<ul class="product-features">${featuresHTML}</ul>` : ''}
         ${pricingHTML}
-        <a href="${product.buyUrl || '#'}" 
-           class="btn primary full buy-now-btn" 
-           target="_blank"
-           rel="noopener noreferrer">
+        <button type="button" class="btn primary full add-to-cart-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
-          Buy Now
-        </a>
+          Add to Cart
+        </button>
       </div>
   `;
 
@@ -212,6 +209,14 @@
       toggleBtn.addEventListener('click', () => {
         const isCollapsed = wrapper.classList.toggle('collapsed');
         toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
+      });
+    }
+
+    // Add click handler for Add to Cart button
+    const addToCartBtn = article.querySelector('.add-to-cart-btn');
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', () => {
+        Cart.addItem(product);
       });
     }
 
@@ -259,59 +264,246 @@
       const card = createProductCard(product);
       productGrid.appendChild(card);
     });
-
-    // Initialize Lemon Squeezy buttons for the new cards
-    initLemonSqueezy();
   }
 
-  // ==================== Lemon Squeezy Integration ====================
-  /**
-   * Initialize Lemon Squeezy checkout buttons
-   */
-  function initLemonSqueezy() {
-    // Load Lemon Squeezy script if not already loaded
-    if (!window.createLemonSqueezy) {
-      const script = document.createElement('script');
-      script.src = 'https://app.lemonsqueezy.com/js/lemon.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    }
+  // ==================== Shopping Cart System ====================
+  const Cart = {
+    items: [],
 
-    // Handle all Lemon Squeezy buttons (remove old listeners first)
-    document.querySelectorAll('.lemonsqueezy-button').forEach(button => {
-      // Clone and replace to remove old event listeners
-      const newButton = button.cloneNode(true);
-      button.parentNode.replaceChild(newButton, button);
+    init() {
+      // Load cart items from localStorage
+      try {
+        const storedCart = localStorage.getItem('lol_cart');
+        if (storedCart) {
+          this.items = JSON.parse(storedCart);
+        }
+      } catch (e) {
+        console.error('Failed to load cart from localStorage:', e);
+      }
+      this.updateUI();
+      this.bindEvents();
+    },
 
-      newButton.addEventListener('click', function (e) {
-        e.preventDefault();
+    save() {
+      try {
+        localStorage.setItem('lol_cart', JSON.stringify(this.items));
+      } catch (e) {
+        console.error('Failed to save cart to localStorage:', e);
+      }
+      this.updateUI();
+    },
 
-        // Get checkout URL from data attribute (provided by backend)
-        const checkoutUrl = this.getAttribute('data-checkout-url');
+    addItem(product) {
+      // Check if product already in cart
+      const existing = this.items.find(item => item.id === product.id);
+      if (existing) {
+        alert(`${product.title} is already in your cart.`);
+        this.openDrawer();
+        return;
+      }
+      
+      // Parse numeric price value (e.g. "$29.00" -> 29.0)
+      const priceVal = parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0.0;
 
-        if (!checkoutUrl) {
-          console.error('No checkout URL found for product');
-          return;
+      this.items.push({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        priceValue: priceVal,
+        image: product.image
+      });
+      
+      this.save();
+      this.openDrawer();
+    },
+
+    removeItem(id) {
+      this.items = this.items.filter(item => item.id !== id);
+      this.save();
+    },
+
+    clear() {
+      this.items = [];
+      this.save();
+    },
+
+    getTotal() {
+      return this.items.reduce((sum, item) => sum + item.priceValue, 0.0);
+    },
+
+    getItemCount() {
+      return this.items.length;
+    },
+
+    openDrawer() {
+      document.getElementById('cart-sidebar')?.classList.add('open');
+      document.getElementById('cart-overlay')?.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Lock background scrolling
+    },
+
+    closeDrawer() {
+      document.getElementById('cart-sidebar')?.classList.remove('open');
+      document.getElementById('cart-overlay')?.classList.remove('open');
+      document.body.style.overflow = ''; // Unlock background scrolling
+    },
+
+    updateUI() {
+      const count = this.getItemCount();
+      const badge = document.getElementById('cart-badge');
+      const emptyState = document.getElementById('cart-empty-state');
+      const itemsList = document.getElementById('cart-items-list');
+      const cartFooter = document.getElementById('cart-footer');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const totalEl = document.getElementById('cart-total');
+
+      // Update badge
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+      }
+
+      if (count === 0) {
+        emptyState && (emptyState.style.display = 'block');
+        itemsList && (itemsList.style.display = 'none');
+        cartFooter && (cartFooter.style.display = 'none');
+      } else {
+        emptyState && (emptyState.style.display = 'none');
+        itemsList && (itemsList.style.display = 'flex');
+        cartFooter && (cartFooter.style.display = 'block');
+
+        // Populate items list
+        if (itemsList) {
+          itemsList.innerHTML = '';
+          this.items.forEach(item => {
+            const itemEl = document.createElement('div');
+            itemEl.className = 'cart-item';
+            itemEl.innerHTML = `
+              <div class="cart-item-image">
+                <img src="${item.image || 'assets/placeholder.png'}" alt="${item.title}">
+              </div>
+              <div class="cart-item-details">
+                <div class="cart-item-title" title="${item.title}">${item.title}</div>
+                <div class="cart-item-price">${item.price}</div>
+              </div>
+              <button class="cart-item-remove" data-id="${item.id}" aria-label="Remove ${item.title}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+              </button>
+            `;
+            // Add click listener to remove button
+            itemEl.querySelector('.cart-item-remove').addEventListener('click', () => {
+              this.removeItem(item.id);
+            });
+            itemsList.appendChild(itemEl);
+          });
         }
 
-        // Open checkout in overlay (recommended) or new tab
-        if (window.createLemonSqueezy) {
-          window.createLemonSqueezy();
-          window.LemonSqueezy.Url.Open(checkoutUrl);
-        } else {
-          // Fallback: open in new tab if script hasn't loaded yet
-          window.open(checkoutUrl, '_blank');
+        // Update subtotals
+        const total = this.getTotal();
+        const formattedTotal = `$${total.toFixed(2)}`;
+        if (subtotalEl) subtotalEl.textContent = formattedTotal;
+        if (totalEl) totalEl.textContent = formattedTotal;
+      }
+      
+      // Update checkouts button text
+      const checkoutBtn = document.getElementById('cart-checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.disabled = count === 0;
+      }
+    },
+
+    bindEvents() {
+      // Toggle cart sidebar drawer
+      document.getElementById('cart-btn')?.addEventListener('click', () => this.openDrawer());
+      document.getElementById('cart-close-btn')?.addEventListener('click', () => this.closeDrawer());
+      document.getElementById('cart-overlay')?.addEventListener('click', () => this.closeDrawer());
+
+      // Keyboard Esc close drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.closeDrawer();
         }
       });
-    });
-  }
+
+      // Clear cart action
+      document.getElementById('cart-clear-btn')?.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear your cart?')) {
+          this.clear();
+        }
+      });
+
+      // Checkout submit action
+      document.getElementById('cart-checkout-btn')?.addEventListener('click', async () => {
+        await this.handleCheckout();
+      });
+    },
+
+    async handleCheckout() {
+      const checkoutBtn = document.getElementById('cart-checkout-btn');
+      if (!checkoutBtn || this.items.length === 0) return;
+
+      // Disable button & show loading state
+      const originalHTML = checkoutBtn.innerHTML;
+      checkoutBtn.disabled = true;
+      checkoutBtn.innerHTML = `
+        <svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite; width: 20px; height: 20px;">
+          <circle cx="12" cy="12" r="10" stroke-dasharray="162" stroke-dashoffset="100"></circle>
+        </svg>
+        Preparing Checkout...
+      `;
+
+      const customerEmail = localStorage.getItem('lol_visitor_email') || null;
+
+      const payload = {
+        items: this.items,
+        customer_email: customerEmail
+      };
+
+      const API_BASE = 'https://api.littleoatlearners.com';
+
+      try {
+        const response = await fetch(`${API_BASE}/api/checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errText = await response.text();
+          throw new Error(`Checkout creation failed: ${errText}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.checkout_url) {
+          this.clear();
+          window.location.href = data.checkout_url;
+        } else {
+          throw new Error('Did not receive a valid checkout URL from backend API');
+        }
+
+      } catch (err) {
+        console.error('Checkout error:', err);
+        alert(`Sorry, we couldn't initiate checkout at this moment.\n\nError: ${err.message || err}`);
+        // Reset checkout button
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerHTML = originalHTML;
+      }
+    }
+  };
 
   // ==================== Initialize ====================
-  // Load products if on shop page, otherwise just init Lemon Squeezy for static buttons
+  // Initialize Shopping Cart System
+  Cart.init();
+
   if (document.querySelector('.product-grid')) {
     loadProducts();
-  } else {
-    initLemonSqueezy();
   }
 
   // ==================== Download Links & Count Logic ====================
@@ -544,7 +736,7 @@
     // Intercept download link clicks using event delegation
     // This captures clicks even on nested elements inside the links
     document.addEventListener('click', (e) => {
-      const downloadLink = e.target.closest('#download-win-link, #download-mac-link, #download-linux-link');
+      const downloadLink = e.target.closest('#download-win-link, #download-mac-link, #download-linux-link, .resource-card .btn');
       if (downloadLink) {
         e.preventDefault();
         e.stopPropagation();
@@ -594,6 +786,20 @@
       console.debug('Analytics skipped', e);
     }
   }
+
+  // ==================== Pointer Glow Effect for Glass Cards ====================
+  function initPointerGlow() {
+    document.addEventListener('pointermove', (e) => {
+      const card = e.target.closest('.glass-widget, .service-card, .product-card');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  }
+  initPointerGlow();
 
   // Run tracking once per page load
   trackVisit();

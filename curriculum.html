@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css?v=20241231">
     <link rel="icon" type="image/svg+xml" href="assets/logo.png">
@@ -31,7 +31,8 @@
                 <ul id="nav-links" class="nav-links">
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#premium">Premium</a></li>
+                    <li><a href="texas-standards.html">Texas Compliance</a></li>
+                    <li><a href="resources.html">Free Worksheets</a></li>
                     <li><a href="curriculum.html">Shop</a></li>
                     <li><a href="index.html#download">Download</a></li>
                 </ul>
@@ -44,7 +45,7 @@
             <p class="eyebrow">Curriculum Shop</p>
             <h1>Premium features and curriculum for your homeschool</h1>
             <p class="lead">Browse our collection of interactive learning tools and curriculum bundles. One-time
-                purchases with lifetime access. Secure checkout powered by Lemon Squeezy.</p>
+                purchases with lifetime access. Secure checkout powered by Polar.sh.</p>
         </section>
 
         <section class="section">
@@ -68,7 +69,7 @@
                         </svg>
                         <div>
                             <strong>Secure Checkout</strong>
-                            <p>Powered by Lemon Squeezy</p>
+                            <p>Powered by Polar.sh</p>
                         </div>
                     </div>
                     <div class="trust-badge">
@@ -95,7 +96,7 @@
                 </div>
 
                 <div class="integration-note" style="text-align: center; margin-top: 3rem;">
-                    <strong>Trusted & Secure.</strong> All payments are processed by Lemon Squeezy, which is owned by
+                    <strong>Trusted & Secure.</strong> All payments are processed by Polar.sh via
                     <strong>Stripe</strong>—one of the world's most trusted payment platforms. No subscription required
                     for curriculum bundles.
                 </div>
@@ -137,6 +138,81 @@
             <p>© 2025 Little Oat. Crafted with care for homeschool families.</p>
         </div>
     </footer>
+
+    <!-- Floating Cart Button -->
+    <button class="cart-button" id="cart-btn" aria-label="Open shopping cart" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count" id="cart-badge" style="display: none;">0</span>
+    </button>
+
+    <!-- Cart Backdrop Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Cart Sidebar Drawer -->
+    <div class="cart-sidebar" id="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="cart-header">
+            <h2 id="cart-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Your Cart
+            </h2>
+            <button class="cart-close" id="cart-close-btn" aria-label="Close shopping cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="cart-body">
+            <!-- Empty State -->
+            <div class="cart-empty" id="cart-empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <h3>Your cart is empty</h3>
+                <p>Add curriculum packages and premium bundles to get started.</p>
+            </div>
+            
+            <!-- Items List -->
+            <div class="cart-list" id="cart-items-list" style="display: none;">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+        
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-summary">
+                <div class="cart-summary-row">
+                    <span class="cart-summary-label">Subtotal</span>
+                    <span class="cart-summary-value" id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="cart-summary-row total">
+                    <span class="cart-summary-label">Total</span>
+                    <span class="cart-summary-value" id="cart-total">$0.00</span>
+                </div>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="cart-checkout-btn" id="cart-checkout-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    Checkout with Polar.sh
+                </button>
+                <button class="cart-clear-btn" id="cart-clear-btn">Clear Cart</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js?v=20241231"></script>
 </body>

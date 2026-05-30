@@ -1,4 +1,4 @@
-from fastapi import FastAPI, BackgroundTasks
+from fastapi import FastAPI, BackgroundTasks, HTTPException
 from fastapi.responses import JSONResponse, StreamingResponse, RedirectResponse, FileResponse
 from starlette.background import BackgroundTask
 from fastapi.middleware.cors import CORSMiddleware
@@ -40,6 +40,27 @@ class Product(BaseModel):
     is_subscription: Optional[bool] = False
     interval: Optional[str] = None
     interval_count: Optional[int] = None
+
+# ==================== NEW MODELS FOR POLAR.SH CART CHECKOUT ====================
+
+class CartItem(BaseModel):
+    """Item in the shopping cart"""
+    id: str
+    title: str
+    price: str
+    priceValue: float
+    image: Optional[str] = None
+
+class CheckoutRequest(BaseModel):
+    """Request body for creating a checkout"""
+    items: List[CartItem]
+    customer_email: Optional[str] = None
+
+class CheckoutResponse(BaseModel):
+    """Response containing the Polar checkout URL"""
+    checkout_url: str
+    total: float
+    item_count: int
 
 # Mock Data (matches desktop app)
 products_db = [
@@ -159,75 +180,77 @@ def read_root():
 
 @app.get("/api/products", response_model=List[Product])
 async def get_products():
-    api_key = os.getenv("LEMON_SQUEEZY_API_KEY")
-    store_id = os.getenv("LEMON_SQUEEZY_STORE_ID")
+    polar_token = os.getenv("POLAR_ACCESS_TOKEN")
+    org_id = os.getenv("POLAR_ORGANIZATION_ID")
+    cart_bundle_product_id = os.getenv("POLAR_CART_BUNDLE_PRODUCT_ID")
+    polar_env = os.getenv("POLAR_ENV", "production")
     
+    # Base URL for Polar
+    base_url = "https://sandbox-api.polar.sh/v1" if polar_env == "sandbox" else "https://api.polar.sh/v1"
+
     # If no credentials, return mock data
-    if not api_key or not store_id:
-        print("ℹ️ No Lemon Squeezy credentials found (env vars).")
-        # Log keys to help debug why cron doesn't see them (security: don't log values)
+    if not polar_token or not org_id:
+        print("ℹ️ No Polar.sh credentials found (env vars POLAR_ACCESS_TOKEN or POLAR_ORGANIZATION_ID).")
         print(f"   🔍 Debug: Environment keys visible to process: {list(os.environ.keys())}")
         print("   Returning mock inventory.")
         return products_db
 
-    # Fetch from Lemon Squeezy
+    # Fetch from Polar.sh
     try:
         headers = {
-            "Authorization": f"Bearer {api_key}",
-            "Accept": "application/vnd.api+json"
+            "Authorization": f"Bearer {polar_token}",
+            "Accept": "application/json"
         }
         async with httpx.AsyncClient() as client:
             response = await client.get(
-                f"https://api.lemonsqueezy.com/v1/products?filter[store_id]={store_id}",
-                headers=headers
+                f"{base_url}/products?organization_id={org_id}&limit=100",
+                headers=headers,
+                timeout=15.0
             )
             if response.status_code != 200:
-                print(f"⚠️ Lemon Squeezy Error {response.status_code}: {response.text}")
+                print(f"⚠️ Polar.sh Error {response.status_code}: {response.text}")
                 return products_db # Fallback
 
             data = response.json()
+            items = data.get("items", [])
             live_products = []
             
-            for item in data.get("data", []):
-                attr = item.get("attributes", {})
-                
-                # Filter out "cart-bundle" or "Cart Bundle" (internal use)
-                name_check = attr.get("name", "").lower()
-                if "cart-bundle" in name_check or "cart bundle" in name_check:
+            for item in items:
+                # Filter out the "cart-bundle" or if the product ID equals cart_bundle_product_id
+                name_check = item.get("name", "").lower()
+                prod_id = str(item.get("id"))
+                if "cart-bundle" in name_check or "cart bundle" in name_check or (cart_bundle_product_id and prod_id == str(cart_bundle_product_id)):
                     continue
                 
-                # Fetch variant data first (needed for checkout and subscription detection)
-                variant_id = None
-                is_subscription = False
-                interval = None
-                interval_count = None
-                try:
-                    variant_response = await client.get(
-                        f"https://api.lemonsqueezy.com/v1/products/{item['id']}/variants",
-                        headers=headers,
-                        timeout=10.0
-                    )
-                    if variant_response.status_code == 200:
-                        variants = variant_response.json().get("data", [])
-                        if variants:
-                            variant_id = str(variants[0]["id"])  # Use first variant
-                            variant_attrs = variants[0].get("attributes", {})
-                            # Check if this is a subscription product
-                            is_subscription = variant_attrs.get("is_subscription", False)
-                            if is_subscription:
-                                interval = variant_attrs.get("interval", "month")  # day, week, month, year
-                                interval_count = variant_attrs.get("interval_count", 1)
-                except Exception as e:
-                    print(f"⚠️ Failed to fetch variant for product {item['id']}: {e}")
+                prices = item.get("prices", [])
+                price_formatted = "$0.00"
+                is_subscription = item.get("is_recurring", False)
+                interval = item.get("recurring_interval")  # e.g., 'month', 'year'
+                interval_count = item.get("recurring_interval_count", 1)
+
+                # Find first active price
+                active_price = None
+                for pr in prices:
+                    if not pr.get("is_archived", False):
+                        active_price = pr
+                        break
+                if not active_price and prices:
+                    active_price = prices[0]
+
+                if active_price:
+                    amount_cents = active_price.get("price_amount", 0)
+                    price_formatted = f"${amount_cents / 100:.2f}"
+                
+                # Retrieve product image from metadata if present
+                metadata = item.get("metadata", {})
+                product_image = metadata.get("image") or metadata.get("image_url") or None
                 
                 # Determine category from name AND description (keyword matching)
-                name_lower = attr.get("name", "").lower()
-                desc_lower = (attr.get("description", "") or "").lower()
-                combined_text = name_lower + " " + desc_lower
+                desc_lower = (item.get("description", "") or "").lower()
+                combined_text = name_check + " " + desc_lower
                 
                 # Category detection - prioritize bundle/subscription, then subject keywords
-                # Only mark as "bundle" if explicitly named as one
-                if "bundle" in name_lower or "complete" in name_lower or "pack" in name_lower:
+                if "bundle" in name_check or "complete" in name_check or "pack" in name_check:
                     category = "bundle"
                 elif is_subscription:
                     category = "subscription"
@@ -240,25 +263,24 @@ async def get_products():
                 elif any(kw in combined_text for kw in ["writ", "composition", "essay", "grammar", "spelling"]):
                     category = "writing"
                 else:
-                    category = "curriculum"  # Default to curriculum instead of bundle
+                    category = "curriculum"
 
                 live_products.append({
-                    "id": str(item["id"]),
-                    "variant_id": variant_id,
-                    "title": attr.get("name", "Unknown Product"),
-                    "description": attr.get("description", "") or "No description provided.",
-                    "price": attr.get("price_formatted", "$0.00"),
-                    "image": attr.get("large_thumb_url") or attr.get("thumb_url"),
+                    "id": prod_id,
+                    "title": item.get("name", "Unknown Product"),
+                    "description": item.get("description", "") or "No description provided.",
+                    "price": price_formatted,
+                    "image": product_image,
                     "category": category,
                     "purchased": False,
-                    "buyUrl": attr.get("buy_now_url") or attr.get("buy_url"),
+                    "buyUrl": None,  # Handled dynamically by frontend cart drawer
                     "contentPath": None,  # Downloads handled separately
                     "is_subscription": is_subscription,
                     "interval": interval,
                     "interval_count": interval_count
                 })
             
-            print(f"📦 DEBUG: Fetched {len(live_products)} products from Lemon Squeezy:")
+            print(f"📦 DEBUG: Fetched {len(live_products)} products from Polar.sh:")
             for p in live_products:
                 sub_info = f" [SUBSCRIPTION: {p['interval']}]" if p['is_subscription'] else ""
                 print(f"   - {p['title']} ({p['category']}){sub_info} Image: {p['image']}")
@@ -266,8 +288,126 @@ async def get_products():
             return live_products
 
     except Exception as e:
-        print(f"❌ Error connecting to Lemon Squeezy: {e}")
+        print(f"❌ Error connecting to Polar.sh: {e}")
         return products_db
+
+
+# ==================== NEW CHECKOUT ENDPOINT ====================
+
+@app.post("/api/checkout", response_model=CheckoutResponse)
+async def create_checkout(request: CheckoutRequest):
+    """
+    Create a bundled Polar.sh checkout session for multiple cart items.
+    
+    This endpoint:
+    1. Receives cart items from the frontend
+    2. Calculates the total price in cents
+    3. Triggers Polar's Checkout API using the generic "Cart Bundle" Product ID
+    4. Overrides the product price with the dynamic cart total (Ad-hoc Price)
+    5. Saves the itemized cart in metadata for order generation/fulfillment
+    6. Returns the unique Polar checkout URL to the frontend
+    """
+    
+    if not request.items:
+        raise HTTPException(status_code=400, detail="Cart is empty")
+    
+    polar_token = os.getenv("POLAR_ACCESS_TOKEN")
+    org_id = os.getenv("POLAR_ORGANIZATION_ID")
+    cart_bundle_product_id = os.getenv("POLAR_CART_BUNDLE_PRODUCT_ID")
+    polar_env = os.getenv("POLAR_ENV", "production")
+    
+    base_url = "https://sandbox-api.polar.sh/v1" if polar_env == "sandbox" else "https://api.polar.sh/v1"
+    
+    if not all([polar_token, org_id, cart_bundle_product_id]):
+        raise HTTPException(
+            status_code=500, 
+            detail="Polar.sh configuration missing. Please ensure POLAR_ACCESS_TOKEN, POLAR_ORGANIZATION_ID, and POLAR_CART_BUNDLE_PRODUCT_ID are set in your .env"
+        )
+    
+    # Calculate total
+    total = sum(item.priceValue for item in request.items)
+    total_cents = int(total * 100)  # Convert to cents
+    
+    # Pre-build itemized cart list for metadata
+    cart_items_data = [
+        {
+            "id": item.id,
+            "title": item.title,
+            "price": item.price,
+            "priceValue": item.priceValue
+        }
+        for item in request.items
+    ]
+    
+    try:
+        headers = {
+            "Authorization": f"Bearer {polar_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+        
+        # Build Polar checkout payload with ad-hoc pricing and metadata
+        checkout_payload = {
+            "products": [cart_bundle_product_id],
+            "prices": {
+                cart_bundle_product_id: [
+                    {
+                        "type": "fixed",
+                        "amount": total_cents,
+                        "currency": "usd"
+                    }
+                ]
+            },
+            "success_url": f"https://littleoatlearners.com/thank-you.html?items={len(request.items)}&total={total:.2f}",
+            "metadata": {
+                "item_count": str(len(request.items)),
+                "items_json": json.dumps(cart_items_data)[:450]  # Store in metadata (trimmed to fit 500 max char limit)
+            }
+        }
+        
+        # Pre-populate customer email if provided
+        if request.customer_email:
+            checkout_payload["customer_email"] = request.customer_email
+            
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                f"{base_url}/checkouts/",
+                headers=headers,
+                json=checkout_payload,
+                timeout=30.0
+            )
+            
+            if response.status_code != 201:
+                print(f"❌ Polar.sh Checkout Creation Error {response.status_code}: {response.text}")
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Failed to create Polar checkout session: {response.text}"
+                )
+            
+            result = response.json()
+            checkout_url = result.get("url")
+            
+            if not checkout_url:
+                raise HTTPException(
+                    status_code=500,
+                    detail="Polar.sh response did not contain a checkout URL."
+                )
+            
+            print(f"✅ Created Polar checkout for ${total:.2f} ({len(request.items)} items)")
+            print(f"🔗 Checkout URL: {checkout_url}")
+            
+            return CheckoutResponse(
+                checkout_url=checkout_url,
+                total=total,
+                item_count=len(request.items)
+            )
+            
+    except httpx.HTTPError as e:
+        print(f"❌ HTTP Error creating Polar checkout: {e}")
+        raise HTTPException(status_code=500, detail=f"Network error communicating with Polar.sh: {str(e)}")
+    except Exception as e:
+        print(f"❌ Unexpected error creating Polar checkout: {e}")
+        raise HTTPException(status_code=500, detail=f"Unexpected checkout error: {str(e)}")
 
 
 # ==================== SYNC ENDPOINT ====================
