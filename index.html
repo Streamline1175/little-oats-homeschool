@@ -1,559 +1,743 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Little Oat Learners – A privacy-first homeschool desktop app for families. Track progress, manage assignments, and access premium learning tools. Pre-K to 5th grade. Just $1.99/month.">
-    <meta name="keywords"
-        content="homeschool curriculum, homeschool tracking, homeschool app, little oat learners, home education, homeschool software">
-    <meta name="author" content="Little Oat Learners">
-    <title>Little Oat Learners | Homeschool Desktop App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=20241231">
-    <link rel="icon" type="image/svg+xml" href="assets/logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Little Oat Learners – A privacy-first homeschool desktop app for families. Track progress, manage assignments, and access premium learning tools. Pre-K to 5th grade. Just $1.99/month." />
+  <meta name="keywords" content="homeschool curriculum, homeschool tracking, homeschool app, little oat learners, home education, homeschool software" />
+  <meta name="author" content="Little Oat Learners" />
+  <title>Little Oat Learners | Homeschool Desktop App</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Existing brand tokens + components (keep unchanged) -->
+  <link rel="stylesheet" href="css/styles.css?v=20260506" />
+  <!-- New homepage layout styles -->
+  <link rel="stylesheet" href="css/home.css?v=20260506" />
 </head>
-
 <body>
-    <header class="site-header" id="top">
-        <div class="container nav-bar">
-            <a class="brand" href="#top">
-                <img src="assets/logo.png" alt="Little Oat Learners logo" class="brand-mark">
-                <div class="brand-text">
-                    <span class="brand-title">Your complete homeschool companion</span>
-                    <small class="brand-tagline">Gentle tools to plan, track, and grow your child's learning</small>
-                </div>
-            </a>
-            <nav class="main-nav" aria-label="Primary navigation">
-                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-                <ul id="nav-links" class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="texas-standards.html">Texas Compliance</a></li>
-                    <li><a href="resources.html">Free Worksheets</a></li>
-                    <li><a href="curriculum.html">Shop</a></li>
-                    <li><a href="#download">Download</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main class="compact-page">
-        <section class="hero">
-            <div class="container hero-container-layout">
-                <div class="hero-copy">
-                    <p class="eyebrow">Desktop App • Pre-K to 5th Grade • $1.99/month</p>
-                    <h1>Nurture Curiosity,<br>Fuel Growth.</h1>
-                    <p class="lead">Premium Homeschool Curriculum for Texas Families.</p>
-                    <div class="hero-actions">
-                        <a class="btn primary pulse" href="#download">Download Now</a>
-                        <a class="btn outline" href="#features">See Features</a>
-                    </div>
-                    <div class="hero-meta">
-                        <span>100% Offline</span>
-                        <span>•</span>
-                        <span>Data Stays Local</span>
-                        <span>•</span>
-                        <span>Unlimited Students</span>
-                    </div>
-                </div>
 
-                <div class="hero-visual-showcase" aria-label="Little Oat Learners Software Preview">
-                    <div class="glass-widgets-row">
-                        <!-- Widget 1: Unlimited Learner Profiles -->
-                        <div class="glass-widget">
-                            <div class="widget-header">
-                                <span class="widget-icon">👤</span>
-                                <h3>Unlimited Learner Profiles</h3>
-                            </div>
-                            <p class="widget-desc">Manage learning paths for every child (Pre-K to 5th grade) within one account.</p>
-                            <div class="profile-row">
-                                <span class="profile-avatar">👧</span>
-                                <div class="profile-info">
-                                    <span class="profile-name">Ava</span>
-                                    <div class="progress-bar-container"><div class="progress-bar" style="width: 75%;"></div></div>
-                                </div>
-                            </div>
-                            <div class="profile-row">
-                                <span class="profile-avatar">👦</span>
-                                <div class="profile-info">
-                                    <span class="profile-name">Ben</span>
-                                    <div class="progress-bar-container"><div class="progress-bar" style="width: 45%;"></div></div>
-                                </div>
-                            </div>
-                        </div>
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="lo-nav" id="top" aria-label="Primary navigation">
+  <a class="brand" href="#top">
+    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
+    <span class="brand-name">Little Oats</span>
+  </a>
 
-                        <!-- Widget 2: Detailed Progress Reports -->
-                        <div class="glass-widget">
-                            <div class="widget-header">
-                                <span class="widget-icon">📊</span>
-                                <h3>Detailed Progress Reports</h3>
-                            </div>
-                            <p class="widget-desc">Track achievements, skills, and growth with intuitive, state-aligned reporting.</p>
-                            <div class="chart-and-rating">
-                                <div class="bar-chart">
-                                    <div class="chart-bar" style="height: 40px;"></div>
-                                    <div class="chart-bar" style="height: 75px;"></div>
-                                    <div class="chart-bar" style="height: 55px;"></div>
-                                    <div class="chart-bar" style="height: 90px;"></div>
-                                    <div class="chart-bar" style="height: 60px;"></div>
-                                </div>
-                                <div class="rating-box">
-                                    <div class="star-rating">⭐⭐⭐⭐⭐</div>
-                                    <span class="rating-text">State-Aligned</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <ul class="nav-links" id="lo-nav-links">
+    <li><a href="#tour">Features</a></li>
+    <li><a href="#promise">Why Little Oats</a></li>
+    <li><a href="premium.html">Premium</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
 
-                    <!-- Large Learner Dashboard Widget -->
-                    <div class="glass-widget main-dashboard-widget">
-                        <div class="dashboard-header">
-                            <div class="dashboard-branding">
-                                <img src="assets/logo.png" alt="Little Oat Learners" class="dashboard-logo">
-                                <span class="dashboard-title">Learner Dashboard</span>
-                            </div>
-                            <div class="dashboard-welcome">
-                                <span>Welcome, <strong>Sarah!</strong></span>
-                                <span class="settings-badge">⚙️ Settings</span>
-                            </div>
-                        </div>
+  <div class="nav-ctas">
+    <a class="lo-btn primary sm" href="#download">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+      Download
+    </a>
+  </div>
 
-                        <div class="dashboard-grid">
-                            <!-- Left: Today's Lessons -->
-                            <div class="dashboard-card">
-                                <h4>Today's Lessons</h4>
-                                <div class="subject-row">
-                                    <div class="subject-label">
-                                        <span class="sub-icon">🔢</span>
-                                        <span>Math</span>
-                                    </div>
-                                    <div class="progress-pill">Progress 75%</div>
-                                </div>
-                                <div class="subject-row">
-                                    <div class="subject-label">
-                                        <span class="sub-icon">📚</span>
-                                        <span>Reading</span>
-                                    </div>
-                                    <div class="progress-pill">Progress 45%</div>
-                                </div>
-                                <div class="subject-row">
-                                    <div class="subject-label">
-                                        <span class="sub-icon">🔬</span>
-                                        <span>Science</span>
-                                    </div>
-                                    <div class="progress-pill">Progress 60%</div>
-                                }
-                                </div>
-                            </div>
+  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
+</nav>
 
-                            <!-- Middle: Calendar & Activity -->
-                            <div class="dashboard-card">
-                                <h4>Calendar</h4>
-                                <div class="mini-calendar">
-                                    <div class="cal-day">M</div><div class="cal-day">T</div><div class="cal-day">W</div><div class="cal-day">T</div><div class="cal-day">F</div>
-                                    <div class="cal-num">2</div><div class="cal-num">3</div><div class="cal-num">4</div><div class="cal-num">5</div><div class="cal-num active">6</div>
-                                </div>
-                                <div class="activity-row">
-                                    <span>Activity Streak</span>
-                                    <div class="streak-bar"><div class="streak-fill" style="width: 80%;"></div></div>
-                                </div>
-                            </div>
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="lo-hero" aria-label="Hero">
+  <div class="inner">
 
-                            <!-- Right: Weekly Goals -->
-                            <div class="dashboard-card">
-                                <h4>Weekly Goals</h4>
-                                <div class="badge-display">
-                                    <span class="star-badge">🌟</span>
-                                    <div class="goal-stats">
-                                        <span class="goal-count">9/10</span>
-                                        <span class="goal-label">stars earned</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <h1>
+      Homeschool software<br />
+      that helps keep<br />
+      <em>homeschool simple.</em>
+    </h1>
 
-        <section id="about" class="section alt">
-            <div class="container grid tight">
-                <div>
-                    <p class="eyebrow"><strong>Homeschool Hub for Tracking and Creating Reports</strong></p>
-                    <h2>Built with warmth by a homeschool family, for every homeschool family</h2>
-                    <p>Little Oat Learners started as a way to make our own homeschool days smoother: one cozy place to
-                        log assignments, celebrate progress, and create custom reports for individual students.</p>
-                    <p>Everything runs right on your computer—no uploads, no worries. Your family’s work
-                        stays yours, and Premium extras and curriculum bundles are
-                        priced gently for anyone who wants a little more structure.</p>
+    <p class="sub">
+      Little Oats is a small, calm desktop app for parents who teach their own kids.
+      No accounts in the cloud. No screen-time goblins. Just a tidy place to keep
+      grades, books, calendars, and reports — together.
+    </p>
 
-                    <div class="story-highlight">
-                        <div class="story-highlight-copy">
-                            <p class="pill soft">Customizable from day one</p>
-                            <h3>Make it feel like your homeschool</h3>
-                            <p>Pick a color palette, set gentle reminders, add your school name and logo, and save
-                                profiles for every learner. The collage shows the real screens you can tailor in
-                                minutes.</p>
-                            <ul class="checklist">
-                                <li>- Colors, badges, and branding you control</li>
-                                <li>- Reminders and reports that match your pace</li>
-                                <li>- Profiles and subjects ready for every learner</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="highlight-card">
-                    <h3>What makes us different</h3>
-                    <ul class="checklist">
-                        <li>- 100% offline—works anywhere without internet</li>
-                        <li>- Your data never leaves your computer</li>
-                        <li>- Affordable at just $1.99/month</li>
-                        <li>- Built specifically for Texas homeschool requirements</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="section">
-            <div class="container">
-                <p class="eyebrow">Core Features</p>
-                <h2>Everything you need to manage your homeschool</h2>
-                <p class="lead" style="margin-bottom: 2rem;">All these features included in your $1.99/month
-                    subscription.
-                </p>
-                <div class="grid three">
-                    <article class="service-card">
-                        <div class="pill soft">Dashboard</div>
-                        <h3>Customizable Dashboard</h3>
-                        <p>Widget-based dashboard with daily activities, assignments, calendar events, and quick notes.
-                            Drag-and-drop to customize your view.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Students</div>
-                        <h3>Unlimited Student Profiles</h3>
-                        <p>Add as many students as you need. Each child gets their own profile with individual progress
-                            tracking and grade-level content.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Assignments</div>
-                        <h3>Assignment Tracking</h3>
-                        <p>Create assignments for any subject with file uploads, grading (traditional or mastery-based),
-                            and time tracking.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Calendar</div>
-                        <h3>Calendar & Scheduling</h3>
-                        <p>Full calendar with school days, holidays, field trips, and sick days. Recurring events and
-                            attendance tracking included.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Reports</div>
-                        <h3>Progress Reports</h3>
-                        <p>Comprehensive reports with visual charts, subject skills tracking, and grade history. Export
-                            anytime for records.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Rewards</div>
-                        <h3>Star Chart System</h3>
-                        <p>Visual behavior and accomplishment tracking with star rewards for positive reinforcement.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="premium" class="section alt">
-            <div class="container">
-                <p class="eyebrow">Premium Features</p>
-                <h2>Interactive learning tools for deeper engagement</h2>
-                <p class="lead" style="margin-bottom: 2rem;">Unlock premium features with a license key. Available
-                    monthly, yearly, or lifetime.</p>
-                <div class="grid three">
-                    <article class="service-card">
-                        <div class="pill soft">Mathematics</div>
-                        <h3>Math Skills Quizzes</h3>
-                        <p>Adaptive math quizzes for K-5 with visual questions, pie charts for fractions, geometry
-                            tools, and 25+ unique questions per topic.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Time</div>
-                        <h3>Interactive Clock</h3>
-                        <p>Visual clock with draggable hands. Challenge mode with natural language phrases like "half
-                            past 3" and "quarter till."</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Spelling</div>
-                        <h3>Spelling Bee Game</h3>
-                        <p>Audio-guided spelling challenges with multiple voice options, difficulty levels, and
-                            end-of-game overviews.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Money</div>
-                        <h3>Cash Register Practice</h3>
-                        <p>Money counting practice with simulated shopping, coin/bill recognition, and making change
-                            exercises.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Science</div>
-                        <h3>Solar System Explorer</h3>
-                        <p>3D space exploration with educational facts about planets and interactive planetary
-                            information.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Geography</div>
-                        <h3>USA States Map</h3>
-                        <p>Interactive map for learning states and capitals with clickable interactions and color-coded
-                            visual learning.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Writing</div>
-                        <h3>Writing Worksheets</h3>
-                        <p>Worksheets designed to improve writing skills through practice and structured exercises.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Typing</div>
-                        <h3>Turbo Typer</h3>
-                        <p>Typing practice with speed and accuracy challenges to build keyboarding skills.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="pill soft">Memorization</div>
-                        <h3>Memory Match</h3>
-                        <p>Fun matching game to improve memory and concentration skills.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="curriculum" class="section">
-            <div class="container">
-                <p class="eyebrow">Curriculum Shop</p>
-                <h2>High-quality curriculum, one purchase at a time</h2>
-                <p class="lead" style="max-width: 700px; margin: 0 auto 2rem; text-align: center;">
-                    Browse our curated curriculum bundles and premium features. One-time purchases with lifetime access.
-                    <strong>Secure checkout powered by Lemon Squeezy.</strong>
-                </p>
-
-                <div class="grid three" style="margin-bottom: 2rem;">
-                    <div class="highlight-card" style="padding: 1.5rem;">
-                        <h3>📚 Curriculum Bundles</h3>
-                        <p>Complete grade-level packages with worksheets, activities, and assessments for Pre-K through
-                            5th grade.</p>
-                    </div>
-                    <div class="highlight-card" style="padding: 1.5rem;">
-                        <h3>🎮 Premium Features</h3>
-                        <p>Unlock interactive learning tools including Math Quizzes, Spelling Bee, Solar System
-                            Explorer, and more.</p>
-                    </div>
-                    <div class="highlight-card" style="padding: 1.5rem;">
-                        <h3>✨ Individual Resources</h3>
-                        <p>Pick and choose specific subject packs, worksheets, and learning materials to complement your
-                            homeschool.</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin: 3rem 0;">
-                    <a href="curriculum.html" class="btn primary" style="font-size: 1.125rem; padding: 1.25rem 3rem;">
-                        Browse Shop
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" style="margin-left: 0.5rem;">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="integration-note" style="text-align: center; margin-top: 3rem;">
-                    <strong>Trusted & Secure.</strong> All payments are processed by Lemon Squeezy, which is owned by
-                    <strong>Stripe</strong>—one of the world's most trusted payment platforms.
-                </div>
-            </div>
-        </section>
-
-        <section id="download" class="section alt">
-            <div class="container" style="text-align: center;">
-                <p class="eyebrow">Download</p>
-                <h2>Get Little Oat Learners</h2>
-                <p class="lead" style="max-width: 600px; margin: 0 auto 2rem;">Download the app for your operating
-                    system. Just $1.99/month for all features.</p>
-
-                <div class="grid three" style="margin-bottom: 2rem;">
-                    <div class="download-wrapper">
-                        <span id="download-win" class="download-badge">Loading...</span>
-                        <a id="download-win-link"
-                            href="https://github.com/Streamline1175/homeschool-releases/releases/latest"
-                            class="service-card" style="text-decoration: none; text-align: center; width: 100%;">
-                            <div style="margin-bottom: 0.75rem;">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"
-                                    style="color: var(--sage-deep);">
-                                    <path
-                                        d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
-                                </svg>
-                            </div>
-                            <h3>Windows</h3>
-                            <p>Windows 10 or later</p>
-                            <span class="btn primary">Download .exe</span>
-                        </a>
-                    </div>
-                    <div class="download-wrapper">
-                        <span id="download-mac" class="download-badge">Loading...</span>
-                        <a id="download-mac-link"
-                            href="https://github.com/Streamline1175/homeschool-releases/releases/latest"
-                            class="service-card" style="text-decoration: none; text-align: center; width: 100%;">
-                            <div style="margin-bottom: 0.75rem;">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"
-                                    style="color: var(--sage-deep);">
-                                    <path
-                                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                                </svg>
-                            </div>
-                            <h3>macOS</h3>
-                            <p>macOS 10.15 (Catalina) or later</p>
-                            <span class="btn primary">Download .dmg</span>
-                        </a>
-                    </div>
-                    <div class="download-wrapper">
-                        <span id="download-linux" class="download-badge">Loading...</span>
-                        <a id="download-linux-link"
-                            href="https://github.com/Streamline1175/homeschool-releases/releases/latest"
-                            class="service-card" style="text-decoration: none; text-align: center; width: 100%;">
-                            <div style="margin-bottom: 0.75rem;">
-                                <img src="assets/tux-logo.png" alt="Linux" width="48" height="48"
-                                    style="display: block; margin: 0 auto; filter: brightness(0) saturate(100%) invert(42%) sepia(10%) saturate(800%) hue-rotate(70deg) brightness(92%) contrast(87%);">
-                            </div>
-                            <h3>Linux</h3>
-                            <p>Ubuntu 18.04 or equivalent</p>
-                            <span class="btn primary">Download AppImage</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="highlight-card" style="max-width: 600px; margin: 0 auto; text-align: left;">
-                    <h3>After downloading</h3>
-                    <ul class="checklist">
-                        <li>Run the installer and follow the prompts</li>
-                        <li>Create your first student profile</li>
-                        <li>Start using all features immediately</li>
-                        <li>Optionally purchase premium features or curriculum in the app</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section alt">
-            <div class="container grid three">
-                <div>
-                    <p class="eyebrow">Contact</p>
-                    <h2>Questions? I'm here to help</h2>
-                    <p>Whether you're curious about features, need help getting started, or want to share feedback—I'd
-                        love to hear from you. I personally reply to every message.</p>
-                </div>
-                <div class="card contact-card">
-                    <form class="contact-form">
-                        <label for="name">Name</label>
-                        <input id="name" name="name" type="text" placeholder="Your name">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" placeholder="you@example.com">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4"
-                            placeholder="Tell me how I can help with your homeschool journey"></textarea>
-                        <button type="submit" class="btn primary full">Send message</button>
-                        <p class="note">I reply personally and respect your inbox.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="brand-inline">
-                    <img src="assets/logo.png" alt="Little Oat Learners logo" class="brand-mark--large">
-                </div>
-            </div>
-            <div>
-                <h4>Explore</h4>
-                <ul class="footer-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#premium">Premium</a></li>
-                    <li><a href="#curriculum">Curriculum</a></li>
-                    <li><a href="#download">Download</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="policies.html#terms">Terms of Service</a></li>
-                    <li><a href="policies.html#privacy">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Get in touch</h4>
-                <p class="footer-note">Questions about Little Oat Learners? I'm here to help.</p>
-                <a class="btn outline" href="#contact">Contact</a>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <p>© 2025 Little Oat. Crafted with care for homeschool families.</p>
-        </div>
-    </footer>
-
-    <!-- Age Verification Modal -->
-    <div id="age-modal-overlay" class="age-modal-overlay" aria-hidden="true">
-        <div class="age-modal" role="dialog" aria-labelledby="age-modal-title" aria-modal="true">
-            <div class="age-modal-header">
-                <h3 id="age-modal-title">Age Verification Required</h3>
-            </div>
-            <div class="age-modal-body">
-                <p>This application is intended for adults. Please enter your date of birth to verify you are 18 years
-                    or older.</p>
-                <div class="dob-select-group">
-                    <div class="dob-field">
-                        <label for="dob-month">Month</label>
-                        <select id="dob-month" required>
-                            <option value="">Month</option>
-                            <option value="0">January</option>
-                            <option value="1">February</option>
-                            <option value="2">March</option>
-                            <option value="3">April</option>
-                            <option value="4">May</option>
-                            <option value="5">June</option>
-                            <option value="6">July</option>
-                            <option value="7">August</option>
-                            <option value="8">September</option>
-                            <option value="9">October</option>
-                            <option value="10">November</option>
-                            <option value="11">December</option>
-                        </select>
-                    </div>
-                    <div class="dob-field">
-                        <label for="dob-day">Day</label>
-                        <select id="dob-day" required>
-                            <option value="">Day</option>
-                        </select>
-                    </div>
-                    <div class="dob-field">
-                        <label for="dob-year">Year</label>
-                        <select id="dob-year" required>
-                            <option value="">Year</option>
-                        </select>
-                    </div>
-                </div>
-                <p id="age-error" class="age-modal-error" aria-live="polite"></p>
-            </div>
-            <div class="age-modal-actions">
-                <button type="button" id="age-cancel-btn" class="btn outline">Cancel</button>
-                <button type="button" id="age-verify-btn" class="btn primary">Verify Age</button>
-            </div>
-        </div>
+    <div class="ctas">
+      <a href="#download" class="lo-btn primary lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+        Download free for 14 days
+      </a>
+      <a href="#tour" class="lo-btn ghost lg">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16l13-8z" fill="currentColor"/></svg>
+        Take the tour
+      </a>
     </div>
 
-    <script src="js/main.js?v=20260205"></script>
-</body>
+    <div class="meta-row">
+      <span class="meta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.7-1A4.5 4.5 0 0 1 17 18z"/></svg>
+        Local-first · your data, your machine
+      </span>
+      <span class="meta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9.5C1.6 6 5 3 8 3c2 0 3 1 4 2.5C13 4 14 3 16 3c3 0 6.4 3 5 7.5-2 5-9 9.5-9 9.5z"/></svg>
+        $6.99/mo · unlimited learners
+      </span>
+      <span class="meta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c6-5 14-5 20 0"/><path d="M5 12.5c4-3.3 10-3.3 14 0"/><path d="M8.5 16c2-1.7 5-1.7 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>
+        Works offline always
+      </span>
+    </div>
 
+  </div>
+</section>
+
+<!-- ============================================================
+     MARQUEE TAPE
+     ============================================================ -->
+<div class="lo-tape" aria-hidden="true">
+  <div class="reel" id="lo-tape-reel">
+    <span>Works offline · always</span>
+    <span>Your data stays on your machine</span>
+    <span>macOS · Windows · Linux</span>
+    <span>No subscriptions hidden in the basement</span>
+    <span>Built by a homeschool family</span>
+    <span>Unlimited learners on one license</span>
+    <span>One thoughtful tool · not ten</span>
+    <!-- duplicated for seamless loop -->
+    <span>Works offline · always</span>
+    <span>Your data stays on your machine</span>
+    <span>macOS · Windows · Linux</span>
+    <span>No subscriptions hidden in the basement</span>
+    <span>Built by a homeschool family</span>
+    <span>Unlimited learners on one license</span>
+    <span>One thoughtful tool · not ten</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     FEATURE TOUR
+     ============================================================ -->
+<section id="tour" class="lo-tour">
+  <div class="head">
+    <div>
+      <span class="lo-eyebrow">A guided tour</span>
+      <h2>Six rooms in <em style="font-style:italic;color:var(--sage-deep);font-weight:500">one calm</em> homeschool app.</h2>
+    </div>
+    <p>OatSmart is the desktop companion to Little Oats. It runs locally, works without internet, and quietly handles the parts of homeschooling you don't want to think about.</p>
+  </div>
+
+  <div class="lo-tour-stage">
+    <!-- Feature list (left) -->
+    <div class="lo-tour-list" id="tour-list" role="tablist" aria-label="Feature tour">
+
+      <button class="lo-tour-item active" role="tab" aria-selected="true"
+              aria-controls="tour-panel" data-slide="0">
+        <span class="num">01</span>
+        <div>
+          <h4>Unlimited learner profiles</h4>
+          <p>Every child gets their own private profile with progress, calendars, and reports kept clearly separate.</p>
+        </div>
+      </button>
+
+      <button class="lo-tour-item" role="tab" aria-selected="false"
+              aria-controls="tour-panel" data-slide="1">
+        <span class="num">02</span>
+        <div>
+          <h4>A daily overview that fits your family</h4>
+          <p>Drag-and-drop widgets surface grades, goals, assignments, and reminders at a glance.</p>
+        </div>
+      </button>
+
+      <button class="lo-tour-item" role="tab" aria-selected="false"
+              aria-controls="tour-panel" data-slide="2">
+        <span class="num">03</span>
+        <div>
+          <h4>Tests, quizzes, and assignments — handled</h4>
+          <p>Create, assign, grade. Mastery or traditional. File uploads and time tracking included.</p>
+        </div>
+      </button>
+
+      <button class="lo-tour-item" role="tab" aria-selected="false"
+              aria-controls="tour-panel" data-slide="3">
+        <span class="num">04</span>
+        <div>
+          <h4>A reading record that builds a portfolio</h4>
+          <p>Log titles, time, ratings, and notes. Perfect for state portfolios and a love of reading.</p>
+        </div>
+      </button>
+
+      <button class="lo-tour-item" role="tab" aria-selected="false"
+              aria-controls="tour-panel" data-slide="4">
+        <span class="num">05</span>
+        <div>
+          <h4>Beautiful report cards &amp; transcripts</h4>
+          <p>Generate professional, parent-signed records. Export polished PDFs ready for any state.</p>
+        </div>
+      </button>
+
+      <button class="lo-tour-item" role="tab" aria-selected="false"
+              aria-controls="tour-panel" data-slide="5">
+        <span class="num">06</span>
+        <div>
+          <h4>Interactive activities, ready to launch</h4>
+          <p>Math quizzes, spelling bee, solar system, USA map, typing, and more — auto-graded.</p>
+        </div>
+      </button>
+
+    </div>
+
+    <!-- Screenshot frame (right) -->
+    <div class="lo-tour-frame" id="tour-panel" role="tabpanel" aria-live="polite">
+      <div class="lo-window">
+        <div class="titlebar">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="url" id="tour-url">oatsmart.app · learners</div>
+          <div style="width:30px"></div>
+        </div>
+        <div class="screen">
+          <img id="tour-img"
+               src="assets/Slide 2.png"
+               alt="Unlimited Learner Profiles interface"
+               width="1280" height="800"
+               loading="eager" />
+        </div>
+      </div>
+      <div class="lo-tour-caption">
+        <span>
+          <span class="pill-sm" id="tour-pill">Learners</span>
+          &nbsp;
+          <span id="tour-counter" style="color:var(--muted)">Step 1 of 6</span>
+        </span>
+        <div class="lo-tour-nav">
+          <button id="tour-prev" aria-label="Previous feature" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+          <button id="tour-next" aria-label="Next feature">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROMISE GRID
+     ============================================================ -->
+<section id="promise" class="lo-promise">
+  <div class="inner">
+    <div class="head">
+      <div>
+        <span class="lo-eyebrow">Our promise</span>
+        <h2>Software for the kind of homeschool you actually want.</h2>
+      </div>
+    </div>
+    <div class="lo-promise-grid">
+
+      <div class="lo-promise-item">
+        <span class="ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.7-1A4.5 4.5 0 0 1 17 18z"/></svg>
+        </span>
+        <h3>Yours, always.</h3>
+        <p>Your records, learners, and grades stay on your computer. We can't see them — and we don't want to.</p>
+      </div>
+
+      <div class="lo-promise-item">
+        <span class="ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c6-5 14-5 20 0"/><path d="M5 12.5c4-3.3 10-3.3 14 0"/><path d="M8.5 16c2-1.7 5-1.7 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>
+        </span>
+        <h3>Works without internet.</h3>
+        <p>Plan a school day from a cabin in the woods. No login walls, no spinning loaders.</p>
+      </div>
+
+      <div class="lo-promise-item">
+        <span class="ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9-9.5C1.6 6 5 3 8 3c2 0 3 1 4 2.5C13 4 14 3 16 3c3 0 6.4 3 5 7.5-2 5-9 9.5-9 9.5z"/></svg>
+        </span>
+        <h3>Built by a family.</h3>
+        <p>We homeschool four kids. Every feature is something we wished existed and then built ourselves.</p>
+      </div>
+
+      <div class="lo-promise-item">
+        <span class="ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5 11 4v8H3zm9-1.5 9-1.5V12h-9zm0 9.5h9v8.5L12 20zm-9 0h8v7L3 19.5z" fill="currentColor"/></svg>
+        </span>
+        <h3>Mac · Windows · Linux.</h3>
+        <p>One small download, no installer drama. Open it like any other app on your computer.</p>
+      </div>
+
+      <div class="lo-promise-item">
+        <span class="ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8 14-2 7 6-3 6 3-2-7"/></svg>
+        </span>
+        <h3>State-portfolio ready.</h3>
+        <p>Generate beautiful report cards and transcripts you can hand to your district without apology.</p>
+      </div>
+
+      <div class="lo-promise-item">
+        <span class="ic" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><path d="m6 6 2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg>
+        </span>
+        <h3>Quiet by design.</h3>
+        <p>No notifications, no streaks, no FOMO. Just a tidy place to teach your children.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIAL
+     ============================================================ -->
+<section id="voices" class="lo-quote">
+  <div class="inner">
+    <div class="qmark" aria-hidden="true">&ldquo;</div>
+    <div>
+      <blockquote>
+        We tried four other planners before this. OatSmart is the first one that
+        didn't try to turn our school day into a video game. It just gets out of
+        the way and lets us teach.
+      </blockquote>
+      <div class="who">
+        <span class="av" aria-hidden="true">JR</span>
+        <div>
+          <div class="who-name">Jen R.</div>
+          <div>Homeschooling 3 in Vermont · 4th year</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING STRIP
+     ============================================================ -->
+<section id="pricing" class="lo-cta">
+  <div class="inner">
+    <span class="lo-eyebrow">Try it for a month</span>
+    <h2>Bring a little calm to your school year.</h2>
+    <p>Download OatSmart and use it free for 14 days. If it fits, it's $6.99/month per family — no per-child fees, no upsells.</p>
+    <div class="lo-pricing-strip">
+      <span class="price">$6.99 <em>/ month, per family</em></span>
+      <span class="div" aria-hidden="true"></span>
+      <span class="note">14-day free trial · cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DOWNLOADS — full design
+     ============================================================ -->
+<section id="download" class="lo-dl-section">
+  <div class="lo-container">
+
+    <!-- Hero row: headline + big counter card -->
+    <div class="lo-dl-hero-row">
+      <div class="lo-dl-hero-copy">
+        <span class="lo-eyebrow">OatSmart desktop · v1.4.2</span>
+        <h2>Download OatSmart<br /><em>for your computer.</em></h2>
+        <p>Free for 14 days, then $6.99/month per family. One small app — no installers, no plugins, no internet required after install.</p>
+        <div class="lo-dl-hero-btns">
+          <a id="download-mac-link" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 4c-1 1-2 2-2 3 0 0 1 0 2-1s2-1 2-3c-1 0-1 0-2 1zm-3 5c-2 0-3-1-5-1s-4 2-4 5c0 4 3 9 5 9 1 0 2-1 3-1s2 1 3 1c2 0 5-5 5-9 0-2-1-3-2-4-1 0-2 0-2 1s-1 0-3-1z"/></svg>
+            Download for Mac
+          </a>
+          <a id="download-win-link" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn outline lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 11 4v8H3zm9-1.5 9-1.5V12h-9zm0 9.5h9v8.5L12 20zm-9 0h8v7L3 19.5z"/></svg>
+            Windows
+          </a>
+          <a id="download-linux-link" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn outline lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a4 4 0 0 0-4 4c0 2 1 4 1 6s-3 4-3 6 2 2 6 2 6 0 6-2-3-4-3-6 1-4 1-6a4 4 0 0 0-4-4zm-1.5 4.5c.5 0 1 .5 1 1s-.5 1-1 1-1-.5-1-1 .5-1 1-1zm3 0c.5 0 1 .5 1 1s-.5 1-1 1-1-.5-1-1 .5-1 1-1z"/></svg>
+            Linux
+          </a>
+        </div>
+      </div>
+      <div class="lo-dl-bigcount">
+        <div class="lo-dl-bigcount-label">Downloads, all-time</div>
+        <div class="lo-dl-bigcount-num" id="dl-total-count">—</div>
+        <div class="lo-dl-bigcount-delta">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><path d="m6 6 2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg>
+          <span id="dl-delta-text">Pulled from GitHub Releases</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Per-OS columns -->
+    <div class="lo-dl-os-grid">
+
+      <div class="lo-dl-os-col">
+        <div class="lo-dl-os-head">
+          <span class="lo-dl-os-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 4c-1 1-2 2-2 3 0 0 1 0 2-1s2-1 2-3c-1 0-1 0-2 1zm-3 5c-2 0-3-1-5-1s-4 2-4 5c0 4 3 9 5 9 1 0 2-1 3-1s2 1 3 1c2 0 5-5 5-9 0-2-1-3-2-4-1 0-2 0-2 1s-1 0-3-1z"/></svg>
+          </span>
+          <div>
+            <h3>macOS</h3>
+            <div class="lo-dl-os-sub">Apple Silicon · Intel</div>
+          </div>
+        </div>
+        <div class="lo-dl-os-num" id="dl-mac-count">—</div>
+        <div class="lo-dl-os-lbl">downloads</div>
+        <div class="lo-dl-os-bar"><span id="dl-mac-bar" style="width:50%"></span></div>
+        <div class="lo-dl-os-versions">
+          <div class="lo-dl-os-row"><span>.dmg (Apple Silicon)</span><span class="lo-dl-os-meta">v1.4.2 · 78 MB</span></div>
+          <div class="lo-dl-os-row"><span>.dmg (Intel)</span><span class="lo-dl-os-meta">v1.4.2 · 82 MB</span></div>
+        </div>
+        <div class="lo-dl-os-cta">
+          <a id="dl-mac-btn" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <div class="lo-dl-os-col">
+        <div class="lo-dl-os-head">
+          <span class="lo-dl-os-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 11 4v8H3zm9-1.5 9-1.5V12h-9zm0 9.5h9v8.5L12 20zm-9 0h8v7L3 19.5z"/></svg>
+          </span>
+          <div>
+            <h3>Windows</h3>
+            <div class="lo-dl-os-sub">Windows 10 · 11</div>
+          </div>
+        </div>
+        <div class="lo-dl-os-num" id="dl-win-count">—</div>
+        <div class="lo-dl-os-lbl">downloads</div>
+        <div class="lo-dl-os-bar"><span id="dl-win-bar" style="width:37%"></span></div>
+        <div class="lo-dl-os-versions">
+          <div class="lo-dl-os-row"><span>.exe (installer)</span><span class="lo-dl-os-meta">v1.4.2 · 94 MB</span></div>
+          <div class="lo-dl-os-row"><span>.zip (portable)</span><span class="lo-dl-os-meta">v1.4.2 · 88 MB</span></div>
+        </div>
+        <div class="lo-dl-os-cta">
+          <a id="dl-win-btn" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <div class="lo-dl-os-col">
+        <div class="lo-dl-os-head">
+          <span class="lo-dl-os-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a4 4 0 0 0-4 4c0 2 1 4 1 6s-3 4-3 6 2 2 6 2 6 0 6-2-3-4-3-6 1-4 1-6a4 4 0 0 0-4-4zm-1.5 4.5c.5 0 1 .5 1 1s-.5 1-1 1-1-.5-1-1 .5-1 1-1zm3 0c.5 0 1 .5 1 1s-.5 1-1 1-1-.5-1-1 .5-1 1-1z"/></svg>
+          </span>
+          <div>
+            <h3>Linux</h3>
+            <div class="lo-dl-os-sub">.deb · AppImage · tar.gz</div>
+          </div>
+        </div>
+        <div class="lo-dl-os-num" id="dl-linux-count">—</div>
+        <div class="lo-dl-os-lbl">downloads</div>
+        <div class="lo-dl-os-bar"><span id="dl-linux-bar" style="width:13%"></span></div>
+        <div class="lo-dl-os-versions">
+          <div class="lo-dl-os-row"><span>.AppImage</span><span class="lo-dl-os-meta">v1.4.2 · 72 MB</span></div>
+          <div class="lo-dl-os-row"><span>.deb package</span><span class="lo-dl-os-meta">v1.4.2 · 68 MB</span></div>
+          <div class="lo-dl-os-row"><span>.tar.gz</span><span class="lo-dl-os-meta">v1.4.2 · 71 MB</span></div>
+        </div>
+        <div class="lo-dl-os-cta">
+          <a id="dl-linux-btn" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Release notes + version history side by side -->
+    <div class="lo-dl-notes-row">
+      <div class="lo-dl-release">
+        <span class="lo-eyebrow">What's new</span>
+        <h3>v1.4.2</h3>
+        <div class="lo-dl-release-date">Released May 1, 2026</div>
+        <ul class="lo-dl-release-notes">
+          <li>Reading portfolios now export with embedded narration recordings.</li>
+          <li>Premium Math module: new fraction-bar visualizer for grades 3–5.</li>
+          <li>Calendar: optional state-portfolio day count in the sidebar.</li>
+          <li>Faster startup on Linux AppImage (≈ 40% reduction in cold-launch).</li>
+          <li>Security &amp; dependency updates.</li>
+        </ul>
+        <a href="https://github.com/Streamline1175/homeschool-releases/releases" target="_blank" rel="noopener" class="lo-btn outline" style="align-self:flex-start;margin-top:8px">Full changelog →</a>
+      </div>
+      <div class="lo-dl-versions">
+        <span class="lo-eyebrow">Previous releases</span>
+        <h3>All versions</h3>
+        <div class="lo-dl-version-note">All builds available on GitHub Releases</div>
+        <div class="lo-dl-version-list">
+          <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.4.1</span><span class="lo-dl-ver-note">Calendar bug fixes + Linux AppImage stability</span></div><div class="lo-dl-ver-meta">Apr 12, 2026</div></div>
+          <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.4.0</span><span class="lo-dl-ver-note">Reading portfolio, transcript v2</span></div><div class="lo-dl-ver-meta">Mar 28, 2026</div></div>
+          <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.3.5</span><span class="lo-dl-ver-note">Spelling Bee audio improvements</span></div><div class="lo-dl-ver-meta">Feb 14, 2026</div></div>
+          <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.3.0</span><span class="lo-dl-ver-note">USA Map module, premium activity toggles</span></div><div class="lo-dl-ver-meta">Jan 9, 2026</div></div>
+        </div>
+        <a href="https://github.com/Streamline1175/homeschool-releases/releases" target="_blank" rel="noopener" class="lo-btn outline" style="align-self:flex-start;margin-top:14px">All releases on GitHub →</a>
+      </div>
+    </div>
+
+    <!-- Checksums -->
+    <div class="lo-dl-checksums">
+      <div class="lo-dl-checksums-label">SHA-256 checksums</div>
+      <div class="lo-dl-checksums-grid">
+        <div class="lo-dl-checksum-item"><span class="lo-dl-cs-name">macOS</span><span class="lo-dl-cs-hash">7d3a1c8b9f2e4a6d0c5b8e1f3a7d9c2b…</span></div>
+        <div class="lo-dl-checksum-item"><span class="lo-dl-cs-name">Windows</span><span class="lo-dl-cs-hash">2a4c6e8f0a1c3e5d7b9f1a3c5e7f9b1d…</span></div>
+        <div class="lo-dl-checksum-item"><span class="lo-dl-cs-name">Linux</span><span class="lo-dl-cs-hash">9e1f3a5c7d9b1e3a5c7f9d1b3e5a7c9f…</span></div>
+      </div>
+    </div>
+
+    <!-- System requirements strip -->
+    <div class="lo-dl-sysreq">
+      <div>
+        <div class="lo-eyebrow" style="margin-bottom:8px">System requirements</div>
+        <ul class="lo-dl-sysreq-list">
+          <li>macOS 12 Monterey or later</li>
+          <li>Windows 10 (1909+) or Windows 11</li>
+          <li>Linux: any distro with glibc 2.31+</li>
+          <li>250 MB disk · 2 GB RAM</li>
+        </ul>
+      </div>
+      <div>
+        <div class="lo-eyebrow" style="margin-bottom:8px">What's bundled</div>
+        <ul class="lo-dl-sysreq-list">
+          <li>Planner, calendar, learners, books</li>
+          <li>Reports &amp; transcripts (PDF export)</li>
+          <li>Charlotte Mason Y1 starter (free)</li>
+          <li>Premium modules — 14-day trial</li>
+        </ul>
+      </div>
+      <div>
+        <div class="lo-eyebrow" style="margin-bottom:8px">Need help?</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;max-width:28ch">Stuck installing or restoring a license? Email us — a real homeschool parent will reply.</p>
+        <a href="/cdn-cgi/l/email-protection#e28a878e8e8da28e8b96968e878d83968e8783908c879091cc818d8f" class="lo-btn outline">✉ Email support</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="lo-foot">
+  <div class="row">
+    <div>
+      <div class="brand-col">
+        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
+        <span>Little Oats</span>
+      </div>
+      <p>Calm, grounded homeschool software for families who want less screen time and more learning.</p>
+      <p style="margin-top:14px;font-size:12px;color:var(--muted)">One thoughtful email a month — no spam.</p>
+      <form class="lo-foot-email" onsubmit="return false;">
+        <input type="email" placeholder="you@home.school" aria-label="Email for newsletter" />
+        <button type="submit">→</button>
+      </form>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="index.html#download">OatSmart desktop</a></li>
+        <li><a href="curriculum.html">Curriculum shop</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="premium.html">Premium</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="policies.html#privacy">Privacy policy</a></li>
+        <li><a href="policies.html#terms">Terms of service</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Download</h5>
+      <ul>
+        <li><a id="foot-mac-link" href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
+        <li><a id="foot-win-link" href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
+        <li><a id="foot-linux-link" href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases" target="_blank" rel="noopener">All releases</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
+    <div class="lo-foot-links">
+      <a href="policies.html#terms">Terms</a>
+      <a href="policies.html#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+
+<!-- Reuse existing main.js for download-link wiring (GitHub API fetch).
+     It targets #download-win-link, #download-mac-link, #download-linux-link
+     which are already present above. -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ---- Mobile menu ------------------------------------------ */
+(function () {
+  var btn   = document.getElementById('lo-menu-btn');
+  var links = document.getElementById('lo-nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    links.style.display = open ? '' : 'flex';
+    links.style.flexDirection = open ? '' : 'column';
+    links.style.position = open ? '' : 'absolute';
+    links.style.top = open ? '' : '100%';
+    links.style.left = open ? '' : '0';
+    links.style.right = open ? '' : '0';
+    links.style.background = open ? '' : 'rgba(253,251,247,.97)';
+    links.style.padding = open ? '' : '16px 24px';
+    links.style.boxShadow = open ? '' : '0 8px 24px rgba(44,36,22,.08)';
+    links.style.borderBottom = open ? '' : '1px solid var(--border)';
+    links.style.gap = open ? '' : '18px';
+  });
+})();
+
+/* ---- Feature tour ----------------------------------------- */
+(function () {
+  var slides = [
+    { src: 'assets/Slide 2.png',            pill: 'Learners',    alt: 'Unlimited Learner Profiles',         url: 'oatsmart.app · learners'    },
+    { src: 'assets/Dashboard Slide 3.PNG',  pill: 'Dashboard',   alt: 'Customizable dashboard overview',    url: 'oatsmart.app · dashboard'   },
+    { src: 'assets/Dashboard Slide 4.PNG',  pill: 'Assignments', alt: 'Assignment tracking and management', url: 'oatsmart.app · assignments'  },
+    { src: 'assets/Book log slide 5.png',   pill: 'Book Log',    alt: 'Book log for tracking reading',      url: 'oatsmart.app · book-log'    },
+    { src: 'assets/reports slide 6.png',    pill: 'Reports',     alt: 'Generate report cards and records',  url: 'oatsmart.app · reports'     },
+    { src: 'assets/slide 7.png',            pill: 'Premium',     alt: 'Premium educational activities',     url: 'oatsmart.app · premium'     },
+  ];
+
+  var current  = 0;
+  var img      = document.getElementById('tour-img');
+  var pill     = document.getElementById('tour-pill');
+  var counter  = document.getElementById('tour-counter');
+  var urlEl    = document.getElementById('tour-url');
+  var btnPrev  = document.getElementById('tour-prev');
+  var btnNext  = document.getElementById('tour-next');
+  var items    = document.querySelectorAll('.lo-tour-item');
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= slides.length) return;
+    current = idx;
+    var s = slides[idx];
+    img.src          = s.src;
+    img.alt          = s.alt;
+    pill.textContent = s.pill;
+    urlEl.textContent = s.url;
+    counter.textContent = 'Step ' + (idx + 1) + ' of ' + slides.length;
+    btnPrev.disabled = idx === 0;
+    btnNext.disabled = idx === slides.length - 1;
+    items.forEach(function (el, i) {
+      el.classList.toggle('active', i === idx);
+      el.setAttribute('aria-selected', String(i === idx));
+    });
+  }
+
+  btnPrev.addEventListener('click', function () { goTo(current - 1); });
+  btnNext.addEventListener('click', function () { goTo(current + 1); });
+  items.forEach(function (el) {
+    el.addEventListener('click', function () {
+      goTo(parseInt(el.dataset.slide, 10));
+    });
+  });
+
+  /* fix prev button SVG direction (it uses same chevron as next) */
+  btnPrev.querySelector('svg').style.transform = 'rotate(180deg)';
+
+  /* auto-advance every 5s */
+  var timer = setInterval(function () {
+    goTo(current < slides.length - 1 ? current + 1 : 0);
+  }, 5000);
+  document.getElementById('tour-list').addEventListener('click', function () {
+    clearInterval(timer);
+  });
+
+  goTo(0);
+})();
+</script>
+
+<!-- GitHub release + download counter -->
+<script>
+(function () {
+  // Fetch total download counts from GitHub Releases API
+  var RELEASES_API = 'https://api.github.com/repos/Streamline1175/homeschool-releases/releases';
+
+  function fmt(n) {
+    return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n);
+  }
+
+  function setEl(id, val) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  function setWidth(id, pct) {
+    var el = document.getElementById(id);
+    if (el) el.style.width = pct + '%';
+  }
+
+  // Animate a number from 0 to target
+  function countUp(id, target) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var start = performance.now();
+    var dur = 1100;
+    function step(t) {
+      var p = Math.min(1, (t - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(eased * target);
+      el.textContent = val >= 1000 ? val.toLocaleString() : String(val);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  fetch(RELEASES_API)
+    .then(function (r) { return r.json(); })
+    .then(function (releases) {
+      var macTotal = 0, winTotal = 0, linuxTotal = 0;
+
+      releases.forEach(function (rel) {
+        (rel.assets || []).forEach(function (a) {
+          var n = (a.name || '').toLowerCase();
+          var c = a.download_count || 0;
+          if (n.endsWith('.dmg') || n.includes('mac') || n.includes('darwin')) macTotal += c;
+          else if (n.endsWith('.exe') || n.endsWith('.msi') || n.includes('win')) winTotal += c;
+          else if (n.endsWith('.appimage') || n.endsWith('.deb') || n.endsWith('.tar.gz') || n.includes('linux')) linuxTotal += c;
+        });
+      });
+
+      var total = macTotal + winTotal + linuxTotal;
+      var macShare  = total ? Math.round((macTotal  / total) * 100) : 50;
+      var winShare  = total ? Math.round((winTotal  / total) * 100) : 37;
+      var linShare  = total ? Math.round((linuxTotal / total) * 100) : 13;
+
+      if (total > 0) {
+        countUp('dl-total-count', total);
+        countUp('dl-mac-count',   macTotal);
+        countUp('dl-win-count',   winTotal);
+        countUp('dl-linux-count', linuxTotal);
+        setWidth('dl-mac-bar',   macShare);
+        setWidth('dl-win-bar',   winShare);
+        setWidth('dl-linux-bar', linShare);
+        setEl('dl-delta-text', 'Live from GitHub Releases');
+      } else {
+        // Show dashes if no assets found yet
+        ['dl-total-count','dl-mac-count','dl-win-count','dl-linux-count'].forEach(function(id){setEl(id,'—');});
+        setEl('dl-delta-text', 'Pulled from GitHub Releases');
+      }
+    })
+    .catch(function () {
+      ['dl-total-count','dl-mac-count','dl-win-count','dl-linux-count'].forEach(function(id){setEl(id,'—');});
+      setEl('dl-delta-text', 'GitHub Releases');
+    });
+})();
+</script>
+
+<script src="js/main.js"></script>
+
+</body>
 </html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OatSmart Premium — 11 interactive learning modules including Math Quiz, Spelling Bee, Solar System, USA Map, Typing Trainer and more. All auto-graded, offline, $6.99 lifetime." />
+  <title>Premium Modules | Little Oat Learners</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <style>
+    body { background: var(--cream); font-family: var(--font-body); color: var(--ink-light); }
+
+    /* ---- Hero ---- */
+    .prem-hero {
+      padding: 80px 0 56px;
+      text-align: center;
+    }
+    .prem-hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 22px;
+      box-shadow: 0 1px 3px rgba(44,36,22,.05);
+    }
+    .prem-hero .badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 4px rgba(122,139,111,.15);
+    }
+    .prem-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 76px);
+      letter-spacing: -0.035em;
+      line-height: 0.97;
+      color: var(--ink);
+      max-width: 16ch;
+      margin: 0 auto 22px;
+    }
+    .prem-hero h1 em { font-style: italic; color: var(--sage-deep); font-weight: 500; }
+    .prem-hero p {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 auto 32px;
+      line-height: 1.55;
+    }
+    .prem-hero-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Stats strip ---- */
+    .prem-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .prem-stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .prem-stat-num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .prem-stat-lbl {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ---- Module picker grid ---- */
+    .prem-deck-wrap {
+      background: var(--oat-light);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 44px;
+      margin-top: 70px;
+    }
+    .prem-deck-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .prem-deck-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 44px);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 10px 0 0;
+    }
+    .prem-deck-head h2 em { font-style: italic; color: var(--sage-deep); font-weight: 500; }
+    .prem-deck-head p { font-size: 14px; color: var(--muted); max-width: 36ch; margin: 0; line-height: 1.55; }
+
+    /* Emoji grid */
+    .prem-module-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .prem-module-btn {
+      padding: 14px 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      text-align: center;
+      font-family: var(--font-body);
+      transition: all .15s ease;
+    }
+    .prem-module-btn:hover { border-color: rgba(139,115,85,.28); box-shadow: 0 4px 12px rgba(44,36,22,.07); }
+    .prem-module-btn.active {
+      border: 2px solid var(--sage);
+      background: rgba(122,139,111,.08);
+    }
+    .prem-module-btn .mod-emoji { font-size: 24px; display: block; margin-bottom: 5px; }
+    .prem-module-btn .mod-name {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+    .prem-module-btn.active .mod-name { color: var(--sage-deep); }
+
+    /* Slide */
+    .prem-slide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      min-height: 400px;
+    }
+    .prem-slide-copy .eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      margin-bottom: 14px;
+    }
+    .prem-slide-copy h3 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 38px);
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .prem-slide-copy p { font-size: 14.5px; color: var(--muted); line-height: 1.6; margin: 0 0 20px; max-width: 44ch; }
+    .prem-slide-copy ul {
+      list-style: none;
+      padding: 0; margin: 0 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-light);
+    }
+    .prem-slide-copy ul li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .prem-slide-copy ul li .ck {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(122,139,111,.12);
+      color: var(--sage-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .prem-slide-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .prem-slide-meta .stat-n {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .prem-slide-meta .stat-l { font-size: 11px; color: var(--muted); }
+    .prem-slide-meta .chips { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+    .prem-slide-meta .chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .prem-slide-visual {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/3;
+      box-shadow: 0 14px 40px rgba(44,36,22,.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prem-slide-visual .placeholder-art {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background:
+        repeating-linear-gradient(135deg, var(--oat-light) 0 8px, var(--cream-dark) 8px 16px);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 24px;
+    }
+    .prem-slide-visual .placeholder-art .big-emoji { font-size: 48px; }
+    .prem-slide-visual .corner-badge {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 10.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 1px 4px rgba(44,36,22,.06);
+    }
+    .prem-slide-visual .corner-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    /* Deck footer */
+    .prem-deck-foot {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .prem-deck-counter {
+      font-size: 11.5px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      font-family: var(--font-body);
+      font-weight: 600;
+      min-width: 120px;
+    }
+    .prem-deck-progress {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .prem-deck-progress span {
+      display: block;
+      height: 100%;
+      background: var(--ink);
+      transition: width .3s ease;
+    }
+    .prem-deck-nav { display: flex; gap: 6px; }
+    .prem-deck-nav button {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      font-size: 16px;
+      transition: background .12s;
+    }
+    .prem-deck-nav button:hover { background: var(--oat-light); }
+    .prem-deck-nav button:disabled { opacity: .35; cursor: default; }
+
+    /* ---- Compare table ---- */
+    .prem-compare {
+      margin-top: 80px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .prem-compare table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .prem-compare thead th {
+      background: var(--oat-light);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      text-align: left;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+    }
+    .prem-compare thead th:first-child {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .prem-compare tbody td {
+      padding: 13px 22px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: middle;
+    }
+    .prem-compare tbody td:first-child { color: var(--ink); font-weight: 500; }
+    .prem-compare tbody tr:last-child td { border: 0; }
+    .prem-compare .y {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(122,139,111,.12);
+      color: var(--sage-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prem-compare .n {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--oat-light);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .prem-compare .trial {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--sage-deep);
+      letter-spacing: 0.06em;
+      font-family: var(--font-body);
+    }
+
+    /* ---- Closing CTA ---- */
+    .prem-cta {
+      margin: 80px 0 0;
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 24px;
+      padding: 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .prem-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(700px circle at 20% -20%, rgba(122,139,111,.35), transparent 55%),
+        radial-gradient(500px circle at 110% 110%, rgba(201,184,150,.25), transparent 55%);
+      pointer-events: none;
+    }
+    .prem-cta > * { position: relative; }
+    .prem-cta .eb {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .prem-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      max-width: 18ch;
+      margin: 0 auto 18px;
+    }
+    .prem-cta p {
+      font-size: 16px;
+      color: rgba(253,251,247,.7);
+      max-width: 50ch;
+      margin: 0 auto 28px;
+      line-height: 1.55;
+    }
+    .prem-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .lo-btn.cream-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(253,251,247,.3);
+    }
+    .lo-btn.cream-outline:hover { background: rgba(253,251,247,.1); }
+
+    @media (max-width: 900px) {
+      .prem-stats { grid-template-columns: repeat(2, 1fr); }
+      .prem-module-grid { grid-template-columns: repeat(4, 1fr); }
+      .prem-slide { grid-template-columns: 1fr; }
+      .prem-slide-visual { order: -1; }
+      .prem-slide-copy ul { grid-template-columns: 1fr; }
+      .prem-deck-wrap { padding: 24px; }
+      .prem-cta { padding: 44px 24px; }
+    }
+    @media (max-width: 580px) {
+      .prem-module-grid { grid-template-columns: repeat(3, 1fr); }
+      .prem-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lo-nav" aria-label="Primary navigation">
+  <a class="brand" href="index.html">
+    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
+    <span class="brand-name">Little Oats</span>
+  </a>
+  <ul class="nav-links" id="lo-nav-links">
+    <li><a href="index.html#tour">Features</a></li>
+    <li><a href="index.html#promise">Why Little Oats</a></li>
+    <li><a href="premium.html" style="color:var(--sage-deep);font-weight:600">Premium</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a class="lo-btn primary sm" href="index.html#download">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+      Download
+    </a>
+  </div>
+  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
+</nav>
+
+<main style="padding-top:80px;padding-bottom:80px">
+<div class="lo-container">
+
+  <!-- Hero -->
+  <section class="prem-hero">
+    <div class="badge"><span class="dot"></span> Included with the Premium License</div>
+    <h1>Eleven interactive modules, built into <em>OatSmart</em>.</h1>
+    <p>Auto-graded, offline-capable activities your children launch from the OatSmart dashboard. Every module is included with one Premium License — no per-module pricing, no add-on creep. Results flow directly into the gradebook and reports.</p>
+    <div class="prem-hero-btns">
+      <a class="lo-btn primary lg" href="#deck">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+        Tour the modules
+      </a>
+      <a class="lo-btn outline lg" href="shop.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+        Get Premium · $6.99/mo
+      </a>
+    </div>
+    <div class="prem-stats">
+      <div class="prem-stat"><div class="prem-stat-num">11</div><div class="prem-stat-lbl">Modules</div></div>
+      <div class="prem-stat"><div class="prem-stat-num">All</div><div class="prem-stat-lbl">Auto-graded into gradebook</div></div>
+      <div class="prem-stat"><div class="prem-stat-num">∞</div><div class="prem-stat-lbl">Learners per license</div></div>
+      <div class="prem-stat"><div class="prem-stat-num">$6.99</div><div class="prem-stat-lbl">Per month · cancel anytime</div></div>
+    </div>
+  </section>
+
+  <!-- Module deck -->
+  <section class="prem-deck-wrap" id="deck">
+    <div class="prem-deck-head">
+      <div>
+        <span class="lo-eyebrow">All 11 modules</span>
+        <h2>What you get for <em>$6.99/mo</em>.</h2>
+      </div>
+      <p>Click any module to see what it covers. Add your own screenshots later — each frame is labelled.</p>
+    </div>
+
+    <!-- Emoji picker grid -->
+    <div class="prem-module-grid" id="module-grid" role="tablist" aria-label="Module selector"></div>
+
+    <!-- Slide body -->
+    <div id="module-slide" role="tabpanel" aria-live="polite"></div>
+
+    <!-- Deck footer -->
+    <div class="prem-deck-foot">
+      <div class="prem-deck-counter" id="deck-counter">01 / 11</div>
+      <div class="prem-deck-progress"><span id="deck-progress" style="width:9%"></span></div>
+      <div class="prem-deck-nav">
+        <button id="deck-prev" aria-label="Previous module" disabled>&#8592;</button>
+        <button id="deck-next" aria-label="Next module">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compare table -->
+  <section style="margin-top:80px">
+    <div style="margin-bottom:28px">
+      <span class="lo-eyebrow">Compare plans</span>
+      <h2 style="font-family:var(--font-display);font-size:clamp(32px,4vw,44px);letter-spacing:-0.025em;color:var(--ink);margin:10px 0 0;max-width:22ch">Free, Premium, and Curriculum — what's included.</h2>
+    </div>
+    <div class="prem-compare">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free trial</th>
+            <th>Premium License</th>
+            <th>+ Curriculum bundle</th>
+          </tr>
+        </thead>
+        <tbody id="compare-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="prem-cta" id="buy">
+    <span class="eb">Monthly · cancel anytime</span>
+    <h2>$6.99/month. Eleven modules, every learner, all devices.</h2>
+    <p>Billed monthly, cancel anytime. No per-child fees, no module unlock screens. Free updates included as we add modules.</p>
+    <div class="prem-cta-btns">
+      <a class="lo-btn primary lg" href="shop.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+        Get Premium · $6.99/mo
+      </a>
+      <a class="lo-btn cream-outline lg" href="index.html#download">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+        Try free for 14 days
+      </a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="lo-foot">
+  <div class="row">
+    <div>
+      <div class="brand-col">
+        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
+        <span>Little Oats</span>
+      </div>
+      <p>Calm, grounded homeschool software for families.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="index.html#download">OatSmart desktop</a></li>
+        <li><a href="shop.html">Curriculum shop</a></li>
+        <li><a href="premium.html">Premium modules</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="policies.html#privacy">Privacy policy</a></li>
+        <li><a href="policies.html#terms">Terms of service</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Download</h5>
+      <ul>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases" target="_blank" rel="noopener">All releases</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
+    <div class="lo-foot-links">
+      <a href="policies.html#terms">Terms</a>
+      <a href="policies.html#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+var MODULES = [
+  { id:'solar',      emoji:'🌌', name:'Solar System',      eyebrow:'Module 01 · Solar System Explorer',       title:'A pocket planetarium for your science block.',                               body:'3D space exploration with interactive planetary facts, quiz mode, and a visual learning experience for astronomy. Quiz results are auto-saved to the gradebook so progress shows up in reports without any extra steps.',                                                        bullets:['3D interactive solar model','Educational planet facts','Quiz mode with auto-save to gradebook','Visual learning for astronomy','Pairs with the Solar System unit study'],                           stats:[['8','planets'],['Quiz','auto-graded'],['3–6','grade']],              subjects:['Science'],       grade:'3–6' },
+  { id:'usa',        emoji:'🗺️', name:'USA Map',            eyebrow:'Module 02 · USA States Map',               title:'All 50 states and capitals — learned state by state.',                       body:'An interactive D3.js-powered map of the United States using TopoJSON. Clickable state interactions, color-coded regions, capitals drill, and a geography quiz mode. Mastery is tracked per state and auto-saved.',                                                              bullets:['Interactive D3.js + TopoJSON map','Capitals + abbreviations drill','Clickable state interactions','Color-coded visual regions','Geography quiz with auto-save'],                                    stats:[['50','states'],['Capitals','drill'],['Quiz','auto-save']],           subjects:['Geography'],     grade:'3–8' },
+  { id:'math',       emoji:'🔢', name:'Math Quiz',          eyebrow:'Module 03 · Math Skills Quiz',             title:'Adaptive math drills from counting through advanced ops.',                   body:'Grade-level curriculum from Kindergarten through 5th grade with 25+ unique questions per topic to prevent repetition. Visual questions, pie-chart fractions, geometry tools, and results saved to the Reports tab.',                                                              bullets:['K–5 grade-level curriculum','25+ unique questions per topic','Visual questions + pie charts','Geometry: angles, lines, polygons','Results saved to Reports tab'],                                   stats:[['6','grade levels'],['25+','q\'s per topic'],['K–5','curriculum']],  subjects:['Math'],          grade:'K–5' },
+  { id:'spelling',   emoji:'🐝', name:'Spelling Bee',       eyebrow:'Module 04 · Spelling Bee Game',            title:'A real spelling bee, every morning, in your kitchen.',                      body:'Audio-guided spelling challenges using text-to-speech with multiple voice options and difficulty levels. An end-of-game overview of correct/incorrect words, and quiz results auto-saved.',                                                                                          bullets:['Text-to-speech audio prompts','Multiple voice options','Difficulty levels','Natural language phrases','End-of-game overview + auto-save'],                                                          stats:[['TTS','audio'],['Multi-level','difficulty'],['Auto','graded']],      subjects:['Language'],      grade:'K–6' },
+  { id:'clock',      emoji:'⏰', name:'Interactive Clock',  eyebrow:'Module 05 · Interactive Clock',            title:'Telling time with draggable hands and natural language.',                   body:'A visual clock face for learning to tell time. Draggable hour and minute hands with a Challenge mode using natural language phrases like "half past 3" or "quarter till." Quiz results auto-saved.',                                                                                 bullets:['Visual draggable clock face','Digital + analog modes','Natural language phrases','"Half past", "quarter till" challenges','Results auto-saved to assignments'],                                    stats:[['Analog','+ digital'],['Natural','language'],['Auto-save','results']],subjects:['Math','Life Skills'],grade:'K–3' },
+  { id:'cash',       emoji:'💰', name:'Cash Register',      eyebrow:'Module 06 · Little Oat Shop',              title:'Money counting and making change — simulated shopping.',                    body:'A simulated shopping experience for money counting practice. Coin and bill recognition, making change exercises, and a quiz mode with auto-save tracking. A gentle way to make math feel real.',                                                                                    bullets:['Simulated shopping experience','Coin + bill recognition','Making change exercises','Quiz mode','Auto-save tracking'],                                                                                stats:[['Coins','+ bills'],['Change','making'],['Quiz','auto-save']],        subjects:['Math','Life Skills'],grade:'1–4' },
+  { id:'writing',    emoji:'✍️', name:'Writing Worksheets', eyebrow:'Module 07 · Writing Worksheets',           title:'Letter tracing and handwriting practice, print-ready.',                     body:'Letter tracing worksheets with multiple worksheet types for handwriting practice. Includes print preview with direct print functionality — no PDF export needed.',                                                                                                                  bullets:['Letter tracing worksheets','Multiple worksheet types','Print preview modal','Direct print functionality','Pre-K through 3rd grade'],                                                                stats:[['Pre-K','– Grade 3'],['Print','ready'],['Multiple','types']],        subjects:['Writing'],       grade:'Pre-K–3' },
+  { id:'typing',     emoji:'⌨️', name:'Type Racer',         eyebrow:'Module 08 · Type Racer',                   title:'Typing speed and accuracy — accuracy unlocks the next level.',              body:'Progressive difficulty typing practice with WPM and accuracy tracking. Quiz results are auto-saved so you can see keyboard skill growth over time in the dashboard.',                                                                                                              bullets:['Progressive difficulty','WPM + accuracy tracking','Quiz results auto-saved','Accuracy-first progression model','Grade 2 and up'],                                                                  stats:[['WPM','tracked'],['Accuracy','first'],['Auto','graded']],            subjects:['Skills'],        grade:'2–8' },
+  { id:'memory',     emoji:'🧠', name:'Memory Game',        eyebrow:'Module 09 · Memory Game',                  title:'Card matching for memory and concentration.',                               body:'A card matching game for cognitive development with multiple themes and difficulty levels. Score tracking with auto-save — great as a short brain-break between heavier subjects.',                                                                                                  bullets:['Card matching game','Multiple themes','Difficulty levels','Score tracking + auto-save','All ages'],                                                                                                 stats:[['Multi','theme'],['Multi','difficulty'],['Score','auto-save']],      subjects:['Skills','Cognitive'],grade:'All' },
+  { id:'tracing',    emoji:'✏️', name:'Interactive Tracing',eyebrow:'Module 10 · Interactive Tracing',          title:'Shape tracing for Pre-K and Kindergarten — 2D and 3D.',                    body:'Shape tracing covering 2D shapes (Circle, Square, Triangle, Heart, Star, Diamond) and 3D shapes (Cube, Sphere, Cylinder, Cone, Pyramid) with dotted or solid outline styles.',                                                                                                   bullets:['2D shapes: Circle, Square, Triangle…','3D shapes: Cube, Sphere, Cylinder…','Dotted + solid outline styles','Quick templates for lesson plans','Pre-K and Kindergarten'],                          stats:[['6','2D shapes'],['5','3D shapes'],['2','trace styles']],            subjects:['Art','Math'],    grade:'Pre-K–K' },
+  { id:'worksheets', emoji:'📐', name:'Math Worksheets',    eyebrow:'Module 11 · Math Worksheet Generator',     title:'Printable math practice sheets, generated in seconds.',                     body:'A configurable worksheet generator for Addition, Subtraction, Multiplication, and Division. Choose digit levels, problem count (5–50), and problems per row. Optional answer key + Create Assignment integration.',                                                               bullets:['Addition, Subtraction, ×, ÷','Single → triple digit levels','5–50 problems, configurable rows','Optional answer key','Create Assignment integration'],                                             stats:[['4','operations'],['5–50','problems'],['Print','ready']],            subjects:['Math'],          grade:'K–6' },
+];
+
+var COMPARE = [
+  ['OatSmart desktop app',              true,      true,      true],
+  ['Unlimited learners',                true,      true,      true],
+  ['Calendar, planner, book log',       true,      true,      true],
+  ['Reports &amp; transcripts (PDF)',   true,      true,      true],
+  ['All 11 interactive modules',        '14-day',  true,      true],
+  ['Quiz results → gradebook',          '14-day',  true,      true],
+  ['Charlotte Mason Y1 starter',        true,      true,      true],
+  ['Subject-matched bundles',           false,     false,     true],
+  ['Math + Writing worksheets (print)', '14-day',  true,      true],
+  ['Free updates forever',              true,      true,      true],
+];
+
+var current = 0;
+
+/* ---- Build emoji grid ---- */
+function buildGrid() {
+  var grid = document.getElementById('module-grid');
+  grid.innerHTML = MODULES.map(function(m, i) {
+    return '<button class="prem-module-btn' + (i===0?' active':'') + '"' +
+      ' role="tab" aria-selected="' + (i===0) + '"' +
+      ' data-idx="' + i + '"' +
+      ' title="' + m.name + '">' +
+      '<span class="mod-emoji">' + m.emoji + '</span>' +
+      '<span class="mod-name">' + m.name + '</span>' +
+      '</button>';
+  }).join('') + '<div></div>'; /* spacer for 12-col */
+}
+
+/* ---- Render slide ---- */
+function checkSVG(filled) {
+  return filled
+    ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg>'
+    : '—';
+}
+
+function renderSlide(idx) {
+  var m = MODULES[idx];
+  var pct = ((idx + 1) / MODULES.length * 100).toFixed(1);
+
+  /* Update grid active state */
+  document.querySelectorAll('.prem-module-btn').forEach(function(btn, i) {
+    btn.classList.toggle('active', i === idx);
+    btn.setAttribute('aria-selected', String(i === idx));
+  });
+
+  /* Render slide HTML */
+  var bulletsHtml = m.bullets.map(function(b) {
+    return '<li><span class="ck">' + checkSVG(true) + '</span>' + b + '</li>';
+  }).join('');
+
+  var statsHtml = m.stats.map(function(s) {
+    return '<div><span class="stat-n">' + s[0] + '</span>' +
+      '<div class="stat-l">' + s[1] + '</div></div>';
+  }).join('');
+
+  var chipsHtml = m.subjects.map(function(s) {
+    return '<span class="chip">' + s + '</span>';
+  }).join('') + '<span class="chip">' + m.grade + '</span>';
+
+  document.getElementById('module-slide').innerHTML =
+    '<div class="prem-slide">' +
+      '<div class="prem-slide-copy">' +
+        '<div class="eyebrow">' + m.eyebrow + '</div>' +
+        '<h3>' + m.emoji + ' ' + m.title + '</h3>' +
+        '<p>' + m.body + '</p>' +
+        '<ul>' + bulletsHtml + '</ul>' +
+        '<div class="prem-slide-meta">' +
+          statsHtml +
+          '<div class="chips">' + chipsHtml + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="prem-slide-visual">' +
+        '<div class="placeholder-art">' +
+          '<span class="big-emoji">' + m.emoji + '</span>' +
+          '<span>Drop ' + m.name + ' screenshot here</span>' +
+        '</div>' +
+        '<div class="corner-badge"><span class="dot"></span>oatsmart · ' + m.id + '</div>' +
+      '</div>' +
+    '</div>';
+
+  /* Counter + progress */
+  document.getElementById('deck-counter').textContent =
+    String(idx + 1).padStart(2,'0') + ' / ' + String(MODULES.length).padStart(2,'0') + ' · ' + m.emoji + ' ' + m.name;
+  document.getElementById('deck-progress').style.width = pct + '%';
+  document.getElementById('deck-prev').disabled = idx === 0;
+  document.getElementById('deck-next').disabled = idx === MODULES.length - 1;
+
+  current = idx;
+}
+
+/* ---- Build compare table ---- */
+function buildCompare() {
+  document.getElementById('compare-tbody').innerHTML = COMPARE.map(function(row) {
+    return '<tr>' +
+      '<td>' + row[0] + '</td>' +
+      row.slice(1).map(function(cell) {
+        if (cell === true)  return '<td><span class="y">' + checkSVG(true) + '</span></td>';
+        if (cell === false) return '<td><span class="n">—</span></td>';
+        return '<td><span class="trial">' + cell + '</span></td>';
+      }).join('') +
+    '</tr>';
+  }).join('');
+}
+
+/* ---- Wire controls ---- */
+document.getElementById('module-grid').addEventListener('click', function(e) {
+  var btn = e.target.closest('.prem-module-btn');
+  if (!btn) return;
+  renderSlide(parseInt(btn.dataset.idx, 10));
+});
+
+document.getElementById('deck-prev').addEventListener('click', function() {
+  if (current > 0) renderSlide(current - 1);
+});
+document.getElementById('deck-next').addEventListener('click', function() {
+  if (current < MODULES.length - 1) renderSlide(current + 1);
+});
+
+/* ---- Mobile menu ---- */
+(function() {
+  var btn = document.getElementById('lo-menu-btn');
+  var links = document.getElementById('lo-nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function() {
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    links.style.display = open ? '' : 'flex';
+    links.style.flexDirection = open ? '' : 'column';
+    links.style.position = open ? '' : 'absolute';
+    links.style.top = open ? '' : '100%';
+    links.style.left = open ? '' : '0';
+    links.style.right = open ? '' : '0';
+    links.style.background = open ? '' : 'rgba(253,251,247,.97)';
+    links.style.padding = open ? '' : '16px 24px';
+    links.style.boxShadow = open ? '' : '0 8px 24px rgba(44,36,22,.08)';
+    links.style.borderBottom = open ? '' : '1px solid var(--border)';
+    links.style.gap = open ? '' : '18px';
+  });
+})();
+
+/* ---- Init ---- */
+buildGrid();
+renderSlide(0);
+buildCompare();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop curriculum bundles, premium licenses, and add-ons for Little Oat Learners. One-time purchases with lifetime access. Secure checkout via Lemon Squeezy." />
+  <title>Shop | Little Oat Learners</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <style>
+    /* ---- Shop-specific styles ---- */
+    body { background: var(--cream); }
+
+    /* Nav (reuses home.css lo-nav) */
+    .lo-nav .nav-links { display: flex; }
+
+    /* Page wrapper */
+    .shop-page {
+      font-family: var(--font-body);
+      color: var(--ink-light);
+    }
+
+    /* Hero */
+    .shop-hero {
+      padding: 72px 0 0;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .shop-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6vw, 72px);
+      letter-spacing: -0.035em;
+      line-height: 0.97;
+      color: var(--ink);
+      margin: 14px 0 0;
+    }
+    .shop-hero h1 em { font-style: italic; color: var(--sage-deep); font-weight: 500; }
+    .shop-hero p { font-size: 15px; color: var(--muted); max-width: 40ch; line-height: 1.55; margin: 0; }
+    .shop-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .shop-hero-stats .stat {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .shop-hero-stats .stat-num {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .shop-hero-stats .stat-lbl {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Featured banner */
+    .shop-featured {
+      margin-top: 44px;
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      position: relative;
+      min-height: 240px;
+    }
+    .shop-featured::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(700px circle at 90% -30%, rgba(122,139,111,.35), transparent 55%);
+      pointer-events: none;
+    }
+    .shop-featured-copy {
+      padding: 40px 44px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .shop-featured-eb {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+    }
+    .shop-featured-copy h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 38px);
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin: 0;
+      max-width: 20ch;
+    }
+    .shop-featured-copy p {
+      font-size: 14px;
+      color: rgba(253,251,247,.72);
+      max-width: 44ch;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .shop-featured-price {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 4px 0;
+    }
+    .shop-featured-price .strike {
+      font-size: 17px;
+      text-decoration: line-through;
+      color: rgba(253,251,247,.45);
+    }
+    .shop-featured-price .now {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .shop-featured-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .lo-btn.cream-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(253,251,247,.30);
+    }
+    .lo-btn.cream-outline:hover { background: rgba(253,251,247,.10); }
+    .shop-featured-img {
+      background: linear-gradient(160deg, rgba(122,139,111,.4), var(--ink));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(253,251,247,.2);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Filters */
+    .shop-filters {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-top: 36px;
+    }
+    .shop-filters .filter-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .shop-filters .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-chip {
+      padding: 6px 13px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all .15s;
+    }
+    .filter-chip:hover { background: var(--oat-light); }
+    .filter-chip.active {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
+    }
+    .shop-filters .filter-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .shop-filters select {
+      padding: 7px 12px;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    /* Product grid */
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 32px;
+      margin-bottom: 80px;
+    }
+    .shop-product {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .shop-product:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(44,36,22,.10);
+      border-color: rgba(139,115,85,.28);
+    }
+    .shop-product-media {
+      aspect-ratio: 4/3;
+      background: var(--oat-light);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .shop-product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .shop-product-badge.accent { background: var(--sage-deep); }
+    .shop-product-badge.wheat  { background: var(--warm-brown); }
+    .shop-product-price-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      padding: 7px 12px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      box-shadow: 0 1px 3px rgba(44,36,22,.07);
+    }
+    .shop-product-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .shop-product-body h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+    }
+    .shop-product-body p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .shop-product-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .shop-product-tag {
+      font-size: 10.5px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--oat-light);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .shop-product-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 8px;
+      padding-top: 8px;
+    }
+    .shop-product-actions .lo-btn { flex: 1; justify-content: center; }
+    .lo-btn.added {
+      background: var(--sage-light);
+      color: #fff;
+      border-color: var(--sage-light);
+    }
+
+    /* Trust strip */
+    .shop-trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 0 0 80px;
+    }
+    .shop-trust-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 22px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .shop-trust-ic {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: rgba(122,139,111,.1);
+      color: var(--sage-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .shop-trust-item h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      color: var(--ink);
+      margin: 0 0 5px;
+    }
+    .shop-trust-item p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    /* Cart FAB */
+    .cart-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(44,36,22,.28);
+      z-index: 80;
+      transition: transform .15s ease;
+    }
+    .cart-fab:hover { transform: scale(1.08); }
+    .cart-fab-count {
+      position: absolute;
+      top: -4px; right: -4px;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ink);
+    }
+
+    /* Cart drawer */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44,36,22,.55);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: auto; }
+    .cart-drawer {
+      position: fixed;
+      top: 0; bottom: 0; right: -480px;
+      width: 440px;
+      background: #fff;
+      border-left: 1px solid var(--border);
+      box-shadow: -20px 0 50px rgba(44,36,22,.12);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      transition: right .3s cubic-bezier(.4,0,.2,1);
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-drawer-head {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-drawer-head h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--ink);
+      margin: 0;
+    }
+    .cart-close-btn {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--oat-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+    }
+    .cart-items { flex: 1; overflow-y: auto; padding: 12px 24px; }
+    .cart-empty {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+    .cart-item:last-child { border: 0; }
+    .cart-item-thumb {
+      width: 56px; height: 56px;
+      border-radius: 10px;
+      background: var(--oat-light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+      padding: 4px;
+    }
+    .cart-item h4 { font-size: 14px; font-weight: 600; color: var(--ink); margin: 0 0 3px; }
+    .cart-item-cat { font-size: 11.5px; color: var(--muted); }
+    .cart-item-price {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .cart-item-rm {
+      font-size: 11px;
+      color: var(--muted);
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--font-body);
+      display: block;
+      margin-top: 4px;
+    }
+    .cart-item-rm:hover { color: #c0392b; }
+    .cart-foot {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px 24px;
+    }
+    .cart-totals { margin-bottom: 14px; }
+    .cart-totals-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 4px 0;
+    }
+    .cart-totals-row.total {
+      border-top: 1px dashed var(--border);
+      margin-top: 6px;
+      padding-top: 12px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .cart-checkout-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--ink);
+      color: var(--cream);
+      border: 0;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity .15s;
+    }
+    .cart-checkout-btn:disabled { opacity: .5; cursor: default; }
+    .cart-checkout-btn:not(:disabled):hover { opacity: .88; }
+    .cart-legal {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .shop-hero { grid-template-columns: 1fr; }
+      .shop-featured { grid-template-columns: 1fr; }
+      .shop-featured-img { min-height: 160px; }
+      .shop-grid { grid-template-columns: 1fr 1fr; }
+      .shop-trust { grid-template-columns: 1fr; }
+      .cart-drawer { width: 100%; }
+    }
+    @media (max-width: 580px) {
+      .shop-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="shop-page">
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="lo-nav" aria-label="Primary navigation">
+  <a class="brand" href="index.html">
+    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
+    <span class="brand-name">Little Oats</span>
+  </a>
+  <ul class="nav-links" id="lo-nav-links">
+    <li><a href="index.html#tour">Features</a></li>
+    <li><a href="index.html#promise">Why Little Oats</a></li>
+    <li><a href="premium.html">Premium</a></li>
+    <li><a href="shop.html" style="color:var(--sage-deep);font-weight:600">Shop</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a class="lo-btn primary sm" href="index.html#download">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+      Download
+    </a>
+  </div>
+  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
+</nav>
+
+<main style="padding-top:80px">
+<div class="lo-container">
+
+  <!-- Hero -->
+  <section class="shop-hero">
+    <div>
+      <span class="lo-eyebrow">Curriculum &amp; premium</span>
+      <h1>Tools and lessons that <em>play nicely</em> with OatSmart.</h1>
+    </div>
+    <div>
+      <p>Every product here is a one-time purchase with lifetime download access. Curriculum bundles import directly into the planner; activity packs unlock matching modules in the Premium suite.</p>
+      <div class="shop-hero-stats">
+        <div class="stat"><div class="stat-num" id="shop-count">—</div><div class="stat-lbl">Products live</div></div>
+        <div class="stat"><div class="stat-num">2,400+</div><div class="stat-lbl">Families using</div></div>
+        <div class="stat"><div class="stat-num">4.9★</div><div class="stat-lbl">Average rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured banner (Premium License) -->
+  <div class="shop-featured" id="shop-featured-banner">
+    <div class="shop-featured-copy">
+      <div class="shop-featured-eb">Featured · Lifetime license</div>
+      <h2 id="feat-title">Premium Modules · Monthly</h2>
+      <p id="feat-desc">Access all 11 interactive modules for $6.99/month — Math Quiz, Spelling Bee, Solar System, USA Map, Typing Trainer, and more. Cancel anytime.</p>
+      <div class="shop-featured-price">
+        
+        <span class="now" id="feat-price">$6.99<span style="font-size:16px;font-weight:500;opacity:.7">/mo</span></span>
+      </div>
+      <div class="shop-featured-btns">
+        <button class="lo-btn primary" id="feat-add-btn" onclick="addFeaturedToCart()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+          Add to cart
+        </button>
+        <a class="lo-btn cream-outline" href="premium.html">See all 11 modules →</a>
+      </div>
+    </div>
+    <div class="shop-featured-img" aria-hidden="true">Product art</div>
+  </div>
+
+  <!-- Filters -->
+  <div class="shop-filters" role="group" aria-label="Filter products">
+    <span class="filter-lbl">Category</span>
+    <div class="chips" id="filter-chips">
+      <button class="filter-chip active" data-cat="All">All</button>
+      <button class="filter-chip" data-cat="Premium">Premium</button>
+      <button class="filter-chip" data-cat="Curriculum">Curriculum</button>
+      <button class="filter-chip" data-cat="Unit Study">Unit Study</button>
+      <button class="filter-chip" data-cat="Add-on">Add-on</button>
+    </div>
+    <div class="filter-right">
+      <span class="filter-lbl">Sort</span>
+      <select id="sort-select" aria-label="Sort products">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price · low → high</option>
+        <option value="price-desc">Price · high → low</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Product grid (rendered by JS) -->
+  <div class="shop-grid" id="shop-grid" aria-live="polite">
+    <p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0">Loading products…</p>
+  </div>
+
+  <!-- Trust strip -->
+  <div class="shop-trust">
+    <div class="shop-trust-item">
+      <span class="shop-trust-ic" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="11" width="15" height="9" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>
+      </span>
+      <div>
+        <h3>Secure checkout</h3>
+        <p>Powered by Lemon Squeezy — owned by Stripe, one of the world's most trusted payment platforms.</p>
+      </div>
+    </div>
+    <div class="shop-trust-item">
+      <span class="shop-trust-ic" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+      </span>
+      <div>
+        <h3>Instant download</h3>
+        <p>Order confirmation lands in your inbox in seconds with a direct download button — Lemon Squeezy sends a backup too.</p>
+      </div>
+    </div>
+    <div class="shop-trust-item">
+      <span class="shop-trust-ic" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-9-9.5C1.6 6 5 3 8 3c2 0 3 1 4 2.5C13 4 14 3 16 3c3 0 6.4 3 5 7.5-2 5-9 9.5-9 9.5z"/></svg>
+      </span>
+      <div>
+        <h3>Lifetime access</h3>
+        <p>One payment, yours forever. Free updates included. No subscription, ever, on curriculum bundles.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /lo-container -->
+</main>
+
+<!-- Footer -->
+<footer class="lo-foot">
+  <div class="row">
+    <div>
+      <div class="brand-col">
+        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
+        <span>Little Oats</span>
+      </div>
+      <p>Calm, grounded homeschool software for families.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="index.html#download">OatSmart desktop</a></li>
+        <li><a href="shop.html">Curriculum shop</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="premium.html">Premium</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="policies.html#privacy">Privacy policy</a></li>
+        <li><a href="policies.html#terms">Terms of service</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Download</h5>
+      <ul>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
+    <div class="lo-foot-links">
+      <a href="policies.html#terms">Terms</a>
+      <a href="policies.html#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart FAB -->
+<button class="cart-fab" id="cart-fab" aria-label="Open cart" style="display:none" onclick="openCart()">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h3l2.5 12h11l1.5-8H6"/></svg>
+  <span class="cart-fab-count" id="cart-count" style="display:none">0</span>
+</button>
+
+<!-- Cart overlay -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+<!-- Cart drawer -->
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Shopping cart" aria-modal="true">
+  <div class="cart-drawer-head">
+    <h3>Your cart <span id="cart-head-count" style="font-family:var(--font-body);font-size:14px;color:var(--muted);font-weight:400;margin-left:6px"></span></h3>
+    <button class="cart-close-btn" onclick="closeCart()" aria-label="Close cart">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cart-items-list"></div>
+  <div class="cart-foot">
+    <div class="cart-totals">
+      <div class="cart-totals-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+      <div class="cart-totals-row"><span>Tax</span><span>Calculated at checkout</span></div>
+      <div class="cart-totals-row total"><span>Total</span><span id="cart-total">$0.00</span></div>
+    </div>
+    <button class="cart-checkout-btn" id="cart-checkout-btn" disabled onclick="doCheckout()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="11" width="15" height="9" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>
+      <span id="cart-checkout-label">Checkout · $0.00</span>
+    </button>
+    <p class="cart-legal">Secure one-time payment via Lemon Squeezy (a Stripe company). Lifetime download access.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+'use strict';
+
+/* ---- Config ------------------------------------------------ */
+var PRODUCTS_API  = 'https://api.littleoatlearners.com/api/products';
+var CHECKOUT_API  = 'https://api.littleoatlearners.com/api/checkout';
+var CART_KEY      = 'lo_cart_v1';
+
+/* ---- Fallback products (shown while API loads / unreachable) */
+var FALLBACK = [
+  { id:'p1', title:'Charlotte Mason · Year 1',    description:'A complete first-grade rhythm built around short lessons, narration, and nature study.', price:'$24.00', priceValue:24,    category:'Curriculum', grade:'K–2', subject:'Full year', buyUrl:'' },
+  { id:'p2', title:'Math Mastery Bundle',          description:'Forty unit-tests with auto-grading from counting through long division. Pairs with the Math Quiz module.', price:'$29.00', priceValue:29, category:'Curriculum', grade:'1–5', subject:'Math', buyUrl:'' },
+  { id:'p3', title:'Spelling Bee Wordlists',       description:'1,200 words across twelve themed lists with audio prompts built for the Spelling Bee module.', price:'$14.00', priceValue:14, category:'Add-on', grade:'K–6', subject:'Language', buyUrl:'' },
+  { id:'p4', title:'Reading Portfolio Pack',       description:'Printable book-log inserts, narration prompts, and an end-of-year portfolio template.', price:'$19.00', priceValue:19, category:'Curriculum', grade:'All', subject:'Reading', buyUrl:'' },
+  { id:'p5', title:'Solar System Unit Study',      description:'Six-week unit with lab cards, picture studies, and an interactive planet quiz.', price:'$18.00', priceValue:18, category:'Unit Study', grade:'3–6', subject:'Science', buyUrl:'' },
+  { id:'p6', title:'Premium Modules · Monthly',     description:'Access all 11 interactive modules: Math Quiz, Spelling Bee, Solar System, USA Map, Typing Trainer, and more. Billed monthly, cancel anytime.', price:'$6.99/mo', priceValue:6.99, category:'Premium', grade:'All', subject:'Modules', buyUrl:'', featured:true },
+  { id:'p7', title:'USA Map Drill Pack',           description:'Capitals, regions, and historical cards. Mastery tracked per state.', price:'$12.00', priceValue:12, category:'Add-on', grade:'3–8', subject:'Geography', buyUrl:'' },
+  { id:'p8', title:'Typing Trainer Workbook',      description:'Twenty paced lessons with a printable companion. Pairs with the Typing module.', price:'$9.00',  priceValue:9,  category:'Add-on', grade:'2–8', subject:'Skills', buyUrl:'' },
+  { id:'p9', title:'Nature Study · Spring',        description:'Twelve outdoor study cards, weekly journal prompts, and printable field-guide pages.', price:'$16.00', priceValue:16, category:'Unit Study', grade:'All', subject:'Science', buyUrl:'' },
+];
+
+/* ---- State ------------------------------------------------- */
+var products    = [];
+var cart        = [];
+var activeCat   = 'All';
+var activeSort  = 'featured';
+var cartOpen    = false;
+
+/* ---- Cart persistence -------------------------------------- */
+function loadCart() {
+  try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { cart = []; }
+}
+function saveCart() {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+/* ---- Helpers ----------------------------------------------- */
+function $(id) { return document.getElementById(id); }
+function fmtPrice(v) { return '$' + parseFloat(v).toFixed(2); }
+
+function cartTotal() {
+  return cart.reduce(function(s, it) { return s + (it.priceValue || 0); }, 0);
+}
+
+function isInCart(id) {
+  return cart.some(function(it) { return it.id === id; });
+}
+
+/* ---- Render cart ------------------------------------------- */
+function renderCart() {
+  var count = cart.length;
+  var total = cartTotal();
+
+  /* FAB */
+  var fab = $('cart-fab');
+  fab.style.display = 'flex';
+  var countEl = $('cart-count');
+  countEl.style.display = count > 0 ? 'flex' : 'none';
+  countEl.textContent = count;
+
+  /* Head */
+  $('cart-head-count').textContent = count > 0 ? '· ' + count : '';
+
+  /* Items list */
+  var list = $('cart-items-list');
+  if (count === 0) {
+    list.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Browse the shop and add a few things.</div>';
+  } else {
+    list.innerHTML = cart.map(function(it) {
+      return '<div class="cart-item">' +
+        '<div class="cart-item-thumb">' + it.title.slice(0, 2) + '</div>' +
+        '<div><h4>' + it.title + '</h4>' +
+          '<div class="cart-item-cat">' + it.category + (it.grade ? ' · Grade ' + it.grade : '') + '</div>' +
+          '<button class="cart-item-rm" onclick="removeFromCart(\'' + it.id + '\')">Remove</button>' +
+        '</div>' +
+        '<div class="cart-item-price">' + it.price + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  /* Totals */
+  $('cart-subtotal').textContent = fmtPrice(total);
+  $('cart-total').textContent    = fmtPrice(total);
+
+  /* Checkout btn */
+  var btn = $('cart-checkout-btn');
+  btn.disabled = count === 0;
+  $('cart-checkout-label').textContent = count > 0
+    ? 'Checkout · ' + fmtPrice(total)
+    : 'Checkout · $0.00';
+
+  /* Refresh product grid add buttons */
+  renderGrid();
+}
+
+/* ---- Add / Remove ----------------------------------------- */
+function addToCart(id) {
+  var p = products.find(function(x) { return x.id === id; });
+  if (!p || isInCart(id)) return;
+  cart.push(p);
+  saveCart();
+  renderCart();
+  openCart();
+}
+
+function addFeaturedToCart() {
+  var p = products.find(function(x) { return x.featured; }) ||
+          products.find(function(x) { return x.category === 'Premium'; });
+  if (p) addToCart(p.id);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(function(it) { return it.id !== id; });
+  saveCart();
+  renderCart();
+}
+
+function openCart()  { cartOpen = true;  $('cart-drawer').classList.add('open');  $('cart-overlay').classList.add('open');  }
+function closeCart() { cartOpen = false; $('cart-drawer').classList.remove('open'); $('cart-overlay').classList.remove('open'); }
+
+/* ---- Checkout --------------------------------------------- */
+function doCheckout() {
+  if (cart.length === 0) return;
+  var btn = $('cart-checkout-btn');
+  btn.disabled = true;
+  $('cart-checkout-label').textContent = 'Connecting to Lemon Squeezy…';
+
+  var body = JSON.stringify({
+    items: cart.map(function(it) {
+      return { id: it.id, title: it.title, price: it.price, priceValue: it.priceValue };
+    })
+  });
+
+  fetch(CHECKOUT_API, { method:'POST', headers:{'Content-Type':'application/json'}, body: body })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.checkout_url) {
+        cart = [];
+        saveCart();
+        renderCart();
+        window.location.href = data.checkout_url;
+      } else {
+        throw new Error('No checkout URL');
+      }
+    })
+    .catch(function() {
+      /* Fallback: if a product has a buyUrl use the first one */
+      var url = cart.map(function(it) { return it.buyUrl; }).find(Boolean);
+      if (url) { window.location.href = url; }
+      else { alert('Checkout is temporarily unavailable. Please try again shortly.'); }
+      btn.disabled = false;
+      $('cart-checkout-label').textContent = 'Checkout · ' + fmtPrice(cartTotal());
+    });
+}
+
+/* ---- Render product grid ----------------------------------- */
+function renderGrid() {
+  var filtered = products.slice().filter(function(p) {
+    return activeCat === 'All' || p.category === activeCat;
+  });
+
+  if (activeSort === 'price-asc')  filtered.sort(function(a,b){ return a.priceValue - b.priceValue; });
+  if (activeSort === 'price-desc') filtered.sort(function(a,b){ return b.priceValue - a.priceValue; });
+  if (activeSort === 'name')       filtered.sort(function(a,b){ return a.title.localeCompare(b.title); });
+  if (activeSort === 'featured')   filtered.sort(function(a,b){ return (b.featured?1:0)-(a.featured?1:0); });
+
+  var grid = $('shop-grid');
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:48px 0">No products in this category yet.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(function(p) {
+    var inCart = isInCart(p.id);
+    var badgeCls = p.category === 'Premium' ? 'accent' : p.category === 'Add-on' ? 'wheat' : '';
+    return '<div class="shop-product">' +
+      '<div class="shop-product-media">' +
+        (p.image ? '<img src="' + p.image + '" alt="' + p.title + '" style="width:100%;height:100%;object-fit:cover">' : 'Product art') +
+        '<span class="shop-product-badge ' + badgeCls + '">' + p.category + '</span>' +
+        '<span class="shop-product-price-tag">' + p.price + '</span>' +
+      '</div>' +
+      '<div class="shop-product-body">' +
+        '<h3>' + p.title + '</h3>' +
+        '<p>' + p.description + '</p>' +
+        '<div class="shop-product-tags">' +
+          (p.grade ? '<span class="shop-product-tag">Grade ' + p.grade + '</span>' : '') +
+          (p.subject ? '<span class="shop-product-tag">' + p.subject + '</span>' : '') +
+        '</div>' +
+        '<div class="shop-product-actions">' +
+          '<button class="lo-btn ' + (inCart ? 'added' : 'primary') + '" ' +
+            'onclick="addToCart(\'' + p.id + '\')" ' +
+            (inCart ? 'disabled' : '') + '>' +
+            (inCart ? '✓ Added' : 'Add to cart') +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+/* ---- Filters ---------------------------------------------- */
+document.getElementById('filter-chips').addEventListener('click', function(e) {
+  var chip = e.target.closest('.filter-chip');
+  if (!chip) return;
+  activeCat = chip.dataset.cat;
+  document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
+  chip.classList.add('active');
+  renderGrid();
+});
+
+document.getElementById('sort-select').addEventListener('change', function(e) {
+  activeSort = e.target.value;
+  renderGrid();
+});
+
+/* ---- Mobile menu ------------------------------------------ */
+(function() {
+  var btn = $('lo-menu-btn');
+  var links = $('lo-nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function() {
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    links.style.display = open ? '' : 'flex';
+    links.style.flexDirection = open ? '' : 'column';
+    links.style.position = open ? '' : 'absolute';
+    links.style.top = open ? '' : '100%';
+    links.style.left = open ? '' : '0';
+    links.style.right = open ? '' : '0';
+    links.style.background = open ? '' : 'rgba(253,251,247,.97)';
+    links.style.padding = open ? '' : '16px 24px';
+    links.style.boxShadow = open ? '' : '0 8px 24px rgba(44,36,22,.08)';
+    links.style.borderBottom = open ? '' : '1px solid var(--border)';
+    links.style.gap = open ? '' : '18px';
+  });
+})();
+
+/* ---- Bootstrap -------------------------------------------- */
+loadCart();
+
+fetch(PRODUCTS_API)
+  .then(function(r) { return r.ok ? r.json() : Promise.reject(r.status); })
+  .then(function(data) {
+    if (Array.isArray(data) && data.length > 0) {
+      products = data.map(function(d, i) {
+        return {
+          id:          String(d.id || 'api-' + i),
+          title:       d.title || 'Untitled',
+          description: d.description || '',
+          price:       d.price || '$0.00',
+          priceValue:  parseFloat(String(d.price || '0').replace(/[^0-9.]/g, '')) || 0,
+          category:    d.category || 'Curriculum',
+          grade:       d.grade || '',
+          subject:     d.subject || '',
+          image:       d.image || '',
+          buyUrl:      d.buyUrl || '',
+          featured:    d.category === 'Premium',
+        };
+      });
+    } else {
+      products = FALLBACK;
+    }
+    afterLoad();
+  })
+  .catch(function() {
+    products = FALLBACK;
+    afterLoad();
+  });
+
+function afterLoad() {
+  /* Update product count */
+  var countEl = $('shop-count');
+  if (countEl) countEl.textContent = products.length;
+
+  /* Update featured banner */
+  var feat = products.find(function(p) { return p.featured; }) ||
+             products.find(function(p) { return p.category === 'Premium'; });
+  if (feat) {
+    var t = $('feat-title'); if (t) t.textContent = feat.title;
+    var d = $('feat-desc');  if (d) d.textContent = feat.description;
+    var pr = $('feat-price'); if (pr) pr.textContent = feat.price;
+  }
+
+  renderCart();
+}
+</script>
+
+</body>
+</html>
