@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The OatSmart Daily Planner generates a full day of grade-appropriate assignments in seconds — privately, on your computer, with no cloud or subscription AI required." />
+  <title>Daily Planner | Little Oat Learners</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <style>
+    body { background: var(--cream); font-family: var(--font-body); color: var(--ink-light); }
+
+    /* ---- Shared helpers ---- */
+    .lo-btn.cream        { background: var(--cream); color: var(--ink); }
+    .lo-btn.cream:hover  { opacity: .88; }
+    .lo-btn.cream-outline{ background: transparent; color: var(--cream); border: 1px solid rgba(253,251,247,.30); }
+    .lo-btn.cream-outline:hover { background: rgba(253,251,247,.10); }
+    .lo-btn.sage { background: linear-gradient(135deg, var(--sage), var(--sage-deep)); color: #fff; box-shadow: 0 4px 18px rgba(90,107,79,.28); }
+    .lo-btn.sage:hover { transform: translateY(-1px); }
+
+    .beta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px 5px 8px;
+      border-radius: 999px;
+      background: rgba(176,159,122,.14);
+      border: 1px solid rgba(176,159,122,.30);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--warm-brown);
+      letter-spacing: 0.04em;
+    }
+    .beta-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--wheat-deep);
+      box-shadow: 0 0 0 3px rgba(176,159,122,.22);
+    }
+
+    .prem-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px 5px 8px;
+      border-radius: 999px;
+      background: rgba(122,139,111,.12);
+      border: 1px solid rgba(122,139,111,.22);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--sage-deep);
+    }
+
+    /* ---- Hero ---- */
+    .dp-hero {
+      padding: 72px 0 0;
+    }
+    .dp-hero-top {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .dp-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7.5vw, 88px);
+      letter-spacing: -0.04em;
+      line-height: 0.94;
+      color: var(--ink);
+      max-width: 17ch;
+      margin: 0 0 24px;
+    }
+    .dp-hero h1 em { font-style: italic; color: var(--sage-deep); font-weight: 500; }
+    .dp-hero .sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.55;
+      margin: 0 0 32px;
+    }
+    .dp-hero-ctas { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .dp-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 28px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 52px;
+    }
+    .dp-hero-meta .m {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dp-hero-meta .m svg { color: var(--sage-deep); }
+
+    /* Screenshot window */
+    .dp-window {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.5) inset,
+        0 30px 80px -16px rgba(44,36,22,.26),
+        0 10px 28px -8px rgba(44,36,22,.14);
+      background: var(--cream-dark);
+    }
+    .dp-window .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: linear-gradient(180deg, var(--cream-dark), rgba(247,244,238,.86));
+      border-bottom: 1px solid var(--border);
+    }
+    .dp-window .lights { display: flex; gap: 6px; }
+    .dp-window .lights span { width: 11px; height: 11px; border-radius: 50%; }
+    .dp-window .lights span:nth-child(1) { background: #FF6058; }
+    .dp-window .lights span:nth-child(2) { background: #FFBE2F; }
+    .dp-window .lights span:nth-child(3) { background: #2BCC42; }
+    .dp-window .wintitle {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .dp-window .screen {
+      background: #fff;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background:
+        repeating-linear-gradient(135deg, var(--oat-light) 0 8px, var(--cream-dark) 8px 16px);
+    }
+    .dp-window .screen .big { font-size: 38px; }
+
+    /* ---- Problem ---- */
+    .dp-problem {
+      padding: 90px 0;
+      background: var(--oat-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .dp-problem-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .dp-problem h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 48px);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 0 0 18px;
+    }
+    .dp-problem p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0 0 14px;
+    }
+    .dp-problem p:last-child { margin: 0; }
+    .dp-stat-stack { display: flex; flex-direction: column; gap: 14px; }
+    .dp-stat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .dp-stat-card .emoji { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .dp-stat-card h4 {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 4px;
+    }
+    .dp-stat-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    /* ---- How it works ---- */
+    .dp-how {
+      padding: 90px 0;
+    }
+    .dp-how-head {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+    .dp-how-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 48px);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 10px 0 14px;
+    }
+    .dp-how-head p { font-size: 15px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    .dp-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      position: relative;
+    }
+    .dp-steps::before {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: calc(16.666% + 22px);
+      right: calc(16.666% + 22px);
+      height: 1px;
+      background: repeating-linear-gradient(90deg, var(--border) 0 8px, transparent 8px 16px);
+      pointer-events: none;
+    }
+    .dp-step {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .dp-step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--cream);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .dp-step h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0;
+    }
+    .dp-step p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .dp-step .step-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sage-deep);
+      background: rgba(122,139,111,.09);
+      border: 1px solid rgba(122,139,111,.18);
+      padding: 4px 10px;
+      border-radius: 999px;
+      align-self: flex-start;
+    }
+
+    /* ---- Features grid ---- */
+    .dp-features {
+      padding: 90px 0;
+      background: var(--oat-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .dp-features-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .dp-features-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 48px);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 10px 0 0;
+      max-width: 18ch;
+    }
+    .dp-features-head p { font-size: 14px; color: var(--muted); max-width: 38ch; margin: 0; line-height: 1.55; }
+    .dp-feat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .dp-feat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .dp-feat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(44,36,22,.08);
+    }
+    .dp-feat .feat-emoji { font-size: 28px; }
+    .dp-feat h4 {
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+    }
+    .dp-feat p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+    /* ---- Privacy callout ---- */
+    .dp-privacy {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dp-privacy::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(700px circle at 15% 50%, rgba(122,139,111,.30), transparent 55%),
+        radial-gradient(500px circle at 85% -20%, rgba(201,184,150,.18), transparent 55%);
+      pointer-events: none;
+    }
+    .dp-privacy > * { position: relative; }
+    .dp-privacy-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .dp-privacy h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      margin: 14px 0 18px;
+      line-height: 1.0;
+    }
+    .dp-privacy h2 em { font-style: italic; color: var(--sage-light); font-weight: 500; }
+    .dp-privacy .sub { font-size: 15px; color: rgba(253,251,247,.70); max-width: 46ch; line-height: 1.6; margin: 0; }
+    .dp-privacy-points { display: flex; flex-direction: column; gap: 18px; }
+    .dp-privacy-point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .dp-privacy-point .pp-ic {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(122,139,111,.22);
+      color: var(--sage-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .dp-privacy-point h4 {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--cream);
+      margin: 0 0 4px;
+    }
+    .dp-privacy-point p { font-size: 13.5px; color: rgba(253,251,247,.65); margin: 0; line-height: 1.5; }
+
+    /* ---- Library preview ---- */
+    .dp-library {
+      padding: 90px 0;
+    }
+    .dp-library-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .dp-library h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 10px 0 16px;
+    }
+    .dp-library p { font-size: 15px; color: var(--muted); line-height: 1.6; margin: 0 0 14px; }
+    .dp-library p:last-of-type { margin: 0; }
+    .dp-library ul {
+      list-style: none;
+      padding: 0; margin: 20px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .dp-library ul li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .dp-library ul li .ck {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(122,139,111,.12);
+      color: var(--sage-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    /* ---- Subjects sidebar visual ---- */
+    .dp-subjects-visual {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(44,36,22,.09);
+    }
+    .dp-subjects-visual .sv-head {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: var(--oat-light);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dp-subjects-visual .sv-body {
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .dp-subj-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 8px;
+      border-radius: 10px;
+      font-size: 13px;
+      transition: background .12s;
+    }
+    .dp-subj-row:hover { background: var(--oat-light); }
+    .dp-subj-row .sr-left { display: flex; align-items: center; gap: 10px; }
+    .dp-subj-row .sr-emoji { font-size: 16px; }
+    .dp-subj-row .sr-name { font-weight: 500; color: var(--ink); }
+    .dp-subj-row .sr-grade { font-size: 11px; color: var(--muted); }
+    .dp-subj-row .sr-type {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--sage-deep);
+      background: rgba(122,139,111,.10);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .dp-subj-row .sr-check {
+      width: 18px; height: 18px;
+      border-radius: 5px;
+      background: var(--sage);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dp-subj-row .sr-check.off {
+      background: transparent;
+      border: 1.5px solid var(--border);
+    }
+    .dp-subjects-visual .sv-foot {
+      padding: 12px 18px 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ---- FAQ ---- */
+    .dp-faq {
+      padding: 90px 0;
+      background: var(--oat-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .dp-faq-inner {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .dp-faq-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 10px 0 14px;
+    }
+    .dp-faq-inner .faq-sub { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
+    .dp-faq-list { border-top: 1px solid var(--border); }
+    .dp-faq-item { border-bottom: 1px solid var(--border); }
+    .dp-faq-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 4px;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      letter-spacing: -0.01em;
+    }
+    .dp-faq-item summary::-webkit-details-marker { display: none; }
+    .dp-faq-item summary .pm { font-family: var(--font-body); font-size: 20px; color: var(--sage-deep); font-weight: 400; flex-shrink: 0; }
+    .dp-faq-item[open] summary .pm::before { content: "−"; }
+    .dp-faq-item:not([open]) summary .pm::before { content: "+"; }
+    .dp-faq-item .ans {
+      padding: 0 4px 20px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .dp-faq-item .ans strong { color: var(--ink); }
+    .dp-faq-item .ans a { color: var(--sage-deep); text-decoration: underline; }
+
+    /* ---- CTA footer ---- */
+    .dp-cta {
+      padding: 90px 0;
+    }
+    .dp-cta-inner {
+      background: var(--ink);
+      border-radius: 24px;
+      padding: 64px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dp-cta-inner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(700px circle at 20% -20%, rgba(122,139,111,.35), transparent 55%),
+        radial-gradient(500px circle at 80% 120%, rgba(201,184,150,.20), transparent 55%);
+      pointer-events: none;
+    }
+    .dp-cta-inner > * { position: relative; }
+    .dp-cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      max-width: 22ch;
+      margin: 14px auto 18px;
+    }
+    .dp-cta-inner p { font-size: 15px; color: rgba(253,251,247,.70); max-width: 50ch; margin: 0 auto 32px; line-height: 1.55; }
+    .dp-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .dp-pricing-note {
+      margin-top: 22px;
+      font-size: 12.5px;
+      color: rgba(253,251,247,.50);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .dp-problem-inner  { grid-template-columns: 1fr; }
+      .dp-steps          { grid-template-columns: 1fr; }
+      .dp-steps::before  { display: none; }
+      .dp-feat-grid      { grid-template-columns: 1fr 1fr; }
+      .dp-privacy-inner  { grid-template-columns: 1fr; }
+      .dp-library-inner  { grid-template-columns: 1fr; }
+      .dp-faq-inner      { grid-template-columns: 1fr; }
+      .dp-cta-inner      { padding: 44px 28px; }
+    }
+    @media (max-width: 560px) {
+      .dp-feat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lo-nav" aria-label="Primary navigation">
+  <a class="brand" href="index.html">
+    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
+    <span class="brand-name">Little Oats</span>
+  </a>
+  <ul class="nav-links" id="lo-nav-links">
+    <li><a href="index.html#tour">Features</a></li>
+    <li><a href="premium.html">Premium</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a class="lo-btn primary sm" href="index.html#download">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+      Download
+    </a>
+  </div>
+  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
+</nav>
+
+<main style="padding-top:80px;padding-bottom:0">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="dp-hero">
+    <div class="lo-container">
+      <div class="dp-hero-top">
+        <div class="beta-badge"><span class="dot"></span> Now in early access</div>
+        <div class="prem-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Included in Premium · $6.99/mo
+        </div>
+      </div>
+
+      <h1>
+        A full day of lessons.<br />
+        Ready in <em>seconds.</em>
+      </h1>
+
+      <p class="sub">
+        The Daily Planner uses a private AI — running entirely on your computer — to generate a fresh, unique set of grade-appropriate assignments every morning. No lesson planning. No repeated worksheets. No cloud.
+      </p>
+
+      <div class="dp-hero-ctas">
+        <a class="lo-btn sage lg" href="index.html#download">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+          Try Premium free for 14 days
+        </a>
+        <a class="lo-btn ghost lg" href="#how">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+          See how it works
+        </a>
+      </div>
+
+      <div class="dp-hero-meta">
+        <span class="m">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.7-1A4.5 4.5 0 0 1 17 18z"/></svg>
+          AI runs locally · nothing leaves your device
+        </span>
+        <span class="m">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9c6-5 14-5 20 0"/><path d="M5 12.5c4-3.3 10-3.3 14 0"/><path d="M8.5 16c2-1.7 5-1.7 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>
+          Works offline after setup
+        </span>
+        <span class="m">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Setup takes about 5 minutes
+        </span>
+        <span class="m">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9.5C1.6 6 5 3 8 3c2 0 3 1 4 2.5C13 4 14 3 16 3c3 0 6.4 3 5 7.5-2 5-9 9.5-9 9.5z"/></svg>
+          No AI subscription or API key needed
+        </span>
+      </div>
+
+      <!-- Screenshot window placeholder -->
+      <div class="dp-window">
+        <div class="titlebar">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="wintitle">OatSmart · Daily Planner</div>
+          <div style="width:52px"></div>
+        </div>
+        <div class="screen">
+          <span class="big">📋</span>
+          <span>Drop Daily Planner screenshot here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE PROBLEM
+       ============================================================ -->
+  <section class="dp-problem">
+    <div class="lo-container">
+      <div class="dp-problem-inner">
+        <div>
+          <span class="lo-eyebrow" style="display:block;margin-bottom:14px">The problem it solves</span>
+          <h2>Lesson planning is the part nobody warned you about.</h2>
+          <p>You chose to homeschool for the freedom and connection. What you didn't expect is spending Sunday evenings hunting for worksheets, trying to remember what you covered last week, and worrying whether it all adds up to an actual education.</p>
+          <p>The Daily Planner takes that weight off your shoulders — without handing control to a distant curriculum publisher or an online platform that knows your child's every score.</p>
+        </div>
+        <div class="dp-stat-stack">
+          <div class="dp-stat-card">
+            <div class="emoji">⏱️</div>
+            <div>
+              <h4>Hours of planning, every week</h4>
+              <p>Most homeschool parents spend 3–5 hours per week planning lessons. That's time that could be spent teaching, outside, or simply resting.</p>
+            </div>
+          </div>
+          <div class="dp-stat-card">
+            <div class="emoji">🔁</div>
+            <div>
+              <h4>The same worksheets, again</h4>
+              <p>Free resources are finite. You've printed that long-division sheet three times this month. Your child knows it before they start.</p>
+            </div>
+          </div>
+          <div class="dp-stat-card">
+            <div class="emoji">🌐</div>
+            <div>
+              <h4>Tools that need the internet</h4>
+              <p>Most AI tools send your child's grade, subjects, and progress to a server somewhere. That's not the deal you signed up for when you chose to homeschool.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+       ============================================================ -->
+  <section class="dp-how" id="how">
+    <div class="lo-container">
+      <div class="dp-how-head">
+        <span class="lo-eyebrow">Three steps</span>
+        <h2>From zero to a full day's lessons — in minutes.</h2>
+        <p>Set it up once, then generate fresh assignments every morning in seconds. The hard part is downloading Ollama. After that, it just works.</p>
+      </div>
+
+      <div class="dp-steps">
+        <div class="dp-step">
+          <div class="dp-step-num">1</div>
+          <h3>Set up once</h3>
+          <p>Download and install <strong>Ollama</strong> — a free, open-source app that runs AI models on your computer. OatSmart walks you through it step by step with a built-in setup guide. Takes about five minutes.</p>
+          <span class="step-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            No account, no credit card, no API key
+          </span>
+        </div>
+        <div class="dp-step">
+          <div class="dp-step-num">2</div>
+          <h3>Pick your subjects</h3>
+          <p>Open the Daily Planner, select your student, and check the subjects you want covered today. Choose <strong>Worksheet</strong> or <strong>Activity</strong> for each one. The student's grade level is shown so you always know what level the content will be.</p>
+          <span class="step-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            11 subjects · Pre-K through 5th Grade
+          </span>
+        </div>
+        <div class="dp-step">
+          <div class="dp-step-num">3</div>
+          <h3>Generate and print</h3>
+          <p>Click <strong>Generate.</strong> Assignments appear one by one as the AI writes them — formatted with your child's name, grade, and today's date. Review, save to your library, and hand it over. Done.</p>
+          <span class="step-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V4h12v5M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 14h8M8 17h6"/></svg>
+            Print-ready · saved to library automatically
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURES GRID
+       ============================================================ -->
+  <section class="dp-features">
+    <div class="lo-container">
+      <div class="dp-features-head">
+        <div>
+          <span class="lo-eyebrow">What's included</span>
+          <h2>A brilliant teacher friend who lives in your laptop.</h2>
+        </div>
+        <p>Every feature is designed for parents who want to spend less time planning and more time teaching.</p>
+      </div>
+      <div class="dp-feat-grid">
+        <div class="dp-feat">
+          <div class="feat-emoji">🎓</div>
+          <h4>Grade-level aware</h4>
+          <p>Assignments are automatically calibrated for your student's grade — Pre-K through 5th. The language, complexity, and expectations shift accordingly.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">📚</div>
+          <h4>11 built-in subjects</h4>
+          <p>Mathematics, Reading, Writing, Science, Social Studies, Art, Music, PE, Health, Foreign Language, and Good Citizenship. Check the ones you want, leave the rest off.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">🗂️</div>
+          <h4>Worksheet or activity</h4>
+          <p>For each subject, choose a printable worksheet or a hands-on activity with a materials list. Mix and match per subject. Perfect for different learning styles.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">🖨️</div>
+          <h4>Print-ready output</h4>
+          <p>Generated assignments print cleanly — formatted with the student's name, grade level, and date at the top. Hand it to your child and go.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">📂</div>
+          <h4>Assignment library</h4>
+          <p>Every assignment you save goes into a searchable library organized by date. Revisit a favorite, reuse a great lesson, or review past days any time.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">🔒</div>
+          <h4>100% private</h4>
+          <p>The AI lives on your computer. No student data, no subjects, no grades are sent anywhere. No accounts, no tracking, no cloud dependency.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">⚡</div>
+          <h4>Seconds, not hours</h4>
+          <p>A full day's worth of assignments — across multiple subjects — generated in under a minute. Every day is fresh. No two days are the same.</p>
+        </div>
+        <div class="dp-feat">
+          <div class="feat-emoji">🆓</div>
+          <h4>No AI subscription needed</h4>
+          <p>Runs on free, open-source local models via Ollama. No OpenAI, no Anthropic, no monthly AI bill on top of your OatSmart plan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRIVACY CALLOUT
+       ============================================================ -->
+  <section class="dp-privacy">
+    <div class="lo-container">
+      <div class="dp-privacy-inner">
+        <div>
+          <span class="lo-eyebrow" style="color:var(--sage-light);display:block;margin-bottom:14px">Privacy by design</span>
+          <h2>Your AI.<br/>Your device.<br/><em>Your data stays home.</em></h2>
+          <p class="sub" style="margin-top:0">
+            Most AI tools are cloud services. They learn from what you send them. Your child's grade level, subjects, and performance become training data somewhere. That's not how OatSmart works — and it never will be.
+          </p>
+        </div>
+        <div class="dp-privacy-points">
+          <div class="dp-privacy-point">
+            <div class="pp-ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.7-1A4.5 4.5 0 0 1 17 18z"/></svg>
+            </div>
+            <div>
+              <h4>The model runs on your machine</h4>
+              <p>Ollama downloads the AI model to your computer. When OatSmart generates assignments, it talks to that local model — not to a server in a data center.</p>
+            </div>
+          </div>
+          <div class="dp-privacy-point">
+            <div class="pp-ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c6-5 14-5 20 0"/><path d="M5 12.5c4-3.3 10-3.3 14 0"/><path d="M8.5 16c2-1.7 5-1.7 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <h4>Works fully offline</h4>
+              <p>After the initial Ollama download, the Daily Planner works without any internet connection. School from a cabin. School during a power outage. School anywhere.</p>
+            </div>
+          </div>
+          <div class="dp-privacy-point">
+            <div class="pp-ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>We can't see your assignments</h4>
+              <p>The content the AI generates for your child never passes through our servers. We don't log it, we don't store it, and we couldn't read it even if we wanted to.</p>
+            </div>
+          </div>
+          <div class="dp-privacy-point">
+            <div class="pp-ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+            </div>
+            <div>
+              <h4>Free, open-source AI model</h4>
+              <p>We use Ollama with freely available open-source models. No API key, no OpenAI account, no monthly AI bill. The intelligence is free — you just supply the hardware.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SUBJECT PICKER + LIBRARY PREVIEW
+       ============================================================ -->
+  <section class="dp-library">
+    <div class="lo-container">
+      <div class="dp-library-inner">
+        <div>
+          <span class="lo-eyebrow" style="display:block;margin-bottom:14px">Your subjects, your choice</span>
+          <h2>Check what you want. Skip the rest.</h2>
+          <p>Pick from 11 built-in subjects each morning. Toggle Worksheet or Activity per subject. The app remembers your usual picks so the next day starts faster.</p>
+          <ul>
+            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span> Assignments automatically match your child's grade level</li>
+            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span> Worksheet: printable questions, fill-in-the-blanks, short answers</li>
+            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span> Activity: materials list, steps, learning goal</li>
+            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span> Mix worksheet and activity freely — one per subject</li>
+            <li><span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span> Every generated set saved automatically to your library</li>
+          </ul>
+        </div>
+
+        <!-- Subjects visual mockup -->
+        <div class="dp-subjects-visual">
+          <div class="sv-head">
+            <span>Daily Planner · Emma · 2nd Grade</span>
+            <span style="color:var(--sage-deep);font-size:12px;font-weight:700">5 subjects selected</span>
+          </div>
+          <div class="sv-body">
+            <div class="dp-subj-row">
+              <div class="sr-left">
+                <span class="sr-emoji">🔢</span>
+                <div><div class="sr-name">Mathematics</div><div class="sr-grade">2nd Grade</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="sr-type">Worksheet</span>
+                <span class="sr-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span>
+              </div>
+            </div>
+            <div class="dp-subj-row">
+              <div class="sr-left">
+                <span class="sr-emoji">📖</span>
+                <div><div class="sr-name">Reading</div><div class="sr-grade">2nd Grade</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="sr-type">Worksheet</span>
+                <span class="sr-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span>
+              </div>
+            </div>
+            <div class="dp-subj-row">
+              <div class="sr-left">
+                <span class="sr-emoji">✍️</span>
+                <div><div class="sr-name">Writing</div><div class="sr-grade">2nd Grade</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="sr-type" style="color:var(--warm-brown);background:rgba(139,115,85,.10)">Activity</span>
+                <span class="sr-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span>
+              </div>
+            </div>
+            <div class="dp-subj-row">
+              <div class="sr-left">
+                <span class="sr-emoji">🔬</span>
+                <div><div class="sr-name">Science</div><div class="sr-grade">2nd Grade</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="sr-type" style="color:var(--warm-brown);background:rgba(139,115,85,.10)">Activity</span>
+                <span class="sr-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span>
+              </div>
+            </div>
+            <div class="dp-subj-row">
+              <div class="sr-left">
+                <span class="sr-emoji">🌎</span>
+                <div><div class="sr-name">Social Studies</div><div class="sr-grade">2nd Grade</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="sr-type">Worksheet</span>
+                <span class="sr-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-11"/></svg></span>
+              </div>
+            </div>
+            <div class="dp-subj-row" style="opacity:.45">
+              <div class="sr-left">
+                <span class="sr-emoji">🎨</span>
+                <div><div class="sr-name">Art</div><div class="sr-grade">2nd Grade</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="sr-type" style="opacity:.4">Worksheet</span>
+                <span class="sr-check off"></span>
+              </div>
+            </div>
+          </div>
+          <div class="sv-foot">
+            <button style="width:100%;padding:12px;border:0;border-radius:12px;background:var(--ink);color:var(--cream);font-family:var(--font-body);font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+              Generate today's assignments
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section class="dp-faq">
+    <div class="lo-container">
+      <div class="dp-faq-inner">
+        <div>
+          <span class="lo-eyebrow" style="display:block;margin-bottom:14px">Questions</span>
+          <h2>Honest answers.</h2>
+          <p class="faq-sub">If you're wondering whether this is too technical, too AI-y, or too good to be true — read on.</p>
+        </div>
+        <div class="dp-faq-list">
+          <details class="dp-faq-item" open>
+            <summary>Does it require internet to work? <span class="pm"></span></summary>
+            <div class="ans">After the initial Ollama download (which does require internet), the Daily Planner works fully offline. The AI model runs on your computer. No Wi-Fi, no hotspot, no cloud account required to generate assignments.</div>
+          </details>
+          <details class="dp-faq-item">
+            <summary>What grades does it support? <span class="pm"></span></summary>
+            <div class="ans">Pre-K, Kindergarten, 1st Grade, 2nd Grade, 3rd Grade, 4th Grade, and 5th Grade. Assignments are automatically calibrated to the grade level of the learner you select — the language, complexity, and expectations all shift accordingly.</div>
+          </details>
+          <details class="dp-faq-item">
+            <summary>Can I print the assignments? <span class="pm"></span></summary>
+            <div class="ans">Yes. Every generated assignment prints cleanly, formatted with your student's name, grade level, and the date at the top. You can print directly from the planner or save to PDF and print later.</div>
+          </details>
+          <details class="dp-faq-item">
+            <summary>Is this included in my plan? <span class="pm"></span></summary>
+            <div class="ans">The Daily Planner is included in the <strong>OatSmart Premium</strong> subscription at <strong>$6.99/month</strong> — no extra charge. If you're on the free trial, you'll have 14 days to try it before your subscription begins. Cancel anytime.</div>
+          </details>
+          <details class="dp-faq-item">
+            <summary>Is "Ollama" safe? What is it? <span class="pm"></span></summary>
+            <div class="ans"><a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> is a free, widely used, open-source tool for running AI models locally. It's used by developers and researchers around the world. It doesn't send any data online once the model is downloaded — it runs entirely on your computer. OatSmart's built-in setup guide walks you through installing it step by step.</div>
+          </details>
+          <details class="dp-faq-item">
+            <summary>How is it different from ChatGPT? <span class="pm"></span></summary>
+            <div class="ans">ChatGPT and similar tools are cloud services — everything you send them is processed on a remote server. The Daily Planner runs a local AI model <strong>on your own computer</strong>. Nothing you type, no information about your child, and no generated content ever leaves your device. It's also free to run — no ChatGPT subscription required on top of OatSmart.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FOOTER
+       ============================================================ -->
+  <section class="dp-cta">
+    <div class="lo-container">
+      <div class="dp-cta-inner">
+        <div class="beta-badge" style="display:inline-flex;margin-bottom:0"><span class="dot"></span> Early access · now available</div>
+        <h2>A full day of lessons, waiting for you every morning.</h2>
+        <p>Try OatSmart Premium free for 14 days. The Daily Planner is included — along with all 11 interactive modules, reports, transcripts, and everything else in the Premium tier.</p>
+        <div class="dp-cta-btns">
+          <a class="lo-btn cream lg" href="index.html#download">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+            Download OatSmart free
+          </a>
+          <a class="lo-btn cream-outline lg" href="premium.html">See all Premium features →</a>
+        </div>
+        <div class="dp-pricing-note">$6.99/month · cancel anytime · works offline · no AI subscription needed</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="lo-foot">
+  <div class="row">
+    <div>
+      <div class="brand-col">
+        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
+        <span>Little Oats</span>
+      </div>
+      <p>Calm, grounded homeschool software for families.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="index.html#download">OatSmart desktop</a></li>
+        <li><a href="daily-planner.html">Daily Planner</a></li>
+        <li><a href="premium.html">Premium modules</a></li>
+        <li><a href="shop.html">Curriculum shop</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
+        <li><a href="policies.html#terms">Terms of Service</a></li>
+        <li><a href="policies.html#privacy">Privacy Policy</a></li>
+        <li><a href="policies.html#data">Data Policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Download</h5>
+      <ul>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases" target="_blank" rel="noopener">All releases</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
+    <div class="lo-foot-links">
+      <a href="policies.html#terms">Terms</a>
+      <a href="policies.html#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var btn = document.getElementById('lo-menu-btn');
+  var links = document.getElementById('lo-nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function() {
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    links.style.display = open ? '' : 'flex';
+    links.style.flexDirection = open ? '' : 'column';
+    links.style.position = open ? '' : 'absolute';
+    links.style.top = open ? '' : '100%';
+    links.style.left = open ? '' : '0';
+    links.style.right = open ? '' : '0';
+    links.style.background = open ? '' : 'rgba(253,251,247,.97)';
+    links.style.padding = open ? '' : '16px 24px';
+    links.style.boxShadow = open ? '' : '0 8px 24px rgba(44,36,22,.08)';
+    links.style.borderBottom = open ? '' : '1px solid var(--border)';
+    links.style.gap = open ? '' : '18px';
+  });
+})();
+</script>
+
+</body>
+</html>

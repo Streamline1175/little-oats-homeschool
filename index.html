@@ -34,6 +34,7 @@
     <li><a href="#promise">Why Little Oats</a></li>
     <li><a href="premium.html">Premium</a></li>
     <li><a href="shop.html">Shop</a></li>
+    <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
     <li><a href="#pricing">Pricing</a></li>
   </ul>
 
@@ -337,7 +338,7 @@
     <!-- Hero row: headline + big counter card -->
     <div class="lo-dl-hero-row">
       <div class="lo-dl-hero-copy">
-        <span class="lo-eyebrow">OatSmart desktop · v1.4.2</span>
+        <span class="lo-eyebrow" id="dl-version-eyebrow">OatSmart desktop · v1.4.2</span>
         <h2>Download OatSmart<br /><em>for your computer.</em></h2>
         <p>Free for 14 days, then $6.99/month per family. One small app — no installers, no plugins, no internet required after install.</p>
         <div class="lo-dl-hero-btns">
@@ -382,8 +383,10 @@
         <div class="lo-dl-os-lbl">downloads</div>
         <div class="lo-dl-os-bar"><span id="dl-mac-bar" style="width:50%"></span></div>
         <div class="lo-dl-os-versions">
-          <div class="lo-dl-os-row"><span>.dmg (Apple Silicon)</span><span class="lo-dl-os-meta">v1.4.2 · 78 MB</span></div>
-          <div class="lo-dl-os-row"><span>.dmg (Intel)</span><span class="lo-dl-os-meta">v1.4.2 · 82 MB</span></div>
+          <div id="dl-mac-assets">
+            <div class="lo-dl-os-row"><span>.dmg (Apple Silicon)</span><span class="lo-dl-os-meta">v1.4.2 · 78 MB</span></div>
+            <div class="lo-dl-os-row"><span>.dmg (Intel)</span><span class="lo-dl-os-meta">v1.4.2 · 82 MB</span></div>
+          </div>
         </div>
         <div class="lo-dl-os-cta">
           <a id="dl-mac-btn" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary">
@@ -407,8 +410,10 @@
         <div class="lo-dl-os-lbl">downloads</div>
         <div class="lo-dl-os-bar"><span id="dl-win-bar" style="width:37%"></span></div>
         <div class="lo-dl-os-versions">
-          <div class="lo-dl-os-row"><span>.exe (installer)</span><span class="lo-dl-os-meta">v1.4.2 · 94 MB</span></div>
-          <div class="lo-dl-os-row"><span>.zip (portable)</span><span class="lo-dl-os-meta">v1.4.2 · 88 MB</span></div>
+          <div id="dl-win-assets">
+            <div class="lo-dl-os-row"><span>.exe (installer)</span><span class="lo-dl-os-meta">v1.4.2 · 94 MB</span></div>
+            <div class="lo-dl-os-row"><span>.zip (portable)</span><span class="lo-dl-os-meta">v1.4.2 · 88 MB</span></div>
+          </div>
         </div>
         <div class="lo-dl-os-cta">
           <a id="dl-win-btn" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary">
@@ -432,9 +437,11 @@
         <div class="lo-dl-os-lbl">downloads</div>
         <div class="lo-dl-os-bar"><span id="dl-linux-bar" style="width:13%"></span></div>
         <div class="lo-dl-os-versions">
-          <div class="lo-dl-os-row"><span>.AppImage</span><span class="lo-dl-os-meta">v1.4.2 · 72 MB</span></div>
-          <div class="lo-dl-os-row"><span>.deb package</span><span class="lo-dl-os-meta">v1.4.2 · 68 MB</span></div>
-          <div class="lo-dl-os-row"><span>.tar.gz</span><span class="lo-dl-os-meta">v1.4.2 · 71 MB</span></div>
+          <div id="dl-linux-assets">
+            <div class="lo-dl-os-row"><span>.AppImage</span><span class="lo-dl-os-meta">v1.4.2 · 72 MB</span></div>
+            <div class="lo-dl-os-row"><span>.deb package</span><span class="lo-dl-os-meta">v1.4.2 · 68 MB</span></div>
+            <div class="lo-dl-os-row"><span>.tar.gz</span><span class="lo-dl-os-meta">v1.4.2 · 71 MB</span></div>
+          </div>
         </div>
         <div class="lo-dl-os-cta">
           <a id="dl-linux-btn" href="https://github.com/Streamline1175/homeschool-releases/releases/latest" class="lo-btn primary">
@@ -450,9 +457,9 @@
     <div class="lo-dl-notes-row">
       <div class="lo-dl-release">
         <span class="lo-eyebrow">What's new</span>
-        <h3>v1.4.2</h3>
-        <div class="lo-dl-release-date">Released May 1, 2026</div>
-        <ul class="lo-dl-release-notes">
+        <h3 id="dl-current-version">v1.4.2</h3>
+        <div class="lo-dl-release-date" id="dl-release-date">Released May 1, 2026</div>
+        <ul class="lo-dl-release-notes" id="dl-release-notes">
           <li>Reading portfolios now export with embedded narration recordings.</li>
           <li>Premium Math module: new fraction-bar visualizer for grades 3–5.</li>
           <li>Calendar: optional state-portfolio day count in the sidebar.</li>
@@ -465,7 +472,7 @@
         <span class="lo-eyebrow">Previous releases</span>
         <h3>All versions</h3>
         <div class="lo-dl-version-note">All builds available on GitHub Releases</div>
-        <div class="lo-dl-version-list">
+        <div class="lo-dl-version-list" id="dl-version-list">
           <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.4.1</span><span class="lo-dl-ver-note">Calendar bug fixes + Linux AppImage stability</span></div><div class="lo-dl-ver-meta">Apr 12, 2026</div></div>
           <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.4.0</span><span class="lo-dl-ver-note">Reading portfolio, transcript v2</span></div><div class="lo-dl-ver-meta">Mar 28, 2026</div></div>
           <div class="lo-dl-version-row"><div><span class="lo-dl-ver-num">1.3.5</span><span class="lo-dl-ver-note">Spelling Bee audio improvements</span></div><div class="lo-dl-ver-meta">Feb 14, 2026</div></div>
@@ -508,7 +515,7 @@
       <div>
         <div class="lo-eyebrow" style="margin-bottom:8px">Need help?</div>
         <p style="font-size:13px;color:var(--muted);margin-bottom:14px;max-width:28ch">Stuck installing or restoring a license? Email us — a real homeschool parent will reply.</p>
-        <a href="/cdn-cgi/l/email-protection#e28a878e8e8da28e8b96968e878d83968e8783908c879091cc818d8f" class="lo-btn outline">✉ Email support</a>
+        <a href="/cdn-cgi/l/email-protection#adc5c8c1c1c2edc1c4d9d9c1c8c2ccd9c1c8ccdfc3c8dfde83cec2c0" class="lo-btn outline">✉ Email support</a>
       </div>
     </div>
 
@@ -659,11 +666,11 @@
 })();
 </script>
 
-<!-- GitHub release + download counter -->
+<!-- GitHub release + download counter + live release data -->
 <script>
 (function () {
-  // Fetch total download counts from GitHub Releases API
-  var RELEASES_API = 'https://api.github.com/repos/Streamline1175/homeschool-releases/releases';
+  var RELEASES_API    = 'https://api.github.com/repos/Streamline1175/homeschool-releases/releases';
+  var API_RELEASES    = 'https://api.littleoatlearners.com/api/releases';
 
   function fmt(n) {
     return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n);
@@ -734,6 +741,94 @@
       ['dl-total-count','dl-mac-count','dl-win-count','dl-linux-count'].forEach(function(id){setEl(id,'—');});
       setEl('dl-delta-text', 'GitHub Releases');
     });
+
+  /* ---- Live release data from /api/releases ---- */
+
+  function fmtDate(str) {
+    if (!str) return '';
+    if (/^\d{4}-\d{2}-\d{2}/.test(str)) {
+      var d = new Date(str);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    return str;
+  }
+
+  function renderAssets(containerId, assets, version) {
+    var el = document.getElementById(containerId);
+    if (!el || !Array.isArray(assets) || !assets.length) return;
+    el.innerHTML = assets.map(function(a) {
+      return '<div class="lo-dl-os-row"><span>' + a.label +
+        '</span><span class="lo-dl-os-meta">v' + version + ' · ' + a.size + '</span></div>';
+    }).join('');
+  }
+
+  function parseNotes(data) {
+    if (data.notes && data.notes.length) return data.notes;
+    if (!data.body || typeof data.body !== 'string') return [];
+    return data.body.split('\n')
+      .map(function(l) { return l.trim(); })
+      .filter(function(l) { return l.length > 0 && l[0] !== '#' && l.indexOf('http') !== 0; })
+      .map(function(l) { return l.replace(/^[-*]\s+/, '').replace(/^\d+\.\s+/, '').trim(); })
+      .filter(function(l) { return l.length > 3; });
+  }
+
+  function buildNotesList(notes) {
+    if (!notes.length) return '';
+    return '<ul class="lo-dl-hist-notes">' +
+      notes.map(function(n) { return '<li>' + n + '</li>'; }).join('') +
+    '</ul>';
+  }
+
+  fetch(API_RELEASES)
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      var cur  = data.current  || {};
+      var hist = Array.isArray(data.history) ? data.history : [];
+      var ver  = cur.version   || '';
+
+      if (ver) {
+        setEl('dl-version-eyebrow', 'OatSmart desktop · v' + ver);
+        setEl('dl-current-version', 'v' + ver);
+      }
+      if (cur.released) setEl('dl-release-date', 'Released ' + fmtDate(cur.released));
+
+      var curNotes = parseNotes(cur);
+      if (curNotes.length) {
+        var nl = document.getElementById('dl-release-notes');
+        if (nl) nl.innerHTML = curNotes.map(function(n) { return '<li>' + n + '</li>'; }).join('');
+      }
+
+      var assets = cur.assets || {};
+      renderAssets('dl-mac-assets',   assets.mac   || [], ver);
+      renderAssets('dl-win-assets',   assets.win   || [], ver);
+      renderAssets('dl-linux-assets', assets.linux || [], ver);
+
+      if (hist.length) {
+        var vl = document.getElementById('dl-version-list');
+        if (vl) {
+          vl.innerHTML = hist.map(function(r) {
+            var rNotes = parseNotes(r);
+            return '<div class="lo-dl-version-row lo-dl-version-row--exp">' +
+              '<div style="flex:1;min-width:0">' +
+                '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">' +
+                  '<span class="lo-dl-ver-num">' + (r.version || '') + '</span>' +
+                  '<span class="lo-dl-ver-note">' + (r.summary  || '') + '</span>' +
+                '</div>' +
+                buildNotesList(rNotes) +
+              '</div>' +
+              '<div class="lo-dl-ver-meta" style="white-space:nowrap">' + fmtDate(r.released) + '</div>' +
+            '</div>';
+          }).join('');
+        }
+      }
+    })
+    .catch(function(err) {
+      console.warn('[OatSmart] /api/releases error:', err);
+    });
+
 })();
 </script>
 

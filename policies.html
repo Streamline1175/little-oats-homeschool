@@ -1,168 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terms, privacy policy, and disclaimers for Little Oat™ Homeschool.">
-    <title>Little Oat™ Policies</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=20241231">
-    <link rel="icon" type="image/svg+xml" href="assets/little-oat-learners-logo.svg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Terms of Service, Privacy Policy, and Data Storage Policy for Little Oat Learners — the offline-first homeschool app." />
+  <title>Policies | Little Oat Learners</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <style>
+    body { background: var(--cream); font-family: var(--font-body); color: var(--ink-light); }
+
+    /* Page hero */
+    .pol-hero {
+      padding: 72px 0 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pol-hero .eyebrow { margin-bottom: 14px; display: block; }
+    .pol-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--ink);
+      margin: 0 0 18px;
+      max-width: 18ch;
+    }
+    .pol-hero p { font-size: 16px; color: var(--muted); max-width: 52ch; line-height: 1.55; margin: 0; }
+
+    /* Jump nav */
+    .pol-jump {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .pol-jump a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .pol-jump a:hover { background: var(--oat-light); border-color: var(--border); color: var(--ink); }
+
+    /* Layout */
+    .pol-body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+      padding: 60px 0 100px;
+    }
+
+    /* Sidebar */
+    .pol-sidebar {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .pol-sidebar-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 12px;
+      margin-bottom: 6px;
+    }
+    .pol-sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all .12s;
+    }
+    .pol-sidebar a:hover { background: var(--oat-light); color: var(--ink); }
+    .pol-sidebar a.active { background: rgba(122,139,111,.10); color: var(--sage-deep); font-weight: 600; }
+    .pol-sidebar a .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+    }
+
+    /* Policy sections */
+    .pol-sections { display: flex; flex-direction: column; gap: 64px; }
+
+    .pol-section {
+      scroll-margin-top: 100px;
+    }
+    .pol-section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pol-section-ic {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(122,139,111,.10);
+      color: var(--sage-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pol-section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 34px);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0 0 6px;
+    }
+    .pol-section-header .updated {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--font-body);
+    }
+
+    /* Policy items */
+    .pol-items { display: flex; flex-direction: column; gap: 0; }
+    .pol-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .pol-item:last-child { border: 0; }
+    .pol-item-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      padding-top: 2px;
+    }
+    .pol-item-body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+    .pol-item-body strong { color: var(--ink); font-weight: 600; }
+    .pol-item-body a { color: var(--sage-deep); text-decoration: underline; }
+
+    /* Highlight box */
+    .pol-highlight {
+      background: rgba(122,139,111,.07);
+      border: 1px solid rgba(122,139,111,.20);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-top: 22px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--ink-light);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .pol-highlight .hi-ic {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--sage-deep);
+    }
+
+    /* Data/offline badge strip */
+    .pol-data-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+      margin-bottom: 6px;
+    }
+    .pol-data-badge {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+    .pol-data-badge .icon { font-size: 22px; margin-bottom: 6px; }
+    .pol-data-badge .label { font-size: 12px; font-weight: 700; color: var(--ink); }
+    .pol-data-badge .sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* Contact box */
+    .pol-contact {
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .pol-contact h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+      margin: 0 0 8px;
+    }
+    .pol-contact p { font-size: 14px; color: rgba(253,251,247,.7); margin: 0; }
+    .lo-btn.cream {
+      background: var(--cream);
+      color: var(--ink);
+    }
+    .lo-btn.cream:hover { opacity: .9; }
+
+    @media (max-width: 860px) {
+      .pol-body { grid-template-columns: 1fr; }
+      .pol-sidebar { display: none; }
+      .pol-item { grid-template-columns: 1fr; gap: 6px; }
+      .pol-data-strip { grid-template-columns: 1fr; }
+      .pol-contact { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
-    <header class="site-header" id="top">
-        <div class="container nav-bar">
-            <a class="brand" href="index.html#top">
-                <img src="assets/logo.png" alt="Little Oat Learners logo" class="brand-mark">
-                <div class="brand-text">
-                    <span class="brand-title">Little Oat Learners</span>
-                    <small class="brand-tagline">Your complete homeschool companion</small>
-                </div>
-            </a>
-            <nav class="main-nav" aria-label="Primary navigation">
-                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-                <ul id="nav-links" class="nav-links">
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#premium">Premium</a></li>
-                    <li><a href="curriculum.html">Shop</a></li>
-                    <li><a href="index.html#download">Download</a></li>
-                </ul>
-            </nav>
+
+<!-- NAV -->
+<nav class="lo-nav" aria-label="Primary navigation">
+  <a class="brand" href="index.html">
+    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
+    <span class="brand-name">Little Oats</span>
+  </a>
+  <ul class="nav-links" id="lo-nav-links">
+    <li><a href="index.html#tour">Features</a></li>
+    <li><a href="premium.html">Premium</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a class="lo-btn primary sm" href="index.html#download">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
+      Download
+    </a>
+  </div>
+  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
+</nav>
+
+<main style="padding-top:80px;padding-bottom:80px">
+<div class="lo-container">
+
+  <!-- Hero -->
+  <section class="pol-hero">
+    <span class="lo-eyebrow eyebrow">Legal</span>
+    <h1>Policies — plain language, no surprises.</h1>
+    <p>Three short documents that cover how Little Oat Learners works, what we do with your information (very little), and how your data stays on your computer.</p>
+    <nav class="pol-jump" aria-label="Jump to section">
+      <a href="#terms">Terms of Service</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#data">Data &amp; Offline Storage</a>
+    </nav>
+  </section>
+
+  <!-- Body -->
+  <div class="pol-body">
+
+    <!-- Sidebar -->
+    <aside class="pol-sidebar" aria-label="Policy sections">
+      <div class="pol-sidebar-label">On this page</div>
+      <a href="#terms" class="active"><span class="dot"></span> Terms of Service</a>
+      <a href="#privacy"><span class="dot"></span> Privacy Policy</a>
+      <a href="#data"><span class="dot"></span> Data &amp; Offline Storage</a>
+    </aside>
+
+    <!-- Sections -->
+    <div class="pol-sections">
+
+      <!-- Terms -->
+      <section class="pol-section" id="terms">
+        <div class="pol-section-header">
+          <div class="pol-section-ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+          </div>
+          <div>
+            <h2>Terms of Service</h2>
+            <div class="updated">Last updated June 1, 2026</div>
+          </div>
         </div>
-    </header>
-
-
-    <main>
-        <section class="page-hero container">
-            <p class="eyebrow">Policies</p>
-            <h1>Terms, privacy, and liability</h1>
-            <p class="lead">Clear, protective policies for families. These apply to curriculum purchases and Homeschool
-                Hub usage.</p>
-        </section>
-
-        <section class="section pastel">
-            <div class="container legal">
-                <div id="terms">
-                    <h2>Terms of Service</h2>
-                    <p><strong>Acceptance.</strong> By purchasing Little Oat curriculum or using the Homeschool Hub, you
-                        agree to these Terms.</p>
-                    <p><strong>Eligibility and Supervision.</strong> You must be at least 18 years old to create an
-                        account
-                        or access premium features of this software. This platform is intended for use by adults,
-                        including parents, educators, and caregivers, to support learning activities with children. The
-                        software is not designed for independent use by children. Adult users are solely responsible for
-                        supervising a child's use of any content generated through the platform and for reviewing all
-                        generated materials before use. All generated content is provided as a support tool only and
-                        should be reviewed and adapted by the adult user prior to use with children.</p>
-                    <p><strong>License for curriculum.</strong> Files are licensed for the purchasing household or
-                        classroom only. Do not resell, repost, or redistribute. Printing and modest adaptations for your
-                        learners are allowed.</p>
-                    <p><strong>Account security.</strong> Keep login credentials private. If you suspect unauthorized
-                        access, notify us immediately so we can secure your account.</p>
-                    <p><strong>Payments and renewals.</strong> Curriculum purchases are one-time. Premium SaaS
-                        capabilities renew on the stated billing cycle until you cancel. Cancellations stop future
-                        charges right away.</p>
-                    <p><strong>Service availability.</strong> The Homeschool Hub is provided “as is.” We strive for
-                        uptime but may pause access for maintenance or improvements.</p>
-                    <p><strong>Liability.</strong> To the fullest extent permitted by law, Little Oat disclaims
-                        warranties of merchantability and fitness for a particular purpose and limits liability for
-                        indirect, incidental, or consequential damages. Use of curriculum and software is at your
-                        discretion.</p>
-                    <p><strong>Educational responsibility.</strong> Parents and guardians remain responsible for meeting
-                        local education requirements and supervising learners.</p>
-                </div>
-                <div id="privacy" class="legal-card">
-                    <h2>Privacy Policy</h2>
-                    <p><strong>What we collect.</strong> Account contact details, secure passwords, optional learner
-                        information you enter, and basic analytics to improve the app. No advertising trackers.</p>
-                    <p><strong>Children's Privacy.</strong> Our software is designed for use by adults (18 years of age
-                        or
-                        older), including parents, educators, and caregivers, to create and guide learning activities
-                        for
-                        children. We do not knowingly collect, use, or store personal information from children under
-                        the
-                        age of 13. Children may engage with content generated through the platform only under the
-                        supervision of an adult account holder. If we become aware that personal information from a
-                        child
-                        under 13 has been collected, we will promptly delete such information. Adult users are
-                        responsible
-                        for ensuring that any content shared with children is appropriate and used in a supervised
-                        setting.</p>
-                    <p><strong>How we use data.</strong> To deliver purchased curriculum, operate the Homeschool Hub,
-                        provide support, and send essential service notices.</p>
-                    <p><strong>Sharing.</strong> We do not sell personal data. Third-party services are limited to
-                        secure infrastructure and payment processing.</p>
-                    <p><strong>Your controls.</strong> You may request data export or deletion at any time. Deleting
-                        premium subscriptions stops future billing immediately.</p>
-                    <p><strong>Security.</strong> Data is encrypted in transit and stored using industry-standard
-                        practices. Access is limited to essential personnel.</p>
-                    <p><strong>Retention.</strong> We retain data only as long as necessary to provide services or meet
-                        legal obligations, then delete or de-identify it.</p>
-                    <p><strong>Contact.</strong> Email hello@littleoat.com with privacy questions or removal requests.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="highlight-card">
-                    <h3>Disclaimer</h3>
-                    <p>Little Oat curriculum and software are tools to support your homeschool. They do not replace
-                        parental judgment, supervision, or compliance with local education laws. By using Little Oat,
-                        you agree that the creator is not liable for outcomes in your homeschool, and you assume
-                        responsibility for how materials are applied.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="brand-inline">
-                    <img src="assets/little-oat-logo.svg" alt="Little Oat Learners logo" class="brand-mark small">
-                    <div>
-                        <span class="brand-title">Little Oat<span class="tm">™</span></span>
-                        <p class="brand-tagline">Curriculum, SaaS, and heart for homeschool.</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h4>Explore</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="curriculum.html">Curriculum</a></li>
-                    <li><a href="saas.html">Homeschool Hub</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Policies</h4>
-                <ul class="footer-links">
-                    <li><a href="policies.html#terms">Terms of Service</a></li>
-                    <li><a href="policies.html#privacy">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Stay connected</h4>
-                <p class="footer-note">Join the waitlist for new units and the integrated experience.</p>
-                <a class="btn outline" href="index.html#contact">Say hello</a>
-            </div>
+        <div class="pol-items">
+          <div class="pol-item">
+            <div class="pol-item-label">Acceptance</div>
+            <div class="pol-item-body">By downloading OatSmart or purchasing from the Little Oat shop, you agree to these Terms. If you don't agree, don't use the software.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Who can use it</div>
+            <div class="pol-item-body">OatSmart is designed for adults — parents, educators, and caregivers — who are 18 or older. It is not designed for unsupervised use by children. Adults are responsible for reviewing all content and supervising any child's use of the software.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">License</div>
+            <div class="pol-item-body">Purchasing OatSmart grants you a personal, non-transferable license to use the software on computers in your household. You may not resell, redistribute, or reverse-engineer the app or any curriculum files you purchase from the shop.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Subscription billing</div>
+            <div class="pol-item-body">The OatSmart subscription is <strong>$6.99/month per family</strong> and renews automatically on your billing date. Cancel anytime from inside the app or by emailing us — cancellation stops future charges immediately. We do not offer prorated refunds for partial months.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Shop purchases</div>
+            <div class="pol-item-body">Curriculum bundles and add-ons purchased from the Little Oat shop are one-time purchases. Files are licensed to your household. Printing and modest adaptations for your learners are permitted. Do not share, post, or resell purchased files.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Software availability</div>
+            <div class="pol-item-body">OatSmart is offline software — it does not require an internet connection after installation. We provide updates periodically. We may retire old versions but will give reasonable notice before doing so.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Educational responsibility</div>
+            <div class="pol-item-body">Parents and guardians remain solely responsible for meeting their state's homeschool requirements, supervising learners, and ensuring the appropriateness of all materials used in their homeschool. Little Oat Learners is a tool, not a compliance guarantor.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Liability</div>
+            <div class="pol-item-body">To the fullest extent permitted by law, Little Oat Learners disclaims warranties of merchantability and fitness for a particular purpose. We limit liability for indirect, incidental, or consequential damages. Use of the software is at your discretion.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Changes to terms</div>
+            <div class="pol-item-body">We may update these Terms. If the changes are material, we'll notify you by email or in-app notice. Continued use after the effective date means you accept the updated Terms.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Governing law</div>
+            <div class="pol-item-body">These Terms are governed by the laws of the State of Texas. Any disputes will be resolved in the courts of Texas.</div>
+          </div>
         </div>
-        <div class="container footer-bottom">
-            <p>Little Oat™ Homeschool. Crafted with care for families.</p>
-        </div>
-    </footer>
+      </section>
 
-    <script src="js/main.js?v=20241231"></script>
+      <!-- Privacy -->
+      <section class="pol-section" id="privacy">
+        <div class="pol-section-header">
+          <div class="pol-section-ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h2>Privacy Policy</h2>
+            <div class="updated">Last updated June 1, 2026</div>
+          </div>
+        </div>
+        <div class="pol-items">
+          <div class="pol-item">
+            <div class="pol-item-label">What we collect</div>
+            <div class="pol-item-body">When you purchase from the shop or subscribe: your email address, name, and payment details (processed securely by Lemon Squeezy — we never see your full card number). That's it. No analytics SDKs, no advertising pixels.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">What OatSmart collects</div>
+            <div class="pol-item-body"><strong>Nothing it sends to us.</strong> All learner records, grades, assignments, books, calendars, and reports are stored locally on your computer. The app does not transmit any of this data to our servers. See the Data &amp; Offline Storage section below.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Children's privacy</div>
+            <div class="pol-item-body">OatSmart is designed for adult use. We do not knowingly collect personal information from children under 13. If you believe a child's information has been submitted to us in error, contact us at <a href="/cdn-cgi/l/email-protection#dcb4b9b0b0b39cb0b5a8a8b0b9b3bda8b0b9bdaeb2b9aeaff2bfb3b1"><span class="__cf_email__" data-cfemail="177f727b7b78577b7e63637b727876637b727665797265643974787a">[email&#160;protected]</span></a> and we will delete it promptly. Children's data entered into the app stays on your device — it is never transmitted to us.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">How we use your data</div>
+            <div class="pol-item-body">To fulfill shop orders, send order confirmations and download links, provide customer support, and send occasional product updates (unsubscribe anytime). We do not use your email for advertising or sell it to third parties.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Third parties</div>
+            <div class="pol-item-body"><strong>Lemon Squeezy</strong> handles payment processing and order management. <strong>SendGrid</strong> delivers transactional emails. Both are bound by their own privacy policies and receive only the minimum data needed to perform their function.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Your rights</div>
+            <div class="pol-item-body">You may request a copy of the personal data we hold, ask us to correct it, or request deletion. Email <a href="/cdn-cgi/l/email-protection#fd9598919192bd919489899198929c8991989c8f93988f8ed39e9290"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29db1b4a9a9b1b8b2bca9b1b8bcafb3b8afaef3beb2b0">[email&#160;protected]</span></a>. We will respond within 30 days.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Security</div>
+            <div class="pol-item-body">Data transmitted to our servers is encrypted in transit using TLS. We store only what we need and limit access to essential personnel.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Contact</div>
+            <div class="pol-item-body">Privacy questions, correction requests, or deletion requests: <a href="/cdn-cgi/l/email-protection#234b464f4f4c634f4a57574f464c42574f4642514d4651500d404c4e"><span class="__cf_email__" data-cfemail="7e161b1212113e12170a0a121b111f0a121b1f0c101b0c0d501d1113">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data & Offline -->
+      <section class="pol-section" id="data">
+        <div class="pol-section-header">
+          <div class="pol-section-ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.7-1A4.5 4.5 0 0 1 17 18z"/><line x1="12" y1="12" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <h2>Data &amp; Offline Storage</h2>
+            <div class="updated">Last updated June 1, 2026</div>
+          </div>
+        </div>
+
+        <div class="pol-data-strip">
+          <div class="pol-data-badge">
+            <div class="icon">💻</div>
+            <div class="label">Stays on your computer</div>
+            <div class="sub">All learner data is local</div>
+          </div>
+          <div class="pol-data-badge">
+            <div class="icon">🔒</div>
+            <div class="label">Never transmitted</div>
+            <div class="sub">No cloud sync, ever</div>
+          </div>
+          <div class="pol-data-badge">
+            <div class="icon">📶</div>
+            <div class="label">Works fully offline</div>
+            <div class="sub">No internet required</div>
+          </div>
+        </div>
+
+        <div class="pol-highlight">
+          <div class="hi-ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>OatSmart stores all of your homeschool records — learner profiles, grades, assignments, books, attendance, calendars, and reports — in a local database on your computer. This data is <strong>never sent to our servers</strong>, never synced to the cloud, and never seen by us. It belongs entirely to you.</div>
+        </div>
+
+        <div class="pol-items" style="margin-top:22px">
+          <div class="pol-item">
+            <div class="pol-item-label">Where data lives</div>
+            <div class="pol-item-body">All app data is stored in a SQLite database in your system's application data folder. On macOS: <code style="font-family:monospace;font-size:12px;background:var(--oat-light);padding:1px 5px;border-radius:4px">~/Library/Application Support/OatSmart/</code>. On Windows: <code style="font-family:monospace;font-size:12px;background:var(--oat-light);padding:1px 5px;border-radius:4px">%APPDATA%/OatSmart/</code>. On Linux: <code style="font-family:monospace;font-size:12px;background:var(--oat-light);padding:1px 5px;border-radius:4px">~/.config/OatSmart/</code></div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Backups</div>
+            <div class="pol-item-body">We strongly recommend backing up your OatSmart data folder regularly using your operating system's backup tools (Time Machine, Windows Backup, etc.) or by manually copying the folder to an external drive. The app includes a built-in export function for creating backups.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Exported files</div>
+            <div class="pol-item-body">Report cards, transcripts, and worksheets exported as PDFs are saved to a location of your choosing on your computer. These files do not contain tracking or telemetry of any kind.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">License verification</div>
+            <div class="pol-item-body">The only outbound network call OatSmart makes is a one-time license check when you enter your subscription key. After verification, the app operates fully offline. No learner data is transmitted during this check.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Uninstalling</div>
+            <div class="pol-item-body">Uninstalling OatSmart does not delete your data folder. You retain full ownership of all your records. To fully remove all data, delete the app data folder manually after uninstalling.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Our commitment</div>
+            <div class="pol-item-body">We will never add cloud sync, telemetry, or any data transmission to OatSmart without explicit opt-in consent and prior notice. Your family's records are yours — full stop.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact box -->
+      <div class="pol-contact">
+        <div>
+          <h3>Questions about these policies?</h3>
+          <p>We're a small family-run team. Email us directly — a real person will reply.</p>
+        </div>
+        <a href="/cdn-cgi/l/email-protection#c4aca1a8a8ab84a8adb0b0a8a1aba5b0a8a1a5b6aaa1b6b7eaa7aba9" class="lo-btn cream lg">✉ <span class="__cf_email__" data-cfemail="751d1019191a35191c010119101a1401191014071b1007065b161a18">[email&#160;protected]</span></a>
+      </div>
+
+    </div><!-- /pol-sections -->
+  </div><!-- /pol-body -->
+
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="lo-foot">
+  <div class="row">
+    <div>
+      <div class="brand-col">
+        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
+        <span>Little Oats</span>
+      </div>
+      <p>Calm, grounded homeschool software for families.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="index.html#download">OatSmart desktop</a></li>
+        <li><a href="shop.html">Curriculum shop</a></li>
+        <li><a href="premium.html">Premium modules</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
+        <li><a href="policies.html#terms">Terms of Service</a></li>
+        <li><a href="policies.html#privacy">Privacy Policy</a></li>
+        <li><a href="policies.html#data">Data Policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Download</h5>
+      <ul>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
+        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
+    <div class="lo-foot-links">
+      <a href="policies.html#terms">Terms</a>
+      <a href="policies.html#privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* Mobile menu */
+(function() {
+  var btn = document.getElementById('lo-menu-btn');
+  var links = document.getElementById('lo-nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function() {
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    links.style.display = open ? '' : 'flex';
+    links.style.flexDirection = open ? '' : 'column';
+    links.style.position = open ? '' : 'absolute';
+    links.style.top = open ? '' : '100%';
+    links.style.left = open ? '' : '0';
+    links.style.right = open ? '' : '0';
+    links.style.background = open ? '' : 'rgba(253,251,247,.97)';
+    links.style.padding = open ? '' : '16px 24px';
+    links.style.boxShadow = open ? '' : '0 8px 24px rgba(44,36,22,.08)';
+    links.style.borderBottom = open ? '' : '1px solid var(--border)';
+    links.style.gap = open ? '' : '18px';
+  });
+})();
+
+/* Sidebar active state on scroll */
+(function() {
+  var sections = ['terms','privacy','data'];
+  var links = {};
+  sections.forEach(function(id) {
+    links[id] = document.querySelector('.pol-sidebar a[href="#' + id + '"]');
+  });
+  function update() {
+    var scroll = window.scrollY + 120;
+    var active = sections[0];
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && el.offsetTop <= scroll) active = id;
+    });
+    sections.forEach(function(id) {
+      if (links[id]) links[id].classList.toggle('active', id === active);
+    });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
 </body>
-
 </html>
