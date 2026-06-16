@@ -834,5 +834,54 @@
 
 <script src="js/main.js"></script>
 
+<!-- Age Verification Modal -->
+<div id="age-modal-overlay" class="age-modal-overlay" aria-hidden="true">
+  <div class="age-modal" role="dialog" aria-labelledby="age-modal-title" aria-modal="true">
+    <div class="age-modal-header">
+      <h3 id="age-modal-title">Age Verification Required</h3>
+    </div>
+    <div class="age-modal-body">
+      <p>This application is intended for adults. Please enter your date of birth to verify you are 18 years or older.</p>
+      <div class="dob-select-group">
+        <div class="dob-field">
+          <label for="dob-month">Month</label>
+          <select id="dob-month" required>
+            <option value="">Month</option>
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
+        </div>
+        <div class="dob-field">
+          <label for="dob-day">Day</label>
+          <select id="dob-day" required>
+            <option value="">Day</option>
+          </select>
+        </div>
+        <div class="dob-field">
+          <label for="dob-year">Year</label>
+          <select id="dob-year" required>
+            <option value="">Year</option>
+          </select>
+        </div>
+      </div>
+      <p id="age-error" class="age-modal-error" aria-live="polite"></p>
+    </div>
+    <div class="age-modal-actions">
+      <button type="button" id="age-cancel-btn" class="btn outline">Cancel</button>
+      <button type="button" id="age-verify-btn" class="btn primary">Verify Age</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
