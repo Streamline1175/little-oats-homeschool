@@ -508,18 +508,30 @@
 
   // ==================== Download Links & Count Logic ====================
   async function fetchGitHubDownloads() {
-    const winBadge = document.getElementById('download-win');
-    const macBadge = document.getElementById('download-mac');
-    const linuxBadge = document.getElementById('download-linux');
+    // Hero buttons
     const winLink = document.getElementById('download-win-link');
     const macLink = document.getElementById('download-mac-link');
     const linuxLink = document.getElementById('download-linux-link');
 
-    // Only proceed if elements exist
-    if (!winBadge && !macBadge && !linuxBadge) return;
+    // Per-OS column buttons
+    const macBtn = document.getElementById('dl-mac-btn');
+    const winBtn = document.getElementById('dl-win-btn');
+    const linuxBtn = document.getElementById('dl-linux-btn');
+
+    // Per-OS count / bar elements
+    const totalCountEl = document.getElementById('dl-total-count');
+    const macCountEl = document.getElementById('dl-mac-count');
+    const winCountEl = document.getElementById('dl-win-count');
+    const linuxCountEl = document.getElementById('dl-linux-count');
+    const macBarEl = document.getElementById('dl-mac-bar');
+    const winBarEl = document.getElementById('dl-win-bar');
+    const linuxBarEl = document.getElementById('dl-linux-bar');
+
+    // Only proceed if at least one download element exists on this page
+    if (!winLink && !macLink && !linuxLink && !macBtn && !winBtn && !linuxBtn) return;
 
     try {
-      // Fetch the latest release to get correct download URLs
+      // Fetch the latest release to get correct direct download URLs
       const latestResponse = await fetch('https://api.github.com/repos/Streamline1175/homeschool-releases/releases/latest');
       if (!latestResponse.ok) throw new Error('Failed to fetch latest release');
 
@@ -528,17 +540,22 @@
       // Find download URLs from latest release assets
       let downloadUrls = {
         windows: null,
-        mac: null,
+        macArm: null,   // Apple Silicon
+        macIntel: null, // Intel
         linux: null
       };
 
       latestRelease.assets.forEach(asset => {
         const name = asset.name.toLowerCase();
         // Prefer setup exe for Windows (installer)
-        if (name.includes('setup') && name.endsWith('.exe')) {
+        if ((name.includes('setup') && name.endsWith('.exe')) && !downloadUrls.windows) {
           downloadUrls.windows = asset.browser_download_url;
         } else if (name.endsWith('.dmg')) {
-          downloadUrls.mac = asset.browser_download_url;
+          if (name.includes('arm64') || name.includes('apple-silicon') || name.includes('aarch64')) {
+            downloadUrls.macArm = asset.browser_download_url;
+          } else {
+            downloadUrls.macIntel = asset.browser_download_url;
+          }
         } else if (name.endsWith('.appimage')) {
           downloadUrls.linux = asset.browser_download_url;
         }
@@ -550,10 +567,17 @@
         if (exeAsset) downloadUrls.windows = exeAsset.browser_download_url;
       }
 
-      // Update download links
+      // Best Mac URL: prefer Apple Silicon, fall back to Intel
+      const macUrl = downloadUrls.macArm || downloadUrls.macIntel;
+
+      // Update all download links with direct download URLs
+      if (macLink && macUrl) macLink.href = macUrl;
       if (winLink && downloadUrls.windows) winLink.href = downloadUrls.windows;
-      if (macLink && downloadUrls.mac) macLink.href = downloadUrls.mac;
       if (linuxLink && downloadUrls.linux) linuxLink.href = downloadUrls.linux;
+
+      if (macBtn && macUrl) macBtn.href = macUrl;
+      if (winBtn && downloadUrls.windows) winBtn.href = downloadUrls.windows;
+      if (linuxBtn && downloadUrls.linux) linuxBtn.href = downloadUrls.linux;
 
       // Fetch all releases for download counts
       const response = await fetch('https://api.github.com/repos/Streamline1175/homeschool-releases/releases');
@@ -561,11 +585,7 @@
 
       const releases = await response.json();
 
-      let counts = {
-        windows: 0,
-        mac: 0,
-        linux: 0
-      };
+      let counts = { windows: 0, mac: 0, linux: 0 };
 
       releases.forEach(release => {
         release.assets.forEach(asset => {
@@ -576,35 +596,39 @@
             counts.windows += count;
           } else if (name.endsWith('.dmg')) {
             counts.mac += count;
-          } else if (name.endsWith('.appimage') || name.endsWith('.deb') || name.endsWith('.rpm')) {
+          } else if (name.endsWith('.appimage') || name.endsWith('.deb') || name.endsWith('.rpm') || name.endsWith('.tar.gz')) {
             counts.linux += count;
           }
         });
       });
 
-      // Format numbers (e.g., 1.2k)
-      const formatCount = (num) => {
-        if (num >= 1000) {
-          return (num / 1000).toFixed(1) + 'k downloads';
-        }
-        return num + ' downloads';
-      };
+      const total = counts.windows + counts.mac + counts.linux;
 
-      if (winBadge) winBadge.textContent = formatCount(counts.windows);
-      if (macBadge) macBadge.textContent = formatCount(counts.mac);
-      if (linuxBadge) linuxBadge.textContent = formatCount(counts.linux);
+      // Format numbers with commas
+      const fmt = (num) => num >= 1000 ? (num / 1000).toFixed(1) + 'k' : String(num);
+
+      if (totalCountEl) totalCountEl.textContent = fmt(total);
+      if (macCountEl) macCountEl.textContent = fmt(counts.mac);
+      if (winCountEl) winCountEl.textContent = fmt(counts.windows);
+      if (linuxCountEl) linuxCountEl.textContent = fmt(counts.linux);
+
+      // Update progress bars (percentage of total)
+      if (total > 0) {
+        if (macBarEl) macBarEl.style.width = ((counts.mac / total) * 100).toFixed(1) + '%';
+        if (winBarEl) winBarEl.style.width = ((counts.windows / total) * 100).toFixed(1) + '%';
+        if (linuxBarEl) linuxBarEl.style.width = ((counts.linux / total) * 100).toFixed(1) + '%';
+      }
 
     } catch (error) {
       console.error('Error fetching download info:', error);
-      // Fallback to releases page
+      // Fallback to releases page on error
       const fallbackUrl = 'https://github.com/Streamline1175/homeschool-releases/releases/latest';
       if (winLink) winLink.href = fallbackUrl;
       if (macLink) macLink.href = fallbackUrl;
       if (linuxLink) linuxLink.href = fallbackUrl;
-      // Hide badges on error
-      if (winBadge) winBadge.style.display = 'none';
-      if (macBadge) macBadge.style.display = 'none';
-      if (linuxBadge) linuxBadge.style.display = 'none';
+      if (winBtn) winBtn.href = fallbackUrl;
+      if (macBtn) macBtn.href = fallbackUrl;
+      if (linuxBtn) linuxBtn.href = fallbackUrl;
     }
   }
 
@@ -736,7 +760,7 @@
     // Intercept download link clicks using event delegation
     // This captures clicks even on nested elements inside the links
     document.addEventListener('click', (e) => {
-      const downloadLink = e.target.closest('#download-win-link, #download-mac-link, #download-linux-link, .resource-card .btn');
+      const downloadLink = e.target.closest('#download-win-link, #download-mac-link, #download-linux-link, #dl-mac-btn, #dl-win-btn, #dl-linux-btn, .resource-card .btn');
       if (downloadLink) {
         e.preventDefault();
         e.stopPropagation();
