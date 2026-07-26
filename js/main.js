@@ -776,40 +776,8 @@
   // Init download links and counts
   fetchGitHubDownloads();
 
-  // ==================== Privacy-First Analytics ====================
-  async function trackVisit() {
-    // 1. Get or create anonymous visitor ID
-    let visitorId = localStorage.getItem('lol_visitor_id');
-    if (!visitorId) {
-      visitorId = crypto.randomUUID();
-      localStorage.setItem('lol_visitor_id', visitorId);
-    }
-
-    // 2. Prepare payload
-    const payload = {
-      visitor_id: visitorId,
-      page: window.location.pathname
-    };
-
-    // 3. Send to backend
-    // Note: Use a separate base URL if needed, but here we assume same domain or previously defined FASTAPI_URL (base)
-    // The previous FASTAPI_URL variable might be scoped inside the IIFE or block, so let's re-declare a base or use relative if proxied.
-    // For safety, let's use the hardcoded base for now matching existing code.
-    const API_BASE = 'https://api.littleoatlearners.com';
-
-    try {
-      await fetch(`${API_BASE}/api/analytics/track`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-    } catch (e) {
-      // Fail silently for analytics
-      console.debug('Analytics skipped', e);
-    }
-  }
+  // Analytics moved to js/site.js so every page is counted, not just the
+  // few that load main.js. Do not re-add it here — it would double-count.
 
   // ==================== Pointer Glow Effect for Glass Cards ====================
   function initPointerGlow() {
@@ -825,6 +793,4 @@
   }
   initPointerGlow();
 
-  // Run tracking once per page load
-  trackVisit();
 })();
