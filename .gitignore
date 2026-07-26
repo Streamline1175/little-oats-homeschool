@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python (rpi-backend)
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Secrets — the backend reads all credentials from the environment
+.env
+.env.*
+!.env.example
+
+# Backend runtime data (lives on the Pi, not in git)
+analytics_data.json
+*.bak-*

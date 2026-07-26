@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Daily Work Tracker by Little Oat LLC — a simple mobile app to keep each homeschool day's assignments clear and checked-off, wherever school happens." />
+  <meta name="author" content="Little Oat LLC" />
+  <title>Daily Work Tracker | Mobile Homeschool App — Little Oat LLC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <link rel="stylesheet" href="css/styles.css?v=20260723a" />
+  <link rel="stylesheet" href="css/home.css?v=20260723a" />
+  <link rel="stylesheet" href="css/site.css?v=20260726a" />
+</head>
+<body>
+
+<header class="site-header">
+
+  <a class="site-banner sub" href="index.html">
+
+    <img src="assets/website-sub-banner-strip.png" alt="Little Oat LLC" />
+
+  </a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-menu">Menu ▾</button>
+    <ul class="nav-menu" id="site-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="software.html" aria-current="page">Software &amp; Mobile Apps
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="software.html"><span class="d-title">All software &amp; apps</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a href="oatsmart.html"><span class="d-title">OatSmart</span><span class="d-sub">Desktop app · Mac · Windows · Linux</span></a></li>
+          <li><a href="star-chart.html"><span class="d-title">Star Chart</span><span class="d-sub">Mobile app · reward charts</span></a></li>
+          <li><a href="daily-work-tracker.html"><span class="d-title">Daily Work Tracker</span><span class="d-sub">Mobile app · daily assignments</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Coop Connect</span><span class="d-sub">Mobile app · Coming soon</span></a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="curriculum.html">Curriculum
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="curriculum.html"><span class="d-title">About the curriculum</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a class="is-soon"><span class="d-title">Reading &amp; Phonics</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Writing</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Math</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Dual Language</span><span class="d-sub">Coming soon</span></a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="blog.html">Blog
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="blog.html"><span class="d-title">All posts</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a href="blog-welcome.html"><span class="d-title">Welcome to Little Oat</span><span class="d-sub">Where I share our journey</span></a></li>
+          <li><a href="texas-standards.html"><span class="d-title">Homeschooling in Texas</span><span class="d-sub">What the law asks of you</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-intro app-intro">
+  <h1>Daily Work Tracker</h1>
+  <p>A gentle daily to-do for your homeschoolers. Lay out each day's assignments, check them off one by one, and keep the whole school day clear — wherever it happens.</p>
+</section>
+
+<!-- ============================================================
+     FEATURE TOUR (step list + phone screenshot)
+     ============================================================ -->
+<section id="tour" class="lo-tour app-tour">
+  <div class="app-tour-stage">
+    <div class="lo-tour-list" id="dwt-list" role="tablist" aria-label="Daily Work Tracker features">
+      <button class="lo-tour-item active" role="tab" aria-selected="true" data-slide="0">
+        <span class="num">01</span>
+        <div><h4>Meet Daily Work Tracker</h4><p>A gentle daily to-do that keeps each homeschool day clear.</p></div>
+      </button>
+      <button class="lo-tour-item" role="tab" aria-selected="false" data-slide="1">
+        <span class="num">02</span>
+        <div><h4>Daily work &amp; grades</h4><p>Add each day's work per child, then watch grades, subjects covered, and progress build automatically.</p></div>
+      </button>
+      <button class="lo-tour-item" role="tab" aria-selected="false" data-slide="2">
+        <span class="num">03</span>
+        <div><h4>Attendance made easy</h4><p>A color-coded calendar for school days, field trips, sick days, and vacations — export it as a PDF.</p></div>
+      </button>
+      <button class="lo-tour-item" role="tab" aria-selected="false" data-slide="3">
+        <span class="num">04</span>
+        <div><h4>Students &amp; semesters</h4><p>Manage your students and define your school year's semesters so every entry stays organized.</p></div>
+      </button>
+      <button class="lo-tour-item" role="tab" aria-selected="false" data-slide="4">
+        <span class="num">05</span>
+        <div><h4>Make it your own</h4><p>Name your homeschool, add a logo and banner, tweak attendance types, and pick a light or dark theme.</p></div>
+      </button>
+    </div>
+
+    <div class="app-tour-visual">
+      <div class="app-phone" id="dwt-phone" aria-live="polite"></div>
+      <div class="lo-tour-caption">
+        <span>
+          <span class="pill-sm" id="dwt-pill">Welcome</span>
+          &nbsp;
+          <span id="dwt-counter" style="color:var(--muted)">Step 1 of 5</span>
+        </span>
+        <div class="lo-tour-nav">
+          <button id="dwt-prev" aria-label="Previous feature" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+          <button id="dwt-next" aria-label="Next feature">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GET IT — store links + pricing
+     ============================================================ -->
+<section class="app-get">
+  <p class="get-note">Coming soon to</p>
+  <div class="app-stores">
+    <a class="store-badge" href="#" aria-label="Download on the App Store">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 4c-1 1-2 2-2 3 0 0 1 0 2-1s2-1 2-3c-1 0-1 0-2 1zm-3 5c-2 0-3-1-5-1s-4 2-4 5c0 4 3 9 5 9 1 0 2-1 3-1s2 1 3 1c2 0 5-5 5-9 0-2-1-3-2-4-1 0-2 0-2 1s-1 0-3-1z"/></svg>
+      <span class="sb-text"><span class="sb-small">Download on the</span><span class="sb-big">App Store</span></span>
+    </a>
+    <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.littleoats.homeschool&amp;pcampaignid=web_share" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3.5v17c0 .6.3 1 .8 1.2L14 12 3.8 2.3C3.3 2.5 3 2.9 3 3.5zm12.5 6.3L6.2 4.3l8.1 7.6 1.2-2.1zM18.7 11l-2.4-1.4-1.5 2.4 1.5 2.4L18.7 13c.8-.5.8-1.5 0-2zM6.2 19.7l9.3-5.5-1.2-2.1-8.1 7.6z"/></svg>
+      <span class="sb-text"><span class="sb-small">Get it on</span><span class="sb-big">Google Play</span></span>
+    </a>
+  </div>
+
+  <div class="app-price">
+    <span class="price-tag">Pricing</span>
+    <div class="price-row"><span class="amount">$&mdash;</span></div>
+    <p class="price-note">Placeholder — tell me the price (e.g. free, $1.99/month, or a one-time fee) and I'll set it here.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="assets/little-oat-llc-logo.png" alt="Little Oat LLC logo" />
+      <p class="foot-tag">Calm, family-made homeschool tools — desktop software, mobile apps, and one day, curriculum. Built by a homeschool mom, for homeschool families.</p>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="policies.html#privacy">Privacy Policy</a>
+      <a href="policies.html#terms">Terms of Use</a>
+      <a href="policies.html#disclaimers">Disclaimers</a>
+      <a href="mailto:support@littleoatlearners.com">Contact</a>
+    </nav>
+  </div>
+  <div class="foot-legal">
+    <span>© 2026 Little Oat LLC. All rights reserved.</span>
+    <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>
+  </div>
+</footer>
+
+<script>
+/* ---- Daily Work Tracker feature tour ---- */
+(function () {
+  var slides = [
+    { src: 'assets/Daily Work Tracker App main.png', alt: 'Daily Work Tracker app logo',     pill: 'Welcome' },
+    { src: 'assets/Daily Work work.jpg',             alt: 'Daily work and grades overview',  pill: 'Daily Work' },
+    { src: 'assets/Daily Work attendance.jpg',       alt: 'Attendance calendar and check-in',pill: 'Attendance' },
+    { src: 'assets/Daily Work Settings.jpg',         alt: 'Students and semester settings',   pill: 'Students' },
+    { src: 'assets/Daily Work costomize app.jpg',    alt: 'Customization and theme settings', pill: 'Themes' },
+  ];
+
+  var phone   = document.getElementById('dwt-phone');
+  var pill    = document.getElementById('dwt-pill');
+  var counter = document.getElementById('dwt-counter');
+  var prev    = document.getElementById('dwt-prev');
+  var next    = document.getElementById('dwt-next');
+  var items   = document.querySelectorAll('#dwt-list .lo-tour-item');
+  if (!phone) return;
+
+  var imgs = [], current = 0;
+  slides.forEach(function (s, i) {
+    var img = document.createElement('img');
+    img.className = 'app-slide-img' + (i === 0 ? ' is-active' : '');
+    img.src = s.src; img.alt = s.alt;
+    img.loading = i === 0 ? 'eager' : 'lazy';
+    phone.appendChild(img);
+    imgs.push(img);
+  });
+
+  function go(idx) {
+    current = (idx + slides.length) % slides.length;
+    imgs.forEach(function (im, i) { im.classList.toggle('is-active', i === current); });
+    items.forEach(function (el, i) {
+      el.classList.toggle('active', i === current);
+      el.setAttribute('aria-selected', String(i === current));
+    });
+    pill.textContent = slides[current].pill;
+    counter.textContent = 'Step ' + (current + 1) + ' of ' + slides.length;
+    prev.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+  }
+
+  prev.querySelector('svg').style.transform = 'rotate(180deg)';
+  prev.addEventListener('click', function () { go(current - 1); stop(); });
+  next.addEventListener('click', function () { go(current + 1); stop(); });
+  items.forEach(function (el) {
+    el.addEventListener('click', function () { go(parseInt(el.dataset.slide, 10)); stop(); });
+  });
+
+  var timer = setInterval(function () { go(current < slides.length - 1 ? current + 1 : 0); }, 5000);
+  function stop() { clearInterval(timer); }
+  document.getElementById('tour').addEventListener('mouseenter', stop);
+
+  go(0);
+})();
+</script>
+<script src="js/site.js?v=20260726a"></script>
+</body>
+</html>

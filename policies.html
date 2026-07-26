@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Terms of Service, Privacy Policy, and Data Storage Policy for Little Oat Learners — the offline-first homeschool app." />
-  <title>Policies | Little Oat Learners</title>
+  <meta name="description" content="Terms of Use, Privacy Policy, and Disclaimers for Little Oat LLC — with product appendixes for OatSmart, Star Chart, Daily Work Tracker, and Coop Connect." />
+  <title>Policies | Little Oat LLC</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
 
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20260723a" />
+  <link rel="stylesheet" href="css/home.css?v=20260723a" />
+  <link rel="stylesheet" href="css/site.css?v=20260726a" />
 
   <style>
     body { background: var(--cream); font-family: var(--font-body); color: var(--ink-light); }
@@ -32,7 +33,7 @@
       margin: 0 0 18px;
       max-width: 18ch;
     }
-    .pol-hero p { font-size: 16px; color: var(--muted); max-width: 52ch; line-height: 1.55; margin: 0; }
+    .pol-hero p { font-size: 16px; color: var(--muted); max-width: 56ch; line-height: 1.55; margin: 0; }
 
     /* Jump nav */
     .pol-jump {
@@ -60,7 +61,7 @@
     /* Layout */
     .pol-body {
       display: grid;
-      grid-template-columns: 220px 1fr;
+      grid-template-columns: 230px 1fr;
       gap: 56px;
       align-items: start;
       padding: 60px 0 100px;
@@ -72,7 +73,7 @@
       top: 90px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
     .pol-sidebar-label {
       font-size: 10px;
@@ -87,7 +88,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 12px;
+      padding: 8px 12px;
       border-radius: 10px;
       font-size: 13.5px;
       font-weight: 500;
@@ -103,9 +104,23 @@
       background: var(--sage);
       flex-shrink: 0;
     }
+    .pol-sidebar a.sub {
+      padding: 5px 12px 5px 26px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .pol-sidebar a.sub .apx-letter {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--sage-deep);
+      opacity: .75;
+      width: 12px;
+      flex-shrink: 0;
+    }
+    .pol-sidebar .sidebar-gap { height: 10px; }
 
     /* Policy sections */
-    .pol-sections { display: flex; flex-direction: column; gap: 64px; }
+    .pol-sections { display: flex; flex-direction: column; gap: 72px; }
 
     .pol-section {
       scroll-margin-top: 100px;
@@ -167,6 +182,13 @@
     }
     .pol-item-body strong { color: var(--ink); font-weight: 600; }
     .pol-item-body a { color: var(--sage-deep); text-decoration: underline; }
+    .pol-item-body code {
+      font-family: monospace;
+      font-size: 12px;
+      background: var(--oat-light);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
 
     /* Highlight box */
     .pol-highlight {
@@ -207,6 +229,81 @@
     .pol-data-badge .label { font-size: 12px; font-weight: 700; color: var(--ink); }
     .pol-data-badge .sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
+    /* Appendixes */
+    .pol-appendices { margin-top: 34px; }
+    .pol-appendices-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .pol-appendix {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      scroll-margin-top: 100px;
+      overflow: hidden;
+    }
+    .pol-appendix summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      user-select: none;
+    }
+    .pol-appendix summary::-webkit-details-marker { display: none; }
+    .pol-appendix summary:hover { background: var(--oat-light); }
+    .pol-appendix .apx-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      background: rgba(122,139,111,.10);
+      border-radius: 999px;
+      padding: 4px 10px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .pol-appendix .apx-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .pol-appendix .apx-sub {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .pol-appendix .apx-soon {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #a07d3b;
+      background: rgba(196,154,74,.12);
+      border-radius: 999px;
+      padding: 4px 10px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .pol-appendix .apx-chevron {
+      margin-left: auto;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform .15s;
+    }
+    .pol-appendix[open] .apx-chevron { transform: rotate(180deg); }
+    .pol-appendix .apx-body {
+      padding: 4px 20px 12px;
+      border-top: 1px solid var(--border);
+    }
+
     /* Contact box */
     .pol-contact {
       background: var(--ink);
@@ -239,45 +336,76 @@
       .pol-item { grid-template-columns: 1fr; gap: 6px; }
       .pol-data-strip { grid-template-columns: 1fr; }
       .pol-contact { grid-template-columns: 1fr; }
+      .pol-appendix summary { flex-wrap: wrap; gap: 8px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="lo-nav" aria-label="Primary navigation">
-  <a class="brand" href="index.html">
-    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
-    <span class="brand-name">Little Oats</span>
-  </a>
-  <ul class="nav-links" id="lo-nav-links">
-    <li><a href="index.html#tour">Features</a></li>
-    <li><a href="premium.html">Premium</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
-  </ul>
-  <div class="nav-ctas">
-    <a class="lo-btn primary sm" href="index.html#download">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
-      Download
-    </a>
-  </div>
-  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
-</nav>
+<header class="site-header">
 
-<main style="padding-top:80px;padding-bottom:80px">
+  <a class="site-banner sub" href="index.html">
+
+    <img src="assets/website-sub-banner-strip.png" alt="Little Oat LLC" />
+
+  </a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-menu">Menu ▾</button>
+    <ul class="nav-menu" id="site-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="software.html">Software &amp; Mobile Apps
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="software.html"><span class="d-title">All software &amp; apps</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a href="oatsmart.html"><span class="d-title">OatSmart</span><span class="d-sub">Desktop app · Mac · Windows · Linux</span></a></li>
+          <li><a href="star-chart.html"><span class="d-title">Star Chart</span><span class="d-sub">Mobile app · reward charts</span></a></li>
+          <li><a href="daily-work-tracker.html"><span class="d-title">Daily Work Tracker</span><span class="d-sub">Mobile app · daily assignments</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Coop Connect</span><span class="d-sub">Mobile app · Coming soon</span></a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="curriculum.html">Curriculum
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="curriculum.html"><span class="d-title">About the curriculum</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a class="is-soon"><span class="d-title">Reading &amp; Phonics</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Writing</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Math</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Dual Language</span><span class="d-sub">Coming soon</span></a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="blog.html">Blog
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="blog.html"><span class="d-title">All posts</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a href="blog-welcome.html"><span class="d-title">Welcome to Little Oat</span><span class="d-sub">Where I share our journey</span></a></li>
+          <li><a href="texas-standards.html"><span class="d-title">Homeschooling in Texas</span><span class="d-sub">What the law asks of you</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main style="padding-top:8px;padding-bottom:80px">
 <div class="lo-container">
 
   <!-- Hero -->
   <section class="pol-hero">
     <span class="lo-eyebrow eyebrow">Legal</span>
     <h1>Policies — plain language, no surprises.</h1>
-    <p>Three short documents that cover how Little Oat Learners works, what we do with your information (very little), and how your data stays on your computer.</p>
+    <p>These policies are provided by <strong>Little Oat LLC</strong>, a Texas limited liability company (&ldquo;Little Oat,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). Each document below has two parts: a <strong>main policy</strong> that applies to everything we make — this website, our desktop software, our mobile apps, and our downloadable PDF curriculum — followed by <strong>product appendixes</strong> that add details specific to each app. The main policy and its appendixes together form one document; if an appendix says something more specific about a product, the appendix controls for that product.</p>
     <nav class="pol-jump" aria-label="Jump to section">
-      <a href="#terms">Terms of Service</a>
+      <a href="#terms">Terms of Use</a>
       <a href="#privacy">Privacy Policy</a>
-      <a href="#data">Data &amp; Offline Storage</a>
+      <a href="#disclaimers">Disclaimers</a>
     </nav>
   </section>
 
@@ -287,70 +415,334 @@
     <!-- Sidebar -->
     <aside class="pol-sidebar" aria-label="Policy sections">
       <div class="pol-sidebar-label">On this page</div>
-      <a href="#terms" class="active"><span class="dot"></span> Terms of Service</a>
+      <a href="#terms" class="active"><span class="dot"></span> Terms of Use</a>
+      <a href="#terms-apx-oatsmart" class="sub"><span class="apx-letter">A</span> OatSmart</a>
+      <a href="#terms-apx-starchart" class="sub"><span class="apx-letter">B</span> Star Chart</a>
+      <a href="#terms-apx-dwt" class="sub"><span class="apx-letter">C</span> Daily Work Tracker</a>
+      <a href="#terms-apx-coop" class="sub"><span class="apx-letter">D</span> Coop Connect</a>
+      <div class="sidebar-gap"></div>
       <a href="#privacy"><span class="dot"></span> Privacy Policy</a>
-      <a href="#data"><span class="dot"></span> Data &amp; Offline Storage</a>
+      <a href="#privacy-apx-oatsmart" class="sub"><span class="apx-letter">A</span> OatSmart</a>
+      <a href="#privacy-apx-starchart" class="sub"><span class="apx-letter">B</span> Star Chart</a>
+      <a href="#privacy-apx-dwt" class="sub"><span class="apx-letter">C</span> Daily Work Tracker</a>
+      <a href="#privacy-apx-coop" class="sub"><span class="apx-letter">D</span> Coop Connect</a>
+      <div class="sidebar-gap"></div>
+      <a href="#disclaimers"><span class="dot"></span> Disclaimers</a>
+      <a href="#disc-apx-oatsmart" class="sub"><span class="apx-letter">A</span> OatSmart</a>
+      <a href="#disc-apx-starchart" class="sub"><span class="apx-letter">B</span> Star Chart</a>
+      <a href="#disc-apx-dwt" class="sub"><span class="apx-letter">C</span> Daily Work Tracker</a>
+      <a href="#disc-apx-coop" class="sub"><span class="apx-letter">D</span> Coop Connect</a>
     </aside>
 
     <!-- Sections -->
     <div class="pol-sections">
 
-      <!-- Terms -->
+      <!-- ============================================================ -->
+      <!-- TERMS OF USE                                                  -->
+      <!-- ============================================================ -->
       <section class="pol-section" id="terms">
         <div class="pol-section-header">
           <div class="pol-section-ic" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
           </div>
           <div>
-            <h2>Terms of Service</h2>
-            <div class="updated">Last updated June 1, 2026</div>
+            <h2>Terms of Use</h2>
+            <div class="updated">Last updated July 24, 2026</div>
           </div>
         </div>
         <div class="pol-items">
           <div class="pol-item">
-            <div class="pol-item-label">Acceptance</div>
-            <div class="pol-item-body">By downloading OatSmart or purchasing from the Little Oat shop, you agree to these Terms. If you don't agree, don't use the software.</div>
+            <div class="pol-item-label">Acceptance &amp; scope</div>
+            <div class="pol-item-body">These Terms of Use form a legal agreement between you and <strong>Little Oat LLC</strong>, a Texas limited liability company. They cover this website, our desktop software, our mobile apps, our downloadable PDF curriculum, and anything else we offer under the Little Oat name. By using our website, downloading or using any of our software or apps, or purchasing any Little Oat product, you agree to these Terms — including the product appendixes below, which are part of these Terms. If you don't agree, please don't use our software or services.</div>
           </div>
           <div class="pol-item">
-            <div class="pol-item-label">Who can use it</div>
-            <div class="pol-item-body">OatSmart is designed for adults — parents, educators, and caregivers — who are 18 or older. It is not designed for unsupervised use by children. Adults are responsible for reviewing all content and supervising any child's use of the software.</div>
+            <div class="pol-item-label">Who can use our products</div>
+            <div class="pol-item-body">Our software, apps, and services are designed for <strong>adults — parents, guardians, educators, and caregivers who are 18 or older</strong>. None of our apps are designed for use by children, and children are not intended to use them independently or unsupervised. Where an app includes activities involving a child (such as OatSmart Premium lessons), the adult uses the app and guides the child through the activity. Adults are responsible for reviewing all content and supervising any child's involvement.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Accounts</div>
+            <div class="pol-item-body">Some of our products (such as Coop Connect) require an account. When you create one, you agree to provide accurate information, keep your sign-in credentials to yourself, and accept responsibility for activity that happens under your account. Accounts may only be created by adults 18 or older.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">License</div>
-            <div class="pol-item-body">Purchasing OatSmart grants you a personal, non-transferable license to use the software on computers in your household. You may not resell, redistribute, or reverse-engineer the app or any curriculum files you purchase from the shop.</div>
+            <div class="pol-item-body">Purchasing or downloading our software, apps, or curriculum grants you a personal, non-transferable license to use them within your household (or, for Coop Connect, for your own co-op participation). You may not resell, redistribute, sublicense, or reverse-engineer any Little Oat software, app, or file.</div>
           </div>
           <div class="pol-item">
-            <div class="pol-item-label">Subscription billing</div>
-            <div class="pol-item-body">The OatSmart subscription is <strong>$6.99/month per family</strong> and renews automatically on your billing date. Cancel anytime from inside the app or by emailing us — cancellation stops future charges immediately. We do not offer prorated refunds for partial months.</div>
+            <div class="pol-item-label">Downloadable curriculum</div>
+            <div class="pol-item-body">Curriculum bundles, printables, and add-ons purchased from the Little Oat shop are one-time purchases delivered as downloadable files (such as PDFs). Files are licensed to your household. Printing and modest adaptations for your own learners are permitted. Do not share, post, or resell purchased files.</div>
           </div>
           <div class="pol-item">
-            <div class="pol-item-label">Shop purchases</div>
-            <div class="pol-item-body">Curriculum bundles and add-ons purchased from the Little Oat shop are one-time purchases. Files are licensed to your household. Printing and modest adaptations for your learners are permitted. Do not share, post, or resell purchased files.</div>
+            <div class="pol-item-label">Purchases &amp; billing</div>
+            <div class="pol-item-body">Purchases made on our website and shop are processed securely by our payment provider (Polar). Subscriptions renew automatically on your billing date until you cancel — you can cancel anytime from inside the app or by emailing us, which stops future charges immediately. We do not offer prorated refunds for partial billing periods. Mobile app subscriptions — such as Star Chart Premium, the Daily Work Tracker subscription, or hosting a co-op in Coop Connect — are billed through the Apple App Store or Google Play instead, under that store's billing terms. Product-specific pricing and subscription details appear in the appendixes below.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Acceptable use</div>
+            <div class="pol-item-body">You agree not to misuse our products — including using them for anything unlawful, interfering with or disrupting our services, attempting to access other users' accounts or data, impersonating others, or collecting information about other users (such as coop rosters) for any purpose outside the product's intended use.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Software availability</div>
-            <div class="pol-item-body">OatSmart is offline software — it does not require an internet connection after installation. We provide updates periodically. We may retire old versions but will give reasonable notice before doing so.</div>
+            <div class="pol-item-body">We provide updates to our software and apps periodically. We may retire old versions or features but will give reasonable notice before doing so. Products described as &ldquo;coming soon&rdquo; are not yet available and may change before release.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Educational responsibility</div>
-            <div class="pol-item-body">Parents and guardians remain solely responsible for meeting their state's homeschool requirements, supervising learners, and ensuring the appropriateness of all materials used in their homeschool. Little Oat Learners is a tool, not a compliance guarantor.</div>
+            <div class="pol-item-body">Parents and guardians remain solely responsible for meeting their state's homeschool requirements, supervising learners, and ensuring the appropriateness of all materials used in their homeschool. Little Oat LLC provides tools only — it is not a compliance guarantor and is not responsible for your family's educational outcomes or legal compliance.</div>
           </div>
           <div class="pol-item">
-            <div class="pol-item-label">Liability</div>
-            <div class="pol-item-body">To the fullest extent permitted by law, Little Oat Learners disclaims warranties of merchantability and fitness for a particular purpose. We limit liability for indirect, incidental, or consequential damages. Use of the software is at your discretion.</div>
+            <div class="pol-item-label">Blog &amp; shared content</div>
+            <div class="pol-item-body">Posts on the Little Oat blog reflect the personal experiences and opinions of the author and are provided for general information and encouragement only. They are not professional, legal, medical, or educational advice, and homeschool laws and best practices can change. You are responsible for verifying anything you rely on — including your state's current homeschool requirements — with official sources or a qualified professional. See the Disclaimers section below for more.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Warranty &amp; limitation of liability</div>
+            <div class="pol-item-body">All Little Oat software, apps, printables, and content are provided &ldquo;as is&rdquo; and &ldquo;as available.&rdquo; To the fullest extent permitted by law, <strong>Little Oat LLC</strong> disclaims all warranties, express or implied, including merchantability and fitness for a particular purpose. To the fullest extent permitted by law, Little Oat LLC — and its owner, members, and affiliates — shall not be liable for any indirect, incidental, special, or consequential damages, and Little Oat LLC's total aggregate liability for any claim shall not exceed the amount you paid to Little Oat LLC in the twelve (12) months before the claim arose. Use of the software is at your own discretion and risk.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Indemnification</div>
+            <div class="pol-item-body">You agree to indemnify and hold harmless <strong>Little Oat LLC</strong> and its owner, members, employees, and affiliates from any claims, losses, or expenses (including reasonable attorneys' fees) arising out of your use or misuse of our software, apps, or content, or your violation of these Terms.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Changes to terms</div>
-            <div class="pol-item-body">We may update these Terms. If the changes are material, we'll notify you by email or in-app notice. Continued use after the effective date means you accept the updated Terms.</div>
+            <div class="pol-item-body">Little Oat LLC may update these Terms, including the appendixes. If the changes are material, we'll notify you by email or in-app notice. Continued use after the effective date means you accept the updated Terms.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Governing law</div>
-            <div class="pol-item-body">These Terms are governed by the laws of the State of Texas. Any disputes will be resolved in the courts of Texas.</div>
+            <div class="pol-item-body">These Terms are governed by the laws of the State of Texas, where Little Oat LLC is organized, without regard to conflict-of-law rules. Any disputes will be resolved in the state or federal courts located in Texas.</div>
           </div>
+        </div>
+
+        <!-- Terms appendixes -->
+        <div class="pol-appendices">
+          <div class="pol-appendices-label">Product appendixes — part of these Terms of Use</div>
+
+          <details class="pol-appendix" id="terms-apx-oatsmart">
+            <summary>
+              <span class="apx-tag">Appendix A</span>
+              <span class="apx-title">OatSmart <span class="apx-sub">· Desktop app — Mac, Windows, Linux</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">What it is</div>
+                  <div class="pol-item-body">OatSmart is a desktop homeschool record-keeping app. Parents create profiles for their students and record pictures, assignments, grades, and attendance, then generate reports from those records.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Adult use only</div>
+                  <div class="pol-item-body"><strong>OatSmart — including Premium — is a tool for parents, not for children.</strong> The app exists to help parents run their homeschool. Children are not intended to use the app independently or unsupervised. When a Premium activity involves a child, the parent operates the app and guides the child through the game, lesson, or worksheet.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Premium subscription</div>
+                  <div class="pol-item-body">The optional OatSmart Premium subscription is <strong>$6.99/month per family</strong> and gives the parent access to games, lessons, and worksheets to do together with a child. When an activity is completed, it converts into an assignment that rolls up into your reporting. The subscription renews automatically on your billing date; cancel anytime from inside the app or by emailing us.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your data, your responsibility</div>
+                  <div class="pol-item-body">All OatSmart data is maintained by you and stored locally on your computer (see the Privacy Policy, Appendix A). You are responsible for backing up your records — the app includes a built-in export function, and we strongly recommend regular backups using your operating system's backup tools or an external drive.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="terms-apx-starchart">
+            <summary>
+              <span class="apx-tag">Appendix B</span>
+              <span class="apx-title">Star Chart <span class="apx-sub">· Mobile app — reward charts</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">About this appendix</div>
+                  <div class="pol-item-body">The full, binding Terms of Service for Star Chart (last updated July 23, 2026) are presented inside the app itself — you accept them by tapping &ldquo;I agree&rdquo; when the app first opens. This appendix mirrors them so they are also on record here. For Star Chart, where anything below differs from the main Terms above, this appendix controls.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Who may use the app</div>
+                  <div class="pol-item-body">The app is intended for adults — parents, guardians, and educators. You must be at least 18 years old (or the age of majority where you live) to accept the Terms, and the app asks you to confirm this the first time it runs. If children interact with the app (for example, checking off a routine), they must do so under the supervision and responsibility of an adult who has accepted the Terms.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">License</div>
+                  <div class="pol-item-body">We grant you a personal, non-exclusive, non-transferable, revocable license to use the app on devices you own or control, for personal, non-commercial purposes. You may not copy, modify, distribute, sell, rent, reverse engineer, or create derivative works of the app except where the law expressly permits it. The app — including its artwork, design, and code — is owned by Little Oat and protected by intellectual-property laws.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your data &amp; backups</div>
+                  <div class="pol-item-body">All data you create in the app is stored only on your device. We do not keep copies, and we cannot recover data for you. You are solely responsible for safeguarding your data, including exporting regular backups using the app's backup feature and storing those files safely. <strong>To the maximum extent permitted by law, Little Oat is not liable for any lost, missing, corrupted, or unrecoverable data, however caused</strong> — including device loss or failure, uninstalling the app, operating system or app updates, software bugs, failed or incomplete exports or imports, damaged backup files, or use of the &ldquo;Erase all data&rdquo; feature. Star totals, history, and rewards in the app are a convenience for your family and have no monetary value.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Subscriptions &amp; billing</div>
+                  <div class="pol-item-body">Optional Premium features are offered by auto-renewing subscription billed through your <strong>Apple App Store or Google Play</strong> account, at the price shown in the app before purchase. Any free trial converts to a paid subscription unless cancelled before the trial ends. Subscriptions renew automatically until you cancel in your store account settings — <strong>deleting the app does not cancel a subscription.</strong> Refunds are handled by Apple or Google under their policies; we cannot issue refunds directly. We may change subscription pricing or features prospectively; store rules govern how price changes apply to existing subscribers.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Acceptable use &amp; suggestions</div>
+                  <div class="pol-item-body">You agree not to misuse the app, interfere with its operation, attempt to access it by any means other than the interfaces we provide, or use the feedback feature to send unlawful, abusive, or infringing content. If you send us ideas, suggestions, or feedback about the app, we may use them to improve the app without restriction or any obligation to you — please don't send suggestions you consider confidential or proprietary.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Not professional advice</div>
+                  <div class="pol-item-body">The app is a motivational and organizational tool for families. It does not provide medical, psychological, educational, or other professional advice, and outcomes for any child are not guaranteed.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Warranties &amp; liability</div>
+                  <div class="pol-item-body">The app is provided &ldquo;as is&rdquo; and &ldquo;as available,&rdquo; without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, title, and non-infringement. We do not warrant that the app will be uninterrupted or error-free, or that data will be preserved. To the maximum extent permitted by law, Little Oat and its owners, employees, and agents will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of data, profits, or goodwill, arising out of or relating to the app. Our total aggregate liability for all claims relating to the app is limited to the greater of (a) the amount you paid us for the app in the twelve (12) months before the claim arose, or (b) ten U.S. dollars ($10). Some jurisdictions do not allow certain exclusions or limitations, so parts of this section may not apply to you.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Indemnification &amp; termination</div>
+                  <div class="pol-item-body">You agree to indemnify and hold harmless Little Oat from claims, damages, and expenses (including reasonable attorneys' fees) arising from your violation of the app's Terms or your misuse of the app. You may stop using the app at any time; we may suspend or terminate the license if you violate the Terms. Sections that by their nature should survive — including the data disclaimer, warranty disclaimer, limitation of liability, and indemnification — survive termination.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">App store terms</div>
+                  <div class="pol-item-body">The app's Terms are between you and Little Oat only — not with Apple Inc. or Google LLC. Apple and Google are not responsible for the app or its content and have no obligation to provide maintenance or support; Little Oat is responsible for the app and for addressing any claims relating to it. If the app fails to conform to an applicable warranty, you may notify the store you obtained it from, which may refund the purchase price; to the maximum extent permitted by law, Apple and Google have no other warranty obligation. Apple and its subsidiaries are third-party beneficiaries of the Terms and may enforce them against you. You represent that you are not located in a country subject to a U.S. government embargo or on any U.S. government list of prohibited or restricted parties, and your use of the app must comply with any applicable third-party terms, such as your wireless data agreement.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Governing law &amp; changes</div>
+                  <div class="pol-item-body">The app's Terms are governed by the laws of the U.S. state in which Little Oat LLC is organized (Texas), without regard to conflict-of-law rules. If any provision is found unenforceable, the rest remain in effect. You may not assign the Terms; we may assign them in connection with a merger, acquisition, or sale of assets. We may modify, add, or remove app features and update the Terms at any time; continued use after an update means you accept the revised Terms. The Terms, together with the app's Privacy Policy, are the entire agreement regarding the app.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Contact</div>
+                  <div class="pol-item-body">Questions about the app's Terms: <a href="mailto:littleoatllc@gmail.com">littleoatllc@gmail.com</a> — Little Oat LLC.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="terms-apx-dwt">
+            <summary>
+              <span class="apx-tag">Appendix C</span>
+              <span class="apx-title">Daily Work Tracker <span class="apx-sub">· Mobile app — daily assignments</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">About this appendix</div>
+                  <div class="pol-item-body">The full, binding User Agreement and Terms of Service for Daily Work Tracker (presented in the app as &ldquo;Daily Homeschool Tracker,&rdquo; last updated July 21, 2026) are shown inside the app itself; this appendix mirrors them so they are also on record here. For this app, where anything below differs from the main Terms above, this appendix controls.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Who may use the app</div>
+                  <div class="pol-item-body">The app is intended for use by adults — parents, guardians, and educators — to record homeschool activity. You must be at least 18 years old (or the age of majority where you live) to accept the agreement. Student profiles you create are records you maintain about your students; the app is not directed at children and does not collect information from children directly.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your data lives on your device</div>
+                  <div class="pol-item-body">All records you create — students, daily entries, grades, attendance, photos, and settings — are stored locally on your device. We do not host, sync, or keep copies of your records on our servers. You are solely responsible for safeguarding your data, including exporting backups regularly using the <strong>Export Backup</strong> feature and storing them somewhere safe (for example, cloud storage or email).</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Lost or corrupted data</div>
+                  <div class="pol-item-body"><strong>Because your data is stored only on your device, Little Oat LLC is not responsible or liable for any lost, deleted, or corrupted data, however caused</strong> — including device loss or failure, operating system updates, app deletion or reinstallation, failed or incomplete backups or restores, software defects, or any other cause. Your only safeguard against data loss is the backup you export and keep yourself.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">License</div>
+                  <div class="pol-item-body">We grant you a personal, non-exclusive, non-transferable, revocable license to use the app on devices you own or control, subject to the app's Terms and the rules of the app store you downloaded it from. The app, its design, and its content (excluding your records) remain the property of Little Oat LLC.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Subscriptions &amp; free trial</div>
+                  <div class="pol-item-body">Full access to the app requires a subscription after the free trial. Subscriptions are billed through your <strong>App Store or Google Play</strong> account at the price shown at purchase, renew automatically until cancelled, and can be cancelled anytime in your store account settings. Trials convert to paid subscriptions automatically unless cancelled before the trial ends. Refunds are handled by Apple or Google under their policies.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your content</div>
+                  <div class="pol-item-body">You own the records, photos, and reports you create with the app. Because they are stored only on your device, managing and backing them up is your responsibility.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Acceptable use</div>
+                  <div class="pol-item-body">You agree to use the app only for lawful, personal, non-commercial record-keeping. You will not attempt to reverse engineer the app, interfere with its operation, misuse the feedback service, or use the app in a way that violates any applicable law.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Records are your responsibility</div>
+                  <div class="pol-item-body">The app is a convenience tool for organizing homeschool records. It is not legal, educational, or compliance advice. Homeschool reporting requirements vary by state and country; you are responsible for confirming that your records, reports, and attendance logs satisfy the requirements that apply to you.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Warranties &amp; liability</div>
+                  <div class="pol-item-body">The app is provided &ldquo;as is&rdquo; and &ldquo;as available,&rdquo; without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the app will be uninterrupted or error-free, or that data will never be lost or corrupted. To the maximum extent permitted by law, Little Oat LLC will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, arising from your use of the app, and our total liability for any claim will not exceed the amount you paid us in the twelve months before the claim arose.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Termination</div>
+                  <div class="pol-item-body">You may stop using the app at any time. <strong>Deleting the app deletes the data stored in it — export a backup first if you want to keep your records.</strong> We may suspend or terminate access if you violate the app's Terms.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Governing law &amp; changes</div>
+                  <div class="pol-item-body">The app's Terms are governed by the laws of the United States and the state in which Little Oat LLC is organized (Texas), without regard to conflict-of-law rules. We may revise the agreement from time to time; the &ldquo;Last updated&rdquo; date in the app reflects the current version, and continued use after changes take effect constitutes acceptance.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Contact</div>
+                  <div class="pol-item-body">Questions? Email <a href="mailto:littleoatllc@gmail.com">littleoatllc@gmail.com</a> or reach us through <strong>Settings → Support &amp; Feedback</strong> in the app.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="terms-apx-coop">
+            <summary>
+              <span class="apx-tag">Appendix D</span>
+              <span class="apx-title">Coop Connect <span class="apx-sub">· Mobile app — co-op management</span></span>
+              <span class="apx-soon">Coming soon</span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">About this appendix</div>
+                  <div class="pol-item-body">The full, binding Terms of Use for Coop Connect are presented inside the app itself; this appendix mirrors them so they are also on record here. For Coop Connect, where anything in this appendix differs from the main Terms above — including billing, liability, and dispute resolution — <strong>this appendix controls</strong>.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Eligibility</div>
+                  <div class="pol-item-body">You must be at least 18 years old (or the age of majority where you live) to create an account and use the app. By using the app, you represent that you meet this requirement, and that any information you provide about family members or other people — including children — is provided by you as their parent or guardian, or with proper authorization.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your account</div>
+                  <div class="pol-item-body">You are responsible for the information you provide and for all activity that occurs under your account. Signing in uses one-time codes sent to your email address and, optionally, passkeys on your devices — so you are also responsible for keeping your email account and devices secure, since anyone with access to them may be able to sign in as you. Notify us promptly of any unauthorized use. We may suspend or terminate accounts that violate these Terms.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">The service &amp; co-ops</div>
+                  <div class="pol-item-body">Coop Connect helps homeschool and learning co-ops organize calendars, announcements, lessons, volunteer and item sign-ups, and member directories. Co-op owners and administrators control their own co-op, including its members, roles, content, and settings. If you join a co-op, you agree that its leaders can manage your membership and view your activity within that co-op. We are not responsible for the conduct of any co-op, leader, or member, or for how a co-op chooses to run itself.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">In-person activities &amp; member vetting</div>
+                  <div class="pol-item-body">Co-ops use the app to organize real-world activities — classes, field trips, meetups, and volunteering. Those activities are organized, run, and supervised entirely by the co-ops and people involved, not by Little Oat. <strong>We do not screen, vet, background-check, or endorse any co-op, leader, or member</strong>, and we make no representations about anyone's identity, qualifications, or conduct. You are solely responsible for deciding whom to interact with, for supervising your own children, and for your safety and your family's safety at any activity arranged through the app. The app is a coordination tool only — it is not a childcare, education, or supervision service, and it must not be relied on for emergency or time-critical communication.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Assumption of risk &amp; release</div>
+                  <div class="pol-item-body">Participating in or organizing co-op activities — including classes, field trips, meetups, drop-offs, and volunteering — involves inherent risks to you, your children, and your property, including risks of illness, injury, or loss, and you knowingly and voluntarily assume all such risks. To the fullest extent permitted by law, you — on behalf of yourself, your children, and your family — release and waive any and all claims against Little Oat LLC and its owners, operators, employees, and agents arising out of or relating to any co-op, activity, or interaction organized, discovered, or coordinated through the app, including the acts or omissions of any co-op, leader, member, or other participant. This release applies whether the activity is in person or online, and whether or not Little Oat played any role in its coordination.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Subscriptions &amp; billing</div>
+                  <div class="pol-item-body">Hosting a co-op may require a paid subscription. Subscriptions are offered through, and billed by, the <strong>Apple App Store or Google Play</strong> (and processed with the help of RevenueCat) — not through our website. Payment is charged to your store account at confirmation of purchase. Subscriptions automatically renew unless you cancel at least 24 hours before the end of the current period, and your account is charged for renewal within 24 hours before the period ends. You manage or cancel your subscription in your App Store or Google Play account settings. Except where required by law or store policy, payments are non-refundable. People you invite to your co-op join for free.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your content</div>
+                  <div class="pol-item-body">You keep ownership of the content you create in the app — announcements, comments, lesson plans, sign-up notes, and similar. You grant us a limited, non-exclusive, royalty-free license to host, store, display, and transmit your content solely to operate and provide the service (for example, showing your announcement to your co-op). You are responsible for your content and represent that you have the rights to share it, including any information about other people or children.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Acceptable use</div>
+                  <div class="pol-item-body"><strong>We have zero tolerance for objectionable content and abusive behavior.</strong> Content or conduct that harasses, threatens, exploits, or endangers anyone — especially children — may be removed, and the responsible account suspended or terminated without notice. Co-op leaders can remove content and members within their co-op, and you can report content or members to us at <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>; we review reports and act on them promptly. You agree not to: use the app for any unlawful purpose or in violation of these Terms; harass, abuse, threaten, or harm others; post content that is illegal, infringing, harmful, or that you do not have the right to share; attempt to access data, accounts, or co-ops you are not authorized to access; interfere with, disrupt, or overload the service, or attempt to reverse engineer it; or misuse invite links, calendar feeds, or other features of the app.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Third-party services</div>
+                  <div class="pol-item-body">The app relies on third-party services (such as hosting, notifications, and app-store billing). Your use of those services may be subject to their own terms, and we are not responsible for them.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Loss or corruption of data</div>
+                  <div class="pol-item-body">You are responsible for keeping your own copies of any information that is important to you. To the fullest extent permitted by law, we are not responsible or liable for any lost, missing, stolen, corrupted, or deleted data or content, or for any inability to access data or content — whether caused by system failures, service outages, unauthorized access or security incidents, your own actions, a co-op leader's or member's actions, third-party services, or any other cause. We do not guarantee that data will be backed up or recoverable.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Limitation of liability</div>
+                  <div class="pol-item-body">For Coop Connect, to the fullest extent permitted by law, Little Oat LLC and its owners, operators, employees, and suppliers will not be liable for any indirect, incidental, special, consequential, or punitive damages, or for any loss of data, profits, goodwill, or other intangible losses, or for any personal injury or property damage, arising from or related to your use of (or inability to use) the app or any activity coordinated through it. Our total liability for any and all claims relating to the app will not exceed the greater of (a) the amount you paid us for the app in the 12 months before the claim, or (b) US $50. These limitations apply even if a remedy fails of its essential purpose. Some jurisdictions do not allow certain limitations, so some of these limitations may not apply to you.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Termination</div>
+                  <div class="pol-item-body">You may stop using the app and delete your account at any time. We may suspend or terminate your access if you violate these Terms or if we discontinue the service. If you own a co-op with other members, you may need to transfer ownership or delete the co-op before deleting your account. Provisions that by their nature should survive termination — including the disclaimers, limitation of liability, and indemnification — will survive.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Apple &amp; Google app stores</div>
+                  <div class="pol-item-body">If you download the app from the Apple App Store or Google Play, you also agree to that store's terms. These Terms are between you and Little Oat LLC, not with Apple or Google, and Apple and Google are not responsible for the app or its content or for providing any maintenance or support. Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you. Where the app is licensed through the Apple App Store, it is licensed to you under Apple's standard Licensed Application End User License Agreement, except as expanded by these Terms.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Disputes &amp; arbitration</div>
+                  <div class="pol-item-body"><strong>This section affects your legal rights — please read it carefully.</strong> You and Little Oat LLC agree to first try to resolve any dispute informally by contacting us at <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>; if we cannot resolve it within 30 days, either party may pursue the claim as set out here. Except for claims that qualify for small-claims court and requests for injunctive relief, any dispute arising out of or relating to these Terms or the app will be resolved by <strong>final and binding individual arbitration</strong> administered under the rules of a recognized arbitration provider, rather than in court, and conducted on a written or remote basis where possible. <strong>Class action waiver:</strong> each party may bring claims against the other only in an individual capacity, and not as a plaintiff or class member in any purported class, consolidated, or representative proceeding. If this arbitration agreement or the class-action waiver is found unenforceable as to a particular claim, that claim (and only that claim) will proceed in the Texas courts identified in the main Terms, while the remainder stays in arbitration. You may opt out of arbitration by emailing us within 30 days of first accepting the app's Terms and stating that you opt out. For Coop Connect, these Terms are governed by the Federal Arbitration Act, applicable federal law, and the laws of the State of Texas.</div>
+                </div>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
-      <!-- Privacy -->
+      <!-- ============================================================ -->
+      <!-- PRIVACY POLICY                                                -->
+      <!-- ============================================================ -->
       <section class="pol-section" id="privacy">
         <div class="pol-section-header">
           <div class="pol-section-ic" aria-hidden="true">
@@ -358,33 +750,56 @@
           </div>
           <div>
             <h2>Privacy Policy</h2>
-            <div class="updated">Last updated June 1, 2026</div>
+            <div class="updated">Last updated July 24, 2026</div>
           </div>
         </div>
-        <div class="pol-items">
+
+        <div class="pol-data-strip">
+          <div class="pol-data-badge">
+            <div class="icon">💻</div>
+            <div class="label">Local-first apps</div>
+            <div class="sub">OatSmart, Star Chart &amp; Daily Work Tracker keep data on your device</div>
+          </div>
+          <div class="pol-data-badge">
+            <div class="icon">🚫</div>
+            <div class="label">No ads, no data selling</div>
+            <div class="sub">No advertising SDKs or tracking pixels</div>
+          </div>
+          <div class="pol-data-badge">
+            <div class="icon">✉️</div>
+            <div class="label">Minimal collection</div>
+            <div class="sub">We only keep what a feature genuinely needs</div>
+          </div>
+        </div>
+
+        <div class="pol-items" style="margin-top:22px">
           <div class="pol-item">
-            <div class="pol-item-label">What we collect</div>
-            <div class="pol-item-body">When you purchase from the shop or subscribe: your email address, name, and payment details (processed securely by Lemon Squeezy — we never see your full card number). That's it. No analytics SDKs, no advertising pixels.</div>
+            <div class="pol-item-label">Who we are</div>
+            <div class="pol-item-body"><strong>Little Oat LLC</strong> is the company responsible for (the &ldquo;controller&rdquo; of) any personal information collected through our website, apps, and services. This main policy covers what applies everywhere; the appendixes below describe exactly what each app does and doesn't collect.</div>
           </div>
           <div class="pol-item">
-            <div class="pol-item-label">What OatSmart collects</div>
-            <div class="pol-item-body"><strong>Nothing it sends to us.</strong> All learner records, grades, assignments, books, calendars, and reports are stored locally on your computer. The app does not transmit any of this data to our servers. See the Data &amp; Offline Storage section below.</div>
+            <div class="pol-item-label">Website &amp; shop</div>
+            <div class="pol-item-body">When you purchase or subscribe through our website: your email address, name, and payment details (processed securely by Polar — we never see your full card number). That's it. No analytics SDKs, no advertising pixels.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Our approach in the apps</div>
+            <div class="pol-item-body">Most of our apps are <strong>local-first</strong>: everything you enter — student profiles, pictures, assignments, grades, attendance, tasks, rewards — stays on your own device and is never transmitted to us. The one planned exception is Coop Connect, which is collaborative by nature and therefore stores limited account and roster information on our servers; Appendix D explains exactly what and why.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Children's privacy</div>
-            <div class="pol-item-body">OatSmart is designed for adult use. We do not knowingly collect personal information from children under 13. If you believe a child's information has been submitted to us in error, contact us at <a href="/cdn-cgi/l/email-protection#dcb4b9b0b0b39cb0b5a8a8b0b9b3bda8b0b9bdaeb2b9aeaff2bfb3b1"><span class="__cf_email__" data-cfemail="177f727b7b78577b7e63637b727876637b727665797265643974787a">[email&#160;protected]</span></a> and we will delete it promptly. Children's data entered into the app stays on your device — it is never transmitted to us.</div>
+            <div class="pol-item-body">Our products are designed for adult use, and we do not knowingly collect personal information from children under 13. Information about children entered into our local-first apps stays on your device and is never transmitted to us. In Coop Connect, any information about a child is provided and managed by that child's parent or guardian — children do not create accounts or use the app. If you believe a child's information has been submitted to us in error, contact us at <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a> and we will delete it promptly.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">How we use your data</div>
-            <div class="pol-item-body">To fulfill shop orders, send order confirmations and download links, provide customer support, and send occasional product updates (unsubscribe anytime). We do not use your email for advertising or sell it to third parties.</div>
+            <div class="pol-item-body">To fulfill shop orders, send order confirmations and download links, verify sign-ins, provide the features you're using, provide customer support, and send occasional product updates (unsubscribe anytime). We do not use your email for advertising, and we never sell your data to third parties.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Third parties</div>
-            <div class="pol-item-body"><strong>Lemon Squeezy</strong> handles payment processing and order management. <strong>SendGrid</strong> delivers transactional emails. Both are bound by their own privacy policies and receive only the minimum data needed to perform their function.</div>
+            <div class="pol-item-body"><strong>Polar</strong> handles payment processing, checkout, and order management — your payment details and billing account are managed by Polar, not by us. Our own systems pull only the limited order information we need from Polar (your email, name, and what you ordered) to deliver your downloads and provide support. <strong>SendGrid</strong> delivers transactional emails (order confirmations, sign-in codes). Both are bound by their own privacy policies and receive only the minimum data needed to perform their function. App-specific service providers (such as app-store billing and push notification services for Coop Connect) are listed in the product appendixes below.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Your rights</div>
-            <div class="pol-item-body">You may request a copy of the personal data we hold, ask us to correct it, or request deletion. Email <a href="/cdn-cgi/l/email-protection#fd9598919192bd919489899198929c8991989c8f93988f8ed39e9290"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29db1b4a9a9b1b8b2bca9b1b8bcafb3b8afaef3beb2b0">[email&#160;protected]</span></a>. We will respond within 30 days.</div>
+            <div class="pol-item-body">You may request a copy of the personal data we hold, ask us to correct it, or request deletion. Email <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>. We will respond within 30 days.</div>
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Security</div>
@@ -392,73 +807,383 @@
           </div>
           <div class="pol-item">
             <div class="pol-item-label">Contact</div>
-            <div class="pol-item-body">Privacy questions, correction requests, or deletion requests: <a href="/cdn-cgi/l/email-protection#234b464f4f4c634f4a57574f464c42574f4642514d4651500d404c4e"><span class="__cf_email__" data-cfemail="7e161b1212113e12170a0a121b111f0a121b1f0c101b0c0d501d1113">[email&#160;protected]</span></a></div>
+            <div class="pol-item-body">Privacy questions, correction requests, or deletion requests: <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a></div>
           </div>
+        </div>
+
+        <!-- Privacy appendixes -->
+        <div class="pol-appendices">
+          <div class="pol-appendices-label">Product appendixes — part of this Privacy Policy</div>
+
+          <details class="pol-appendix" id="privacy-apx-oatsmart">
+            <summary>
+              <span class="apx-tag">Appendix A</span>
+              <span class="apx-title">OatSmart <span class="apx-sub">· Desktop app — Mac, Windows, Linux</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-highlight" style="margin-top:16px">
+                <div class="hi-ic" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>OatSmart stores all of your homeschool records — student profiles, pictures of your students, grades, assignments, attendance, calendars, and reports — in a local database on your computer. This data is <strong>never sent to our servers</strong>, never synced to the cloud, and never seen by us. It is maintained by you and belongs entirely to you.</div>
+              </div>
+              <div class="pol-items" style="margin-top:12px">
+                <div class="pol-item">
+                  <div class="pol-item-label">Where data lives</div>
+                  <div class="pol-item-body">All app data is stored in a SQLite database in your system's application data folder. On macOS: <code>~/Library/Application Support/OatSmart/</code>. On Windows: <code>%APPDATA%/OatSmart/</code>. On Linux: <code>~/.config/OatSmart/</code></div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Student pictures</div>
+                  <div class="pol-item-body">Photos you attach to student profiles or assignments are stored on your computer with the rest of your data. They are never uploaded or transmitted to us.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Premium activities</div>
+                  <div class="pol-item-body">Records of Premium games, lessons, and worksheets — including completed activities that convert into assignments and roll into your reports — are stored locally with the rest of your data, not on our servers.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">License verification</div>
+                  <div class="pol-item-body">The only outbound network call OatSmart makes is a one-time license check when you enter your subscription key. After verification, the app operates fully offline. No student data is transmitted during this check.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Backups &amp; exported files</div>
+                  <div class="pol-item-body">We strongly recommend backing up your OatSmart data folder regularly using your operating system's backup tools or an external drive; the app includes a built-in export function. Report cards, transcripts, and worksheets exported as PDFs are saved wherever you choose on your computer and contain no tracking or telemetry of any kind.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Uninstalling</div>
+                  <div class="pol-item-body">Uninstalling OatSmart does not delete your data folder. You retain full ownership of all your records. To fully remove all data, delete the app data folder manually after uninstalling.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Our commitment</div>
+                  <div class="pol-item-body">We will never add cloud sync, telemetry, or any data transmission to OatSmart without explicit opt-in consent and prior notice. Your family's records are yours — full stop.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="privacy-apx-starchart">
+            <summary>
+              <span class="apx-tag">Appendix B</span>
+              <span class="apx-title">Star Chart <span class="apx-sub">· Mobile app — reward charts</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-highlight" style="margin-top:16px">
+                <div class="hi-ic" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>The short version: your family's data lives on your device, not on our servers. The full, binding Privacy Policy (last updated July 23, 2026) is shown inside the app; this appendix mirrors it and controls for this app where it differs from the main Privacy Policy above.</div>
+              </div>
+              <div class="pol-items" style="margin-top:12px">
+                <div class="pol-item">
+                  <div class="pol-item-label">Data on your device</div>
+                  <div class="pol-item-body">Everything you create in the app — student names, avatars, optional birth dates and grade levels, star categories, awards, notes, rewards, claims, and settings — is stored only in the app's local storage on your device. We do not operate accounts, logins, or cloud sync, and this information is never transmitted to us or anyone else by the app. If you delete the app or erase its data, that information is gone from the device.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Photos &amp; camera</div>
+                  <div class="pol-item-body">If you set a profile picture, the app asks permission to use your camera or to pick a photo from your library. The photo you choose is stored only in the app's local storage on your device, alongside the rest of your data. The app never uploads photos anywhere, and it cannot browse your photo library beyond the picture you select.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">What we don't do</div>
+                  <div class="pol-item-body">The app contains no advertising, no analytics or tracking SDKs, and no social features. We do not collect, sell, rent, or share personal information, and we do not build profiles of you or your children.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Backups you export</div>
+                  <div class="pol-item-body">The app can export your data as a backup file that you save or share using your device's share sheet. Exported files leave the app's storage and are entirely under your control — where you store them, and who can access them, is up to you. Treat backup files as you would any file containing your family's information.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Purchases &amp; subscriptions</div>
+                  <div class="pol-item-body">Premium subscriptions are billed by Apple (App Store) or Google (Google Play) under their terms and privacy policies; we never see your payment details. To recognize your subscription, the app uses <strong>RevenueCat</strong>, a subscription-management service, which processes a randomly generated app identifier and purchase receipt data. This identifier is not tied to your name, email, or your data in the app. RevenueCat's handling of this data is described in its own privacy policy at revenuecat.com.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Feedback you send</div>
+                  <div class="pol-item-body">If you choose to use &ldquo;Send feedback,&rdquo; we receive the message you write, the category you pick, your email address if you include one, and basic technical context (app version, platform, and OS version). We use this solely to review and respond to your feedback, keep it only as long as we need it for that purpose, and never use it for marketing. You can ask us to delete feedback you have sent by contacting us.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Notifications</div>
+                  <div class="pol-item-body">Reminders (such as the daily award reminder and backup reminder) are local notifications scheduled on your device. They are optional, require your permission, and do not involve any server.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Children's privacy</div>
+                  <div class="pol-item-body">The app is designed to be used by parents, guardians, and educators — not operated by children as an online service. Information about children that you enter (such as a name or avatar) is stored only on your device and is never collected by us. We do not knowingly collect personal information from children. If you believe a child has sent us personal information through the feedback form, contact us and we will delete it.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your choices &amp; deletion</div>
+                  <div class="pol-item-body">You can erase all app data at any time in Settings (&ldquo;Erase all data&rdquo;) or by uninstalling the app. Because we do not hold your data, there is nothing for us to delete on our side — except feedback you have sent, which we will delete on request.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Security &amp; where processing happens</div>
+                  <div class="pol-item-body">Data inside the app is protected by your device's own security — your passcode, biometrics, and device encryption — so keeping your device and any exported backup files secure is in your hands. The small amount of information that does reach us or our service providers (feedback messages and subscription receipt data) is transmitted over encrypted connections and processed in the United States, which may have different data-protection laws than your country.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your privacy rights</div>
+                  <div class="pol-item-body">Depending on where you live (for example, the EEA, the UK, or California), you may have legal rights to access, correct, delete, or export personal data, to object to or restrict its processing, and to complain to a data-protection authority. Because your family's data lives only on your device, you can view, edit, export, and delete it yourself at any time in the app. For the little we do hold — feedback you have sent — contact us and we will honor your request. Where the GDPR applies, we process that information because it is necessary to provide what you asked for, or based on our legitimate interest in improving the app. We do not sell or share personal information as those terms are defined under California law, and we do not use personal data for automated decision-making or profiling.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Contact</div>
+                  <div class="pol-item-body">Questions or requests: <a href="mailto:littleoatllc@gmail.com">littleoatllc@gmail.com</a> — Little Oat LLC.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="privacy-apx-dwt">
+            <summary>
+              <span class="apx-tag">Appendix C</span>
+              <span class="apx-title">Daily Work Tracker <span class="apx-sub">· Mobile app — daily assignments</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-highlight" style="margin-top:16px">
+                <div class="hi-ic" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>The short version: your homeschool records stay on your device, and we collect as little as possible. The full, binding Privacy Policy (last updated July 21, 2026) is shown inside the app; this appendix mirrors it and controls for this app where it differs from the main Privacy Policy above.</div>
+              </div>
+              <div class="pol-items" style="margin-top:12px">
+                <div class="pol-item">
+                  <div class="pol-item-label">Data stored on your device</div>
+                  <div class="pol-item-body">Everything you enter in the app — student names and photos, daily work entries, grades, attendance, semesters, school name and logos, and your settings — is stored in a local database and local files on your device. This data is never transmitted to Little Oat LLC. We cannot see it, access it, or recover it for you.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Backups you create</div>
+                  <div class="pol-item-body">The <strong>Export Backup</strong> feature packages your data into a ZIP file that you choose where to save or share (for example, your own cloud storage or email). Once exported, that file is under your control and subject to the privacy practices of wherever you store it. We never receive a copy.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Subscriptions &amp; purchases</div>
+                  <div class="pol-item-body">Subscriptions are processed by Apple's App Store or Google Play and managed through <strong>RevenueCat</strong>, our subscription infrastructure provider. We receive anonymized subscription status (such as whether a trial or subscription is active) tied to a random app-install identifier — not your name, email, or payment details. Payment information is handled entirely by Apple or Google.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Feedback you send</div>
+                  <div class="pol-item-body">If you use Support &amp; Feedback, we receive what you submit: the feedback type, your message, any screenshot you attach, and basic diagnostic context (app version and device model) to help us investigate. We use it only to respond to you and improve the app.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Device permissions</div>
+                  <div class="pol-item-body">The app requests permissions only for features you use: camera and photo library access to attach photos to entries and profiles, media library access to save photos you take, and notification permission for the optional daily reminder. Reminders are scheduled locally on your device. You can revoke any permission in your device settings.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">No tracking, no ads, no sale of data</div>
+                  <div class="pol-item-body">The app contains no advertising and no third-party analytics or tracking SDKs beyond the subscription infrastructure described above. We do not sell or share personal information for advertising purposes.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Children's privacy</div>
+                  <div class="pol-item-body">The app is designed for adults. Information about students exists only as records you create and keep on your own device; it is not collected by or transmitted to Little Oat LLC.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Data loss</div>
+                  <div class="pol-item-body">Because we hold no copy of your data, we cannot restore it if it is lost or corrupted. Little Oat LLC is not responsible for any lost or corrupted data. Export backups regularly.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Contact</div>
+                  <div class="pol-item-body">Questions? Email <a href="mailto:littleoatllc@gmail.com">littleoatllc@gmail.com</a> or reach us through <strong>Settings → Support &amp; Feedback</strong> in the app.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="privacy-apx-coop">
+            <summary>
+              <span class="apx-tag">Appendix D</span>
+              <span class="apx-title">Coop Connect <span class="apx-sub">· Mobile app — co-op management</span></span>
+              <span class="apx-soon">Coming soon</span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">About this appendix</div>
+                  <div class="pol-item-body">The full, binding Privacy Policy for Coop Connect (effective July 23, 2026) is presented inside the app itself; this appendix mirrors it so it is also on record here. For Coop Connect, where anything below differs from the main Privacy Policy above, this appendix controls. Unlike our other apps, Coop Connect is collaborative — so it is the one product where information is stored on our servers.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Who the app is for</div>
+                  <div class="pol-item-body">Coop Connect is a tool for homeschool and learning co-ops, intended for adults — parents, guardians, and co-op organizers — who manage a community's calendar, announcements, lessons, volunteer and item sign-ups, and member directory. The app is not directed to children, and children should not create accounts or use the app directly.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Information you provide</div>
+                  <div class="pol-item-body"><strong>Account details</strong> — your display name and email address. Signing in uses one-time codes we email you and, optionally, a passkey. If you set up a passkey, your device shares only a cryptographic public key with us — your fingerprint or face data never leaves your device and is never available to us. <strong>Profile and family information</strong> — information you add about yourself and your family members, which may include a family member's first name, whether they are a child or an adult, and a child's grade level; you provide this as the parent or guardian responsible for it. <strong>Co-op activity</strong> — events, RSVPs, volunteer and item sign-ups (and any notes you add), announcements, comments, and lesson plans you create or interact with inside a co-op. <strong>Support communications</strong> — information you send when you contact us for help.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Collected automatically</div>
+                  <div class="pol-item-body">To operate the app reliably, we collect limited technical information: <strong>device and usage data</strong> (device type, operating system, app version, and basic log data used to run and troubleshoot the app); <strong>push notification tokens</strong> (a device token so we can deliver notifications you have enabled — turn them off anytime in Settings or your device settings); and <strong>optional diagnostics and analytics</strong> — if enabled, aggregated, de-identified information about crashes and feature usage that helps us improve reliability. These are off unless configured, and never include the contents of your co-op posts.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">How we use it</div>
+                  <div class="pol-item-body">To provide, maintain, and operate the app and its co-op features; deliver notifications and reminders you have enabled; process and manage co-op hosting subscriptions; keep the service secure and prevent fraud and abuse; respond to your support requests; and improve the app and comply with legal obligations.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Sharing within your co-ops</div>
+                  <div class="pol-item-body">Coop Connect is a collaboration tool. Information you add to a co-op — your directory profile, family members, RSVPs, sign-ups, announcements, and comments — is visible to other members and leaders of that co-op according to their role. Co-op owners and administrators can manage members and view co-op activity. It is not public, and it is not shared outside your co-ops.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Service providers</div>
+                  <div class="pol-item-body">We share information with providers who process it on our behalf: hosting and database providers that store your data securely for us; email delivery providers that send sign-in codes and other account emails; push notification providers (such as Apple, Google, and Expo) that deliver notifications to your device; payment and subscription providers (such as the Apple App Store, Google Play, and RevenueCat) that process co-op hosting subscriptions — we do not receive or store your full payment card details; and optional analytics and error-monitoring providers, where enabled.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">We don't sell your information</div>
+                  <div class="pol-item-body">We do not sell your personal information, and we do not share it for cross-context behavioral advertising. We may disclose information if required by law or legal process, to enforce our Terms of Use, in connection with a merger, acquisition, or sale of assets, or to protect the rights, safety, and security of our users, the public, or Little Oat LLC.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Children's information</div>
+                  <div class="pol-item-body">We do not knowingly allow children to create accounts. Some information about children (such as a first name and grade level) may be entered by a parent, guardian, or co-op leader in order to run the co-op. If you provide information about a child, you represent that you are that child's parent or guardian, or that you have permission to do so. If you believe a child has provided us information directly without authorization, contact us and we will delete it.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Retention &amp; deletion</div>
+                  <div class="pol-item-body">We keep your information for as long as your account is active or as needed to provide the service. You can delete your account at any time from <strong>Settings → Delete account</strong>, which removes your profile, family members, RSVPs, and sign-ups. Some information may remain in encrypted backups for a limited time or be retained where required by law. Content you contributed to a co-op that others rely on (for example, an announcement) may remain within that co-op unless removed by a leader.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Security</div>
+                  <div class="pol-item-body">We use reasonable safeguards, including encryption in transit and database access controls, to protect your information — but no method of transmission or storage is completely secure, and we cannot guarantee absolute security. Because signing in uses one-time codes sent to your email address, keeping your email account and your devices secure also protects your Coop Connect account.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Where it's processed</div>
+                  <div class="pol-item-body">We are based in the United States, and your information is stored and processed there. If you use the app from outside the United States, you understand that your information will be transferred to and processed in the United States, where privacy laws may differ from those where you live.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your choices &amp; rights</div>
+                  <div class="pol-item-body">You can view and update your profile and family information in the app, turn push notifications on or off, and delete your account and its associated data at any time. Keep any calendar-feed link private — anyone who has that link can view your event information, so treat it like a password. Depending on where you live, you may also have rights to access, correct, download, or delete the personal information we hold, or to object to or restrict certain processing — exercise them in the app or by emailing <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>. We will respond as required by applicable law and will not discriminate against you for exercising these rights. Because Coop Connect is a shared co-op tool, some information you contributed may remain visible to your co-ops as described above until a leader removes it.</div>
+                </div>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
-      <!-- Data & Offline -->
-      <section class="pol-section" id="data">
+      <!-- ============================================================ -->
+      <!-- DISCLAIMERS                                                   -->
+      <!-- ============================================================ -->
+      <section class="pol-section" id="disclaimers">
         <div class="pol-section-header">
           <div class="pol-section-ic" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.7-1A4.5 4.5 0 0 1 17 18z"/><line x1="12" y1="12" x2="12" y2="21"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
           </div>
           <div>
-            <h2>Data &amp; Offline Storage</h2>
-            <div class="updated">Last updated June 1, 2026</div>
+            <h2>Disclaimers</h2>
+            <div class="updated">Last updated July 24, 2026</div>
+          </div>
+        </div>
+        <div class="pol-items">
+          <div class="pol-item">
+            <div class="pol-item-label">Educational tool, not advice</div>
+            <div class="pol-item-body">Little Oat LLC provides software, mobile apps, and (in the future) curriculum as organizational and educational tools. Nothing offered here is professional, legal, or educational advice. You are responsible for choosing what fits your family and for meeting your own state's homeschool requirements.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">No guarantee of results</div>
+            <div class="pol-item-body">Every child and family is different. Any stories or examples of success are shared for encouragement only and are not a promise of any particular outcome for your learners.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">"As is" software</div>
+            <div class="pol-item-body">Our apps and files are provided "as is," without warranties of any kind. While we work hard to keep everything accurate and reliable, we can't guarantee they will be error-free or uninterrupted. Use is at your own discretion.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">Coming-soon products</div>
+            <div class="pol-item-body">Some tools — including Coop Connect and any curriculum — are described as "coming soon" or "someday." These are plans, not commitments, and their availability, features, and pricing may change or may not happen at all.</div>
+          </div>
+          <div class="pol-item">
+            <div class="pol-item-label">External links</div>
+            <div class="pol-item-body">We may link to third-party sites or services for your convenience. We aren't responsible for their content, policies, or practices.</div>
           </div>
         </div>
 
-        <div class="pol-data-strip">
-          <div class="pol-data-badge">
-            <div class="icon">💻</div>
-            <div class="label">Stays on your computer</div>
-            <div class="sub">All learner data is local</div>
-          </div>
-          <div class="pol-data-badge">
-            <div class="icon">🔒</div>
-            <div class="label">Never transmitted</div>
-            <div class="sub">No cloud sync, ever</div>
-          </div>
-          <div class="pol-data-badge">
-            <div class="icon">📶</div>
-            <div class="label">Works fully offline</div>
-            <div class="sub">No internet required</div>
-          </div>
-        </div>
+        <!-- Disclaimer appendixes -->
+        <div class="pol-appendices">
+          <div class="pol-appendices-label">Product appendixes — part of these Disclaimers</div>
 
-        <div class="pol-highlight">
-          <div class="hi-ic" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>OatSmart stores all of your homeschool records — learner profiles, grades, assignments, books, attendance, calendars, and reports — in a local database on your computer. This data is <strong>never sent to our servers</strong>, never synced to the cloud, and never seen by us. It belongs entirely to you.</div>
-        </div>
+          <details class="pol-appendix" id="disc-apx-oatsmart">
+            <summary>
+              <span class="apx-tag">Appendix A</span>
+              <span class="apx-title">OatSmart <span class="apx-sub">· Desktop app</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">Records &amp; reports</div>
+                  <div class="pol-item-body">OatSmart's reports, transcripts, and attendance records are only as accurate as the entries you make. They are organizational documents — they do not, by themselves, establish or guarantee compliance with any state's homeschool requirements.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Premium content</div>
+                  <div class="pol-item-body">Premium games, lessons, and worksheets are supplemental materials for a parent to use with a child — not a complete curriculum and not a substitute for parental instruction. You are responsible for reviewing each activity and deciding whether it is appropriate for your child.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Data loss</div>
+                  <div class="pol-item-body">Because your records live only on your computer, we cannot recover them if your device fails and you have no backup. Please back up regularly.</div>
+                </div>
+              </div>
+            </div>
+          </details>
 
-        <div class="pol-items" style="margin-top:22px">
-          <div class="pol-item">
-            <div class="pol-item-label">Where data lives</div>
-            <div class="pol-item-body">All app data is stored in a SQLite database in your system's application data folder. On macOS: <code style="font-family:monospace;font-size:12px;background:var(--oat-light);padding:1px 5px;border-radius:4px">~/Library/Application Support/OatSmart/</code>. On Windows: <code style="font-family:monospace;font-size:12px;background:var(--oat-light);padding:1px 5px;border-radius:4px">%APPDATA%/OatSmart/</code>. On Linux: <code style="font-family:monospace;font-size:12px;background:var(--oat-light);padding:1px 5px;border-radius:4px">~/.config/OatSmart/</code></div>
-          </div>
-          <div class="pol-item">
-            <div class="pol-item-label">Backups</div>
-            <div class="pol-item-body">We strongly recommend backing up your OatSmart data folder regularly using your operating system's backup tools (Time Machine, Windows Backup, etc.) or by manually copying the folder to an external drive. The app includes a built-in export function for creating backups.</div>
-          </div>
-          <div class="pol-item">
-            <div class="pol-item-label">Exported files</div>
-            <div class="pol-item-body">Report cards, transcripts, and worksheets exported as PDFs are saved to a location of your choosing on your computer. These files do not contain tracking or telemetry of any kind.</div>
-          </div>
-          <div class="pol-item">
-            <div class="pol-item-label">License verification</div>
-            <div class="pol-item-body">The only outbound network call OatSmart makes is a one-time license check when you enter your subscription key. After verification, the app operates fully offline. No learner data is transmitted during this check.</div>
-          </div>
-          <div class="pol-item">
-            <div class="pol-item-label">Uninstalling</div>
-            <div class="pol-item-body">Uninstalling OatSmart does not delete your data folder. You retain full ownership of all your records. To fully remove all data, delete the app data folder manually after uninstalling.</div>
-          </div>
-          <div class="pol-item">
-            <div class="pol-item-label">Our commitment</div>
-            <div class="pol-item-body">We will never add cloud sync, telemetry, or any data transmission to OatSmart without explicit opt-in consent and prior notice. Your family's records are yours — full stop.</div>
-          </div>
+          <details class="pol-appendix" id="disc-apx-starchart">
+            <summary>
+              <span class="apx-tag">Appendix B</span>
+              <span class="apx-title">Star Chart <span class="apx-sub">· Mobile app</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">A parenting tool</div>
+                  <div class="pol-item-body">Star Chart is a motivational and organizational tool for families. It does not provide medical, psychological, educational, or other professional advice, and outcomes for any child are not guaranteed.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Stars &amp; rewards</div>
+                  <div class="pol-item-body">Star totals, history, and rewards in the app are a convenience for your family and have no monetary value. Any reward you set up is your promise to your family, not ours — Little Oat LLC has no involvement in, or responsibility for, the rewards you choose or fulfill.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Data loss</div>
+                  <div class="pol-item-body">Your family's data lives only on your device, and we hold no copy — we cannot recover it for you. Using &ldquo;Erase all data&rdquo; or deleting the app permanently removes it. Export backups regularly with the app's backup feature and store them safely; Little Oat LLC is not responsible for lost, corrupted, or unrecoverable data.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="disc-apx-dwt">
+            <summary>
+              <span class="apx-tag">Appendix C</span>
+              <span class="apx-title">Daily Work Tracker <span class="apx-sub">· Mobile app</span></span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">Records &amp; reports</div>
+                  <div class="pol-item-body">The app is a convenience tool for organizing homeschool records — it is not legal, educational, or compliance advice. Reports and attendance logs reflect the entries you make, and homeschool reporting requirements vary by state and country; you are responsible for confirming that your records satisfy the requirements that apply to you.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Data loss</div>
+                  <div class="pol-item-body">Your records live only on your device, and we hold no copy — we cannot see, access, or recover your data for you. Little Oat LLC is not responsible for any lost, deleted, or corrupted data, however caused, including device loss or failure, OS updates, app deletion or reinstallation, or failed backups. <strong>Deleting the app deletes the data stored in it.</strong> Your only safeguard is the backup you export with Export Backup and keep yourself — please export regularly.</div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details class="pol-appendix" id="disc-apx-coop">
+            <summary>
+              <span class="apx-tag">Appendix D</span>
+              <span class="apx-title">Coop Connect <span class="apx-sub">· Mobile app</span></span>
+              <span class="apx-soon">Coming soon</span>
+              <svg class="apx-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="apx-body">
+              <div class="pol-items">
+                <div class="pol-item">
+                  <div class="pol-item-label">Co-ops are independent</div>
+                  <div class="pol-item-body">Co-ops on Coop Connect are independent groups run by their own leaders. Little Oat LLC does not organize, supervise, screen, vet, background-check, or endorse any co-op, leader, administrator, or member, and makes no representations about anyone's identity, qualifications, or conduct. Joining a co-op, sharing information with it, and attending its activities — including meeting other members in person — are entirely at your own discretion and risk.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">A coordination tool only</div>
+                  <div class="pol-item-body">Coop Connect is a scheduling and organization tool. It is not a childcare, education, or supervision service, and it must not be relied on for emergency or time-critical communication. You remain responsible for supervising your own children at any activity arranged through the app.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">User-generated content</div>
+                  <div class="pol-item-body">Announcements, calendar events, lessons, sign-up sheets, and member directory information are created by co-op leaders and members, not by Little Oat LLC. We are not responsible for their accuracy, appropriateness, or outcomes.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Data loss</div>
+                  <div class="pol-item-body">Keep your own copies of any information that is important to you. We do not guarantee that data will be backed up or recoverable, and we are not responsible for lost, corrupted, or deleted data or content — see the app's Terms for details.</div>
+                </div>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -468,7 +1193,7 @@
           <h3>Questions about these policies?</h3>
           <p>We're a small family-run team. Email us directly — a real person will reply.</p>
         </div>
-        <a href="/cdn-cgi/l/email-protection#c4aca1a8a8ab84a8adb0b0a8a1aba5b0a8a1a5b6aaa1b6b7eaa7aba9" class="lo-btn cream lg">✉ <span class="__cf_email__" data-cfemail="751d1019191a35191c010119101a1401191014071b1007065b161a18">[email&#160;protected]</span></a>
+        <a href="mailto:support@littleoatlearners.com" class="lo-btn cream lg">✉ support@littleoatlearners.com</a>
       </div>
 
     </div><!-- /pol-sections -->
@@ -478,76 +1203,29 @@
 </main>
 
 <!-- Footer -->
-<footer class="lo-foot">
-  <div class="row">
-    <div>
-      <div class="brand-col">
-        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
-        <span>Little Oats</span>
-      </div>
-      <p>Calm, grounded homeschool software for families.</p>
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="assets/little-oat-llc-logo.png" alt="Little Oat LLC logo" />
+      <p class="foot-tag">Calm, family-made homeschool tools — desktop software, mobile apps, and one day, curriculum. Built by a homeschool mom, for homeschool families.</p>
     </div>
-    <div>
-      <h5>Product</h5>
-      <ul>
-        <li><a href="index.html#download">OatSmart desktop</a></li>
-        <li><a href="shop.html">Curriculum shop</a></li>
-        <li><a href="premium.html">Premium modules</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Resources</h5>
-      <ul>
-        <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
-        <li><a href="policies.html#terms">Terms of Service</a></li>
-        <li><a href="policies.html#privacy">Privacy Policy</a></li>
-        <li><a href="policies.html#data">Data Policy</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Download</h5>
-      <ul>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
-      </ul>
-    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="policies.html#privacy">Privacy Policy</a>
+      <a href="policies.html#terms">Terms of Use</a>
+      <a href="policies.html#disclaimers">Disclaimers</a>
+      <a href="mailto:support@littleoatlearners.com">Contact</a>
+    </nav>
   </div>
-  <div class="legal">
-    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
-    <div class="lo-foot-links">
-      <a href="policies.html#terms">Terms</a>
-      <a href="policies.html#privacy">Privacy</a>
-    </div>
+  <div class="foot-legal">
+    <span>© 2026 Little Oat LLC. All rights reserved.</span>
+    <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* Mobile menu */
-(function() {
-  var btn = document.getElementById('lo-menu-btn');
-  var links = document.getElementById('lo-nav-links');
-  if (!btn || !links) return;
-  btn.addEventListener('click', function() {
-    var open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    links.style.display = open ? '' : 'flex';
-    links.style.flexDirection = open ? '' : 'column';
-    links.style.position = open ? '' : 'absolute';
-    links.style.top = open ? '' : '100%';
-    links.style.left = open ? '' : '0';
-    links.style.right = open ? '' : '0';
-    links.style.background = open ? '' : 'rgba(253,251,247,.97)';
-    links.style.padding = open ? '' : '16px 24px';
-    links.style.boxShadow = open ? '' : '0 8px 24px rgba(44,36,22,.08)';
-    links.style.borderBottom = open ? '' : '1px solid var(--border)';
-    links.style.gap = open ? '' : '18px';
-  });
-})();
-
+<script>
 /* Sidebar active state on scroll */
 (function() {
-  var sections = ['terms','privacy','data'];
+  var sections = ['terms','privacy','disclaimers'];
   var links = {};
   sections.forEach(function(id) {
     links[id] = document.querySelector('.pol-sidebar a[href="#' + id + '"]');
@@ -566,7 +1244,20 @@
   window.addEventListener('scroll', update, { passive: true });
   update();
 })();
+
+/* Open an appendix panel when it's linked to (sidebar, jump links, or a shared URL) */
+(function() {
+  function openFromHash() {
+    var id = location.hash.slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') el.open = true;
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+})();
 </script>
+<script src="js/site.js?v=20260726a"></script>
 
 </body>
 </html>

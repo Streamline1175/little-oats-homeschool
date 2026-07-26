@@ -11,8 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
 
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20260722b" />
+  <link rel="stylesheet" href="css/home.css?v=20260722b" />
+  <link rel="stylesheet" href="css/site.css?v=20260726a" />
 
   <style>
     body { background: var(--cream); font-family: var(--font-body); color: var(--ink-light); }
@@ -458,29 +459,57 @@
 <body>
 
 <!-- NAV -->
-<nav class="lo-nav" aria-label="Primary navigation">
-  <a class="brand" href="index.html">
-    <img class="brand-mark" src="assets/logo.png" alt="Little Oat Learners logo" width="34" height="34" />
-    <span class="brand-name">Little Oats</span>
+<header class="site-header">
+  <a class="site-banner sub" href="index.html">
+    <img src="assets/website-sub-banner-strip.png" alt="Little Oat LLC" />
   </a>
-  <ul class="nav-links" id="lo-nav-links">
-    <li><a href="index.html#tour">Features</a></li>
-    <li><a href="index.html#promise">Why Little Oats</a></li>
-    <li><a href="premium.html" style="color:var(--sage-deep);font-weight:600">Premium</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="texas-standards.html">TX Homeschool Guide</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
-  </ul>
-  <div class="nav-ctas">
-    <a class="lo-btn primary sm" href="index.html#download">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
-      Download
-    </a>
-  </div>
-  <button class="menu-btn" id="lo-menu-btn" aria-expanded="false" aria-controls="lo-nav-links">Menu</button>
-</nav>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-menu">Menu ▾</button>
+    <ul class="nav-menu" id="site-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-dropdown">
+        <a href="software.html" aria-current="page">Software &amp; Mobile Apps
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="software.html"><span class="d-title">All software &amp; apps</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a href="oatsmart.html"><span class="d-title">OatSmart</span><span class="d-sub">Desktop app · Mac · Windows · Linux</span></a></li>
+          <li><a href="star-chart.html"><span class="d-title">Star Chart</span><span class="d-sub">Mobile app · reward charts</span></a></li>
+          <li><a href="daily-work-tracker.html"><span class="d-title">Daily Work Tracker</span><span class="d-sub">Mobile app · daily assignments</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Coop Connect</span><span class="d-sub">Mobile app · Coming soon</span></a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="curriculum.html">Curriculum
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="curriculum.html"><span class="d-title">About the curriculum</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a class="is-soon"><span class="d-title">Reading &amp; Phonics</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Writing</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Math</span><span class="d-sub">Coming soon</span></a></li>
+          <li><a class="is-soon"><span class="d-title">Dual Language</span><span class="d-sub">Coming soon</span></a></li>
+        </ul>
+      </li>
+            <li class="has-dropdown">
+        <a href="blog.html">Blog
+          <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="dropdown">
+          <li><a href="blog.html"><span class="d-title">All posts</span></a></li>
+          <li class="d-divider" role="separator"></li>
+          <li><a href="blog-welcome.html"><span class="d-title">Welcome to Little Oat</span><span class="d-sub">Where I share our journey</span></a></li>
+          <li><a href="texas-standards.html"><span class="d-title">Homeschooling in Texas</span><span class="d-sub">What the law asks of you</span></a></li>
+        </ul>
+      </li>
 
-<main style="padding-top:80px;padding-bottom:80px">
+    </ul>
+  </nav>
+</header>
+
+<main style="padding-top:8px;padding-bottom:80px">
 <div class="lo-container">
 
   <!-- Hero -->
@@ -493,7 +522,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
         Tour the modules
       </a>
-      <a class="lo-btn outline lg" href="shop.html">
+      <a class="lo-btn outline lg" href="oatsmart.html#download">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
         Get Premium · $6.99/mo
       </a>
@@ -560,11 +589,11 @@
     <h2>$6.99/month. Eleven modules, every learner, all devices.</h2>
     <p>Billed monthly, cancel anytime. No per-child fees, no module unlock screens. Free updates included as we add modules.</p>
     <div class="prem-cta-btns">
-      <a class="lo-btn primary lg" href="shop.html">
+      <a class="lo-btn primary lg" href="oatsmart.html#download">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m6 11 6 6 6-6"/><path d="M5 20h14"/></svg>
         Get Premium · $6.99/mo
       </a>
-      <a class="lo-btn cream-outline lg" href="index.html#download">
+      <a class="lo-btn cream-outline lg" href="oatsmart.html#download">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
         Try free for 14 days
       </a>
@@ -575,48 +604,22 @@
 </main>
 
 <!-- Footer -->
-<footer class="lo-foot">
-  <div class="row">
-    <div>
-      <div class="brand-col">
-        <img src="assets/logo.png" alt="Little Oat Learners logo" width="32" height="32" />
-        <span>Little Oats</span>
-      </div>
-      <p>Calm, grounded homeschool software for families.</p>
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="assets/little-oat-llc-logo.png" alt="Little Oat LLC logo" />
+      <p class="foot-tag">Calm, family-made homeschool tools — desktop software, mobile apps, and one day, curriculum. Built by a homeschool mom, for homeschool families.</p>
     </div>
-    <div>
-      <h5>Product</h5>
-      <ul>
-        <li><a href="index.html#download">OatSmart desktop</a></li>
-        <li><a href="shop.html">Curriculum shop</a></li>
-        <li><a href="premium.html">Premium modules</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Resources</h5>
-      <ul>
-        <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="policies.html#privacy">Privacy policy</a></li>
-        <li><a href="policies.html#terms">Terms of service</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Download</h5>
-      <ul>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">macOS</a></li>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Windows</a></li>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases/latest">Linux</a></li>
-        <li><a href="https://github.com/Streamline1175/homeschool-releases/releases" target="_blank" rel="noopener">All releases</a></li>
-      </ul>
-    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="policies.html#privacy">Privacy Policy</a>
+      <a href="policies.html#terms">Terms of Use</a>
+      <a href="policies.html#disclaimers">Disclaimers</a>
+      <a href="mailto:support@littleoatlearners.com">Contact</a>
+    </nav>
   </div>
-  <div class="legal">
-    <span>© 2026 Little Oat Learners · Made with ❤️ in Texas</span>
-    <div class="lo-foot-links">
-      <a href="policies.html#terms">Terms</a>
-      <a href="policies.html#privacy">Privacy</a>
-    </div>
+  <div class="foot-legal">
+    <span>© 2026 Little Oat LLC. All rights reserved.</span>
+    <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>
   </div>
 </footer>
 
@@ -783,6 +786,7 @@ buildGrid();
 renderSlide(0);
 buildCompare();
 </script>
+<script src="js/site.js?v=20260726a"></script>
 
 </body>
 </html>

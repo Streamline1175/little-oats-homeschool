@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shop curriculum bundles, premium licenses, and add-ons for Little Oat Learners. One-time purchases with lifetime access. Secure checkout via Lemon Squeezy." />
+  <meta name="description" content="Shop curriculum bundles, premium licenses, and add-ons for Little Oat Learners. One-time purchases with lifetime access. Secure checkout via Polar." />
   <title>Shop | Little Oat Learners</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -585,7 +585,7 @@
       <h1>Tools and lessons that <em>play nicely</em> with OatSmart.</h1>
     </div>
     <div>
-      <p>Every product here is a one-time purchase with lifetime download access. Curriculum bundles import directly into the planner; activity packs unlock matching modules in the Premium suite.</p>
+      <p>Every product here is a one-time purchase with lifetime download access, priced to stay affordable for homeschool families. Curriculum bundles import directly into the planner; activity packs unlock matching modules in the Premium suite.</p>
       <div class="shop-hero-stats">
         <div class="stat"><div class="stat-num" id="shop-count">—</div><div class="stat-lbl">Products live</div></div>
         <div class="stat"><div class="stat-num">2,400+</div><div class="stat-lbl">Families using</div></div>
@@ -649,7 +649,7 @@
       </span>
       <div>
         <h3>Secure checkout</h3>
-        <p>Powered by Lemon Squeezy — owned by Stripe, one of the world's most trusted payment platforms.</p>
+        <p>Powered by Polar — built on Stripe, one of the world's most trusted payment platforms.</p>
       </div>
     </div>
     <div class="shop-trust-item">
@@ -658,7 +658,7 @@
       </span>
       <div>
         <h3>Instant download</h3>
-        <p>Order confirmation lands in your inbox in seconds with a direct download button — Lemon Squeezy sends a backup too.</p>
+        <p>Order confirmation lands in your inbox in seconds with a direct download button — Polar sends a backup too.</p>
       </div>
     </div>
     <div class="shop-trust-item">
@@ -749,7 +749,7 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="11" width="15" height="9" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></svg>
       <span id="cart-checkout-label">Checkout · $0.00</span>
     </button>
-    <p class="cart-legal">Secure one-time payment via Lemon Squeezy (a Stripe company). Lifetime download access.</p>
+    <p class="cart-legal">Secure one-time payment via Polar (built on Stripe). Lifetime download access.</p>
   </div>
 </div>
 
@@ -881,7 +881,7 @@ function doCheckout() {
   if (cart.length === 0) return;
   var btn = $('cart-checkout-btn');
   btn.disabled = true;
-  $('cart-checkout-label').textContent = 'Connecting to Lemon Squeezy…';
+  $('cart-checkout-label').textContent = 'Connecting to Polar…';
 
   var body = JSON.stringify({
     items: cart.map(function(it) {
