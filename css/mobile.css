@@ -1,0 +1,372 @@
+/* ============================================================
+   Little Oat LLC — mobile hardening (mobile.css)
+
+   Loaded LAST on every page, after styles.css / home.css / site.css
+   and after any page-level <style> block, so it gets the final word.
+
+   Most rules are scoped to phone/tablet widths. The few that aren't
+   (image max-width, text-size-adjust, focus rings, the comparison-table
+   scroller) only touch properties the desktop layout doesn't rely on.
+   Verified: all 15 pages render pixel-identically at 1440px with and
+   without this file.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Base safety nets
+   ------------------------------------------------------------ */
+
+/* iOS Safari inflates font sizes when a phone is rotated to landscape.
+   Pin it so our clamp()-based type scale is what actually renders. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* No image should ever be able to push the page wider than the screen.
+   Images that are deliberately sized by their container (object-fit
+   cover/contain shots) are unaffected — they're already <= 100%. */
+img {
+  max-width: 100%;
+}
+
+/* Long unbroken strings — support@littleoatlearners.com, raw URLs — are
+   the most common cause of horizontal scroll on a 320px screen. */
+@media (max-width: 820px) {
+  h1, h2, h3, h4, p, li, td, dd, dt, summary, figcaption, blockquote {
+    overflow-wrap: break-word;
+  }
+}
+
+/* Kill the grey flash on tap without removing the visible focus ring. */
+a, button, summary, [role="button"], input, select, textarea {
+  -webkit-tap-highlight-color: rgba(122, 139, 111, 0.18);
+}
+
+/* Keyboard/switch-control users still need a clear focus indicator. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--sage-deep, #5f6f52);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------
+   2. Form controls — stop iOS from zooming the page on focus
+   ------------------------------------------------------------
+   Mobile Safari auto-zooms into any input/select/textarea whose
+   computed font-size is below 16px, then leaves the page zoomed.
+   The site's selects were 12.5–15px, so every one of them triggered
+   it. 16px is the threshold, not a style choice.
+
+   !important is deliberate: the page-level rules that set these sizes
+   are class-scoped (`.shop-filters select`), so a bare element selector
+   loses the cascade no matter where this file is loaded. This is a
+   behavioural fix, not a style preference — below 16px the browser
+   zooms and the user has to pinch back out by hand. */
+@media (max-width: 820px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  /* Keep them comfortably tappable while we're here. */
+  select,
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="number"],
+  input[type="tel"] {
+    min-height: 44px;
+  }
+}
+
+/* ------------------------------------------------------------
+   3. Tap targets
+   ------------------------------------------------------------
+   Apple asks for 44x44pt, Android for 48dp. The footer link rows and
+   the small inline links were landing at 16–23px tall. We add padding
+   (and pull it back out with negative margin where a row would
+   otherwise grow) rather than changing font sizes, so the type scale
+   and visual rhythm stay exactly as designed. */
+@media (max-width: 820px) {
+
+  /* Shared footer — link row + legal row */
+  .site-footer .foot-links {
+    gap: 2px 20px;
+  }
+  .site-footer .foot-links a,
+  .site-footer .foot-legal a {
+    display: inline-block;
+    padding: 11px 0;
+    min-height: 22px;
+  }
+  .site-footer .foot-legal {
+    gap: 2px;
+  }
+
+  /* Legacy footer used by shop.html / daily-planner.html */
+  .lo-foot a {
+    display: inline-block;
+    padding: 9px 0;
+  }
+
+  /* Filter chips / pill buttons */
+  .filter-chip {
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* Primary nav rows already clear 44px; dropdown children did not. */
+  .dropdown a {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  /* A collapsed accordion still painted a 4px sliver: max-height:0 zeroes
+     the content box but leaves the panel's own padding and left border
+     visible. Fold those away too so closed sections read as closed. */
+  .nav-menu > li.has-dropdown:not(.open) > .dropdown {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-color: transparent;
+  }
+
+  /* Tapping an accordion row focuses the link, which fires the desktop
+     `:focus-within` rule and re-applies `translate(-50%, 0)` — the
+     centering trick for a floating desktop panel. On a statically
+     positioned mobile panel that shoved the submenu ~137px off the left
+     edge, clipping every label. site.css's mobile block resets the
+     transform on `.dropdown` alone (0,1,0), which loses to the
+     `:focus-within` selector (0,3,1), so the reset has to be restated
+     here at matching specificity. */
+  .nav-menu > li:hover > .dropdown,
+  .nav-menu > li:focus-within > .dropdown,
+  .nav-menu > li.open > .dropdown,
+  .dropdown.open {
+    transform: none;
+    left: auto;
+    right: auto;
+  }
+
+  /* Standalone "← All posts" / "← Back to home" links at the foot of
+     blog posts — these are navigation, not prose, so they get real
+     touch height. Inline links inside a sentence are deliberately left
+     alone: padding them would overlap adjacent lines, and WCAG 2.5.8
+     exempts inline text links for exactly that reason. */
+  .blog-back a,
+  .back-link {
+    padding: 12px 0;
+    min-height: 44px;
+  }
+}
+
+/* ------------------------------------------------------------
+   3b. Legacy .lo-nav bar (shop.html, daily-planner.html)
+   ------------------------------------------------------------
+   This bar is too crowded at both tablet and phone widths. Both blocks
+   below tighten spacing rather than dropping the Download CTA, so the
+   download path stays one tap away at every size. */
+
+/* Tablet band: above the 768px collapse the full link row is still
+   showing, and shop.html's six links pushed the page 55px sideways
+   at 820px. */
+@media (max-width: 900px) {
+  .lo-nav {
+    gap: 14px;
+  }
+  .lo-nav .nav-links {
+    gap: 16px;
+  }
+}
+
+/* Phone band: brand + CTA + Menu button across a 375px bar — without
+   this, "Little Oats" wrapped to a second line and grew the header. */
+@media (max-width: 768px) {
+  .lo-nav {
+    gap: 10px;
+  }
+  /* The logo is the "go home" target and was only 30px tall. Padding
+     grows the hit area to 44px; the matching negative margin keeps the
+     bar itself exactly as tall as it was. */
+  .lo-nav .brand {
+    gap: 8px;
+    min-width: 0;
+    padding: 7px 0;
+    margin: -7px 0;
+  }
+  .lo-nav .brand-name {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .lo-nav .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+  .lo-nav .nav-ctas .lo-btn {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+  .lo-nav .menu-btn {
+    padding: 10px 13px;
+    white-space: nowrap;
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Tables — scroll instead of clipping
+   ------------------------------------------------------------
+   premium.html's comparison table is ~405px wide and sat inside a
+   rounded card with overflow:hidden, so on a 375px screen the last
+   column was silently cut off with no way to reach it. Let the card
+   scroll horizontally and keep the rounded corners. */
+.prem-compare {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.prem-compare table {
+  min-width: 420px;
+}
+
+/* Any other table gets the same treatment rather than overflowing. */
+@media (max-width: 820px) {
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ------------------------------------------------------------
+   5. Page-specific overflow fixes
+   ------------------------------------------------------------ */
+
+/* policies.html — the contact card's mailto button is one long
+   unbreakable token. It set a 365px min-content floor on the whole
+   `1fr` content column, pushing every policy section 14px past the
+   right edge of a 375px screen.
+
+   Scaling the label down keeps the address on one line — letting it
+   wrap would break it mid-word ("littleoatlearners." / "com"), which
+   reads as broken rather than responsive. */
+@media (max-width: 820px) {
+  .pol-contact {
+    min-width: 0;
+  }
+  .pol-contact .lo-btn {
+    font-size: clamp(12px, 3.4vw, 15px);
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* thank-you.html — the order rows are a two-item `space-between` flex
+   with no gap and no wrapping allowance. At phone widths "Items
+   Purchased" ran straight into its value with no gap, and "Order Total"
+   wrapped onto two lines while its value stayed on the first, so the
+   summary read as scrambled. Give the rows a gap, let the label keep its
+   own line, and right-align the value against it. */
+@media (max-width: 560px) {
+  /* Roomier card padding was eating the width the two columns needed. */
+  .order-summary,
+  .next-steps {
+    padding: 1.5rem 1.25rem;
+  }
+  /* Grid rather than flex: a two-track grid reserves the value's width
+     up front, so the gap survives even when the label has to wrap to a
+     second line. With flex, `margin-left:auto` collapses to zero at that
+     point and the two columns run into each other. */
+  .order-detail {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 14px;
+    align-items: baseline;
+  }
+  .order-detail-label {
+    min-width: 0;
+  }
+  .order-detail-value {
+    text-align: right;
+  }
+
+  /* Centred text under a fixed-position tick made wrapped lines look
+     randomly indented; left-aligning the copy lines them up. */
+  .next-steps li,
+  .next-steps p {
+    text-align: left;
+  }
+}
+
+/* texas-standards.html — the helps callout keeps 40px of side padding
+   at every width, which left only 192px of content box at 320px and
+   forced the page ~4px wide. */
+@media (max-width: 480px) {
+  .tx-helps {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .tx-helps > * {
+    min-width: 0;
+  }
+}
+
+/* Grid and flex children default to min-width:auto, which lets a wide
+   child blow out a `1fr` track. These are the site's main content
+   columns — none of them should ever be the reason the page scrolls. */
+@media (max-width: 820px) {
+  .pol-body > *,
+  .pol-sections > *,
+  .tx-sections > *,
+  .shop-hero > *,
+  .lo-container > * {
+    min-width: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+   5b. Very narrow screens (~280px)
+   ------------------------------------------------------------
+   Foldable cover displays and older small Androids. Everything below
+   is scoped tightly enough that no mainstream phone width (320+) sees
+   it — it only stops the narrowest devices scrolling sideways. */
+@media (max-width: 319px) {
+
+  /* .lo-btn is white-space: nowrap, so long CTA labels like
+     "Try Premium free for 14 days" held the page open on their own. */
+  .lo-btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Roomy cards give up some inner padding before the page gives up
+     its width. */
+  .pol-contact {
+    padding: 24px 20px;
+  }
+
+  /* Six module chips fall back to three by 454px; three is still one
+     too many down here. */
+  .prem-module-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ------------------------------------------------------------
+   6. Comfortable reading measure on small screens
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  /* The very smallest micro-labels were 9–10px, which is below what
+     most people can read on a phone. Nudge only the smallest ones;
+     the 11px+ eyebrow labels are left as designed. */
+  .sb-small {
+    font-size: 11px;
+  }
+}

@@ -18,8 +18,13 @@
     /* ---- Shop-specific styles ---- */
     body { background: var(--cream); }
 
-    /* Nav (reuses home.css lo-nav) */
-    .lo-nav .nav-links { display: flex; }
+    /* Nav (reuses home.css lo-nav).
+       Scoped to desktop — below 768px home.css collapses the links into the
+       Menu button, and an unscoped `display: flex` here would out-cascade it
+       and leave the full link list wedged open on phones. */
+    @media (min-width: 769px) {
+      .lo-nav .nav-links { display: flex; }
+    }
 
     /* Page wrapper */
     .shop-page {
@@ -546,7 +551,15 @@
     @media (max-width: 580px) {
       .shop-grid { grid-template-columns: 1fr; }
     }
+    /* Three stat tiles need ~360px to sit side by side once the webfont
+       loads; below that they pushed the page sideways. Reflow to two-up
+       on the narrowest phones and keep the 3-up layout from 360 on. */
+    @media (max-width: 359px) {
+      .shop-hero-stats { grid-template-columns: 1fr 1fr; }
+      .shop-hero-stats .stat { padding: 12px; }
+    }
   </style>
+  <link rel="stylesheet" href="css/mobile.css?v=20260726a" />
 </head>
 <body class="shop-page">
 
