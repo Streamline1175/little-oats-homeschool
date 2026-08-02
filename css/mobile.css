@@ -370,3 +370,62 @@ textarea:focus-visible,
     font-size: 11px;
   }
 }
+
+/* ------------------------------------------------------------
+   7. App tour — one key point at a time
+   ------------------------------------------------------------
+   On the mobile-app pages (star-chart.html, daily-work-tracker.html)
+   site.css stacks the five feature steps into a full column under the
+   phone, which pushed the App Store / Google Play badges roughly a
+   screen and a half down. The page script already keeps `.active` in
+   sync with the slideshow, so we show only that one step and let it
+   cross-fade with the screenshot instead.
+
+   All items share a single grid cell, so the box is only as tall as the
+   tallest step — no jumping as the slides advance, and no fixed height
+   to keep in step with the copy. The oatsmart.html tour is untouched:
+   its list is already a horizontal scroller on phones. */
+@media (max-width: 820px) {
+  .app-tour-stage .lo-tour-list {
+    display: grid;
+    grid-template-areas: "step";
+    /* An `auto` column would size to the longest step's copy on one
+       line and hold the whole page open sideways. */
+    grid-template-columns: minmax(0, 1fr);
+    overflow: hidden;
+    /* With four of the five steps hidden, the visible one is a caption
+       rather than a picker — and tapping it would silently stop the
+       autoplay for no visible result. The arrows under the phone stay
+       the way to move between steps. */
+    pointer-events: none;
+  }
+
+  .app-tour-stage .lo-tour-item {
+    grid-area: step;
+    /* home.css gives the horizontal-scroller version a 200px floor;
+       stacked in one cell that floor is what we size against. */
+    min-width: 0;
+    /* Inactive steps stay in the layout (they set the box height) but
+       are hidden from sight and from screen readers. */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(16px);
+    transition: opacity .4s ease, transform .4s ease, visibility .4s;
+  }
+
+  .app-tour-stage .lo-tour-item.active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    /* Only one card shows, so the selected-state lift reads as a
+       permanent highlight rather than a selection. Keep it flat. */
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 820px) and (prefers-reduced-motion: reduce) {
+  .app-tour-stage .lo-tour-item {
+    transform: none;
+    transition: none;
+  }
+}
