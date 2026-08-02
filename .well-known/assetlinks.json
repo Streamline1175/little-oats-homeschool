@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.littleoatlearners.coopconnect",
+      "sha256_cert_fingerprints": [
+        "79:E1:37:24:27:37:18:26:82:C3:4A:30:AA:B5:42:57:11:12:FC:EC:88:2E:51:59:7D:00:DA:D5:37:38:9E:0D"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.littleoatlearners.coopconnect",
+      "sha256_cert_fingerprints": [
+        "79:E1:37:24:27:37:18:26:82:C3:4A:30:AA:B5:42:57:11:12:FC:EC:88:2E:51:59:7D:00:DA:D5:37:38:9E:0D"
+      ]
+    }
+  }
+]

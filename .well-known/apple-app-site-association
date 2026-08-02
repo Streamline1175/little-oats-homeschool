@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["AHDN4UCBUS.com.littleoat.app"],
+        "components": [
+          { "/": "/i/*", "comment": "Coop Connect co-op invite links" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["AHDN4UCBUS.com.littleoat.app"]
+  }
+}
