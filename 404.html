@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <!-- GitHub Pages serves this file for every path that has no file of its
+       own. /i/CODE invite links rely on that: when the Co-op Connect app is
+       installed, iOS and Android open the link in the app directly and never
+       load this page (see .well-known/); everyone else lands here. Any other
+       unknown path gets the plain not-found card at the bottom. -->
+  <title>Join a co-op | Co-op Connect</title>
+  <meta property="og:title" content="You're invited to a co-op on Co-op Connect" />
+  <meta property="og:description" content="Open the invite in Co-op Connect, or enter the code in the app." />
+  <meta property="og:image" content="https://littleoatlearners.com/assets/coop-connect-icon.png" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf6ef;
+      --cream-dark: #f3ecdf;
+      --sage-deep: #2f5d3a;
+      --sage-deeper: #244a2e;
+      --sage-light: #e3ecdf;
+      --ink: #1f2a22;
+      --ink-light: #3e4a41;
+      --muted: #6b7169;
+      --border: rgba(90, 107, 79, 0.16);
+      --card: rgba(255, 255, 255, 0.72);
+      --shadow: 0 12px 40px rgba(44, 36, 22, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--ink-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px 16px 32px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    .icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(44, 36, 22, 0.14);
+      display: block;
+      margin: 0 auto 18px;
+    }
+    .eyebrow {
+      margin: 0 0 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+    }
+    h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.25;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    p { margin: 0 0 16px; }
+    .lead { font-size: 16px; }
+    .label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 6px 0 8px;
+    }
+    .code {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--ink);
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 12px;
+      margin: 0 0 10px;
+      word-break: break-all;
+      user-select: all;
+      -webkit-user-select: all;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      border-radius: 999px;
+      padding: 14px 18px;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 120ms ease, color 120ms ease;
+    }
+    .btn + .btn { margin-top: 10px; }
+    .btn-primary {
+      background: var(--sage-deep);
+      color: #fff;
+      border: 1px solid var(--sage-deep);
+    }
+    .btn-primary:hover, .btn-primary:focus-visible { background: var(--sage-deeper); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--sage-deep);
+      border: 1px solid var(--sage-deep);
+    }
+    .btn-secondary:hover, .btn-secondary:focus-visible { background: var(--sage-light); }
+    .divider {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 22px 0 18px;
+    }
+    .stores h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    .soon {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+    .fine {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 18px 0 0;
+    }
+    .home {
+      margin-top: 22px;
+      font-size: 14px;
+    }
+    .home a { color: var(--sage-deep); font-weight: 500; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <main class="card" id="invite" hidden>
+    <img class="icon" src="/assets/coop-connect-icon.png" alt="" width="96" height="96" />
+    <p class="eyebrow">Co-op Connect</p>
+    <h1>You're invited to join a co-op</h1>
+    <p class="lead">Open this invite in the Co-op Connect app, or enter the code in the app under Join a co-op.</p>
+
+    <p class="label">Invite code</p>
+    <code class="code" id="code"></code>
+    <button class="btn btn-secondary" id="copy" type="button">Copy code</button>
+    <a class="btn btn-primary" id="open" href="#">Open in Co-op Connect</a>
+
+    <hr class="divider" />
+
+    <section class="stores">
+      <h2>Don't have the app yet?</h2>
+      <a class="btn btn-secondary" id="android" href="#" hidden>Get it on Google Play</a>
+      <a class="btn btn-secondary" id="ios" href="#" hidden>Download on the App Store</a>
+      <p class="soon" id="ios-soon" hidden>Coming soon for iPhone.</p>
+    </section>
+
+    <p class="fine">Invite codes can expire or be used up. If this one stops working, ask the person who invited you for a fresh one.</p>
+  </main>
+
+  <main class="card" id="notfound" hidden>
+    <img class="icon" src="/assets/logo.png" alt="" width="96" height="96" style="border-radius:0;box-shadow:none" />
+    <h1>That page isn't here</h1>
+    <p class="lead">The address may be mistyped, or the page has moved.</p>
+    <a class="btn btn-primary" href="/">Go to the homepage</a>
+  </main>
+
+  <p class="home"><a href="https://littleoatlearners.com/">littleoatlearners.com</a></p>
+
+  <script>
+    (function () {
+      // Store listings. Leave one empty to hide its button; the iOS line
+      // shows "Coming soon" while the App Store entry is empty.
+      var STORES = {
+        android: 'https://play.google.com/store/apps/details?id=com.littleoatlearners.coopconnect',
+        ios: ''
+      };
+
+      var match = location.pathname.match(/^\/i\/([A-Za-z0-9]{4,40})\/?$/);
+      var invite = document.getElementById('invite');
+      var notfound = document.getElementById('notfound');
+
+      if (!match) {
+        document.title = 'Page not found | Little Oat LLC';
+        notfound.hidden = false;
+        return;
+      }
+
+      var code = match[1];
+      var codeEl = document.getElementById('code');
+      var openEl = document.getElementById('open');
+      var copyEl = document.getElementById('copy');
+
+      codeEl.textContent = code;
+      openEl.href = 'littleoat://i/' + code;
+
+      var androidEl = document.getElementById('android');
+      var iosEl = document.getElementById('ios');
+      var iosSoonEl = document.getElementById('ios-soon');
+      if (STORES.android) { androidEl.href = STORES.android; androidEl.hidden = false; }
+      if (STORES.ios) { iosEl.href = STORES.ios; iosEl.hidden = false; }
+      else { iosSoonEl.hidden = false; }
+
+      invite.hidden = false;
+
+      function flash(text) {
+        copyEl.textContent = text;
+        setTimeout(function () { copyEl.textContent = 'Copy code'; }, 1800);
+      }
+      function selectCode() {
+        var range = document.createRange();
+        range.selectNodeContents(codeEl);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      copyEl.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(
+            function () { flash('Copied'); },
+            function () { selectCode(); flash('Select and copy'); }
+          );
+        } else {
+          selectCode();
+          try { document.execCommand('copy'); flash('Copied'); }
+          catch (e) { flash('Select and copy'); }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
