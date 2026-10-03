@@ -726,6 +726,50 @@
   max-width: 46ch;
 }
 
+/* Per-platform store availability — one row per store, shown under the badges */
+.store-avail {
+  list-style: none;
+  margin: 18px auto 0;
+  padding: 0;
+  max-width: 420px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.store-avail li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3px 12px;
+  padding: 12px 18px;
+}
+.store-avail li + li { border-top: 1px solid var(--border); }
+.store-avail .sa-platform { font-size: 14px; font-weight: 600; color: var(--ink); }
+.store-avail .sa-detail { grid-column: 1 / -1; font-size: 12.5px; line-height: 1.5; color: var(--muted); }
+.store-avail .sa-detail a { color: var(--sage-deep); font-weight: 600; }
+.store-avail-asof { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
+
+/* Status pills — shared by the availability list and the product-card chips */
+.sa-pill, .avail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: var(--oat-light);
+  color: var(--ink-light);
+}
+.sa-pill { justify-self: end; padding: 3px 10px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.sa-pill.is-live,   .avail-chip.is-live   { background: var(--sage-light); color: var(--sage-deep); }
+.sa-pill.is-review, .avail-chip.is-review { background: #f6eedc; color: #7a5c22; }
+
+.avail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.avail-chip { padding: 3px 10px; font-size: 11.5px; font-weight: 600; }
+.avail-chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.75; }
+
 /* Pricing card */
 .app-price {
   margin: 22px auto 0;
