@@ -814,6 +814,8 @@
 }
 .info-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink); margin: 0 0 8px; }
 .info-card p { font-size: 0.93rem; line-height: 1.6; color: var(--muted); margin: 0; }
+.info-card p + p { margin-top: 10px; }
+.info-card a { color: var(--sage-deep); font-weight: 600; }
 
 /* "Coming soon" band */
 .soon-band {
