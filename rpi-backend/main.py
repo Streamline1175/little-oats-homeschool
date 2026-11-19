@@ -1208,8 +1208,14 @@ async def submit_mobile_feedback(
     app_version: str = Form(...),
     device: str = Form(...),
     os_name: str = Form(..., alias="os"),
+    # Which Little Oat app is writing. Named app_name so it does not shadow the
+    # FastAPI instance; sent as "app" by the client. The default is what every
+    # submission used to be hardcoded as, so a client built before this field
+    # existed keeps arriving correctly labelled.
+    app_name: str = Form("Daily Homeschool Tracker", alias="app"),
     images: Optional[List[UploadFile]] = File(None),
 ):
+    import html
     import uuid
     import shutil
     import smtplib
@@ -1244,36 +1250,49 @@ async def submit_mobile_feedback(
         photo_line = f"{len(image_data)} photo(s) attached" if image_data else "No photos attached"
         submitted_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
+        # Everything below is typed by whoever sent the feedback, so it is escaped
+        # rather than dropped into the HTML as-is.
+        e_app = html.escape(app_name)
+        e_type = html.escape(feedback_type)
+        e_version = html.escape(app_version)
+        e_device = html.escape(device)
+        e_os = html.escape(os_name)
+        e_message = html.escape(message)
+
         html_body = f"""
         <html><body style="font-family: sans-serif; color: #333; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #5b8a5e; border-bottom: 2px solid #e8f0e9; padding-bottom: 8px;">
-            New Feedback — Daily Homeschool Tracker
+            New Feedback — {e_app}
           </h2>
           <table style="width: 100%; border-collapse: collapse;">
-            <tr><td style="padding: 8px 0; color: #888; width: 140px;">Type</td>
-                <td style="padding: 8px 0; font-weight: 600;">{feedback_type}</td></tr>
+            <tr><td style="padding: 8px 0; color: #888; width: 140px;">App</td>
+                <td style="padding: 8px 0; font-weight: 600;">{e_app}</td></tr>
+            <tr><td style="padding: 8px 0; color: #888;">Type</td>
+                <td style="padding: 8px 0; font-weight: 600;">{e_type}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Submission ID</td>
                 <td style="padding: 8px 0; font-family: monospace;">#{submission_id}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">App Version</td>
-                <td style="padding: 8px 0;">v{app_version}</td></tr>
+                <td style="padding: 8px 0;">v{e_version}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Device</td>
-                <td style="padding: 8px 0;">{device}</td></tr>
+                <td style="padding: 8px 0;">{e_device}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">OS</td>
-                <td style="padding: 8px 0;">{os_name}</td></tr>
+                <td style="padding: 8px 0;">{e_os}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Photos</td>
                 <td style="padding: 8px 0;">{photo_line}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Submitted</td>
                 <td style="padding: 8px 0;">{submitted_at}</td></tr>
           </table>
           <h3 style="margin-top: 24px; color: #555;">Message</h3>
-          <div style="background: #f7f7f7; border-radius: 8px; padding: 16px; white-space: pre-wrap;">{message}</div>
+          <div style="background: #f7f7f7; border-radius: 8px; padding: 16px; white-space: pre-wrap;">{e_message}</div>
         </body></html>
         """
 
         msg = MIMEMultipart()
         msg["From"] = smtp_user
         msg["To"] = recipient
-        msg["Subject"] = f"[{feedback_type}] Daily Homeschool Tracker v{app_version} — #{submission_id}"
+        # App first: it is what makes these sortable in an inbox that now receives
+        # feedback from several different apps.
+        msg["Subject"] = f"[{app_name}] {feedback_type} — v{app_version} — #{submission_id}"
         msg.attach(MIMEText(html_body, "html"))
 
         total_size = 0
@@ -1292,7 +1311,7 @@ async def submit_mobile_feedback(
         if image_data:
             print(f"   📦 Total attachment size: {total_size / 1024:.1f} KB")
 
-        print(f"📧 Sending mobile feedback #{submission_id} ({len(image_data)} image(s))")
+        print(f"📧 Sending {app_name} feedback #{submission_id} ({len(image_data)} image(s))")
         with smtplib.SMTP(smtp_host, smtp_port) as server:
             server.starttls()
             server.login(smtp_user, smtp_pass)
