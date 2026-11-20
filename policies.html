@@ -1877,27 +1877,43 @@
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">What is stored, and where</div>
-                  <div class="pol-item-body">Your gardens and beds, plants and varieties, plantings, journal entries and drawings, harvests, seed packets, tasks, the garden activity log, investigations, your ZIP code and settings are saved in the app&rsquo;s private storage on your device. Photos you add to the journal are copied into the app&rsquo;s own folder on the device. None of it is uploaded. Little Oat LLC operates no server that receives it, and we cannot see it. Weather, frost, soil and sighting results the app has fetched are kept on the device for a while so it works offline. They contain public data about your area, nothing about you. Your device&rsquo;s own backup (iCloud, a computer backup or Google backup) may include the app&rsquo;s storage. A copy in a backup is held by Apple or Google under your own account, not by us, and their privacy terms apply to it.</div>
+                  <div class="pol-item-body">Your gardens and beds, plants and varieties, plantings, journal entries and drawings, harvests, seed packets, tasks, the garden activity log, investigations, your ZIP code and settings are saved in the app&rsquo;s private storage on your device. Photos you add to the journal are copied into the app&rsquo;s own folder on the device. None of it is uploaded. Little Oat LLC operates no server that receives it, and we cannot see it. Weather, alert, frost, drought, outlook, soil and sighting results the app has fetched are kept on the device for a while so it works offline. They contain public data about your area, nothing about you. Your device&rsquo;s own backup (iCloud, a computer backup or Google backup) may include the app&rsquo;s storage. A copy in a backup is held by Apple or Google under your own account, not by us, and their privacy terms apply to it.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Your location</div>
-                  <div class="pol-item-body">The app never asks for your device&rsquo;s location and does not use GPS. You type a ZIP code. The app looks it up in a table built into the app, which gives an approximate latitude and longitude, the nearest city and the USDA hardiness zone. Your ZIP code itself is never sent anywhere. To fetch local data, the app sends those coordinates rounded to two decimal places (about a kilometer) to the services below. The requests carry no name, account, device identifier or advertising identifier.</div>
+                  <div class="pol-item-body">The app never asks for your device&rsquo;s location and does not use GPS. You type a ZIP code. The app looks it up in a table built into the app, which gives an approximate latitude and longitude, the nearest city and the USDA hardiness zone. Your ZIP code itself is never sent anywhere. To fetch local data, the app sends those coordinates rounded to two decimal places (about a kilometer) to the services below; the drought service receives only a county code. The requests carry no name, account, device identifier or advertising identifier.</div>
                 </div>
                 <div class="pol-item">
-                  <div class="pol-item-label">Weather &amp; soil</div>
-                  <div class="pol-item-body"><strong>Open-Meteo</strong> (open-meteo.com), or, if you choose it in Settings, the US <strong>National Weather Service</strong> (api.weather.gov). They receive the rounded coordinates, and frost history requests also send a date range. Disease weather (&ldquo;conditions favor&hellip;&rdquo;) is worked out on your device from the hourly forecast fetched this way; nothing else is sent for it.</div>
+                  <div class="pol-item-label">Weather &amp; soil temperature</div>
+                  <div class="pol-item-body"><strong>Open-Meteo</strong> (open-meteo.com), or, if you choose it in Settings, the US <strong>National Weather Service</strong> (api.weather.gov). They receive the rounded coordinates. Disease weather (&ldquo;conditions favor&hellip;&rdquo;) is worked out on your device from the hourly forecast fetched this way; nothing else is sent for it.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Weather alerts</div>
+                  <div class="pol-item-body">The <strong>National Weather Service</strong> (api.weather.gov) receives the rounded coordinates and returns the watches, warnings and advisories in force there, and the county they fall in. Frost and freeze alerts are turned into notifications on your device.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Frost dates</div>
-                  <div class="pol-item-body">Worked out on the device from NOAA climate normals built into the app, with no request; or, if you choose it in Settings, from Open-Meteo&rsquo;s historical weather archive, which receives the rounded coordinates.</div>
+                  <div class="pol-item-body">Worked out on the device from NOAA climate normals built into the app, with no request. Where no NOAA station is close enough, or if you choose daily history in Settings, the app fetches 30 years of daily low temperatures once, sending the rounded coordinates and a date range to the first of these that answers: the NOAA Regional Climate Centers&rsquo; <strong>Applied Climate Information System</strong> (data.rcc-acis.org, which serves PRISM data and weather station records), <strong>Daymet</strong> at Oak Ridge National Laboratory (daymet.ornl.gov), or NOAA&rsquo;s <strong>National Centers for Environmental Information</strong> (ncei.noaa.gov).</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Drought</div>
+                  <div class="pol-item-body">The <strong>US Drought Monitor</strong> (usdmdataservices.unl.edu, University of Nebraska-Lincoln) receives only your county&rsquo;s five-digit code, taken from the National Weather Service answer above, not your coordinates.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Two-week outlook</div>
+                  <div class="pol-item-body">NOAA&rsquo;s <strong>Climate Prediction Center</strong> map service (mapservices.weather.noaa.gov) receives the rounded coordinates.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your soil</div>
+                  <div class="pol-item-body">The USDA Natural Resources Conservation Service&rsquo;s <strong>Soil Data Access</strong> (sdmdataaccess.sc.egov.usda.gov) receives the rounded coordinates in a soil survey query.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Pests, pollinators &amp; helpers seen nearby</div>
-                  <div class="pol-item-body"><strong>iNaturalist</strong> (inaturalist.org) or, if you choose it in Settings, <strong>GBIF</strong> (gbif.org). They receive the rounded coordinates, a search radius and the names of the insects or plants being looked up, and return counts of observations. The app shows only photos whose license allows it, and those photos load from iNaturalist&rsquo;s photo hosting.</div>
+                  <div class="pol-item-body"><strong>GBIF</strong> (gbif.org) or, if you choose it in Settings, <strong>iNaturalist</strong> (inaturalist.org). They receive the rounded coordinates, a search radius and the names of the insects or plants being looked up, and return counts of observations. Garden safari photos come from iNaturalist: with GBIF chosen, the app sends iNaturalist only the scientific names of the species on the list, not your location. The app shows only photos whose license allows it, loaded from iNaturalist&rsquo;s open-data photo hosting.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">What those services see</div>
-                  <div class="pol-item-body">Like any internet request, each of these services also sees your device&rsquo;s IP address and basic details such as that the request came from this app and its version. Their own privacy policies cover what they do with that. Nothing the app sends them identifies you or your family.</div>
+                  <div class="pol-item-body">Like any internet request, each of these services also sees your device&rsquo;s IP address. Every request names the app, its version and our support address, so a service knows whom to contact; it says nothing about you. Their own privacy policies cover what they do with what they receive. Nothing the app sends them identifies you or your family.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Photos, camera &amp; drawings</div>
@@ -1905,7 +1921,7 @@
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Notifications</div>
-                  <div class="pol-item-body">Frost and heat alerts, measuring-day reminders for investigations, and the other reminders you turn on are scheduled on your device as local notifications. There is no push service: nothing about your garden or schedule is sent to us, Apple or Google to deliver them. You can turn notifications off at any time in the app or in your device settings.</div>
+                  <div class="pol-item-body">Frost and heat alerts (from the forecast, and from National Weather Service frost and freeze alerts), measuring-day reminders for investigations, and the other reminders you turn on are scheduled on your device as local notifications. There is no push service: nothing about your garden or schedule is sent to us, Apple or Google to deliver them. You can turn notifications off at any time in the app or in your device settings.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Backups, exports &amp; reports you make</div>
@@ -2236,8 +2252,16 @@
                   <div class="pol-item-body">Frost dates are probabilities from 30 years of climate records, not predictions: a frost can come after the &ldquo;last frost&rdquo; date in any year. Planting windows, soil temperatures (which are estimated from air temperature when the National Weather Service is chosen), growing degree days and harvest dates are worked out from public data for the area around your ZIP code. Hills, valleys, cities, water and your own yard can differ by weeks.</div>
                 </div>
                 <div class="pol-item">
-                  <div class="pol-item-label">Frost &amp; heat alerts</div>
-                  <div class="pol-item-body">Frost and heat alerts depend on a forecast the app has fetched, on your device delivering a notification, and on the forecast being right. They are not a weather warning service. For warnings that matter to safety, use the National Weather Service or your local authorities.</div>
+                  <div class="pol-item-label">Frost, heat &amp; weather alerts</div>
+                  <div class="pol-item-body">Frost and heat alerts depend on a forecast the app has fetched, on your device delivering a notification, and on the forecast being right. National Weather Service alerts are shown as the app last fetched them, which may be minutes or hours old, and frost and freeze alerts are issued only during each local office&rsquo;s growing season. <strong>The app is not a weather warning service.</strong> For warnings that matter to safety, use the National Weather Service or your local authorities.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Outlook &amp; drought</div>
+                  <div class="pol-item-body">The two-week outlook gives chances of warmer, colder, wetter or drier than normal for a large region, not a forecast for your garden. The drought map is a weekly summary for your county; follow your water utility&rsquo;s rules on when to water.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Days to sprout</div>
+                  <div class="pol-item-body">Days to sprout are averages from laboratory tests of seed at steady soil temperatures. Seed age, variety, depth and moisture change them.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Planting &amp; companion advice</div>
@@ -2245,7 +2269,11 @@
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Pest timing</div>
-                  <div class="pol-item-body">Pest timing comes from when people have reported seeing insects nearby on iNaturalist or GBIF. Fewer reports does not mean fewer insects. Where there are too few reports close by, the app widens the area and says so.</div>
+                  <div class="pol-item-body">Pest timing comes from when people have reported seeing insects nearby, counted through GBIF (only records shared under an open license) or iNaturalist if you choose it. Fewer reports does not mean fewer insects. Where there are too few reports close by, the app widens the area and says so.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Your soil</div>
+                  <div class="pol-item-body">The soil card describes the soil the USDA soil survey maps for your area, not a test of your yard: garden soil is often moved, filled or improved. Its notes are general guidance. <strong>Have your soil tested, including for lead in towns and cities, before growing food.</strong></div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Disease weather</div>
@@ -2269,7 +2297,7 @@
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Data from others</div>
-                  <div class="pol-item-body">Weather, climate, observation and photo data come from the services named in the acknowledgements below. We do not control them, and they may be late, incomplete, wrong or unavailable. The app shows when data is stale or estimated.</div>
+                  <div class="pol-item-body">Weather, climate, observation and photo data come from the services named in the acknowledgments below. We do not control them, and they may be late, incomplete, wrong or unavailable. The app shows when data is stale or estimated.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Data loss</div>
@@ -2281,23 +2309,27 @@
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Acknowledgments: weather &amp; climate</div>
-                  <div class="pol-item-body">Weather data by Open-Meteo.com, licensed under the Creative Commons Attribution 4.0 International license (CC BY 4.0). Forecasts, soil temperature and moisture, and the historical archive used for frost dates come from Open-Meteo, which builds on data from national weather services including NOAA and DWD. Forecasts from the US National Weather Service (api.weather.gov), a work of the US federal government in the public domain. Frost and freeze probabilities from the NOAA National Centers for Environmental Information U.S. Climate Normals, 1991 to 2020, in the public domain. Values were extracted for each station and are matched to your location by distance. Disease weather is worked out on the device using published rules: TOM-CAST (Pitblado 1992), the Hutton Criteria (Dancey, Skelsey and Cooke 2017, AHDB), and cooperative extension guidance for mildews, damping-off and blossom-end rot.</div>
+                  <div class="pol-item-body">Weather data by Open-Meteo.com, licensed under the Creative Commons Attribution 4.0 International license (CC BY 4.0). Forecasts, soil temperature and moisture come from Open-Meteo, which builds on data from national weather services including NOAA and DWD. Forecasts and weather alerts from the US National Weather Service (api.weather.gov), a work of the US federal government in the public domain. Frost and freeze probabilities, growing-season length and days above 90&deg;F from the NOAA National Centers for Environmental Information U.S. Climate Normals, 1991 to 2020, in the public domain. Values were extracted for each station and are matched to your location by distance. Where no NOAA station is near, frost dates are worked out from 30 years of daily low temperatures: PRISM Group, Oregon State University, https://prism.oregonstate.edu (accessed on the date shown with your frost dates), and daily weather station records from NOAA&rsquo;s Global Historical Climatology Network, both through the NOAA Regional Climate Centers&rsquo; Applied Climate Information System (ACIS, data.rcc-acis.org); or from NOAA NCEI&rsquo;s Access Data Service, in the public domain. Daymet: Thornton, M.M., R. Shrestha, Y. Wei, P.E. Thornton, S-C. Kao and B.E. Wilson. 2022. <em>Daymet: Daily Surface Weather Data on a 1-km Grid for North America, Version 4 R1.</em> ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2129. Its use here does not imply endorsement by NASA or ORNL. Temperature and precipitation outlooks from the NOAA Climate Prediction Center, in the public domain. Drought data courtesy of NDMC, via droughtmonitor.unl.edu. The U.S. Drought Monitor is produced by the National Drought Mitigation Center at the University of Nebraska-Lincoln, the US Department of Agriculture and NOAA. Disease weather is worked out on the device using published rules: TOM-CAST (Pitblado 1992), the Hutton Criteria (Dancey, Skelsey and Cooke 2017, AHDB), and cooperative extension guidance for mildews, damping-off and blossom-end rot.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Acknowledgments: places &amp; hardiness zones</div>
-                  <div class="pol-item-body">ZIP code locations from the US Census Bureau Gazetteer Files and ZIP Code Tabulation Area relationship files, in the public domain. A ZIP Code Tabulation Area approximates a postal ZIP code and the two do not always match. Hardiness zones from the USDA Plant Hardiness Zone Map, 2023, Agricultural Research Service, US Department of Agriculture, with the PRISM Climate Group, Oregon State University.</div>
+                  <div class="pol-item-body">ZIP code locations from the US Census Bureau Gazetteer Files and ZIP Code Tabulation Area relationship files, in the public domain. A ZIP Code Tabulation Area approximates a postal ZIP code and the two do not always match. Hardiness zones from the USDA Plant Hardiness Zone Map, 2023, Agricultural Research Service, US Department of Agriculture, with the PRISM Group, Oregon State University, https://prism.oregonstate.edu/phzm/, accessed November 19, 2026. The app shows the zone published for your ZIP code (a ZIP-level zone); it is not the official USDA Plant Hardiness Zone Map, which is at planthardiness.ars.usda.gov.</div>
+                </div>
+                <div class="pol-item">
+                  <div class="pol-item-label">Acknowledgments: soil</div>
+                  <div class="pol-item-body">Soil Survey Staff, Natural Resources Conservation Service, United States Department of Agriculture. Soil Survey Geographic (SSURGO) Database. Available online at https://sdmdataaccess.sc.egov.usda.gov. Accessed on the date shown with your soil card. In the public domain.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Acknowledgments: insects, pollinators &amp; photos</div>
-                  <div class="pol-item-body">Observation counts from iNaturalist (inaturalist.org), a joint initiative of the California Academy of Sciences and the National Geographic Society, and from GBIF, the Global Biodiversity Information Facility (GBIF.org). The app uses counts of observations, not individual records. Photos shown in the garden safari belong to the people who took them and are used under the license each one chose on iNaturalist: CC0, CC BY or CC BY-SA. Each photo is credited where it is shown, with its license. Photos with other licenses are not shown; the app&rsquo;s own illustration is used instead.</div>
+                  <div class="pol-item-body">Occurrence data from GBIF, the Global Biodiversity Information Facility (GBIF.org), counting only records their publishers released under CC0 or CC BY 4.0, with thanks to the institutions and people who publish them. The app uses counts of observations, not individual records. If you choose it in Settings, observation counts come from iNaturalist (inaturalist.org), a nonprofit, instead. Photos shown in the garden safari come from iNaturalist and belong to the people who took them. They are used under the license each one chose, CC0, CC BY or CC BY-SA, and load from iNaturalist&rsquo;s open-data photo hosting. Each photo is credited where it is shown, in the form &ldquo;&copy; name, some rights reserved (CC BY)&rdquo;. Photos with other licenses are not shown; the app&rsquo;s own illustration is used instead.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Acknowledgments: garden guides &amp; artwork</div>
-                  <div class="pol-item-body">Planting windows, spacing, companion notes, plant families, the pest and disease guide and the lessons were written and compiled by Little Oat LLC from common US cooperative extension service guidance. They are not copied from any one publication. The plant, pest, helper and supply illustrations were made for the app with Google&rsquo;s Gemini image models and edited by Little Oat LLC. The Little Oat mascot is Little Oat LLC&rsquo;s own artwork.</div>
+                  <div class="pol-item-body">Planting windows, spacing, companion notes, plant families, the pest and disease guide and the lessons were written and compiled by Little Oat LLC from common US cooperative extension service guidance. They are not copied from any one publication. Germination temperatures and days to sprout are based on J.F. Harrington, UC Davis (Agricultural Extension leaflet, 1954), and the California Master Gardener Handbook (UC ANR Publication 3382, table 5.2), as published by the UC Master Gardener Program. The figures were re-keyed as facts; the wording is our own. The plant, pest, helper and supply illustrations were made for the app with Google&rsquo;s Gemini image models and edited by Little Oat LLC. The Little Oat mascot is Little Oat LLC&rsquo;s own artwork.</div>
                 </div>
                 <div class="pol-item">
                   <div class="pol-item-label">Acknowledgments: software &amp; fonts</div>
-                  <div class="pol-item-body">React and React Native (MIT License, &copy; Meta Platforms, Inc. and affiliates); Expo and its modules, such as expo-router, expo-notifications, expo-image, expo-image-picker, expo-print, expo-file-system, expo-sharing and expo-document-picker (MIT License, &copy; 650 Industries, Inc.); React Native Reanimated, Gesture Handler, Screens, Worklets and Safe Area Context (MIT License, &copy; Software Mansion and contributors); React Native SVG (MIT License, &copy; Horcrux and contributors); Async Storage, DateTimePicker and Slider (MIT License, &copy; React Native Community); RevenueCat React Native SDK (MIT License, &copy; RevenueCat, Inc.); Ionicons (MIT License, &copy; Ionic). Fonts in the artwork: Fredoka (SIL Open Font License 1.1, &copy; The Fredoka Project Authors) and Playfair Display (SIL Open Font License 1.1, &copy; The Playfair Display Project Authors, with Reserved Font Name &ldquo;Playfair Display&rdquo;). The MIT License permits use, copying, modification and distribution provided the copyright notice and permission notice are included, and comes without warranty. The SIL Open Font License 1.1 permits the fonts to be used, shared and bundled with software, provided they are not sold on their own. CC BY 4.0 permits sharing and adapting with credit. The full text of every license is available from each project and on request at <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>.</div>
+                  <div class="pol-item-body">React and React Native (MIT License, &copy; Meta Platforms, Inc. and affiliates); Expo and its modules, such as expo-router, expo-notifications, expo-image, expo-image-picker, expo-print, expo-file-system, expo-sharing and expo-document-picker (MIT License, &copy; 650 Industries, Inc.); React Native Reanimated, Gesture Handler, Screens, Worklets and Safe Area Context (MIT License, &copy; Software Mansion and contributors); React Native SVG (MIT License, &copy; Horcrux and contributors); Async Storage, DateTimePicker and Slider (MIT License, &copy; React Native Community); RevenueCat React Native SDK (MIT License, &copy; RevenueCat, Inc.); Ionicons (MIT License, &copy; Ionic). Fonts in the artwork: Fredoka (SIL Open Font License 1.1, &copy; The Fredoka Project Authors) and Playfair Display (SIL Open Font License 1.1, &copy; The Playfair Display Project Authors, with Reserved Font Name &ldquo;Playfair Display&rdquo;). The MIT License permits use, copying, modification and distribution provided the copyright notice and permission notice are included, and comes without warranty. The SIL Open Font License 1.1 permits the fonts to be used, shared and bundled with software, provided they are not sold on their own. CC BY 4.0 permits sharing and adapting with credit, and CC0 places a work in the public domain. The full text of every license is available from each project and on request at <a href="mailto:support@littleoatlearners.com">support@littleoatlearners.com</a>.</div>
                 </div>
               </div>
             </div>
